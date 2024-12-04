@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Add Product</h2>
+    <form [formGroup]="equipmentForm" (submit)="addEquipment()">
+        <div class="mb-3">
+            <label for="name" class="form-label" >Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter product name" required>
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label" >Category</label>
+            <input type="text" class="form-control" formControlName="category" id="category" placeholder="Enter product category" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label" >Description</label>
+            <textarea class="form-control" id="description" formControlName="description" rows="3" placeholder="Enter product description" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label" >Price</label>
+            <input type="number" class="form-control" formControlName="price" id="price" placeholder="Enter product price" required>
+        </div>
+        <div class="mb-3">
+            <label for="brand" class="form-label" >Brand</label>
+            <input type="text" class="form-control" formControlName="brand" id="brand" placeholder="Enter product brand" required>
+        </div>
+        <div class="mb-3">
+            <label for="photo" class="form-label" >Photo</label>
+            <input type="file" class="form-control" formControlName="photoUrl"  accept=".jpg, .jpeg, .png">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
