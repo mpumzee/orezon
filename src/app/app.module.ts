@@ -12,6 +12,9 @@ import { AdminComponent } from './admin/admin.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { MetalsComponent } from './metals/metals.component';
+import { BrokerComponent } from './broker/broker.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +24,17 @@ import { HttpClient, provideHttpClient } from '@angular/common/http';
     CategoriesComponent,
     ProductsComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    MetalsComponent,
+    BrokerComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     AppRoutingModule,    
     FormsModule,
-    ReactiveFormsModule,     
+    ReactiveFormsModule,
+    SlickCarouselModule     
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
