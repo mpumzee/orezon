@@ -8,9 +8,9 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="#" class="logo" style="font-size: 8vh;">
-									<!-- <img src="./img/logo.png" alt=""> -->
-									<span class="text-danger">e</span><span
-									 style="color: rgb(232, 223, 223); margin-top:200px;">Mining</span>
+									<img src="assets/img/log.jpg" alt="" style="width: 70px;">
+									<!-- <span class="text-danger">O</span><span
+									 style="color: rgb(232, 223, 223); margin-top:200px;">Mining</span> -->
 								</a>
 							</div>
 						</div>
@@ -28,8 +28,8 @@
 										<option value="1">Feeding</option>
 										<option value="1">Protective</option>
 									</select>
-									<input class="input" placeholder="Search here">
-									<button class="search-btn">Search</button>
+									<input class="input" placeholder="Search here" [(ngModel)]="searchTerm"  [ngModelOptions]="{standalone: true}">
+									<button class="search-btn" (click)="onSearch()">Search</button>
 								</form>
 							</div>
 						</div>
@@ -41,7 +41,7 @@
 								<!-- Wishlist -->
 								<div>
 									<a href="#">
-										<i class="fa fa-heart-o"></i>
+										<i class="fa fa-heart"></i>
 										<span>Your Wishlist</span>
 										<div class="qty">2</div>
 									</a>
