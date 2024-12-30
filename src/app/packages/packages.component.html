@@ -67,10 +67,10 @@
                     <tr *ngFor="let item of packages">
                         <td>{{ item.name }}</td>
                         <td>{{ item.description }}</td>
-                        <td>{{ item.price }}</td>
+                        <td>{{ item.price | currency  }}</td>
                         <td>{{ item.number_of_products }}</td>
-                        <td>{{ item.created_at }}</td>
-                        <td>{{ item.updated_at }}</td>
+                        <td>{{ item.created_at | date : 'MMM d, y' }}</td>
+                        <td>{{ item.updated_at | date : 'MMM d, y' }}</td>
                         <td><a href="#"><i class="fa fa-pen" style="color: blue;" (click)="displayModal(item)"></i></a></td>
                         <td><a href="#"><i class="fa fa-trash" style="color: red;" (click)="displayDeleteModal(item)"></i></a></td>
                     </tr>

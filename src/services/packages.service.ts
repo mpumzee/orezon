@@ -18,20 +18,20 @@ export class PackagesService {
     create(itemDto: any) {
       var body = JSON.stringify(itemDto);
       console.log(body)
-      return this.http.post<any>(`${url}/packages/register`, body, { headers });
+      return this.http.post<ResponseHandler>(`${url}/packages/register`, body, { headers });
     }
   
-    update(itemDto: any) {
+    update(itemDto: any, id: number) {
       var body = JSON.stringify(itemDto);
       console.log(body)
-      return this.http.put<any>(`${url}/packages/update`, body, { headers });
+      return this.http.put<ResponseHandler>(`${url}/packages/update`, body, { headers });
     }
   
     delete(id: number) {
-      return this.http.delete<any>(`${url}/packages/delete/${id}`);
+      return this.http.delete<ResponseHandler>(`${url}/packages/delete/${id}`);
     }
   
     getAllList() {
-      return this.http.get<any>(`${url}/packages`);
+      return this.http.get<ResponseHandler>(`${url}/packages`);
     }
 }

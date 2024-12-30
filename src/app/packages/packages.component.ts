@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class PackagesComponent {
 
     packages: Package[] = []
+
+    selectedId: number = 0;
   
     newPackage: Package = {} as Package
   
@@ -50,8 +52,8 @@ export class PackagesComponent {
           ngOnInit(): void {
             this.packageService.getAllList()
             .subscribe(res => {
-              this.packages = res;
-              console.log('packages:', res)
+              this.packages = res.data;
+              console.log('packages:', res.data)
             });
           }
 
@@ -64,8 +66,13 @@ export class PackagesComponent {
                     .subscribe((res) => {
                       console.log(res);
               
-                      if (res.isSuccess) {
-                        this.packages = [...this.packages, res.data];
+                      if (res.status == 'created') {
+                        console.log(res.msg);
+                        this.packageService.getAllList()
+                        .subscribe(res => {
+                          this.packages = res.data;
+                          console.log('packages:', res.data)
+                        });
                       }
                       else {
                         console.error(Error);
@@ -83,16 +90,18 @@ export class PackagesComponent {
                 }
               
           updatePackage() {
-            this.packageService.update(this.selectedPackage)
+            this.packageService.update(this.selectedPackageForm.value, this.selectedId)
               .subscribe((res) => {
-                console.log(res);
+                console.log('num:',this.selectedPackageForm.value);
+                console.log('num:',this.selectedId);
         
-                if (res.isSuccess) {
+                if (res.status == 'success') {
         
-                  var index = this.packages.findIndex(x => x.id === res.data.id);
-                  this.packages.splice(index, 1);
-        
-                  this.packages = [...this.packages, res.data];
+                  this.packageService.getAllList()
+                        .subscribe(res => {
+                          this.packages = res.data;
+                          console.log('packages:', res.data)
+                        });
                 }
                 else {
                   console.error(Error);
@@ -111,6 +120,7 @@ export class PackagesComponent {
             this.hideDialog();
             this.showModal = true;
             this.selectedPackage = item
+            this.selectedId = item.id
             this.selectedPackageForm = new FormGroup({
               name: new FormControl(this.selectedPackage.name, [Validators.required]),     
               description: new FormControl(this.selectedPackage.description, [Validators.required]),     
