@@ -71,8 +71,8 @@
                         <td>{{ item.number_of_products }}</td>
                         <td>{{ item.created_at | date : 'MMM d, y' }}</td>
                         <td>{{ item.updated_at | date : 'MMM d, y' }}</td>
-                        <td><a href="#"><i class="fa fa-pen" style="color: blue;" (click)="displayModal(item)"></i></a></td>
-                        <td><a href="#"><i class="fa fa-trash" style="color: red;" (click)="displayDeleteModal(item)"></i></a></td>
+                        <td><i class="fa fa-pen" style="color: blue;" (click)="displayModal(item)"></i></td>
+                        <td><i class="fa fa-trash" style="color: red;" (click)="displayDeleteModal(item)"></i></td>
                     </tr>
                 </tbody>
             </table>
