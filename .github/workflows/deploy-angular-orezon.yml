@@ -36,8 +36,8 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4  # Use version v4
       with:
         server: quokka.mydata.city # FTP server URL (e.g., ftp://yourserver.com)
-        username: ${{ secrets.FTP_USERNAME }} # FTP username
-        password: ${{ secrets.FTP_PASSWORD }} # FTP password
+        username: orezonco1 # FTP username
+        password: PLjhY3Sr # FTP password
         protocol: ftp
         local-dir: ./dist/orezon/browser/ # Path to the built Angular app
         server-dir: /orezon.co.zw/public_html/public/ # Path on the server where files should be uploaded
