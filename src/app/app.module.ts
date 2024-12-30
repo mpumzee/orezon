@@ -16,6 +16,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { MetalsComponent } from './metals/metals.component';
 import { BrokerComponent } from './broker/broker.component';
 import { BuyerComponent } from './buyer/buyer.component';
+import { PackagesComponent } from './packages/packages.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BuyerComponent } from './buyer/buyer.component';
     AdminComponent,
     MetalsComponent,
     BrokerComponent,
-    BuyerComponent
+    BuyerComponent,
+    PackagesComponent
   ],
   imports: [
     BrowserModule,
