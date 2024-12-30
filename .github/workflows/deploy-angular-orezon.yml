@@ -33,7 +33,7 @@ jobs:
 
     # Upload the built files via FTP
     - name: Deploy via FTP
-      uses: SamKirkland/FTP-Deploy-Action@v5
+      uses: SamKirkland/FTP-Deploy-Action@v4  # Use version v4
       with:
         ftp-server: ${{ secrets.FTP_SERVER }} # FTP server URL (e.g., ftp://yourserver.com)
         ftp-username: ${{ secrets.FTP_USERNAME }} # FTP username
