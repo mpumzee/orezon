@@ -7,6 +7,7 @@ import { ProductsComponent } from './products/products.component';
 import { AdminComponent } from './admin/admin.component';
 import { MetalsComponent } from './metals/metals.component';
 import { BrokerComponent } from './broker/broker.component';
+import { BuyerComponent } from './buyer/buyer.component';
 
 const routes: Routes = [
   { path: '', component: TopNavComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent},
   { path: 'metals', component: MetalsComponent },
   { path: 'broker', component: BrokerComponent },
+  { path: 'buyer', component: BuyerComponent },
   {
     path: 'top-nav',
     component: TopNavComponent,

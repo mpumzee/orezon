@@ -15,6 +15,7 @@ import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { MetalsComponent } from './metals/metals.component';
 import { BrokerComponent } from './broker/broker.component';
+import { BuyerComponent } from './buyer/buyer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BrokerComponent } from './broker/broker.component';
     LoginComponent,
     AdminComponent,
     MetalsComponent,
-    BrokerComponent
+    BrokerComponent,
+    BuyerComponent
   ],
   imports: [
     BrowserModule,
