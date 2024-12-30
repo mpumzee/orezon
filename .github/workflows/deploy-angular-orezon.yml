@@ -40,5 +40,5 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }} # FTP password
         protocol: ftp
         local-dir: ./dist/orezon/browser/ # Path to the built Angular app
-        server-dir: orezon.co.zw/public_html/public/ # Path on the server where files should be uploaded
+        server-dir: /orezon.co.zw/public_html/public/ # Path on the server where files should be uploaded
 
