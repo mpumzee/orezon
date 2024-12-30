@@ -61,6 +61,10 @@ export class PackagesComponent {
           createPackage() {
           
                   console.log(this.packageForm.value);
+                  if (this.showModal == true){
+                    this.updatePackage()
+                  }
+                  else {
           
                   this.packageService.create(this.packageForm.value)
                     .subscribe((res) => {
@@ -87,20 +91,21 @@ export class PackagesComponent {
                       });
               
                   this.newPackage = {} as Package;
+
+                    }
               
                 }
               
           updatePackage() {
-            this.packageService.update(this.selectedPackageForm.value, this.selectedId)
+            this.packageService.update(this.packageForm.value, this.selectedId)
               .subscribe((res) => {
         
                 if (res.status == 'success') {
-                  console.log(res.msg)
-                  this.packageService.getAllList()
-                        .subscribe(res => {
-                          this.packages = res.data;
-                          console.log('packages:', res.data)
-                        });
+                  console.log(res.msg, this.selectedId, this.packages)
+                  var index = this.packages.findIndex(x => x.id === this.selectedId);
+                  this.packages.splice(index, 1);
+
+                  this.packages = [...this.packages, res.data];
                 }
                 else {
                   console.error(Error);
@@ -117,10 +122,10 @@ export class PackagesComponent {
 
           displayModal(item: Package){
             this.hideDialog();
-            this.showModal = true;
+            this.showModal = true
             this.selectedPackage = item
             this.selectedId = item.id
-            this.selectedPackageForm = new FormGroup({
+            this.packageForm = new FormGroup({
               name: new FormControl(this.selectedPackage.name, [Validators.required]),     
               description: new FormControl(this.selectedPackage.description, [Validators.required]),     
               price: new FormControl(this.selectedPackage.price, [Validators.required, Validators.min(1)]),
