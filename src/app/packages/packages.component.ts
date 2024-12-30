@@ -71,6 +71,7 @@ export class PackagesComponent {
                         this.packageService.getAllList()
                         .subscribe(res => {
                           this.packages = res.data;
+                          this.packageForm.reset();
                           console.log('packages:', res.data)
                         });
                       }
