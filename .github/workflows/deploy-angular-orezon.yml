@@ -35,7 +35,7 @@ jobs:
     - name: Deploy via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4  # Use version v4
       with:
-        server: ${{ secrets.FTP_SERVER }} # FTP server URL (e.g., ftp://yourserver.com)
+        server: quokka.mydata.city # FTP server URL (e.g., ftp://yourserver.com)
         username: ${{ secrets.FTP_USERNAME }} # FTP username
         password: ${{ secrets.FTP_PASSWORD }} # FTP password
         protocol: ftp
