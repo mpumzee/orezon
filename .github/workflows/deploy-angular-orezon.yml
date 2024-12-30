@@ -1,0 +1,43 @@
+name: Build and Deploy Angular App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Setup Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.14.0' # or the version of Node.js you're using
+
+    # Install dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # Build the Angular app
+    - name: Build Angular app
+      run: npm run build --prod
+
+    # Upload the built files via FTP
+    - name: Deploy via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v5
+      with:
+        ftp-server: ${{ secrets.FTP_SERVER }} # FTP server URL (e.g., ftp://yourserver.com)
+        ftp-username: ${{ secrets.FTP_USERNAME }} # FTP username
+        ftp-password: ${{ secrets.FTP_PASSWORD }} # FTP password
+        local-dir: ./dist/orezon/browser/ # Path to the built Angular app
+        remote-dir: orezon.co.zw/public_html/public/ # Path on the server where files should be uploaded
+
