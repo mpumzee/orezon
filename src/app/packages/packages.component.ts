@@ -92,11 +92,9 @@ export class PackagesComponent {
           updatePackage() {
             this.packageService.update(this.selectedPackageForm.value, this.selectedId)
               .subscribe((res) => {
-                console.log('num:',this.selectedPackageForm.value);
-                console.log('num:',this.selectedId);
         
                 if (res.status == 'success') {
-        
+                  console.log(res.msg)
                   this.packageService.getAllList()
                         .subscribe(res => {
                           this.packages = res.data;

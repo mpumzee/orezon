@@ -24,7 +24,7 @@ export class PackagesService {
     update(itemDto: any, id: number) {
       var body = JSON.stringify(itemDto);
       console.log(body)
-      return this.http.put<ResponseHandler>(`${url}/packages/update`, body, { headers });
+      return this.http.put<ResponseHandler>(`${url}/packages/update/${id}`, body, { headers });
     }
   
     delete(id: number) {
