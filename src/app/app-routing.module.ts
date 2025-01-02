@@ -9,6 +9,7 @@ import { MetalsComponent } from './metals/metals.component';
 import { BrokerComponent } from './broker/broker.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { PackagesComponent } from './packages/packages.component';
+import { SellerComponent } from './seller/seller.component';
 
 const routes: Routes = [
   { path: '', component: TopNavComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'broker', component: BrokerComponent },
   { path: 'buyer', component: BuyerComponent },
   { path: 'packages', component: PackagesComponent },
+  { path: 'seller', component: SellerComponent },
   {
     path: 'top-nav',
     component: TopNavComponent,

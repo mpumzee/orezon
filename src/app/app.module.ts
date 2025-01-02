@@ -17,6 +17,7 @@ import { MetalsComponent } from './metals/metals.component';
 import { BrokerComponent } from './broker/broker.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { PackagesComponent } from './packages/packages.component';
+import { SellerComponent } from './seller/seller.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PackagesComponent } from './packages/packages.component';
     MetalsComponent,
     BrokerComponent,
     BuyerComponent,
-    PackagesComponent
+    PackagesComponent,
+    SellerComponent
   ],
   imports: [
     BrowserModule,

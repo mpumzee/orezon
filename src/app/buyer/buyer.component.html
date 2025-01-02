@@ -14,7 +14,11 @@
 </div>
 
 <div class="container" style="margin-top: 30px;">
-    <h2 class="mb-4 text-center">Create Profile</h2>
+    <div class="grid grid-cols-1 pb-8 text-center">
+        <h1 class="text-green-700 font-weight-bold text-5xl uppercase mb-2">Buyer Registration</h1>
+
+        <p class="text-slate-400 dark:text-slate-300 max-w-xl mx-auto">Register as a buyer in order to checkout and order available products.</p>
+    </div>
     <form [formGroup]="profileForm" (submit)="createProfile()"
     style="border:green, solid , 1px;padding:2vw; background-color:#f3f7f5">
         <div class="row" style="margin-bottom: 20px;">
