@@ -21,6 +21,9 @@ export class SellerComponent {
 
   roles: any[] = [];
 
+
+  errorAlert = false;
+
   packages: Package[] = [];
 
   public sellerForm: FormGroup;
@@ -62,9 +65,23 @@ export class SellerComponent {
                   this.roles = Object.values(Roles)
             }
 
+            check(){
+              if(this.sellerForm.value.password !== this.sellerForm.value.password_confirmation){
+                this.errorAlert = true;
+              }
+              else{
+                this.errorAlert = false;
+              }
+            }
+
              createSeller() {
-            
-                    console.log(this.sellerForm.value);
+
+              if(this.sellerForm.value.password !== this.sellerForm.value.password_confirmation){
+                this.errorAlert = true;
+              }
+              else{
+                this.errorAlert = false;
+                console.log(this.sellerForm.value);
                     this.newSeller = this.sellerForm.value;
                     this.newSeller.user_id = 0;
                     this.newSeller.role = Roles.SELLER
@@ -95,6 +112,8 @@ export class SellerComponent {
                         });
                 
                     this.newSeller = {} as Seller;
+
+              }
                 
                   }
 

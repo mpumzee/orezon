@@ -34,11 +34,12 @@
                         </div>
                         <div class="row" style="margin-bottom: 20px;">
                             <label for="id_number" class="form-label">Password<i style="color: grey;">(*atleast 8 characters)</i></label>
-                            <input type="password" class="form-control" id="password" minlength="8" formControlName="password" placeholder="Enter password" required>
+                            <input type="password" class="form-control" id="password" formControlName="password" minlength="8" placeholder="Enter password" required>
                         </div>
                         <div class="row" style="margin-bottom: 20px;">
                             <label for="password_confirmation" class="form-label">Password Confirmation<i style="color: grey;"></i></label>
-                            <input type="password" class="form-control" id="password_confirmation" formControlName="password_confirmation" placeholder="Confirm your password" required>
+                            <input type="password" (ngModelChange)="check()" class="form-control" id="password_confirmation" minlength="8" formControlName="password_confirmation" placeholder="Confirm your password" required>
+                            <p *ngIf="errorAlert" class="mt-2 text-xl text-red-600 dark:text-red-500"><span class="font-medium">Error!</span> Passwords do not match.</p>
                         </div>
                     </div>
                     <div class="col-md-4 px-1 md:px-10">
