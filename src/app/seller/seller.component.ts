@@ -38,8 +38,7 @@ export class SellerComponent {
                 id_number: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
                 phone: new FormControl('', [Validators.required, Validators.minLength(10)]),
                 name: new FormControl('', [Validators.required]),     
-                email: new FormControl('', [Validators.required]),     
-                role: new FormControl('', [Validators.required]),
+                email: new FormControl('', [Validators.email]), 
                 password: new FormControl('', [Validators.required]),
                 password_confirmation: new FormControl('', [Validators.required]),
               });
@@ -68,6 +67,7 @@ export class SellerComponent {
                     console.log(this.sellerForm.value);
                     this.newSeller = this.sellerForm.value;
                     this.newSeller.user_id = 0;
+                    this.newSeller.role = Roles.SELLER
                     this.newSeller.bank_details = this.bankForm.value;
                     this.newSeller.bank = this.newSeller.bank_details.bank;
                     this.newSeller.account_number = this.newSeller.bank_details.account_number;
@@ -80,18 +80,17 @@ export class SellerComponent {
                         console.log('res',res);
                 
                         if (res.status == 'success') {
-                          console.log('here',res.message)
+                          console.log(res.message)
                           this.router.navigate(['select-package'])
                         }
                         else {
-                          console.log('yes')
                           console.log(res.message);
                     // Handle the error as needed
                         }
                 
                       },
                         (error) => {
-                          console.error(error.message);
+                          console.error(error.error.message);
                           // Handle the error as needed
                         });
                 
