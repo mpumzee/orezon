@@ -6,6 +6,7 @@ import { SellerRegistrationService } from '../../services/seller-registration.se
 import { Package } from '../../models/package';
 import { Country } from '../../enums/country';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Roles } from '../../enums/roles';
 
 @Component({
   selector: 'app-seller',
@@ -17,6 +18,8 @@ export class SellerComponent {
   newSeller: Seller = {} as Seller
 
   countries: any[] = [];
+
+  roles: any[] = [];
 
   packages: Package[] = [];
 
@@ -33,7 +36,12 @@ export class SellerComponent {
                 business_name: new FormControl('', [Validators.required]),     
                 country: new FormControl('', [Validators.required]),     
                 id_number: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-                phone: new FormControl('', [Validators.required, Validators.minLength(10)])
+                phone: new FormControl('', [Validators.required, Validators.minLength(10)]),
+                name: new FormControl('', [Validators.required]),     
+                email: new FormControl('', [Validators.required]),     
+                role: new FormControl('', [Validators.required]),
+                password: new FormControl('', [Validators.required]),
+                password_confirmation: new FormControl('', [Validators.required]),
               });
               this.bankForm = new FormGroup({
                 bank: new FormControl('', [Validators.required]),     
@@ -52,18 +60,14 @@ export class SellerComponent {
                   });
           
                   this.countries = Object.values(Country)
+                  this.roles = Object.values(Roles)
             }
 
              createSeller() {
             
                     console.log(this.sellerForm.value);
                     this.newSeller = this.sellerForm.value;
-                    this.newSeller.user_id = 1;
-                    this.newSeller.name = 'Mthokozisi';
-                    this.newSeller.email = this.newSeller.name + this.newSeller.id_number + '@gmail.com';
-                    this.newSeller.role = 'buyer';
-                    this.newSeller.password = 'Mthokozisi02.';
-                    this.newSeller.password_confirmation = 'Mthokozisi02.';
+                    this.newSeller.user_id = 0;
                     this.newSeller.bank_details = this.bankForm.value;
                     this.newSeller.bank = this.newSeller.bank_details.bank;
                     this.newSeller.account_number = this.newSeller.bank_details.account_number;
