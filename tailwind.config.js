@@ -2,7 +2,7 @@ const colors = require('tailwindcss/colors')
 const plugin = require('tailwindcss/plugin')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./src/**/*.{html,ts}", "./node_modules/tw-elements/dist/js/**/*.js"],
+    content: ["./src/**/*.{html,ts}","./node_modules/flowbite/**/*.js",],
     darkMode: 'class',
     important: true,
     theme: {
@@ -71,8 +71,6 @@ module.exports = {
     },
 
     plugins: [
-        require("@tailwindcss/forms")({
-          strategy: 'class', // only generate classes
-        }),
-    ],
+        require('flowbite/plugin') // add this line
+      ],
 }

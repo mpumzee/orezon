@@ -19,6 +19,7 @@ import { BuyerComponent } from './buyer/buyer.component';
 import { PackagesComponent } from './packages/packages.component';
 import { SellerComponent } from './seller/seller.component';
 import { SelectPackageComponent } from './select-package/select-package.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SelectPackageComponent } from './select-package/select-package.componen
     BuyerComponent,
     PackagesComponent,
     SellerComponent,
-    SelectPackageComponent
+    SelectPackageComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
