@@ -71,7 +71,7 @@ export class PackagesComponent {
                       console.log(res);
               
                       if (res.status == 'created') {
-                        console.log(res.msg);
+                        console.log(res.message);
                         this.packageService.getAllList()
                         .subscribe(res => {
                           this.packages = res.data;
@@ -101,7 +101,7 @@ export class PackagesComponent {
               .subscribe((res) => {
         
                 if (res.status == 'success') {
-                  console.log(res.msg, this.selectedId, this.packages)
+                  console.log(res.message, this.selectedId, this.packages)
                   var index = this.packages.findIndex(x => x.id === this.selectedId);
                   this.packages.splice(index, 1);
 

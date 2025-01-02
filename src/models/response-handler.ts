@@ -1,5 +1,5 @@
 export interface ResponseHandler {
-    msg: string,
+    message: string,
     data: any,
     status: string
 }

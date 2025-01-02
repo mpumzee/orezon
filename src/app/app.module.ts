@@ -18,6 +18,7 @@ import { BrokerComponent } from './broker/broker.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { PackagesComponent } from './packages/packages.component';
 import { SellerComponent } from './seller/seller.component';
+import { SelectPackageComponent } from './select-package/select-package.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SellerComponent } from './seller/seller.component';
     BrokerComponent,
     BuyerComponent,
     PackagesComponent,
-    SellerComponent
+    SellerComponent,
+    SelectPackageComponent
   ],
   imports: [
     BrowserModule,
