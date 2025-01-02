@@ -5,6 +5,7 @@ import { PackagesService } from '../../services/packages.service';
 import { SellerRegistrationService } from '../../services/seller-registration.service';
 import { Package } from '../../models/package';
 import { Country } from '../../enums/country';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-seller',
@@ -27,12 +28,12 @@ export class SellerComponent {
   public bankForm: FormGroup;
           bank: any;
       
-          constructor(private sellerService: SellerRegistrationService, private packageService: PackagesService) {
+          constructor(private sellerService: SellerRegistrationService, private packageService: PackagesService,private route: ActivatedRoute, private router: Router) {
               this.sellerForm = new FormGroup({
                 business_name: new FormControl('', [Validators.required]),     
                 country: new FormControl('', [Validators.required]),     
-                id_number: new FormControl(1, [Validators.required, Validators.min(11), Validators.max(12)]),
-                phone: new FormControl(1, [Validators.required, Validators.min(10)])
+                id_number: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+                phone: new FormControl('', [Validators.required, Validators.minLength(10)])
               });
               this.bankForm = new FormGroup({
                 bank: new FormControl('', [Validators.required]),     
@@ -64,24 +65,29 @@ export class SellerComponent {
                     this.newSeller.password = 'Mthokozisi02.';
                     this.newSeller.password_confirmation = 'Mthokozisi02.';
                     this.newSeller.bank_details = this.bankForm.value;
+                    this.newSeller.bank = this.newSeller.bank_details.bank;
+                    this.newSeller.account_number = this.newSeller.bank_details.account_number;
+                    this.newSeller.branch = this.newSeller.bank_details.branch;
+                    this.newSeller.branch_code = this.newSeller.bank_details.branch_code;
                     console.log('seller',this.newSeller);
             
                     this.sellerService.create(this.newSeller)
                       .subscribe((res) => {
-                        console.log(res);
+                        console.log('res',res);
                 
                         if (res.status == 'success') {
-                          console.log(res.msg)
+                          console.log('here',res.message)
+                          this.router.navigate(['select-package'])
                         }
                         else {
                           console.log('yes')
-                          console.log(res.msg);
+                          console.log(res.message);
                     // Handle the error as needed
                         }
                 
                       },
                         (error) => {
-                          console.error(error);
+                          console.error(error.message);
                           // Handle the error as needed
                         });
                 

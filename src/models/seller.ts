@@ -15,5 +15,9 @@ export interface Seller {
     role: string,
     password: string,
     password_confirmation: string,
-    bank_details: BankDetails
+    bank_details: BankDetails,
+    bank: string,
+    account_number: string,
+    branch: string,
+    branch_code: string
 }
