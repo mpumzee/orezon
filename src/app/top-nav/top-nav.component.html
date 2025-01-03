@@ -7,8 +7,8 @@
             <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
         </ul>
         <ul class="header-links pull-right">
-            <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-            <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
+            <li><a routerLink="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
             <li><a routerLink="/login"><i class="fa fa-gear"></i> Admin</a></li>
         </ul>
     </div>
@@ -42,6 +42,7 @@
         </div><!--end grid-->
     </div><!--end container-->
 </section><!--end section-->
+<app-select-package></app-select-package>
 <hr>
 <app-products></app-products>  
 <!-- <app-metals></app-metals> -->

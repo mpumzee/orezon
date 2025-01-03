@@ -11,6 +11,8 @@ import { BuyerComponent } from './buyer/buyer.component';
 import { PackagesComponent } from './packages/packages.component';
 import { SellerComponent } from './seller/seller.component';
 import { SelectPackageComponent } from './select-package/select-package.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: '', component: TopNavComponent },
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'packages', component: PackagesComponent },
   { path: 'seller', component: SellerComponent },
   { path: 'select-package', component: SelectPackageComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'sign-up', component: SignUpComponent },
   {
     path: 'top-nav',
     component: TopNavComponent,
