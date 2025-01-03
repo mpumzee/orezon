@@ -42,7 +42,7 @@ export class SellerComponent {
                 phone: new FormControl('', [Validators.required, Validators.minLength(10)]),
                 name: new FormControl('', [Validators.required]),     
                 email: new FormControl('', [Validators.email]), 
-                password: new FormControl('', [Validators.required]),
+                password: new FormControl('', [Validators.required,Validators.minLength(8)]),
                 password_confirmation: new FormControl('', [Validators.required]),
               });
               this.bankForm = new FormGroup({
@@ -98,7 +98,7 @@ export class SellerComponent {
                 
                         if (res.status == 'success') {
                           console.log(res.message)
-                          this.router.navigate(['select-package'])
+                          this.router.navigate(['/login'])
                         }
                         else {
                           console.log(res.message);

@@ -20,6 +20,7 @@ import { PackagesComponent } from './packages/packages.component';
 import { SellerComponent } from './seller/seller.component';
 import { SelectPackageComponent } from './select-package/select-package.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     PackagesComponent,
     SellerComponent,
     SelectPackageComponent,
-    DashboardComponent
+    DashboardComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
