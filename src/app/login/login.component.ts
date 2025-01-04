@@ -33,7 +33,7 @@ export class LoginComponent {
                 console.log(res);
         
                 if (res.message === 'Login Successful') {
-                  this.router.navigate(["/dashboard"])
+                  this.router.navigate(["/select-package"])
                 }
                 else {
                   console.log(res.message);

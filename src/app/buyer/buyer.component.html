@@ -20,58 +20,64 @@
         <p class="text-slate-400 dark:text-slate-300 max-w-xl mx-auto">Register as a buyer in order to checkout and order available products.</p>
     </div>
     <form [formGroup]="profileForm" (submit)="createProfile()"
-    style="border:green, solid , 1px;padding:2vw; background-color:#f3f7f5">
-        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-md-6">
-                <label for="name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="full_name" formControlName="full_name" placeholder="Enter Your name" required>
-            </div>
-            <div class="col-md-6">
-                <label for="national_id" class="form-label">National ID/ Passport No</label>
-                <input type="text" class="form-control" id="national_id" formControlName="national_id" placeholder="Enter national ID/ passport No" required>
-            </div>
-        </div>
-       
-        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-md-4">
-                <label for="country" class="form-label">Country</label>
-                <select id="country" class="form-control" formControlName="country" required>
-                    <option value="">Select Country</option>
-                    <option *ngFor="let country of countries" [value]="country">{{country}}</option>
-                </select>
-            </div>
-            
-            <div class="col-md-4">
-                <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-control" id="email" formControlName="email" placeholder="Enter email" required>
-            </div>
-            <div class="col-md-4">
-                <label for="contact_number" class="form-label">Contact Number</label>
-                <input type="text" class="form-control" id="contact_number" formControlName="contact_number" placeholder="Enter phone number" required>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="address" class="form-label">Address</label>
-                <textarea rows="3" class="form-control" id="address" formControlName="address" placeholder="Enter address" required></textarea>
-            </div>
-        
-            
-       
-            <div class="col-md-6 image-upload p-2 rounded bg-info" style="border-radius: 4px;border: solid 1px rgb(184, 181, 181);margin-top:25px;padding:15px;">
-                <input type="file" class="form-control" id="propic" formControlName="propic" (change)="onFileSelected($event)" accept="image/*" style="width: 100%; height: 100%; opacity: 0; position: absolute; top: 0; left: 0; z-index: 9; cursor: pointer;">
-                
-                <div class="image-uploads text-center">
-                    <img *ngIf="selectedFile" [src]="getImagePreview()" alt="Uploaded Image" class="mx-auto d-block" style="max-height: 150px; max-width: 100%;">
-                    <img src="assets/img/upload.svg" alt="img" class="mx-auto d-block" *ngIf="!selectedFile">
-                    <div class="text-center">Drag and drop your profile picture to upload or click to select</div>
+            style="border:green, solid , 1px;padding:2vw; background-color:#f3f7f5">
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-md-4 lg:w-1/3 px-1 md:px-10">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter full name" required>
+                        </div>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email" required>
+                        </div>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <label for="id_number" class="form-label">Password<i style="color: grey;">(*atleast 8 characters)</i></label>
+                            <input type="password" class="form-control" id="password" formControlName="password" minlength="8" placeholder="Enter password" required>
+                        </div>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <label for="password_confirmation" class="form-label">Password Confirmation<i style="color: grey;"></i></label>
+                            <input type="password" (ngModelChange)="check()" class="form-control" id="password_confirmation" minlength="8" formControlName="password_confirmation" placeholder="Confirm your password" required>
+                            <p *ngIf="errorAlert" class="mt-2 text-xl text-red-600 dark:text-red-500"><span class="font-medium">Error!</span> Passwords do not match.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 lg:w-1/3 px-1 md:px-10">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <label for="id_number" class="form-label">National ID/ Passport No<i style="color: grey;"> (*6 - 12 characters)</i></label>
+                            <input type="text" class="form-control" id="id_number" formControlName="id_number" maxlength="12" minlength="6" placeholder="Enter national ID/ passport No" required>
+                        </div>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <label for="country" class="form-label">Country</label>
+                            <select id="country" class="form-control" formControlName="country" required>
+                                <option value="">Select Country</option>
+                                <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+                            </select>
+                        </div>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address" formControlName="address" placeholder="Enter address" required>
+                        </div>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <label for="phone" class="form-label">Phone<i style="color: grey;"> (*minimum of 10 characters)</i></label>
+                            <input type="text" class="form-control" id="phone" formControlName="phone" minlength="10" placeholder="Enter phone" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4 lg:w-1/3 px-1 md:px-10 flex flex-col items-center justify-center">
+                        <div class="col-md-6 image-upload p-2 rounded bg-info" style="border-radius: 4px;border: solid 1px rgb(184, 181, 181);margin-top:25px;padding:15px;">
+                            <input type="file" class="form-control" id="profile_pic" formControlName="profile_pic" (change)="onFileSelected($event)" accept="image/*" style="width: 100%; height: 100%; opacity: 0; position: absolute; top: 0; left: 0; z-index: 9; cursor: pointer;">
+                            
+                            <div class="image-uploads text-center">
+                                <img *ngIf="selectedFile" [src]="getImagePreview()" alt="Uploaded Image" class="mx-auto d-block" style="max-height: 150px; max-width: 100%;">
+                                <img src="assets/img/upload.svg" alt="img" class="mx-auto d-block" *ngIf="!selectedFile">
+                                <div class="text-center">Drag and drop your profile picture to upload or click to select</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <div class="card" style="margin-top: 2vh;background-color:green;color:white;text-align: center;" *ngIf="successMessage">{{successMessage}}</div>
-        <div class="card" style="margin-top: 2vh;background-color:red;color:white;text-align: center;" *ngIf="errorMessage">{{errorMessage}}</div>
-        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 20px;">Submit</button>
-    </form>
+                
+                <div class="card" style="margin-top: 2vh;background-color:green;color:white;text-align: center;" *ngIf="successMessage">{{successMessage}}</div>
+                <div class="card" style="margin-top: 2vh;background-color:red;color:white;text-align: center;" *ngIf="errorMessage">{{errorMessage}}</div>
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="!profileForm.valid" style="margin-top: 20px;">Submit</button>
+            </form>
     
 </div>
