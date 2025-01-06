@@ -116,7 +116,7 @@ export class PackagesComponent {
                   console.error(error.message);
                 });
                 
-            this.selectedPackage = {} as Package;
+            this.packageForm.reset();
           }
 
 

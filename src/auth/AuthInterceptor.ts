@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -9,7 +9,7 @@ export class AuthInterceptor implements HttpInterceptor {
         next: HttpHandler): Observable<HttpEvent<any>> {
 
     //Retrieve accesstoken from local storage
-    const accessToken = localStorage.getItem('token');
+    const accessToken = sessionStorage.getItem('token');
     console.log('token',accessToken)
 
     //Check if accesToken exists, else send request without bearer token
@@ -27,10 +27,8 @@ export class AuthInterceptor implements HttpInterceptor {
       //No token; proceed request without bearer token
       console.log('No token added to HTTP request');
       const modifiedRequest = req.clone({
-        setHeaders: {
-          'Content-Type': 'application/json; charset=utf-8',
-        },
-        withCredentials: true,
+        headers: req.headers
+          .set('Content-Type', 'application/json, charset=utf-8')
       });
       return next.handle(modifiedRequest);
     }

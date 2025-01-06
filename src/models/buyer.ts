@@ -10,6 +10,5 @@ export interface Buyer {
     country: Country,
     contact_number: string,
     address: string,
-    profile_pic: any,
     created_by: Date
 }

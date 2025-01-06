@@ -6,10 +6,11 @@ export interface Products {
     description: string,
     price: number,
     quantity: number,
-    image_url: File,
+    //image_url: File,
     category_id: number,
     category: ProductCategory,
     category_name: string,
+    user_id: number,
     created_at: Date,
     updated_at: Date
 

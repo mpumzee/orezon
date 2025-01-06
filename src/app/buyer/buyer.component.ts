@@ -71,7 +71,7 @@ export class BuyerComponent {
         }
         else{
 
-        this.profileForm.value.profile_pic = this.selectedFile
+        //this.profileForm.value.profile_pic = this.selectedFile
           console.log('profile',this.profileForm.value);
 
         this.buyerRegistrationService.create(this.profileForm.value)
@@ -81,7 +81,7 @@ export class BuyerComponent {
             if (res.status == 'success') {
               this.buyerProfile = [...this.buyerProfile, res.data];
               console.log(res.message)
-        this.router.navigate(['/login'])
+              this.router.navigate(['/login'])
             }
             else {
               console.error(Error);
