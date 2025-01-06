@@ -40,6 +40,7 @@ export class BuyerComponent {
           country: new FormControl('', [Validators.required]),
           address: new FormControl('', [Validators.required]),
           phone: new FormControl('', [Validators.required]),
+          profile_pic: new FormControl(''),
         });
       }
 
@@ -48,12 +49,11 @@ export class BuyerComponent {
         this.buyerRegistrationService.getAllList()
         .subscribe(res => {
           this.buyerProfile = res.data;
-          console.log('buyer:', this.buyerProfile)
+         
         });
 
         this.countries = Object.values(Country)
-        console.log('countries:',this.countries)
-      }
+            }
 
       check(){
         if(this.profileForm.value.password !== this.profileForm.value.password_confirmation){
@@ -72,27 +72,30 @@ export class BuyerComponent {
         else{
 
         //this.profileForm.value.profile_pic = this.selectedFile
-          console.log('profile',this.profileForm.value);
+        
 
-        this.buyerRegistrationService.create(this.profileForm.value)
-          .subscribe((res) => {
-            console.log('res',res);
-    
-            if (res.status == 'success') {
+        const formData = new FormData();
+        Object.keys(this.profileForm.value).forEach(key => {          
+                
+          formData.append(key, this.profileForm.value[key]);
+      });  
+
+      console.log("form data is ------------------",formData);
+      
+      if (this.selectedFile) { 
+        formData.append('profile_pic', this.selectedFile);  
+      }      
+
+        this.buyerRegistrationService.create(formData).subscribe({
+          next: (res) => {            
               this.buyerProfile = [...this.buyerProfile, res.data];
-              console.log(res.message)
-              this.router.navigate(['/login'])
-            }
-            else {
-              console.error(Error);
-        // Handle the error as needed
-            }
-    
+              this.router.navigate(['/login']);            
           },
-            (error) => {
-              console.error(error);
-              // Handle the error as needed
-            });
+          error: (error) => {
+            console.error(error);
+            // Handle the error as needed
+          }
+        });
           }
     
         this.newBuyerProfile = {} as Buyer;
@@ -102,7 +105,7 @@ export class BuyerComponent {
       onFileSelected(event: Event): void {
         const target = event.target as HTMLInputElement;
         this.selectedFile = target.files!.item(0);
-        console.log('image:',this.selectedFile)
+        
 
         // if (this.selectedFile) {
         //     const reader = new FileReader();
