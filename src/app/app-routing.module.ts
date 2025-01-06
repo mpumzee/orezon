@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'select-package', component: SelectPackageComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'sign-up', component: SignUpComponent },
+  { path: 'products', component: ProductsComponent },
   {
     path: 'top-nav',
     component: TopNavComponent,

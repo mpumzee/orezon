@@ -11,7 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { provideHttpClient,  HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { MetalsComponent } from './metals/metals.component';
 import { BrokerComponent } from './broker/broker.component';
@@ -21,6 +21,7 @@ import { SellerComponent } from './seller/seller.component';
 import { SelectPackageComponent } from './select-package/select-package.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { AuthInterceptor } from '../auth/AuthInterceptor';
 
 @NgModule({
   declarations: [
@@ -43,12 +44,19 @@ import { SignUpComponent } from './sign-up/sign-up.component';
   imports: [
     BrowserModule,
     CommonModule,
+    HttpClientModule,
     AppRoutingModule,    
     FormsModule,
     ReactiveFormsModule,
     SlickCarouselModule     
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
