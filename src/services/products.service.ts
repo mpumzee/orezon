@@ -2,14 +2,17 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseHandler } from '../models/response-handler';
 
-const url = 'https://orezon.co.zw/api/v1';
+const url = 'http://127.0.0.1:8000/api/v1';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
       
         create(itemDto: any) {
           var body = JSON.stringify(itemDto);

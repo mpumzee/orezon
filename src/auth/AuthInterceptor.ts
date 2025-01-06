@@ -9,7 +9,8 @@ export class AuthInterceptor implements HttpInterceptor {
         next: HttpHandler): Observable<HttpEvent<any>> {
 
     //Retrieve accesstoken from local storage
-    const accessToken = "5|PXKFp8r8eA3KHpwDcyccbVm8IkPVQZ97cAulqMxx803597c7";
+    const accessToken = localStorage.getItem('token');
+    console.log('token',accessToken)
 
     //Check if accesToken exists, else send request without bearer token
     if (accessToken) {
@@ -25,7 +26,13 @@ export class AuthInterceptor implements HttpInterceptor {
     else {
       //No token; proceed request without bearer token
       console.log('No token added to HTTP request');
-      return next.handle(req);
+      const modifiedRequest = req.clone({
+        setHeaders: {
+          'Content-Type': 'application/json; charset=utf-8',
+        },
+        withCredentials: true,
+      });
+      return next.handle(modifiedRequest);
     }
     }
 }
