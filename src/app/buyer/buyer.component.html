@@ -67,7 +67,7 @@
                             <input type="file" class="form-control" id="profile_pic" formControlName="profile_pic" (change)="onFileSelected($event)" accept="image/*" style="width: 100%; height: 100%; opacity: 0; position: absolute; top: 0; left: 0; z-index: 9; cursor: pointer;">
                             
                             <div class="image-uploads text-center">
-                                <img *ngIf="selectedFile" [src]="getImagePreview()" alt="Uploaded Image" class="mx-auto d-block" style="max-height: 150px; max-width: 100%;">
+                                <!-- <img *ngIf="selectedFile" [src]="getImagePreview()" alt="Uploaded Image" class="mx-auto d-block" style="max-height: 150px; max-width: 100%;"> -->
                                 <img src="assets/img/upload.svg" alt="img" class="mx-auto d-block" *ngIf="!selectedFile">
                                 <div class="text-center">Drag and drop your profile picture to upload or click to select</div>
                             </div>
