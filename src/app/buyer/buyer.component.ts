@@ -86,25 +86,16 @@ export class BuyerComponent {
         formData.append('profile_pic', this.selectedFile);  
       }      
 
-        this.buyerRegistrationService.create(formData)
-          .subscribe((res) => {
-           
-    
-            if (res.status == 'success') {
+        this.buyerRegistrationService.create(formData).subscribe({
+          next: (res) => {            
               this.buyerProfile = [...this.buyerProfile, res.data];
-              
-        this.router.navigate(['/login'])
-            }
-            else {
-              console.error(Error);
-        // Handle the error as needed
-            }
-    
+              this.router.navigate(['/login']);            
           },
-            (error) => {
-              console.error(error);
-              // Handle the error as needed
-            });
+          error: (error) => {
+            console.error(error);
+            // Handle the error as needed
+          }
+        });
           }
     
         this.newBuyerProfile = {} as Buyer;
