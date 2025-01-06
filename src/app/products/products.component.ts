@@ -17,6 +17,8 @@ export class ProductsComponent implements OnInit {
 
   products: Products[] = []
 
+  sellerId = 6
+
   categories: ProductCategory[] = []
 
   newProduct: Products = {} as Products
@@ -49,7 +51,7 @@ export class ProductsComponent implements OnInit {
         console.log('categories:', this.categories)
       });
 
-    this.productService.getAllList()
+    this.productService.getSellerProducts(this.sellerId)
       .subscribe(res => {
         res.data.forEach((product: any) => {
           const category = this.categories.filter(x => x.id == product.category_id)
@@ -76,7 +78,7 @@ export class ProductsComponent implements OnInit {
   addProduct(){
     console.log(this.productForm.value)
     this.newProduct = this.productForm.value;
-    this.newProduct.category_id = 1
+    this.newProduct.category_id = this.selectedCategory.id
     console.log('product',this.newProduct);
 
     this.productService.create(this.newProduct)

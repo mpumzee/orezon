@@ -33,6 +33,8 @@ export class LoginComponent {
                 console.log(res);
         
                 if (res.message === 'Login Successful') {
+                  sessionStorage.setItem('token', res.token)
+                  console.log(sessionStorage)
                   this.router.navigate(["/select-package"])
                 }
                 else {
