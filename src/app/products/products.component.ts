@@ -51,6 +51,8 @@ export class ProductsComponent implements OnInit {
 
   deleteModal = false
 
+  createModal = false
+
   deletename: any
 
   viewProduct = false
@@ -135,6 +137,8 @@ export class ProductsComponent implements OnInit {
     formData.append('category_id', this.productForm.value.category_id)
     formData.append('image_url', this.productForm.value.image_url)
     formData.append('user_id', this.user)
+
+    this.createModal = false
 
     this.productService.create(this.productForm.value)
       .subscribe((res) => {
@@ -240,6 +244,10 @@ export class ProductsComponent implements OnInit {
     this.deletename = item.name
     this.selectedId = item.id
     this.deleteModal = true
+  }
+
+  showModal(){
+    this.createModal = true
   }
 
   confirmDelete(){

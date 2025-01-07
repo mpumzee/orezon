@@ -25,6 +25,7 @@ import { AuthInterceptor } from '../auth/AuthInterceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { OrdersComponent } from './orders/orders.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { OrdersComponent } from './orders/orders.component';
     SignUpComponent,
     ProfileComponent,
     NavBarComponent,
-    OrdersComponent
+    OrdersComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

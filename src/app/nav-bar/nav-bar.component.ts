@@ -19,6 +19,8 @@ export class NavBarComponent {
 
   ngOnInit(): void{
 
+    console.log(sessionStorage)
+
     if (sessionStorage.length == 0) {
       console.log('trueeeee')
       this.logIn = true;

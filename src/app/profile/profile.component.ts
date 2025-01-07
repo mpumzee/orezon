@@ -75,13 +75,12 @@ export class ProfileComponent {
       this.role = (sessionStorage.getItem('loggedUserRole') || '{}');
       this.user.name = (sessionStorage.getItem('loggedUserName') || '{}');
       this.user.email = (sessionStorage.getItem('loggedUserEmail') || '{}');
-      this.packageId = JSON.parse(sessionStorage.getItem('loggedUserPackageId') || '{}');
       this.bankDetails.account_number = (sessionStorage.getItem('loggedUserAccountNumber') || '{}');
       this.bankDetails.bank = (sessionStorage.getItem('loggedUserBank') || '{}');
       this.bankDetails.branch = (sessionStorage.getItem('loggedUserBranch') || '{}');
       this.bankDetails.branch_code = (sessionStorage.getItem('loggedUserBranchCode') || '{}');
       this.bankDetails.id = JSON.parse(sessionStorage.getItem('loggedUserBankDetailsId') || '{}');
-      console.log(this.user)
+      console.log('details',this.bankDetails)
 
       if (!this.user) {
         this.router.navigate(['/login']);
@@ -96,9 +95,15 @@ export class ProfileComponent {
       this.packageService.getAllList()
             .subscribe(res => {
               this.packages = res.data;
-              this.packages.filter(x => x.id == this.packageId).forEach(pack =>{
-                this.selectedPackage = pack
-              })
+              if(!this.packages){
+                console.log('no package')
+              } else{
+              this.packageId! = JSON.parse(sessionStorage.getItem('loggedUserPackageId') || '{}')!;
+                this.packages.filter(x => x.id == this.packageId).forEach(pack =>{
+                  this.selectedPackage = pack
+                })
+              }
+            
               console.log('packages:', res.data)
             });
 
