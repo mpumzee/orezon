@@ -20,17 +20,17 @@
             <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
           
             <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-              <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                  <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                    <div class="sm:flex sm:items-start">
+              <div class="flex min-h-full items-end justify-center p-4 text-center xl:items-center xl:p-0">
+                <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all xl:my-8 xl:w-full xl:max-w-lg">
+                  <div class="bg-white px-4 pb-4 pt-5 xl:p-6 xl:pb-4">
+                    <div class="xl:flex xl:items-start">
                         <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
                             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                             </svg>
                             <span class="sr-only">Check icon</span>
                         </div>
-                      <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                      <div class="mt-3 text-center xl:ml-4 xl:mt-0 xl:text-left">
                         <h3 class="text-2xl uppercase font-semibold text-gray-900" id="modal-title">{{title}}</h3>
                         <div class="mt-2">
                           <p class="text-xl text-gray-500">{{successMsg}}.</p>
@@ -38,8 +38,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                    <button type="button" (click)="hideDialog()" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">OK</button>
+                  <div class="bg-gray-50 px-4 py-3 xl:flex xl:flex-row-reverse xl:px-6">
+                    <button type="button" (click)="hideDialog()" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-xl font-semibold text-gray-900 shadow-xl ring-1 ring-inset ring-gray-300 hover:bg-gray-50 xl:mt-0 xl:w-auto">OK</button>
                   </div>
                 </div>
               </div>
@@ -49,17 +49,17 @@
             <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
           
             <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-              <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                  <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                    <div class="sm:flex sm:items-start">
+              <div class="flex min-h-full items-end justify-center p-4 text-center xl:items-center xl:p-0">
+                <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all xl:my-8 xl:w-full xl:max-w-lg">
+                  <div class="bg-white px-4 pb-4 pt-5 xl:p-6 xl:pb-4">
+                    <div class="xl:flex xl:items-start">
                         <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
                             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z"/>
                             </svg>
                             <span class="sr-only">Error icon</span>
                         </div>
-                      <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                      <div class="mt-3 text-center xl:ml-4 xl:mt-0 xl:text-left">
                         <h3 class="text-2xl uppercase font-semibold text-gray-900" id="modal-title">{{title}}</h3>
                         <div class="mt-2">
                           <p class="text-xl text-gray-500">{{errorMsg}}.</p>
@@ -67,8 +67,42 @@
                       </div>
                     </div>
                   </div>
-                  <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                    <button type="button" (click)="hideDialog()" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">OK</button>
+                  <div class="bg-gray-50 px-4 py-3 xl:flex xl:flex-row-reverse xl:px-6">
+                    <button type="button" (click)="hideDialog()" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-xl font-semibold text-gray-900 shadow-xl ring-1 ring-inset ring-gray-300 hover:bg-gray-50 xl:mt-0 xl:w-auto">OK</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div *ngIf="deleteModal" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+          
+            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+              <div class="flex min-h-full items-end justify-center p-4 text-center xl:items-center xl:p-0">
+                <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all xl:my-8 xl:w-full xl:max-w-lg">
+                  <div class="bg-white px-4 pb-4 pt-5 xl:p-6 xl:pb-4">
+                    <div class="xl:flex xl:items-start">
+                        <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-orange-500 bg-orange-100 rounded-lg dark:bg-orange-700 dark:text-orange-200">
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z"/>
+                            </svg>
+                            <span class="sr-only">Warning icon</span>
+                        </div>
+                      <div class="mt-3 text-center xl:ml-4 xl:mt-0 xl:text-left">
+                        <h3 class="text-2xl uppercase font-semibold text-gray-900" id="modal-title">DELETE</h3>
+                        <div class="mt-2">
+                          <p class="text-xl text-gray-500">Are you sure you want to delete {{deletename}}?</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bg-gray-50 px-4 py-3 xl:flex xl:flex-row-reverse xl:px-6">
+                    <div class="p-4 md:p-5 text-center">
+                    <button type="button" (click)="hideDialog()" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 rounded-lg text-xl inline-flex items-center px-5 py-2.5 text-center">
+                        CANCEL
+                    </button>
+                    <button type="button" (click)="confirmDelete()" class="py-2.5 px-5 ms-3 text-xl font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">YES</button>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -99,7 +133,7 @@
                         </form>
                     </div>
                     <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                        <button type="button" id="createProductButton" data-modal-target="createProductModal" data-modal-toggle="createProductModal" class="flex items-center justify-center text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-xl px-4 py-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-primary-800">
+                        <button type="button"  id="createProductButton" data-modal-target="createProductModal" data-modal-toggle="createProductModal" class="flex items-center justify-center text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-xl px-4 py-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-primary-800">
                             <svg class="h-3.5 w-3.5 mr-1.5 -ml-1" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                             </svg>
@@ -432,7 +466,7 @@
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ item.updated_at | date : 'MMM d, y' }}</td>
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <div class="flex items-center space-x-4">
-                                        <button type="button" (click)="edit(item)" data-modal-target="createProductModal" data-modal-toggle="createProductModal" aria-controls="drawer-update-product" class="py-2 px-3 flex items-center text-xl font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                        <button type="button" (click)="edit(item)" class="py-2 px-3 flex items-center text-xl font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                 <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
                                                 <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
@@ -446,7 +480,7 @@
                                             </svg>
                                             Preview
                                         </button>
-                                        <button type="button" data-modal-target="delete-modal" data-modal-toggle="delete-modal" class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xl px-3 py-2 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                                        <button type="button" (click)="delete(item)" class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xl px-3 py-2 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                 <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
                                             </svg>
@@ -501,6 +535,79 @@
                 </nav>
             </div>
         </div>
+
+        <!-- Edit Product Modal -->
+        <div *ngIf="editProduct" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 text-center xl:items-center xl:p-0">
+                  <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all xl:my-8 xl:w-full xl:max-w-lg">
+                    <div class="relative p-4 bg-[#f3f7f5] rounded-lg shadow dark:bg-gray-800 xl:p-5" style="border:green, solid , 1px;padding:2vw;">
+                        <!-- Modal header -->
+                        <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b xl:mb-5 dark:border-gray-600">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Add Product</h3>
+                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-xl p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="createProductModal">
+                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                        <form [formGroup]="productForm" (submit)="updateProduct()">
+                            <div class="grid gap-4 mb-4 xl:grid-cols-2">
+                                <div>
+                                    <label for="name" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product Name</label>
+                                    <input type="text" id="name" formControlName="name" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                                </div>
+                                <div>
+                                    <label for="category" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Category</label>
+                                    <select id="category_id" formControlName="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        <option value="">Select Category</option>
+                                        <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="brand" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Quantity</label>
+                                    <input type="number" id="quantity" formControlName="quantity" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Quantity" required="">
+                                </div>
+                                <div>
+                                    <label for="price" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Price</label>
+                                    <input type="number" id="price" formControlName="price" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required="">
+                                </div>
+                                <div class="xl:col-span-2">
+                                    <label for="description" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Description</label>
+                                    <textarea id="description" formControlName="description" rows="4" class="block p-2.5 w-full text-xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write product description here">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <span class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product Images</span>
+                                <div class="flex justify-center items-center w-full">
+                                    <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                        <div class="flex flex-col justify-center items-center pt-5 pb-6">
+                                            <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                            </svg>
+                                            <p class="mb-2 text-xl text-gray-500 dark:text-gray-400">
+                                                <span class="font-semibold">Click to upload</span>
+                                                or drag and drop
+                                            </p>
+                                            <p class="text-xl text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                        </div>
+                                        <input id="dropzone-file" type="file" class="hidden">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="items-center space-y-4 xl:flex xl:space-y-0 xl:space-x-4">
+                                <button type="submit" data-modal-target="createProductModal" data-modal-toggle="createProductModal" class="w-full xl:w-auto justify-center text-white inline-flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit product</button>
+                                <button type="button" (click)="clear()"  class="w-full xl:w-auto justify-center text-white inline-flex bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Clear</button>
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
         <!-- Create Product Modal -->
         <div id="createProductModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] md:h-full">
             <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
@@ -509,7 +616,7 @@
                     <!-- Modal header -->
                     <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b xl:mb-5 dark:border-gray-600">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Add Product</h3>
-                        <button type="button" (click)="addProductModal()" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-xl p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="createProductModal">
+                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-xl p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="createProductModal">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                             </svg>
@@ -580,8 +687,7 @@
                             </div>
                         </div>
                         <div class="items-center space-y-4 xl:flex xl:space-y-0 xl:space-x-4">
-                            <button *ngIf="addProduct_" type="submit" data-modal-target="createProductModal" data-modal-toggle="createProductModal" class="w-full xl:w-auto justify-center text-white inline-flex bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-primary-800">Add product</button>
-                            <button *ngIf="editProduct" type="submit" data-modal-target="createProductModal" data-modal-toggle="createProductModal" class="w-full xl:w-auto justify-center text-white inline-flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit product</button>
+                            <button type="submit" data-modal-target="createProductModal" data-modal-toggle="createProductModal" class="w-full xl:w-auto justify-center text-white inline-flex bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-primary-800">Add product</button>
                             <button type="button" (click)="clear()"  class="w-full xl:w-auto justify-center text-white inline-flex bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Clear</button>
                         </div>
                     </form>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Package } from '../../models/package';
 import { PackagesService } from '../../services/packages.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SellerRegistrationService } from '../../services/seller-registration.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,7 @@ export class DashboardComponent {
 
     public bankForm: FormGroup;
 
-  constructor(private packageService: PackagesService){
+  constructor(private packageService: PackagesService, private sellerService: SellerRegistrationService){
     this.sellerForm = new FormGroup({
                     business_name: new FormControl('', [Validators.required]),     
                     country: new FormControl('', [Validators.required]),     

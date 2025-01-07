@@ -18,7 +18,7 @@
     
           <form [formGroup]="loginForm" (submit)="login()">
             <div class="input-group" style="margin-bottom: 20px;">
-              <input type="text" class="form-control" placeholder="Email address" formControlName="email" style="padding: 15px;">
+              <input type="text" class="form-control text-lg" placeholder="Email address" formControlName="email" style="padding: 15px;">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -26,7 +26,7 @@
               </div>
             </div>
             <div class="input-group mb-3" style="margin-bottom: 20px;">
-              <input type="password" class="form-control" placeholder="Password" formControlName="password" style="padding: 15px;">
+              <input type="password" class="form-control text-lg" placeholder="Password" formControlName="password" style="padding: 15px;">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-lock"></span>
@@ -47,7 +47,7 @@
                 </label> -->
               </div>
               <p class="mb-0 ml-4" style="margin-top: 20px;" >
-                <a routerLink="/sign-up" class="text-center text-red mr-2">Register new account</a> | 
+                <a routerLink="/" class="text-center text-red mr-2">Register new account</a> | 
                 <a routerLink="/forgot" class="text-center text-red ml-2">Forgot Password</a>
               </p>
               <!-- /.col -->

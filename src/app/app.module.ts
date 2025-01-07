@@ -22,6 +22,7 @@ import { SelectPackageComponent } from './select-package/select-package.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthInterceptor } from '../auth/AuthInterceptor';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AuthInterceptor } from '../auth/AuthInterceptor';
     SellerComponent,
     SelectPackageComponent,
     DashboardComponent,
-    SignUpComponent
+    SignUpComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

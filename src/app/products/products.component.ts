@@ -47,6 +47,10 @@ export class ProductsComponent implements OnInit {
 
   equipment: any;
 
+  deleteModal = false
+
+  deletename: any
+
   slides: any;
 
   user: any
@@ -105,10 +109,6 @@ export class ProductsComponent implements OnInit {
 
 
   addProduct(){
-    if (this.editProduct == true){
-      this.updateProduct()
-    }
-    else {
     console.log(this.productForm.value)
     this.newProduct = this.productForm.value;
     this.newProduct.user_id = this.user
@@ -149,16 +149,18 @@ export class ProductsComponent implements OnInit {
           // Handle the error as needed
         });
     this.productForm.reset()
-    this.addProduct_ = false
-      }
   }
 
   updateProduct(){
+    console.log(this.productForm.value, this.selectedId)
     this.productService.update(this.productForm.value, this.selectedId)
       .subscribe((res) => {
+        console.log('res',res);
 
         if (res.status == 'success') {
-          console.log(res.message, this.selectedId, this.products)
+          this.success = true
+          this.title = res.status
+          this.successMsg = res.message
           var index = this.products.findIndex(x => x.id === this.selectedId);
           this.products.splice(index, 1);
 
@@ -171,6 +173,9 @@ export class ProductsComponent implements OnInit {
       },
         (error) => {
           console.error(error.message);
+          this.error = true
+          this.title = error.error.status
+          this.errorMsg = error.error.message
         });
         
     this.productForm.reset();
@@ -184,6 +189,7 @@ export class ProductsComponent implements OnInit {
   hideDialog(){
     this.success = false
     this.error = false
+    this.deleteModal = false
   }
 
   edit(item: any){
@@ -201,8 +207,34 @@ export class ProductsComponent implements OnInit {
     console.log(this.productForm.value)
   }
 
-  addProductModal(){
-  this.addProduct_ = true
+  delete(item: any){
+    this.deletename = item.name
+    this.selectedId = item.id
+    this.deleteModal = true
+  }
+
+  confirmDelete(){
+    this.productService.delete(this.selectedId)
+      .subscribe((res) => {
+        console.log('res',res);
+
+          this.success = true
+          this.title = 'SUCESS'
+          this.successMsg = this.deletename + ' deleted successfully'
+          var index = this.products.findIndex(x => x.id === this.selectedId);
+          this.products.splice(index, 1);
+
+          this.products = [...this.products, res.data];
+
+      },
+        (error) => {
+          console.error(error.message);
+          this.error = true
+          this.title = error.error.status
+          this.errorMsg = error.error.message
+        });
+
+    this.deleteModal = false
   }
 
   getAllEquipment(){

@@ -35,6 +35,9 @@ export class LoginComponent {
                 if (res.message === 'Login Successful') {
                   sessionStorage.setItem('token', res.token)
                   sessionStorage.setItem('loggedUser',res.user.id)
+                  sessionStorage.setItem('loggedUserName',res.user.name)
+                  sessionStorage.setItem('loggedUserEmail',res.user.email)
+                  sessionStorage.setItem('loggedUserRole',res.user.role)
                   console.log(sessionStorage)
                   this.router.navigate(["/select-package"])
                 }

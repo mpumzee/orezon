@@ -28,6 +28,10 @@ export class SellerRegistrationService {
       delete(id: number) {
         return this.http.delete<ResponseHandler>(`${url}/sellers/delete/${id}`);
       }
+
+      get(id: number) {
+        return this.http.get<ResponseHandler>(`${url}/sellers/${id}`);
+      }
     
       getAllList() {
         return this.http.get<ResponseHandler>(`${url}/sellers`);
