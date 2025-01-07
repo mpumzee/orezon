@@ -53,6 +53,8 @@ export class ProductsComponent implements OnInit {
 
   deletename: any
 
+  viewProduct = false
+
   slides: any;
 
   user: any
@@ -210,6 +212,8 @@ export class ProductsComponent implements OnInit {
     this.success = false
     this.error = false
     this.deleteModal = false
+    this.editProduct = false
+    this.viewProduct = false
   }
 
   edit(item: any){
@@ -225,6 +229,11 @@ export class ProductsComponent implements OnInit {
       category_id: new FormControl(this.selectedProduct.category_id, [Validators.required]),
     });
     console.log(this.productForm.value)
+  }
+
+  view(item: any){
+    this.selectedProduct = item
+    this.viewProduct = true
   }
 
   delete(item: any){

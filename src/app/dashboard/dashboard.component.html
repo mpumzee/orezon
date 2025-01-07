@@ -6,8 +6,8 @@
         <ul class="flex-column  bg-[#1e1f29] space-y space-y-4 text-xl font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
             <li class="me-2" style="margin-top: 20px;" role="presentation">
                 <button class="inline-flex items-center text-white focus:bg-blue-800 text-3xl px-4 py-3 hover:text-white bg-[#1e1f29] hover:bg-blue-800 w-full dark:bg-gray-800 dark:hover:bg-[#1e1f29] dark:hover:text-blue active"
-                id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab">
-                    <svg class="w-6 h-6 me-2 text-white dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18"><path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/></svg>
+                id="dashboard-tab" (click)="showDashboard()" type="button" role="tab">
+                <i class="fa fa-dashboard mr-3"></i>
                     Dashboard
                 </button>
                 <hr>
@@ -15,40 +15,40 @@
             <li class="me-2" role="presentation">
                 <button class="inline-flex items-center text-white focus:bg-blue-800 text-3xl px-4 py-3 hover:text-white bg-[#1e1f29] hover:bg-blue-800 w-full dark:bg-gray-800 dark:hover:bg-[#1e1f29] dark:hover:text-blue "
                  aria-current="page"
-                 id="profile-tab" data-tabs-target="#profile" type="button" role="tab">
-                    <svg class="w-6 h-6 me-2 text-white text-3xl" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"/>
-                    </svg>
+                 id="profile-tab" (click)="showProfile()" type="button" role="tab">
+                 <i class="fa fa-user mr-3"></i>
                     Profile
                 </button>
                 <hr>
             </li>
             <li class="me-2" role="presentation">
                 <button class="inline-flex items-center text-white focus:bg-blue-800 text-3xl px-4 py-3 hover:text-white bg-[#1e1f29] hover:bg-blue-800 w-full dark:bg-gray-800 dark:hover:bg-[#1e1f29] dark:hover:text-blue"
-                id="products-tab" data-tabs-target="#products" type="button" role="tab">
-                    <svg class="w-6 h-6 me-2 text-white dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 20 20">
-                        <path d="M12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z"></path>
-                    <path fill-rule="evenodd" d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 14.625v-9.75zM8.25 9.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM18.75 9a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V9.75a.75.75 0 00-.75-.75h-.008zM4.5 9.75A.75.75 0 015.25 9h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.25a.75.75 0 01-.75-.75V9.75z" clip-rule="evenodd"></path>
-                    <path d="M2.25 18a.75.75 0 000 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 00-.75-.75H2.25z"></path>
-                    </svg>
+                id="products-tab" (click)="showProducts()" type="button" role="tab">
+                <i class="fa fa-box-open mr-3"></i>
                     Products
                 </button>
                 <hr>
             </li>
             <li class="me-2" role="presentation">
                 <button class="inline-flex items-center text-white focus:bg-blue-800 text-3xl px-4 py-3 hover:text-white bg-[#1e1f29] hover:bg-blue-800 w-full dark:bg-gray-800 dark:hover:bg-[#1e1f29] dark:hover:text-blue"
-                id="orders-tab" data-tabs-target="#orders" type="button" role="tab">
-                <svg class="w-6 h-6 me-2 text-white dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z" clip-rule="evenodd"></path>
-                </svg>
+                id="orders-tab" (click)="showOrders()" type="button" role="tab">
+                <i class="fa fa-cart-arrow-down mr-3"></i>
                     Orders
+                </button>
+                <hr>
+            </li>
+            <li class="me-2" role="presentation">
+                <button class="inline-flex items-center text-white focus:bg-blue-800 text-3xl px-4 py-3 hover:text-white bg-[#1e1f29] hover:bg-blue-800 w-full dark:bg-gray-800 dark:hover:bg-[#1e1f29] dark:hover:text-blue"
+                id="orders-tab" (click)="showPayment()" type="button" role="tab">
+                <i class="fa fa-cash-register mr-3"></i>
+                    Payments
                 </button>
                 <hr>
             </li>
         </ul>
 
         <div id="default-tab-content">
-            <div class="hidden p-4 d-block" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+            <div *ngIf="dashboard" class="p-4 d-block" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                 <nav class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
                     <div class="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
                     <div class="capitalize">
@@ -209,13 +209,13 @@
                     </div>
                 </div>
             </div>
-            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="products" role="tabpanel" aria-labelledby="products-tab">
+            <div *ngIf="products" class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="products" role="tabpanel" aria-labelledby="products-tab">
                 <app-products></app-products>  
             </div>
-            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="profile" role="tabpanel" aria-labelledby="dashboard-tab"> 
+            <div *ngIf="profile" class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="profile" role="tabpanel" aria-labelledby="dashboard-tab"> 
                 <app-profile></app-profile>
             </div>
-            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+            <div *ngIf="orders" class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                 <nav class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
                     <div class="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
                     <div class="capitalize">

@@ -23,6 +23,7 @@ export class DashboardComponent {
   profile = false
   orders = false
   products = false
+  payment = false
 
   user: any
 
@@ -53,6 +54,8 @@ export class DashboardComponent {
 
   ngOnInit(): void{
 
+    this.dashboard = true
+
     this.user = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
 
     if (sessionStorage.length == 0) {
@@ -64,6 +67,46 @@ export class DashboardComponent {
         this.packages = res.data;
         console.log('packages:', res.data)
       });
+  }
+
+  showDashboard(){
+    this.dashboard = true
+    this.products = false
+    this.profile = false
+    this.orders = false
+    this.payment = false
+  }
+
+  showProducts(){
+    this.dashboard = false
+    this.products = true
+    this.profile = false
+    this.orders = false
+    this.payment = false
+  }
+
+  showProfile(){
+    this.dashboard = false
+    this.products = false
+    this.profile = true
+    this.orders = false
+    this.payment = false
+  }
+
+  showOrders(){
+    this.dashboard = false
+    this.products = false
+    this.profile = false
+    this.orders = true
+    this.payment = false
+  }
+
+  showPayment(){
+    this.dashboard = false
+    this.products = false
+    this.profile = false
+    this.orders = false
+    this.payment = true
   }
 
   update(){}
