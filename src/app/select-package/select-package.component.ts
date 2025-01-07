@@ -4,6 +4,7 @@ import { PackagesComponent } from '../packages/packages.component';
 import { PackagesService } from '../../services/packages.service';
 import { UserPackage } from '../../models/user-package';
 import { Router } from '@angular/router';
+import { SignUpService } from '../../services/sign-up.service';
 
 @Component({
   selector: 'app-select-package',
@@ -18,15 +19,15 @@ export class SelectPackageComponent {
 
     userPackage: UserPackage = {} as UserPackage
 
-    constructor(private packageService: PackagesService,private router: Router){}
+    constructor(private packageService: PackagesService,private router: Router, private userService: SignUpService){}
 
     ngOnInit(): void {
 
       this.user = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
 
-    if (!this.user) {
-      this.router.navigate(['/login']);
-    }
+      if (sessionStorage.length == 0) {
+        this.router.navigate(['/login']);
+      }
           
       this.packageService.getAllList()
       .subscribe(res => {
@@ -45,9 +46,10 @@ export class SelectPackageComponent {
         .subscribe((res) => {
           console.log(res);
   
-          if (res.status == 'sucess') {
+          if (res.status == 'success') {
             console.log(res.message);
-            this.router.navigate(["/dashboard"])
+            this.userService.logOut()
+            this.router.navigate(["/login"])
           }
           else {
             console.error(Error);

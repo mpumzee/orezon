@@ -39,6 +39,8 @@ export class ProductsComponent implements OnInit {
 
     editProduct = false
 
+    selectedFile: File | null = null;
+
     addProduct_ = false
 
     title: any
@@ -65,6 +67,7 @@ export class ProductsComponent implements OnInit {
         price: new FormControl('', [Validators.required]),
         quantity: new FormControl('', [Validators.required]),
         category_id: new FormControl('', [Validators.required]),
+        image_url: new FormControl('')
       });
     }
 
@@ -107,14 +110,31 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  onChange(event: any){
+    const file: File = event.target.files[0];
+
+    if (file) {
+      this.selectedFile = file;
+      this.productForm.patchValue({image_url: this.selectedFile})
+      console.log(this.productForm)
+    }
+  }
+
 
   addProduct(){
     console.log(this.productForm.value)
     this.newProduct = this.productForm.value;
     this.newProduct.user_id = this.user
-    console.log('product',this.newProduct);
+    const formData = new FormData();
+    formData.append('name', this.productForm.value.name)
+    formData.append('description', this.productForm.value.description)
+    formData.append('price', this.productForm.value.price)
+    formData.append('quantity', this.productForm.value.quantity)
+    formData.append('category_id', this.productForm.value.category_id)
+    formData.append('image_url', this.productForm.value.image_url)
+    formData.append('user_id', this.user)
 
-    this.productService.create(this.newProduct)
+    this.productService.create(this.productForm.value)
       .subscribe((res) => {
         console.log('res',res);
 

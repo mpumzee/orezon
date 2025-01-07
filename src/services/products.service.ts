@@ -16,8 +16,8 @@ export class ProductsService {
       
         create(itemDto: any) {
           var body = JSON.stringify(itemDto);
-          console.log(body)
-          return this.http.post<ResponseHandler>(`${url}/products/create`, body, { headers });
+          console.log(itemDto)
+          return this.http.post<ResponseHandler>(`${url}/products/create`, itemDto, { headers });
         }
       
         update(itemDto: any, id: number) {

@@ -23,6 +23,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthInterceptor } from '../auth/AuthInterceptor';
 import { ProfileComponent } from './profile/profile.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ProfileComponent } from './profile/profile.component';
     SelectPackageComponent,
     DashboardComponent,
     SignUpComponent,
-    ProfileComponent
+    ProfileComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

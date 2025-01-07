@@ -1,4 +1,5 @@
 export interface BankDetails {
+    id: number,
     bank: string,
     account_number: string,
     branch: string,

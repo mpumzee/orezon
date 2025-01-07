@@ -40,7 +40,7 @@ export class BuyerComponent {
           country: new FormControl('', [Validators.required]),
           address: new FormControl('', [Validators.required]),
           phone: new FormControl('', [Validators.required]),
-          profile_pic: new FormControl(''),
+          profile_pic: new FormControl(this.selectedFile),
         });
       }
 
@@ -80,13 +80,13 @@ export class BuyerComponent {
           formData.append(key, this.profileForm.value[key]);
       });  
 
-      console.log("form data is ------------------",formData);
+      console.log("form data is ------------------",this.profileForm);
       
       if (this.selectedFile) { 
         formData.append('profile_pic', this.selectedFile);  
       }      
 
-        this.buyerRegistrationService.create(formData).subscribe({
+        this.buyerRegistrationService.create(this.profileForm.value).subscribe({
           next: (res) => {            
               this.buyerProfile = [...this.buyerProfile, res.data];
               this.router.navigate(['/login']);            

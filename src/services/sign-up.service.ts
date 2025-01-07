@@ -23,4 +23,8 @@ export class SignUpService {
       console.log(body)
       return this.http.post<any>(`${url}/login`, body, { headers });
     }
+
+    logOut(){
+      return this.http.post<any>(`${url}/logout`, { headers });
+    }
 }
