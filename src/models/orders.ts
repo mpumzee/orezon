@@ -1,4 +1,5 @@
 import { Status } from "../enums/status";
+import { OrderProducts } from "./order-products";
 
 export interface Orders {
     id: number,
@@ -6,6 +7,7 @@ export interface Orders {
     seller_id: number,
     total_price: number,
     status: Status,
+    products: OrderProducts,
     created_at: Date,
     updated_at: Date
 }
