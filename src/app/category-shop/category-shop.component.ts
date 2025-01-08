@@ -68,7 +68,7 @@ export class CategoryShopComponent implements OnInit {
   ];
   ngOnInit(): void {
 
-    this.cartService.updateTOtal.subscribe(resp => {
+    this.cartService.updateTotal.subscribe(resp => {
       if (resp) {
         this.currentCart = this.cartService.getCurrentCart();
       }

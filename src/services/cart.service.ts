@@ -7,7 +7,7 @@ const cartStorageName = 'cart';
 })
 export class CartService {
   orezonCart: any = [];
-  updateTOtal = new BehaviorSubject(false);
+  updateTotal = new BehaviorSubject(false);
   toggleCart = new BehaviorSubject(false);
 
   constructor() {}
@@ -22,7 +22,7 @@ export class CartService {
   clearCart() {
     localStorage.removeItem(cartStorageName);
     this.toggleCart.next(false);
-    this.updateTOtal.next(true);
+    this.updateTotal.next(true);
 
     setTimeout(() => {
       window.location.reload();
@@ -43,7 +43,7 @@ export class CartService {
       this.orezonCart.push(packet);
     }
     this.saveToStorage();
-    this.updateTOtal.next(true);
+    this.updateTotal.next(true);
   }
 
   removeFromCart(product) {
@@ -52,17 +52,17 @@ export class CartService {
       this.orezonCart.splice(index, 1);
     }
     this.saveToStorage();
-    this.updateTOtal.next(true);
+    this.updateTotal.next(true);
   }
 
   getTotal(): number {
     this.setCart();
     let total = 0;
     this.orezonCart.forEach((product) => {
-      let itemtotal = Number(product.amount) * Number(product.quantity);
+      let itemtotal = Number(product.price) * Number(product.quantity);
       total += Number(itemtotal);
     });
-    return this.orezonCart.convertTargetAmountToUsd(total, null);
+    return total;
   }
 
   getTotaltems(): number {

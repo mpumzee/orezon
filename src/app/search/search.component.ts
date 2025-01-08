@@ -1,32 +1,60 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment.development';
 import { SearchService } from '../search.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrl: './search.component.css'
+  styleUrl: './search.component.css',
 })
-export class SearchComponent {
-URL = environment.domain;
-searchTerm = "";
-filterValue = "";
-constructor(private http: HttpClient, private router: Router, private searchService: SearchService){}
+export class SearchComponent  implements OnInit{
+  URL = environment.domain;
+  currentCart: any = [];
+  searchTerm = '';
+  filterValue = '';
+  totalCart = 0
+  cartTotalAmount = 0;
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private searchService: SearchService,
+    private cartService: CartService
+
+  ) {}
 
 
-// search(){
-//   const url = this.URL + "/search";
-//   this.http.get(url).subscribe((result) =>{
 
-//   })
-// }
+  ngOnInit(): void {
+    this.cartService.updateTotal.subscribe(resp => {
+      if (resp) {
+        this.currentCart = this.cartService.getCurrentCart();
+        this.totalCart = this.cartService.getTotaltems() ;
+        this.cartTotalAmount = this.cartService.getTotal()
+      }
 
-onSearch() {
-  console.log(this.searchTerm);
-  this.searchService.changeSearchTerm(this.searchTerm); // Update the search term in the service
+    });
+   this.currentCart = this.cartService.getCurrentCart();
+   this.totalCart = this.cartService.getTotaltems() ;
+   this.cartTotalAmount = this.cartService.getTotal()
+   this.currentCart =  this.currentCart.slice(0, 2);
+
+
+  }
+
+
+  // search(){
+  //   const url = this.URL + "/search";
+  //   this.http.get(url).subscribe((result) =>{
+
+  //   })
+  // }
+
+  onSearch() {
+    console.log(this.searchTerm);
+    this.searchService.changeSearchTerm(this.searchTerm); // Update the search term in the service
+  }
 }
-
-}
-
