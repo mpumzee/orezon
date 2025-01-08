@@ -37,7 +37,8 @@ export class CartService {
     };
     const index = this.orezonCart?.findIndex((p) => p.id === product.id);
     if (index >= 0) {
-      this.orezonCart[index].amount = Number(amount * quantity);
+      this.orezonCart[index].amount =  this.orezonCart[index].amount + Number(amount * quantity);
+      this.orezonCart[index].quantity = Number(this.orezonCart[index].quantity + quantity);
     } else {
       this.orezonCart.push(packet);
     }
