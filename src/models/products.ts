@@ -1,17 +1,16 @@
-import { ProductCategory } from "./product-category";
+import { ProductCategory } from './product-category';
 
 export interface Products {
-    id: number,
-    name: string,
-    description: string,
-    price: number,
-    quantity: number,
-    image_url: File,
-    category_id: number,
-    category: ProductCategory,
-    category_name: string,
-    user_id: number,
-    created_at: Date,
-    updated_at: Date
-
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  quantity: number;
+  image_url: File;
+  category_id: number;
+  category: ProductCategory;
+  category_name: string;
+  user_id: number;
+  created_at: Date;
+  updated_at: Date;
 }
