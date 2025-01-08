@@ -24,7 +24,7 @@ constructor(private http: HttpClient, private router: Router, private searchServ
 // }
 
 onSearch() {
-  console.log(this.searchTerm);  
+  console.log(this.searchTerm);
   this.searchService.changeSearchTerm(this.searchTerm); // Update the search term in the service
 }
 

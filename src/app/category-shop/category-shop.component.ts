@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';;
 
 @Component({
   selector: 'app-category-shop',
@@ -6,10 +6,7 @@ import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
   imports: [],
   templateUrl: './category-shop.component.html',
   styleUrl: './category-shop.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoryShopComponent implements OnInit {
-
-  ngOnInit(): void { }
-
+  ngOnInit(): void {}
 }
