@@ -1,7 +1,32 @@
 <section class="bg-gray-50 dark:bg-gray-900">
+  <div *ngIf="error" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div class="flex min-h-full items-end justify-center p-4 text-center xl:items-center xl:p-0">
+        <div
+          class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all xl:my-8 xl:w-full xl:max-w-lg">
+          <div class="bg-white px-4 pb-4 pt-5 xl:p-6 xl:pb-4">
+            <div class="xl:flex xl:items-start">
+              <div class="mt-3 text-center xl:ml-4 xl:mt-0 xl:text-left">
+                <div class="mt-2">
+                  <p class="text-lg text-gray-500">{{errorMsg}}.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 px-4 py-3 xl:flex xl:flex-row-reverse xl:px-6">
+            <button type="button" (click)="hideDialog()"
+              class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-lg font-semibold text-gray-900 shadow-xl ring-1 ring-inset ring-gray-300 hover:bg-gray-50 xl:mt-0 xl:w-auto">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
     <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-        <img class="w-20 h-20 mr-2" src="assets/img/logo_.png" alt="logo">  
+      <img class="w-20 h-20 mr-2" src="assets/img/logo_.png" alt="logo">
     </a>
     <div class="login-box">
       <!-- /.login-logo -->
@@ -10,15 +35,16 @@
           <!-- <img src="assets/img/log.jpg" alt="" style="width: 40px;"> -->
           <a href="#" class="h1"><b><span class="text-success">Orezon Admin</span></b>
             <!-- <i class="fas fa-store ml-2"></i> -->
-            
+
           </a>
         </div>
         <div class="card-body">
           <p class="login-box-msg">Sign in to start your session</p>
-    
+
           <form [formGroup]="loginForm" (submit)="login()">
             <div class="input-group" style="margin-bottom: 20px;">
-              <input type="text" class="form-control text-lg" placeholder="Email address" formControlName="email" style="padding: 15px;">
+              <input type="text" class="form-control text-lg" placeholder="Email address" formControlName="email"
+                style="padding: 15px;">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -26,36 +52,38 @@
               </div>
             </div>
             <div class="input-group mb-3" style="margin-bottom: 20px;">
-              <input type="password" class="form-control text-lg" placeholder="Password" formControlName="password" style="padding: 15px;">
+              <input type="password" class="form-control text-lg" placeholder="Password" formControlName="password"
+                style="padding: 15px;">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-lock"></span>
                 </div>
               </div>
-              
+
             </div>
-            <div class="row" >
+            <div class="row">
               <!-- <div class="col-12 text-danger mb-1" *ngIf="errorMessage">
                   {{errorMessage}}
               </div> -->
               <!-- /.col -->
               <div class="col-12" style="margin-top: 20px;">
-                <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-block p-3">Sign In</button>
+                <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-block p-3">Sign
+                  In</button>
                 <!-- <label class="mt-2 checkbox">
                   <input type="checkbox" (change)="togglePasswordVisibility()" [checked]="passwordType === 'text'" />
                   Show password
                 </label> -->
               </div>
-              <p class="mb-0 ml-4" style="margin-top: 20px;" >
-                <a routerLink="/" class="text-center text-red mr-2">Register new account</a> | 
+              <p class="mb-0 ml-4" style="margin-top: 20px;">
+                <a routerLink="/" class="text-center text-red mr-2">Register new account</a> |
                 <a routerLink="/forgot" class="text-center text-red ml-2">Forgot Password</a>
               </p>
               <!-- /.col -->
             </div>
           </form>
-    
-          
-    
+
+
+
           <!-- <p class="mb-1">
             <a href="forgot-password.html">I forgot my password</a>
           </p>
@@ -66,8 +94,6 @@
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
-  </div>
+    </div>
   </div>
 </section>
-
-    
