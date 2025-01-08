@@ -13,11 +13,12 @@ import { SellerComponent } from './seller/seller.component';
 import { SelectPackageComponent } from './select-package/select-package.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { CategoryShopComponent } from './category-shop/category-shop.component';
 
 const routes: Routes = [
   { path: '', component: TopNavComponent },
   { path: 'login', component: LoginComponent },
-  {path: 'admin', component: AdminComponent},
+  { path: 'admin', component: AdminComponent },
   { path: 'metals', component: MetalsComponent },
   { path: 'broker', component: BrokerComponent },
   { path: 'buyer', component: BuyerComponent },
@@ -27,20 +28,21 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'category-shop/:id', component: CategoryShopComponent },
   {
     path: 'top-nav',
     component: TopNavComponent,
     children: [
-       // { path: 'top-nav', component: TopNavComponent },
-    { path: 'search', component: SearchComponent },
-    { path: 'products', component: ProductsComponent },
-   
-],
+      // { path: 'top-nav', component: TopNavComponent },
+      { path: 'search', component: SearchComponent },
+      { path: 'products', component: ProductsComponent },
+
+    ],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true})],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

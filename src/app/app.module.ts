@@ -53,10 +53,10 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     CommonModule,
     HttpClientModule,
-    AppRoutingModule,    
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SlickCarouselModule     
+    SlickCarouselModule
   ],
   providers: [provideHttpClient(),
     {
