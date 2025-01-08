@@ -22,28 +22,28 @@ export class CategoriesComponent {
       name: 'Industrial Minerals',
       img: 'assets/img/industrial.png',
       description:
-        'Rare, naturally occurring metallic chemical elements of high economic value.',
+        'A rock, a mineral or other naturally occurring material of economic value.',
     },
     {
       id: 3,
       name: 'Energy Minerals',
       img: 'assets/img/energy.png',
       description:
-        'Rare, naturally occurring metallic chemical elements of high economic value.',
+        'Minerals that can be burned to release energy, such as coal and uranium.',
     },
     {
       id: 4,
       name: 'Metallic Minerals',
       img: 'assets/img/metallic.png',
       description:
-        'Rare, naturally occurring metallic chemical elements of high economic value.',
+        'Minerals which contain one or more metallic elements in their raw form.',
     },
     {
       id: 5,
       name: 'Non-Metallic Minerals',
       img: 'assets/img/non-metallic.png',
       description:
-        'Rare, naturally occurring metallic chemical elements of high economic value.',
+        'Composed of chemical elements that dont have the properties of any metals.',
     },
   ];
 
