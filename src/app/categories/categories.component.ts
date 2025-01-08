@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -12,22 +12,42 @@ export class CategoriesComponent {
   categoriesList = [
     {
       id: 1,
-      name: 'Earth Mover Collections',
-      img: 'assets/img/earth mover.jpg',
+      name: 'Precious Minerals',
+      img: 'assets/img/precious.png',
+      description:
+        'Rare, naturally occurring metallic chemical elements of high economic value.',
     },
     {
       id: 2,
-      name: 'Crushing Equipment',
-      img: 'assets/img/Hammer-Mill-scaled-1-1.jpg',
+      name: 'Industrial Minerals',
+      img: 'assets/img/industrial.png',
+      description:
+        'Rare, naturally occurring metallic chemical elements of high economic value.',
     },
     {
       id: 3,
-      name: 'Protective Equipment',
-      img: 'assets/img/ppe.jpg',
+      name: 'Energy Minerals',
+      img: 'assets/img/energy.png',
+      description:
+        'Rare, naturally occurring metallic chemical elements of high economic value.',
+    },
+    {
+      id: 4,
+      name: 'Metallic Minerals',
+      img: 'assets/img/metallic.png',
+      description:
+        'Rare, naturally occurring metallic chemical elements of high economic value.',
+    },
+    {
+      id: 5,
+      name: 'Non-Metallic Minerals',
+      img: 'assets/img/non-metallic.png',
+      description:
+        'Rare, naturally occurring metallic chemical elements of high economic value.',
     },
   ];
 
   goToCategoryProducts(id: any) {
-    this.router.navigate(['/category-shop',id])
+    this.router.navigate(['/category-shop', id]);
   }
 }

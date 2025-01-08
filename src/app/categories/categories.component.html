@@ -1,22 +1,11 @@
-<!-- NAVIGATION -->
-<nav id="navigation">
-	<!-- container -->
-	<div class="container">
-		<!-- responsive-nav -->
-		<div id="responsive-nav">
-			<!-- NAV -->
-			<ul class="main-nav nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-			</ul>
-			<!-- /NAV -->
-		</div>
-		<!-- /responsive-nav -->
-	</div>
-	<!-- /container -->
-</nav>
+<div class="container mt-5">
+	<h2 class="inline-block text-3xl font-semibold text-black pb-2 mb-3 mt-3 border-b-4 border-green-700">
+		Mineral Categories</h2>
+</div>
 
 <!-- SECTION -->
 <div class="section">
+
 	<!-- container -->
 	<div class="container">
 		<!-- row -->
@@ -30,8 +19,8 @@
 						<img [src]="item.img" alt="">
 					</div>
 					<div class="shop-body">
-						<h3>{{item.name}}</h3>
-						<h3 class="mt-2">Collection</h3>
+						<h3 class="text-3xl font-medium">{{item.name}}</h3>
+						<p class="mt-4 text-gray-300">{{item.description}}</p>
 						<button (click)="goToCategoryProducts(item.id)"
 							class="inline-flex border-solid border-1.5 border-white items-center px-3 py-2 mt-5 text-xl font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
 							Shop Now
