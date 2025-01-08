@@ -32,6 +32,7 @@ import { SellerComponent } from './seller/seller.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { RegisterComponent } from './register/register.component';
+import { EquipmentCategoriesComponent } from './equipment-categories/equipment-categories.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { RegisterComponent } from './register/register.component';
     OrdersComponent,
     FooterComponent,
     RegisterComponent,
+    EquipmentCategoriesComponent,
   ],
   imports: [
     BrowserModule,
