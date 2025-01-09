@@ -17,28 +17,28 @@ export class EquipmentCategoriesComponent {
       name: 'Drill Rigs',
       img: 'assets/img/drill_rig.png',
       description:
-        'Rare, naturally occurring metallic chemical elements of high economic value.',
+        'Equipment used to drill holes in the ground for such activities as prospecting.',
     },
     {
       id: 2,
       name: 'Rotary Drills',
       img: 'assets/img/rotary.png',
       description:
-        'A rock, a mineral or other naturally occurring material of economic value.',
+        'Equipment used to drill holes in the ground for such activities as prospecting.',
     },
     {
       id: 3,
       name: 'Pneumatic Drills',
       img: 'assets/img/drill.png',
       description:
-        'Minerals that can be burned to release energy, such as coal and uranium.',
+        'Equipment used to drill holes in the ground for such activities as prospecting.',
     },
     {
       id: 4,
       name: 'Jackhammers',
       img: 'assets/img/jackhammer.png',
       description:
-        'Minerals which contain one or more metallic elements in their raw form.',
+        'Equipment used to drill holes in the ground for such activities as prospecting.',
     },
   ];
 
@@ -46,30 +46,30 @@ export class EquipmentCategoriesComponent {
     {
       id: 1,
       name: 'Loaders',
-      img: 'assets/img/precious.png',
+      img: 'assets/img/hauling.png',
       description:
-        'Rare, naturally occurring metallic chemical elements of high economic value.',
+        'Equipment used to remove overburden and waste rocks from the mine site.',
     },
     {
       id: 2,
       name: 'Haul Trucks',
-      img: 'assets/img/industrial.png',
+      img: 'assets/img/hauling.png',
       description:
-        'A rock, a mineral or other naturally occurring material of economic value.',
+        'Equipment used to remove overburden and waste rocks from the mine site.',
     },
     {
       id: 3,
       name: 'Conveyor Belts',
-      img: 'assets/img/energy.png',
+      img: 'assets/img/hauling.png',
       description:
-        'Minerals that can be burned to release energy, such as coal and uranium.',
+        'Equipment used to remove overburden and waste rocks from the mine site.',
     },
     {
       id: 4,
       name: 'Skid-Steer Loaders',
-      img: 'assets/img/metallic.png',
+      img: 'assets/img/hauling.png',
       description:
-        'Minerals which contain one or more metallic elements in their raw form.',
+        'Equipment used to remove overburden and waste rocks from the mine site.',
     },
   ];
 
@@ -77,30 +77,30 @@ export class EquipmentCategoriesComponent {
     {
       id: 1,
       name: 'Jaw Crushers',
-      img: 'assets/img/precious.png',
+      img: 'assets/img/crushing.png',
       description:
-        'Rare, naturally occurring metallic chemical elements of high economic value.',
+        'Equipment used in the liberation and reduction of the size of the ore.',
     },
     {
       id: 2,
       name: 'Cone Crushers',
-      img: 'assets/img/industrial.png',
+      img: 'assets/img/crushing.png',
       description:
-        'A rock, a mineral or other naturally occurring material of economic value.',
+        'Equipment used in the liberation and reduction of the size of the ore.',
     },
     {
       id: 3,
       name: 'Ball Mills',
-      img: 'assets/img/energy.png',
+      img: 'assets/img/crushing.png',
       description:
-        'Minerals that can be burned to release energy, such as coal and uranium.',
+        'Equipment used in the liberation and reduction of the size of the ore.',
     },
     {
       id: 4,
       name: 'Rod Mills',
-      img: 'assets/img/metallic.png',
+      img: 'assets/img/crushing.png',
       description:
-        'Minerals which contain one or more metallic elements in their raw form.',
+        'Equipment used in the liberation and reduction of the size of the ore.',
     },
   ];
 
@@ -108,30 +108,30 @@ export class EquipmentCategoriesComponent {
     {
       id: 1,
       name: 'Floatation Cells',
-      img: 'assets/img/precious.png',
+      img: 'assets/img/separation.png',
       description:
-        'Rare, naturally occurring metallic chemical elements of high economic value.',
+        'Equipment for separating commercially valuable minerals from their ores.',
     },
     {
       id: 2,
       name: 'Magnetic Separators',
-      img: 'assets/img/industrial.png',
+      img: 'assets/img/separation.png',
       description:
-        'A rock, a mineral or other naturally occurring material of economic value.',
+        'Equipment for separating commercially valuable minerals from their ores.',
     },
     {
       id: 3,
       name: 'centrifuges',
-      img: 'assets/img/energy.png',
+      img: 'assets/img/separation.png',
       description:
-        'Minerals that can be burned to release energy, such as coal and uranium.',
+        'Equipment for separating commercially valuable minerals from their ores.',
     },
     {
       id: 4,
       name: 'Spiral Concentrators',
-      img: 'assets/img/metallic.png',
+      img: 'assets/img/separation.png',
       description:
-        'Minerals which contain one or more metallic elements in their raw form.',
+        'Equipment for separating commercially valuable minerals from their ores.',
     },
   ];
 
@@ -139,30 +139,30 @@ export class EquipmentCategoriesComponent {
     {
       id: 1,
       name: 'Jumbos',
-      img: 'assets/img/precious.png',
+      img: 'assets/img/underground.png',
       description:
-        'Rare, naturally occurring metallic chemical elements of high economic value.',
+        'A variety of subsurface mining techniques used to extract hard minerals.',
     },
     {
       id: 2,
       name: 'Load-Haul-Dump (LHD) Machnies',
-      img: 'assets/img/industrial.png',
+      img: 'assets/img/underground.png',
       description:
-        'A rock, a mineral or other naturally occurring material of economic value.',
+        'A variety of subsurface mining techniques used to extract hard minerals.',
     },
     {
       id: 3,
       name: 'Scissor Lifts',
-      img: 'assets/img/energy.png',
+      img: 'assets/img/underground.png',
       description:
-        'Minerals that can be burned to release energy, such as coal and uranium.',
+        'A variety of subsurface mining techniques used to extract hard minerals.',
     },
     {
       id: 4,
       name: 'Underground Trucks',
-      img: 'assets/img/metallic.png',
+      img: 'assets/img/underground.png',
       description:
-        'Minerals which contain one or more metallic elements in their raw form.',
+        'A variety of subsurface mining techniques used to extract hard minerals.',
     },
   ];
 
@@ -170,30 +170,30 @@ export class EquipmentCategoriesComponent {
     {
       id: 1,
       name: 'Hard Hats',
-      img: 'assets/img/precious.png',
+      img: 'assets/img/safety.png',
       description:
-        'Rare, naturally occurring metallic chemical elements of high economic value.',
+        'Collection of tools and protective gear that miners use to protect themselves.',
     },
     {
       id: 2,
       name: 'Safety Glasses',
-      img: 'assets/img/industrial.png',
+      img: 'assets/img/safety.png',
       description:
-        'A rock, a mineral or other naturally occurring material of economic value.',
+        'Collection of tools and protective gear that miners use to protect themselves.',
     },
     {
       id: 3,
       name: 'Respirators',
-      img: 'assets/img/energy.png',
+      img: 'assets/img/safety.png',
       description:
-        'Minerals that can be burned to release energy, such as coal and uranium.',
+        'Collection of tools and protective gear that miners use to protect themselves.',
     },
     {
       id: 4,
       name: 'Fall Protection Gear',
-      img: 'assets/img/metallic.png',
+      img: 'assets/img/safety.png',
       description:
-        'Minerals which contain one or more metallic elements in their raw form.',
+        'Collection of tools and protective gear that miners use to protect themselves.',
     },
   ];
 
@@ -201,37 +201,32 @@ export class EquipmentCategoriesComponent {
     {
       id: 1,
       name: 'Spares',
-      img: 'assets/img/precious.png',
-      description:
-        'Rare, naturally occurring metallic chemical elements of high economic value.',
+      img: 'assets/img/miscellaneous.png',
+      description: 'Their availability is important for ensuring high output.',
     },
     {
       id: 2,
       name: 'Generators',
-      img: 'assets/img/industrial.png',
-      description:
-        'A rock, a mineral or other naturally occurring material of economic value.',
+      img: 'assets/img/miscellaneous.png',
+      description: 'Their availability is important for ensuring high output.',
     },
     {
       id: 3,
       name: 'Pumps',
-      img: 'assets/img/energy.png',
-      description:
-        'Minerals that can be burned to release energy, such as coal and uranium.',
+      img: 'assets/img/miscellaneous.png',
+      description: 'Their availability is important for ensuring high output.',
     },
     {
       id: 4,
       name: 'Conveyor Belt Systems',
-      img: 'assets/img/metallic.png',
-      description:
-        'Minerals which contain one or more metallic elements in their raw form.',
+      img: 'assets/img/miscellaneous.png',
+      description: 'Their availability is important for ensuring high output.',
     },
     {
       id: 5,
       name: 'Explosives',
-      img: 'assets/img/metallic.png',
-      description:
-        'Minerals which contain one or more metallic elements in their raw form.',
+      img: 'assets/img/miscellaneous.png',
+      description: 'Their availability is important for ensuring high output.',
     },
   ];
 
