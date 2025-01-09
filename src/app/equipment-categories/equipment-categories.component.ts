@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class EquipmentCategoriesComponent {
   constructor(private router: Router) {}
 
+  ngOnInit() {}
+
   drillingList = [
     {
       id: 1,

@@ -12,6 +12,7 @@ import { PackagesComponent } from './packages/packages.component';
 import { ProductsComponent } from './products/products.component';
 import { SearchComponent } from './search/search.component';
 import { SelectPackageComponent } from './select-package/select-package.component';
+import { SellerTermsAndConditionsComponent } from './seller-terms-and-conditions/seller-terms-and-conditions.component';
 import { SellerComponent } from './seller/seller.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
@@ -33,6 +34,10 @@ const routes: Routes = [
   { path: 'category-shop/:id', component: CategoryShopComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
+  {
+    path: 'seller-terms-and-conditions',
+    component: SellerTermsAndConditionsComponent,
+  },
   {
     path: 'top-nav',
     component: TopNavComponent,
