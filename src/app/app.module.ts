@@ -33,6 +33,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { RegisterComponent } from './register/register.component';
 import { EquipmentCategoriesComponent } from './equipment-categories/equipment-categories.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { EquipmentCategoriesComponent } from './equipment-categories/equipment-c
     FooterComponent,
     RegisterComponent,
     EquipmentCategoriesComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,

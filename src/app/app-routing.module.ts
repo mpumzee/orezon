@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { TopNavComponent } from './top-nav/top-nav.component';
-import { SearchComponent } from './search/search.component';
-import { ProductsComponent } from './products/products.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 import { AdminComponent } from './admin/admin.component';
-import { MetalsComponent } from './metals/metals.component';
 import { BrokerComponent } from './broker/broker.component';
 import { BuyerComponent } from './buyer/buyer.component';
-import { PackagesComponent } from './packages/packages.component';
-import { SellerComponent } from './seller/seller.component';
-import { SelectPackageComponent } from './select-package/select-package.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { CategoryShopComponent } from './category-shop/category-shop.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { MetalsComponent } from './metals/metals.component';
+import { PackagesComponent } from './packages/packages.component';
+import { ProductsComponent } from './products/products.component';
+import { SearchComponent } from './search/search.component';
+import { SelectPackageComponent } from './select-package/select-package.component';
+import { SellerComponent } from './seller/seller.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { TopNavComponent } from './top-nav/top-nav.component';
 
 const routes: Routes = [
   { path: '', component: TopNavComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'category-shop/:id', component: CategoryShopComponent },
+  { path: 'about-us', component: AboutUsComponent },
   {
     path: 'top-nav',
     component: TopNavComponent,
@@ -36,7 +38,6 @@ const routes: Routes = [
       // { path: 'top-nav', component: TopNavComponent },
       { path: 'search', component: SearchComponent },
       { path: 'products', component: ProductsComponent },
-
     ],
   },
 ];
