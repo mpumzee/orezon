@@ -200,7 +200,7 @@ export class EquipmentCategoriesComponent {
   miscellaneousList = [
     {
       id: 1,
-      name: 'Precious Minerals',
+      name: 'Spares',
       img: 'assets/img/precious.png',
       description:
         'Rare, naturally occurring metallic chemical elements of high economic value.',
@@ -229,13 +229,6 @@ export class EquipmentCategoriesComponent {
     {
       id: 5,
       name: 'Explosives',
-      img: 'assets/img/metallic.png',
-      description:
-        'Minerals which contain one or more metallic elements in their raw form.',
-    },
-    {
-      id: 6,
-      name: 'Spares',
       img: 'assets/img/metallic.png',
       description:
         'Minerals which contain one or more metallic elements in their raw form.',
