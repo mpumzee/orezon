@@ -5,6 +5,7 @@ import { AdminComponent } from './admin/admin.component';
 import { BrokerComponent } from './broker/broker.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { CategoryShopComponent } from './category-shop/category-shop.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { MetalsComponent } from './metals/metals.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'category-shop/:id', component: CategoryShopComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
+  { path: 'contact-us', component: ContactUsComponent },
   {
     path: 'seller-terms-and-conditions',
     component: SellerTermsAndConditionsComponent,

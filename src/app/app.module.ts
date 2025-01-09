@@ -36,6 +36,7 @@ import { EquipmentCategoriesComponent } from './equipment-categories/equipment-c
 import { AboutUsComponent } from './about-us/about-us.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { SellerTermsAndConditionsComponent } from './seller-terms-and-conditions/seller-terms-and-conditions.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { SellerTermsAndConditionsComponent } from './seller-terms-and-conditions
     AboutUsComponent,
     TermsAndConditionsComponent,
     SellerTermsAndConditionsComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,
