@@ -34,6 +34,7 @@ import { TopNavComponent } from './top-nav/top-nav.component';
 import { RegisterComponent } from './register/register.component';
 import { EquipmentCategoriesComponent } from './equipment-categories/equipment-categories.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
     RegisterComponent,
     EquipmentCategoriesComponent,
     AboutUsComponent,
+    TermsAndConditionsComponent,
   ],
   imports: [
     BrowserModule,
