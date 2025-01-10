@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Roles } from '../../enums/roles';
 import { Orders } from '../../models/orders';
 import { OrdersService } from '../../services/orders.service';
 
@@ -22,14 +21,14 @@ export class BuyerDashboardComponent {
   constructor(private orderService: OrdersService, private router: Router) {}
 
   ngOnInit(): void {
-    this.dashboard = true;
+    this.profile = true;
 
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
 
-    if (sessionStorage.length == 0 || this.role != Roles.BUYER) {
-      console.log('what');
-      this.router.navigate(['/login']);
-    }
+    // if (sessionStorage.length == 0 || this.role != Roles.BUYER) {
+    //   console.log('what');
+    //   this.router.navigate(['/login']);
+    // }
   }
 
   showPayment() {
