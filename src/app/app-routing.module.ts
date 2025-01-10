@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './admin/admin.component';
 import { BrokerComponent } from './broker/broker.component';
+import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { CategoryShopComponent } from './category-shop/category-shop.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
@@ -36,6 +38,8 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
   { path: 'contact-us', component: ContactUsComponent },
+  { path: 'admin-dashboard', component: AdminDashboardComponent },
+  { path: 'buyer-dashboard', component: BuyerDashboardComponent },
   {
     path: 'seller-terms-and-conditions',
     component: SellerTermsAndConditionsComponent,

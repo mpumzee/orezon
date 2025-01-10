@@ -37,6 +37,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { SellerTermsAndConditionsComponent } from './seller-terms-and-conditions/seller-terms-and-conditions.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     TermsAndConditionsComponent,
     SellerTermsAndConditionsComponent,
     ContactUsComponent,
+    AdminDashboardComponent,
+    BuyerDashboardComponent,
   ],
   imports: [
     BrowserModule,
