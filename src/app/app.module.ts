@@ -39,6 +39,7 @@ import { SellerTermsAndConditionsComponent } from './seller-terms-and-conditions
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
+import { BuyerProfileComponent } from './buyer-profile/buyer-profile.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.compo
     ContactUsComponent,
     AdminDashboardComponent,
     BuyerDashboardComponent,
+    BuyerProfileComponent,
   ],
   imports: [
     BrowserModule,

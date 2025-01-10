@@ -43,6 +43,8 @@ export class ProfileComponent {
 
   role: any;
 
+  sellers: Seller[] = [];
+
   bank_details: BankDetails = {} as BankDetails;
 
   selectedPackage: Package = {} as Package;
@@ -98,8 +100,11 @@ export class ProfileComponent {
       this.router.navigate(['/login']);
     }
 
-    this.sellerService.get(this.user.id).subscribe((res) => {
-      this.curentSellerDetails = res.data;
+    this.sellerService.getAllList().subscribe((res) => {
+      this.sellers = res.data.filter((x) => x.user_id == this.user.id);
+      this.sellers.forEach((seller) => {
+        this.curentSellerDetails = seller;
+      });
       console.log('seller:', res.data);
     });
 
@@ -171,6 +176,7 @@ export class ProfileComponent {
         (res) => {
           if (res.status == 'success') {
             console.log(res.message);
+            this.editProfileModal = false;
             this.success = true;
             this.title = res.status;
             this.successMsg = res.message;

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Roles } from '../../enums/roles';
 import { Package } from '../../models/package';
 import { PackagesService } from '../../services/packages.service';
 import { SellerRegistrationService } from '../../services/seller-registration.service';
@@ -69,9 +70,9 @@ export class DashboardComponent {
 
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
 
-    // if (sessionStorage.length == 0 || this.role != Roles.SELLER) {
-    //   this.router.navigate(['/login']);
-    // }
+    if (sessionStorage.length == 0 || this.role != Roles.SELLER) {
+      this.router.navigate(['/login']);
+    }
 
     this.packageService.getAllList().subscribe((res) => {
       this.packages = res.data;
