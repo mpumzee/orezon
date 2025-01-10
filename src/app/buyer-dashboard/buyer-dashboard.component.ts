@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Roles } from '../../enums/roles';
 import { Orders } from '../../models/orders';
 import { OrdersService } from '../../services/orders.service';
 
@@ -25,25 +26,25 @@ export class BuyerDashboardComponent {
 
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
 
-    // if (sessionStorage.length == 0 || this.role != Roles.BUYER) {
-    //   console.log('what');
-    //   this.router.navigate(['/login']);
-    // }
+    if (sessionStorage.length == 0 || this.role != Roles.BUYER) {
+      console.log('what');
+      this.router.navigate(['/login']);
+    }
   }
 
   showPayment() {
     this.payments = true;
+    this.orderstab = false;
+    this.profile = false;
   }
 
   showOrders() {
     this.orderstab = true;
+    this.payments = false;
+    this.profile = false;
   }
 
   showProfile() {
     this.profile = true;
-  }
-
-  showDashboard() {
-    this.dashboard = true;
   }
 }
