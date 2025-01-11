@@ -89,18 +89,25 @@ export class BuyerComponent {
     } else {
       //this.profileForm.value.profile_pic = this.selectedFile
 
-      const formData = new FormData();
-      Object.keys(this.profileForm.value).forEach((key) => {
-        formData.append(key, this.profileForm.value[key]);
+      let formData = new FormData();
+      formData.append('profile_pic', this.selectedFile, this.selectedFile.name);
+      formData.append('name', this.profileForm.value.name);
+      formData.append('email', this.profileForm.value.email);
+      formData.append('password', this.profileForm.value.password);
+      formData.append(
+        'password_confirmation',
+        this.profileForm.value.password_confirmation
+      );
+      formData.append('id_number', this.profileForm.value.id_number);
+      formData.append('country', this.profileForm.value.country);
+      formData.append('address', this.profileForm.value.address);
+      formData.append('phone', this.profileForm.value.phone);
+
+      formData.forEach((value, key) => {
+        console.log(key + ' ' + value);
       });
 
-      console.log('form data is ------------------', this.profileForm);
-
-      if (this.selectedFile) {
-        formData.append('profile_pic', this.selectedFile);
-      }
-
-      this.buyerRegistrationService.create(this.profileForm.value).subscribe({
+      this.buyerRegistrationService.create(formData).subscribe({
         next: (res) => {
           this.buyerProfile = [...this.buyerProfile, res.data];
           this.router.navigate(['/login']);
@@ -122,13 +129,13 @@ export class BuyerComponent {
     const target = event.target as HTMLInputElement;
     this.selectedFile = target.files!.item(0);
 
-    // if (this.selectedFile) {
-    //     const reader = new FileReader();
-    //     reader.onload = (e: ProgressEvent<FileReader>) => {
-    //         this.displayImage(e.target!.result as string);
-    //     };
-    //     reader.readAsDataURL(this.selectedFile);
-    // }
+    if (this.selectedFile) {
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.displayImage(e.target!.result as string);
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
   }
 
   displayImage(imageData: string): void {

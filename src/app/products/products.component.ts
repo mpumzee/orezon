@@ -128,18 +128,18 @@ export class ProductsComponent implements OnInit {
     console.log(this.productForm.value);
     this.newProduct = this.productForm.value;
     this.newProduct.user_id = this.user;
-    const formData = new FormData();
+    var formData = new FormData();
     formData.append('name', this.productForm.value.name);
     formData.append('description', this.productForm.value.description);
     formData.append('price', this.productForm.value.price);
     formData.append('quantity', this.productForm.value.quantity);
     formData.append('category_id', this.productForm.value.category_id);
-    formData.append('image_url', this.productForm.value.image_url);
+    formData.append('image_url', this.selectedFile, this.selectedFile.name);
     formData.append('user_id', this.user);
 
     this.createModal = false;
 
-    this.productService.create(this.productForm.value).subscribe(
+    this.productService.create(formData).subscribe(
       (res) => {
         console.log('res', res);
 
