@@ -65,7 +65,7 @@ export class EquipmentCategoriesComponent {
         product.img_url = 'assets/img/miscellaneous.png';
       });
       this.subCategories = res.data;
-      console.log('subCategories:  ', this.subCategories);
+      console.log('subCategories:', this.subCategories);
     });
   }
 
