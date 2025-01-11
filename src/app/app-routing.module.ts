@@ -7,6 +7,7 @@ import { BrokerComponent } from './broker/broker.component';
 import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { CategoryShopComponent } from './category-shop/category-shop.component';
+import { CheckOutComponent } from './check-out/check-out.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'category-shop/:id', component: CategoryShopComponent },
+  { path: 'checkout', component: CheckOutComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
   { path: 'contact-us', component: ContactUsComponent },
@@ -59,4 +61,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
