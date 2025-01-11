@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SubCategory } from '../../models/sub-category';
+import { SubCategoriesService } from '../../services/sub-categories.service';
 
 @Component({
   selector: 'app-categories',
@@ -7,45 +9,25 @@ import { Router } from '@angular/router';
   styleUrl: './categories.component.css',
 })
 export class CategoriesComponent {
-  constructor(private router: Router) {}
+  subCategories: SubCategory[] = [];
 
-  categoriesList = [
-    {
-      id: 1,
-      name: 'Precious Minerals',
-      img: 'assets/img/precious.png',
-      description:
-        'Rare, naturally occurring metallic chemical elements of high economic value.',
-    },
-    {
-      id: 2,
-      name: 'Industrial Minerals',
-      img: 'assets/img/industrial.png',
-      description:
-        'A rock, a mineral or other naturally occurring material of economic value.',
-    },
-    {
-      id: 3,
-      name: 'Energy Minerals',
-      img: 'assets/img/energy.png',
-      description:
-        'Minerals that can be burned to release energy, such as coal and uranium.',
-    },
-    {
-      id: 4,
-      name: 'Metallic Minerals',
-      img: 'assets/img/metallic.png',
-      description:
-        'Minerals which contain one or more metallic elements in their raw form.',
-    },
-    {
-      id: 5,
-      name: 'Non-Metallic Minerals',
-      img: 'assets/img/non-metallic.png',
-      description:
-        'Composed of chemical elements that dont have the properties of any metals.',
-    },
-  ];
+  unfilteredSubCategories: SubCategory[] = [];
+
+  constructor(
+    private router: Router,
+    private subCatgeorySevice: SubCategoriesService
+  ) {}
+
+  ngOnInit(): void {
+    this.subCatgeorySevice.getAllList().subscribe((res) => {
+      this.unfilteredSubCategories = res.data.filter((x) => x.category_id == 1);
+      this.unfilteredSubCategories.forEach((product: SubCategory) => {
+        product.img_url = 'assets/img/industrial.png';
+      });
+      this.subCategories = res.data;
+      console.log('subCategories:', this.subCategories);
+    });
+  }
 
   goToCategoryProducts(id: any) {
     this.router.navigate(['/category-shop', id]);

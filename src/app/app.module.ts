@@ -10,14 +10,20 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { AuthInterceptor } from '../auth/AuthInterceptor';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './admin/admin.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrokerComponent } from './broker/broker.component';
+import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
+import { BuyerProfileComponent } from './buyer-profile/buyer-profile.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryShopComponent } from './category-shop/category-shop.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EquipmentCategoriesComponent } from './equipment-categories/equipment-categories.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { MetalsComponent } from './metals/metals.component';
@@ -26,20 +32,15 @@ import { OrdersComponent } from './orders/orders.component';
 import { PackagesComponent } from './packages/packages.component';
 import { ProductsComponent } from './products/products.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
 import { SearchComponent } from './search/search.component';
 import { SelectPackageComponent } from './select-package/select-package.component';
+import { SellerTermsAndConditionsComponent } from './seller-terms-and-conditions/seller-terms-and-conditions.component';
 import { SellerComponent } from './seller/seller.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { TopNavComponent } from './top-nav/top-nav.component';
-import { RegisterComponent } from './register/register.component';
-import { EquipmentCategoriesComponent } from './equipment-categories/equipment-categories.component';
-import { AboutUsComponent } from './about-us/about-us.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
-import { SellerTermsAndConditionsComponent } from './seller-terms-and-conditions/seller-terms-and-conditions.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
-import { BuyerProfileComponent } from './buyer-profile/buyer-profile.component';
+import { TopNavComponent } from './top-nav/top-nav.component';
+import { SubCategoriesComponent } from './sub-categories/sub-categories.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { BuyerProfileComponent } from './buyer-profile/buyer-profile.component';
     AdminDashboardComponent,
     BuyerDashboardComponent,
     BuyerProfileComponent,
+    SubCategoriesComponent,
   ],
   imports: [
     BrowserModule,

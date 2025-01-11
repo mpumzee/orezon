@@ -11,13 +11,13 @@ const headers: HttpHeaders = new HttpHeaders().set(
 @Injectable({
   providedIn: 'root',
 })
-export class SellerRegistrationService {
+export class CategoriesService {
   constructor(private http: HttpClient) {}
 
   create(itemDto: any) {
     var body = JSON.stringify(itemDto);
     console.log(body);
-    return this.http.post<ResponseHandler>(`${url}/sellers/register`, body, {
+    return this.http.post<ResponseHandler>(`${url}/categories`, body, {
       headers,
     });
   }
@@ -25,20 +25,26 @@ export class SellerRegistrationService {
   update(itemDto: any, id: number) {
     var body = JSON.stringify(itemDto);
     console.log(body);
-    return this.http.put<ResponseHandler>(`${url}/sellers/update/${id}`, body, {
-      headers,
-    });
+    return this.http.put<ResponseHandler>(
+      `${url}/categories/update/${id}`,
+      body,
+      { headers }
+    );
   }
 
   delete(id: number) {
-    return this.http.delete<ResponseHandler>(`${url}/sellers/delete/${id}`);
-  }
-
-  get(id: number) {
-    return this.http.get<ResponseHandler>(`${url}/sellers/${id}`);
+    return this.http.delete<ResponseHandler>(`${url}/categories/delete/${id}`);
   }
 
   getAllList() {
-    return this.http.get<ResponseHandler>(`${url}/sellers`);
+    return this.http.get<ResponseHandler>(`${url}/categories`);
+  }
+
+  selectPackage(itemDto: any) {
+    var body = JSON.stringify(itemDto);
+    console.log(body);
+    return this.http.post<ResponseHandler>(`${url}/categories`, body, {
+      headers,
+    });
   }
 }

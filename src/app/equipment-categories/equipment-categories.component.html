@@ -60,12 +60,12 @@
             <div id="default-tab-content">
                 <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="drilling" role="tabpanel"
                     aria-labelledby="drilling-tab">
-                    @for (item of drillingList; track $index) {
+                    @for (item of drillingSubCategories; track $index) {
 
                     <div class="col-md-4 col-xs-6">
                         <div class="shop border-solid border-1 border-green-500 shadow-xl">
                             <div class="shop-img">
-                                <img [src]="item.img" alt="">
+                                <img [src]="item.img_url" alt="">
                             </div>
                             <div class="shop-body">
                                 <h3 class="text-3xl font-medium">{{item.name}}</h3>
@@ -88,12 +88,12 @@
                 </div>
                 <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="hauling" role="tabpanel"
                     aria-labelledby="hauling-tab">
-                    @for (item of haulingList; track $index) {
+                    @for (item of haulingSubCategories; track $index) {
 
                     <div class="col-md-4 col-xs-6">
                         <div class="shop border-solid border-1 border-green-500 shadow-xl">
                             <div class="shop-img">
-                                <img [src]="item.img" alt="">
+                                <img [src]="item.img_url" alt="">
                             </div>
                             <div class="shop-body">
                                 <h3 class="text-3xl font-medium">{{item.name}}</h3>
@@ -116,12 +116,12 @@
                 </div>
                 <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="grinding" role="tabpanel"
                     aria-labelledby="grinding-tab">
-                    @for (item of crushingList; track $index) {
+                    @for (item of crushingSubCategories; track $index) {
 
                     <div class="col-md-4 col-xs-6">
                         <div class="shop border-solid border-1 border-green-500 shadow-xl">
                             <div class="shop-img">
-                                <img [src]="item.img" alt="">
+                                <img [src]="item.img_url" alt="">
                             </div>
                             <div class="shop-body">
                                 <h3 class="text-3xl font-medium">{{item.name}}</h3>
@@ -144,12 +144,12 @@
                 </div>
                 <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="separation" role="tabpanel"
                     aria-labelledby="separation-tab">
-                    @for (item of seperationList; track $index) {
+                    @for (item of separationSubCategories; track $index) {
 
                     <div class="col-md-4 col-xs-6">
                         <div class="shop border-solid border-1 border-green-500 shadow-xl">
                             <div class="shop-img">
-                                <img [src]="item.img" alt="">
+                                <img [src]="item.img_url" alt="">
                             </div>
                             <div class="shop-body">
                                 <h3 class="text-3xl font-medium">{{item.name}}</h3>
@@ -172,12 +172,12 @@
                 </div>
                 <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="underground" role="tabpanel"
                     aria-labelledby="underground-tab">
-                    @for (item of undergroudList; track $index) {
+                    @for (item of undergroundSubCategories; track $index) {
 
                     <div class="col-md-4 col-xs-6">
                         <div class="shop border-solid border-1 border-green-500 shadow-xl">
                             <div class="shop-img">
-                                <img [src]="item.img" alt="">
+                                <img [src]="item.img_url" alt="">
                             </div>
                             <div class="shop-body">
                                 <h3 class="text-3xl font-medium">{{item.name}}</h3>
@@ -200,12 +200,12 @@
                 </div>
                 <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="safety" role="tabpanel"
                     aria-labelledby="safety-tab">
-                    @for (item of safetyList; track $index) {
+                    @for (item of safetySubCategories; track $index) {
 
                     <div class="col-md-4 col-xs-6">
                         <div class="shop border-solid border-1 border-green-500 shadow-xl">
                             <div class="shop-img">
-                                <img [src]="item.img" alt="">
+                                <img [src]="item.img_url" alt="">
                             </div>
                             <div class="shop-body">
                                 <h3 class="text-3xl font-medium">{{item.name}}</h3>
@@ -228,12 +228,12 @@
                 </div>
                 <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="miscellaneous" role="tabpanel"
                     aria-labelledby="miscellaneous-tab">
-                    @for (item of miscellaneousList; track $index) {
+                    @for (item of miscellaneousSubCategories; track $index) {
 
                     <div class="col-md-4 col-xs-6">
                         <div class="shop border-solid border-1 border-green-500 shadow-xl">
                             <div class="shop-img">
-                                <img [src]="item.img" alt="">
+                                <img [src]="item.img_url" alt="">
                             </div>
                             <div class="shop-body">
                                 <h3 class="text-3xl font-medium">{{item.name}}</h3>

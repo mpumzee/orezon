@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { ResponseHandler } from '../models/response-handler';
 
 const url = 'https://orezon.co.zw/api/v1';
-const headers: HttpHeaders = new HttpHeaders().set(
-  'Content-Type',
-  'application/json, charset=utf-8'
-);
+let headers: HttpHeaders = new HttpHeaders();
+headers.append('Content-Type', 'multipart/form-data');
+headers.append('enctype', 'multipart/form-data');
 
 @Injectable({
   providedIn: 'root',
