@@ -23,7 +23,8 @@ export class CheckOutComponent implements OnInit {
 
   orderData = {
     items: this.cartItems,
-    total: this.total
+    price: this.total ,
+    currency:'USD'
   };
 
 
