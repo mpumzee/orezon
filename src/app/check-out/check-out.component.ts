@@ -1,12 +1,13 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { IPayPalConfig, NgxPayPalModule } from 'ngx-paypal';
+import { environment } from '../../environments/environment.development';
 import { CartService } from '../../services/cart.service';
-import { ICreateOrderRequest, IPayPalConfig, NgxPayPalModule } from 'ngx-paypal';
 
 @Component({
   selector: 'app-check-out',
   standalone: true,
-  imports: [DecimalPipe , NgxPayPalModule],
+  imports: [DecimalPipe, NgxPayPalModule],
   templateUrl: './check-out.component.html',
   styleUrl: './check-out.component.css',
 })
@@ -15,10 +16,15 @@ export class CheckOutComponent implements OnInit {
   cartItems = [];
   totalCartItems = 0;
 
-  public payPalConfig ? : IPayPalConfig;
+  public payPalConfig?: IPayPalConfig;
   showSuccess: boolean;
   showCancel: boolean;
   showError: boolean;
+
+  orderData = {
+    items: this.cartItems,
+    total: this.total
+  };
 
 
   constructor(private cartService: CartService) { }
@@ -34,38 +40,43 @@ export class CheckOutComponent implements OnInit {
 
   private initConfig(): void {
     this.payPalConfig = {
-        clientId: 'sb',
-        // for creating orders (transactions) on server see
-        // https://developer.paypal.com/docs/checkout/reference/server-integration/set-up-transaction/
-        createOrderOnServer: (data) => fetch('/my-server/create-paypal-transaction')
-            .then((res) => res.json())
-            .then((order) => order.orderID),
-        onApprove: (data, actions) => {
-            console.log('onApprove - transaction was approved, but not authorized', data, actions);
-            actions.order.get().then(details => {
-                console.log('onApprove - you can get full order details inside onApprove: ', details);
-            });
+      clientId: 'sb',
 
+      createOrderOnServer: (data) => fetch(`${environment.url}/paypal/create-order`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
         },
-        onClientAuthorization: (data) => {
-            console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-            this.showSuccess = true;
-        },
-        onCancel: (data, actions) => {
-            console.log('OnCancel', data, actions);
-            this.showCancel = true;
+        body: JSON.stringify(this.orderData)
+      })
+        .then((res) => res.json())
+        .then((order) => order.orderID),
+      onApprove: (data, actions) => {
+        console.log('onApprove - transaction was approved, but not authorized', data, actions);
+        actions.order.get().then(details => {
+          console.log('onApprove - you can get full order details inside onApprove: ', details);
+        });
 
-        },
-        onError: err => {
-            console.log('OnError', err);
-            this.showError = true;
-        },
-        onClick: (data, actions) => {
-            console.log('onClick', data, actions);
-            this.resetStatus();
-        },
+      },
+      onClientAuthorization: (data) => {
+        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        this.showSuccess = true;
+      },
+      onCancel: (data, actions) => {
+        console.log('OnCancel', data, actions);
+        this.showCancel = true;
+
+      },
+      onError: err => {
+        console.log('OnError', err);
+        this.showError = true;
+      },
+      onClick: (data, actions) => {
+        console.log('onClick', data, actions);
+        this.resetStatus();
+      },
     };
-}
+  }
   resetStatus() {
     throw new Error('Method not implemented.');
   }
