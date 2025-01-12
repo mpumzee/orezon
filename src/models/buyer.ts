@@ -10,7 +10,7 @@ export interface Buyer {
   country: Country;
   phone: string;
   address: string;
-  profile_pic: File;
+  profile_pic: any;
   created_at: Date;
   updated_at: Date;
 }

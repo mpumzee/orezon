@@ -1,4 +1,5 @@
 import { Component, type OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ProductCategory } from '../../models/product-category';
 import { Products } from '../../models/products';
 import { CartService } from '../../services/cart.service';
@@ -15,14 +16,19 @@ export class CategoryShopComponent implements OnInit {
 
   currentItem: any;
 
+  id = 0;
+
   products: Products[] = [];
+
+  unfilteredProducts: Products[] = [];
 
   categories: ProductCategory[] = [];
 
   constructor(
     public cartService: CartService,
     private productService: ProductsService,
-    private categoryService: ProductCategoryService
+    private categoryService: ProductCategoryService,
+    public actRoute: ActivatedRoute
   ) {}
   productsList: any = [
     {
@@ -82,16 +88,23 @@ export class CategoryShopComponent implements OnInit {
       console.log('categories:', this.categories);
     });
 
+    this.id = this.actRoute.snapshot.params['id'];
+
     this.productService.getAllList().subscribe((res) => {
-      res.data.forEach((product: Products) => {
+      this.unfilteredProducts = res.data.filter(
+        (x) => x.sub_category_id == this.id
+      );
+      this.unfilteredProducts.forEach((product: any) => {
+        product.image_url =
+          'http://127.0.0.1:8000/storage/' + product.image_url;
         const category = this.categories.filter(
-          (x) => x.id == product.category_id
+          (x) => x.id == product.sub_category_id
         );
         category.forEach((cat) => {
-          product.category_name = cat.name;
+          product.sub_category_name = cat.name;
         });
       });
-      this.products = res.data;
+      this.products = this.unfilteredProducts;
       console.log('products:', this.products);
     });
 
@@ -106,6 +119,8 @@ export class CategoryShopComponent implements OnInit {
   updateCart(item: any) {
     alert('Item added to cart');
     this.cartService.addToCart(item, item.price, 1);
+
+    this.checkIfExist(item);
   }
 
   getCurrentItemAmount(item): number {

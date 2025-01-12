@@ -80,9 +80,7 @@ export class SubCategoriesComponent {
         console.log('res', res);
 
         if (res.status == 'created') {
-          this.success = true;
-          this.title = res.status;
-          this.successMsg = res.message;
+          alert(res.message);
           this.subCatgeorySevice.getAllList().subscribe((res) => {
             res.data.forEach((product: any) => {
               const category = this.categories.filter(
@@ -103,9 +101,7 @@ export class SubCategoriesComponent {
       },
       (error) => {
         console.error(error.error.message);
-        this.error = true;
-        this.title = error.error.status;
-        this.errorMsg = error.error.message;
+        alert(error.error.message);
         // Handle the error as needed
       }
     );
@@ -122,9 +118,7 @@ export class SubCategoriesComponent {
           console.log('res', res);
 
           if (res.status == 'success') {
-            this.success = true;
-            this.title = res.status;
-            this.successMsg = res.message;
+            alert(res.message);
             var index = this.subCategories.findIndex(
               (x) => x.id === this.selectedId
             );
@@ -137,9 +131,7 @@ export class SubCategoriesComponent {
         },
         (error) => {
           console.error(error.message);
-          this.error = true;
-          this.title = error.error.status;
-          this.errorMsg = error.error.message;
+          alert(error.error.message);
         }
       );
 

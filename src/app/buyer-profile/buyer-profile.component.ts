@@ -68,6 +68,8 @@ export class BuyerProfileComponent {
       this.buyers = res.data.filter((x) => x.user_id == this.user.id);
       this.buyers.forEach((buyer) => {
         this.curentBuyerDetails = buyer;
+        this.curentBuyerDetails.profile_pic =
+          'http://127.0.0.1:8000/storage/' + buyer.profile_pic;
       });
       console.log('buyer:', this.curentBuyerDetails);
     });
@@ -108,9 +110,7 @@ export class BuyerProfileComponent {
           if (res.status == 'success') {
             console.log(res.message);
             this.editProfileModal = false;
-            this.success = true;
-            this.title = res.status;
-            this.successMsg = res.message;
+            alert(res.message);
             this.ngOnInit();
           } else {
             console.error(Error);
@@ -118,9 +118,7 @@ export class BuyerProfileComponent {
         },
         (error) => {
           console.error(error.error.message);
-          this.error = true;
-          this.title = error.error.status;
-          this.errorMsg = error.error.message;
+          alert(error.error.message);
         }
       );
 

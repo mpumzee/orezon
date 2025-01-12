@@ -114,9 +114,7 @@ export class BuyerComponent {
         },
         error: (error) => {
           console.error(error);
-          this.error = true;
-          this.title = 'ERROR';
-          this.errorMsg = error.error.message;
+          alert(error.error.message);
           // Handle the error as needed
         },
       });
