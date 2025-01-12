@@ -17,6 +17,8 @@ export class SubCategoriesComponent {
 
   public subCategoryForm: FormGroup;
 
+  public categoryForm: FormGroup;
+
   success = false;
 
   editProduct = false;
@@ -43,6 +45,8 @@ export class SubCategoriesComponent {
 
   createModal = false;
 
+  createCategoryModal = false;
+
   constructor(
     private categoryService: CategoriesService,
     private subCatgeorySevice: SubCategoriesService
@@ -51,6 +55,10 @@ export class SubCategoriesComponent {
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       category_id: new FormControl(1, [Validators.required, Validators.min(1)]),
+    });
+    this.categoryForm = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
     });
   }
 
@@ -109,6 +117,34 @@ export class SubCategoriesComponent {
     this.createModal = false;
   }
 
+  createCategory() {
+    this.subCatgeorySevice.createCategory(this.categoryForm.value).subscribe(
+      (res) => {
+        console.log('res', res);
+
+        if (res.status == 'created') {
+          alert(res.message);
+          this.subCatgeorySevice.getAllList().subscribe((res) => {
+            this.categories = res.data;
+            this.ngOnInit();
+            console.log('categories:', this.categories);
+          });
+          console.log(res.message);
+        } else {
+          console.log(res.message);
+          // Handle the error as needed
+        }
+      },
+      (error) => {
+        console.error(error.error.message);
+        alert(error.error.message);
+        // Handle the error as needed
+      }
+    );
+    this.categoryForm.reset();
+    this.createCategoryModal = false;
+  }
+
   updateSubCategory() {
     console.log(this.subCategoryForm.value, this.selectedId);
     this.subCatgeorySevice
@@ -150,6 +186,10 @@ export class SubCategoriesComponent {
 
   showModal() {
     this.createModal = true;
+  }
+
+  showCategoryModal() {
+    this.createCategoryModal = true;
   }
 
   edit(item: any) {

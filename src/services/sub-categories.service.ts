@@ -22,6 +22,14 @@ export class SubCategoriesService {
     });
   }
 
+  createCategory(itemDto: any) {
+    var body = JSON.stringify(itemDto);
+    console.log(body);
+    return this.http.post<ResponseHandler>(`${url}/categories`, body, {
+      headers,
+    });
+  }
+
   update(itemDto: any, id: number) {
     var body = JSON.stringify(itemDto);
     console.log(body);
