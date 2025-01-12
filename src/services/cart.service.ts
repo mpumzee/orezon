@@ -13,10 +13,7 @@ export class CartService {
   constructor() {}
 
   saveToStorage() {
-    localStorage.setItem(
-      cartStorageName,
-      JSON.stringify(this.orezonCart)
-    );
+    localStorage.setItem(cartStorageName, JSON.stringify(this.orezonCart));
   }
 
   clearCart() {
@@ -35,13 +32,21 @@ export class CartService {
       quantity: 1,
       amount: Number(amount * quantity),
     };
+    this.orezonCart = this.getCurrentCart();
+    console.log(product, product.id, this.orezonCart);
     const index = this.orezonCart?.findIndex((p) => p.id === product.id);
+    console.log('index', index);
     if (index >= 0) {
-      this.orezonCart[index].amount =  this.orezonCart[index].amount + Number(amount * quantity);
-      this.orezonCart[index].quantity = Number(this.orezonCart[index].quantity + quantity);
+      this.orezonCart[index].amount =
+        this.orezonCart[index].amount + Number(amount * quantity);
+      this.orezonCart[index].quantity = Number(
+        this.orezonCart[index].quantity + quantity
+      );
     } else {
+      console.log('nooo');
       this.orezonCart.push(packet);
     }
+    console.log(this.orezonCart[index]);
     this.saveToStorage();
     this.updateTotal.next(true);
   }
