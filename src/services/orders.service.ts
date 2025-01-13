@@ -14,8 +14,8 @@ const headers: HttpHeaders = new HttpHeaders().set(
 export class OrdersService {
   constructor(private http: HttpClient) {}
 
-  getSellerOrders(id: number) {
-    return this.http.get<ResponseHandler>(`${url}/orders/seller/${id}`);
+  getSellerOrders() {
+    return this.http.get<ResponseHandler>(`${url}/orders/seller/`);
   }
 
   getBuyerOrders() {

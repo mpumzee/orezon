@@ -1,0 +1,108 @@
+<div class="m-10 p-7 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+
+    <div class="col-span-4 cols-6 sm:col-span-2 mb-5 mt-5">
+        <select id="country"
+            class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+            required (change)="onSelection($event)">
+            <option value="">Select Role</option>
+            <option *ngFor="let role of roles" [value]="role">{{role}}</option>
+        </select>
+    </div>
+
+    <div *ngIf="showBuyers" class="overflow-x-auto mt-10">
+        <table class="w-full text-xl text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xl text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col">Buyer</th>
+                    <th scope="col">Id Number</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Joined On</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of buyers"
+                    class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <td scope="row" class="flex items-centertext-gray-900 whitespace-nowrap dark:text-white">
+                        <img class="w-14 h-14 rounded-full" [src]="item.profile_pic" alt="Jese image">
+                        <div class="ps-3">
+                            <div class="text-lg font-semibold">{{item.user.name}}</div>
+                            <div class="font-normal text-gray-500">{{item.user.email}}</div>
+                        </div>
+                    </td>
+                    <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <div class="flex items-center">
+                            <div class="h-4 w-4 rounded-full inline-block mr-2 bg-red-700"></div>
+                            {{item.id_number}}
+                        </div>
+                    </td>
+                    <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{item.phone}}</td>
+                    <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{item.country}}</td>
+                    <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{item.address}}</td>
+                    <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{item.created_at | date : 'MMM d, y'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="showSellers" class="overflow-x-auto mt-10">
+        <table class="w-full text-xl text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xl text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="p-2">Name</th>
+                    <th scope="col" class="p-2">Email</th>
+                    <th scope="col" class="p-2">Business Name</th>
+                    <th scope="col" class="p-2">Id Number</th>
+                    <th scope="col" class="p-2">Phone</th>
+                    <th scope="col" class="p-2">Country</th>
+                    <th scope="col" class="p-2">Joined On</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of sellers"
+                    class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <div class="flex items-center">
+                            {{item.user.name}}
+                        </div>
+                    </td>
+                    <td class=" font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <div class="flex items-center">
+                            {{item.user.email}}
+                        </div>
+                    </td>
+                    <td class=" font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <div class="flex items-center">
+                            {{item.business_name}}
+                        </div>
+                    </td>
+                    <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{item.id_number}}</td>
+                    <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{item.phone}}</td>
+                    <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{item.country}}</td>
+                    <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{item.created_at | date : 'MMM d, y'}}</td>
+                    <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <div class="flex items-center space-x-4">
+                            <button type="button" (click)="viewProfile(item)"
+                                data-drawer-target="drawer-read-product-advanced"
+                                data-drawer-show="drawer-read-product-advanced"
+                                aria-controls="drawer-read-product-advanced"
+                                class="py-2 px-3 flex items-center text-xl font-medium text-center text-white focus:outline-none bg-blue-700 rounded-lg border border-gray-200 hover:bg-blue-100 hover:text-green-700 focus:z-10 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-700 dark:bg-blue-800 dark:text-blue-400 dark:border-blue-600 dark:hover:text-white dark:hover:bg-blue-700">
+                                <i class="fa fa-eye mr-3"></i>
+                                Preview
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

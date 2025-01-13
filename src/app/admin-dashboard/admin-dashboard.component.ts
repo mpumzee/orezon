@@ -15,6 +15,7 @@ export class AdminDashboardComponent {
   profile = false;
   orderstab = false;
   showPayments = false;
+  showPackages = false;
   users = false;
 
   packages: Package[] = [];
@@ -53,6 +54,7 @@ export class AdminDashboardComponent {
     this.profile = false;
     this.users = false;
     this.orderstab = false;
+    this.showPackages = false;
   }
 
   showOrders() {
@@ -62,6 +64,7 @@ export class AdminDashboardComponent {
     this.users = false;
     this.orderstab = true;
     this.showPayments = false;
+    this.showPackages = false;
   }
 
   showUsers() {
@@ -71,6 +74,7 @@ export class AdminDashboardComponent {
     this.users = true;
     this.orderstab = false;
     this.showPayments = false;
+    this.showPackages = false;
   }
 
   showProfile() {
@@ -80,6 +84,7 @@ export class AdminDashboardComponent {
     this.users = false;
     this.orderstab = false;
     this.showPayments = false;
+    this.showPackages = false;
   }
 
   showDashboard() {
@@ -89,6 +94,7 @@ export class AdminDashboardComponent {
     this.users = false;
     this.orderstab = false;
     this.showPayments = false;
+    this.showPackages = false;
   }
 
   showCategories() {
@@ -98,5 +104,16 @@ export class AdminDashboardComponent {
     this.users = false;
     this.orderstab = false;
     this.showPayments = false;
+    this.showPackages = false;
+  }
+
+  showPackage() {
+    this.dashboard = false;
+    this.showProductCategories = false;
+    this.profile = false;
+    this.users = false;
+    this.orderstab = false;
+    this.showPayments = false;
+    this.showPackages = true;
   }
 }
