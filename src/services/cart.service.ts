@@ -90,7 +90,7 @@ export class CartService {
     if (savedCart) {
       return JSON.parse(savedCart);
     } else {
-      return null;
+      return [];
     }
   }
 
