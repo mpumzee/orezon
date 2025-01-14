@@ -91,12 +91,6 @@ export class CategoryShopComponent implements OnInit {
     },
   ];
   ngOnInit(): void {
-    this.user = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
-    console.log(this.user);
-
-    if (!this.user) {
-      this.router.navigate(['/login']);
-    }
     console.log('cart', this.cartService.getCurrentCart());
 
     this.categoryService.getAllList().subscribe((res) => {

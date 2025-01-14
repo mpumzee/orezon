@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Status } from '../../enums/status';
 import { Orders } from '../../models/orders';
 import { ProductCategory } from '../../models/product-category';
@@ -31,15 +31,24 @@ export class CartComponent {
 
   categories: ProductCategory[] = [];
 
+  user: any;
+
   constructor(
     public cartService: CartService,
     private productService: ProductsService,
     private categoryService: ProductCategoryService,
     public actRoute: ActivatedRoute,
+    private router: Router,
     private orderService: OrdersService
   ) {}
 
   ngOnInit(): void {
+    this.user = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
+    console.log(this.user);
+
+    if (sessionStorage.length == 0) {
+      this.router.navigate(['/login']);
+    }
     console.log('cart', this.cartService.getCurrentCart());
 
     this.cartItems = this.cartService.getCurrentCart();
