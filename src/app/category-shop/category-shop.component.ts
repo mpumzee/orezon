@@ -112,8 +112,10 @@ export class CategoryShopComponent implements OnInit {
         const category = this.subCategories.filter(
           (x) => x.id == product.sub_category_id
         );
+        console.log('category', category);
         category.forEach((cat) => {
           product.sub_category_name = cat.name;
+          console.log('category', product.sub_category_name);
         });
       });
       this.products = this.unfilteredProducts;
