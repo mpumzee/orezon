@@ -3,10 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Orders } from '../../models/orders';
 import { ProductCategory } from '../../models/product-category';
 import { Products } from '../../models/products';
+import { SubCategory } from '../../models/sub-category';
 import { CartService } from '../../services/cart.service';
 import { OrdersService } from '../../services/orders.service';
-import { ProductCategoryService } from '../../services/product-category.service';
 import { ProductsService } from '../../services/products.service';
+import { SubCategoriesService } from '../../services/sub-categories.service';
 @Component({
   selector: 'app-category-shop',
   standalone: false,
@@ -28,12 +29,14 @@ export class CategoryShopComponent implements OnInit {
 
   categories: ProductCategory[] = [];
 
+  subCategories: SubCategory[] = [];
+
   user: any;
 
   constructor(
     public cartService: CartService,
     private productService: ProductsService,
-    private categoryService: ProductCategoryService,
+    private categoryService: SubCategoriesService,
     public actRoute: ActivatedRoute,
     private router: Router,
     private orderService: OrdersService
@@ -94,8 +97,8 @@ export class CategoryShopComponent implements OnInit {
     console.log('cart', this.cartService.getCurrentCart());
 
     this.categoryService.getAllList().subscribe((res) => {
-      this.categories = res.data;
-      console.log('categories:', this.categories);
+      this.subCategories = res.data;
+      console.log('categories:', this.subCategories);
     });
 
     this.id = this.actRoute.snapshot.params['id'];
@@ -105,9 +108,8 @@ export class CategoryShopComponent implements OnInit {
         (x) => x.sub_category_id == this.id
       );
       this.unfilteredProducts.forEach((product: any) => {
-        product.sub_category_name = product.sub_category.name;
         product.image_url = 'https://orezon.co.zw/storage/' + product.image_url;
-        const category = this.categories.filter(
+        const category = this.subCategories.filter(
           (x) => x.id == product.sub_category_id
         );
         category.forEach((cat) => {
