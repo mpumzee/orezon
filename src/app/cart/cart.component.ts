@@ -56,8 +56,7 @@ export class CartComponent {
         (x) => x.sub_category_id == this.id
       );
       this.unfilteredProducts.forEach((product: any) => {
-        product.image_url =
-          'http://127.0.0.1:8000/storage/' + product.image_url;
+        product.image_url = 'https://orezon.co.zw/storage/' + product.image_url;
         const category = this.categories.filter(
           (x) => x.id == product.sub_category_id
         );

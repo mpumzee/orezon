@@ -1,5 +1,5 @@
 import { Component, type OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Orders } from '../../models/orders';
 import { ProductCategory } from '../../models/product-category';
 import { Products } from '../../models/products';
@@ -28,11 +28,14 @@ export class CategoryShopComponent implements OnInit {
 
   categories: ProductCategory[] = [];
 
+  user: any;
+
   constructor(
     public cartService: CartService,
     private productService: ProductsService,
     private categoryService: ProductCategoryService,
     public actRoute: ActivatedRoute,
+    private router: Router,
     private orderService: OrdersService
   ) {}
   productsList: any = [
@@ -88,6 +91,12 @@ export class CategoryShopComponent implements OnInit {
     },
   ];
   ngOnInit(): void {
+    this.user = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
+    console.log(this.user);
+
+    if (!this.user) {
+      this.router.navigate(['/login']);
+    }
     console.log('cart', this.cartService.getCurrentCart());
 
     this.categoryService.getAllList().subscribe((res) => {
@@ -102,8 +111,7 @@ export class CategoryShopComponent implements OnInit {
         (x) => x.sub_category_id == this.id
       );
       this.unfilteredProducts.forEach((product: any) => {
-        product.image_url =
-          'http://127.0.0.1:8000/storage/' + product.image_url;
+        product.image_url = 'https://orezon.co.zw/storage/' + product.image_url;
         const category = this.categories.filter(
           (x) => x.id == product.sub_category_id
         );

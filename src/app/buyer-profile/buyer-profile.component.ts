@@ -69,7 +69,7 @@ export class BuyerProfileComponent {
       this.buyers.forEach((buyer) => {
         this.curentBuyerDetails = buyer;
         this.curentBuyerDetails.profile_pic =
-          'http://127.0.0.1:8000/storage/' + buyer.profile_pic;
+          'https://orezon.co.zw/storage/' + buyer.profile_pic;
       });
       console.log('buyer:', this.curentBuyerDetails);
     });
