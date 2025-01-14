@@ -41,7 +41,7 @@ export class CheckOutComponent implements OnInit {
 
   private initConfig(): void {
     this.payPalConfig = {
-      clientId: 'sb',
+      clientId: 'AS-HUIcnym-ONjaikvwMor0OzN-bxRt-muXbonxmERNaeU9_DLl1MCz2LsnmKfSWGTvZ-NLvehwaJvxJ',
       createOrderOnServer: (data) => fetch(`${environment.url}/paypal/create-order`, {
         method: 'POST',
         headers: {
