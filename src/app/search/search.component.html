@@ -105,7 +105,8 @@
 										<h4 class="product-price"><span
 												class="qty">{{item.quantity}}x</span>${{item.price}}.00</h4>
 									</div>
-									<button class="delete"><i class="fa fa-close"></i></button>
+									<button (click)="deleteItem(item)" class="delete"><i
+											class="fa fa-close"></i></button>
 								</div>
 								}
 
