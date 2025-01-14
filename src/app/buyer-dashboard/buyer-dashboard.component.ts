@@ -14,6 +14,8 @@ export class BuyerDashboardComponent {
   orderstab = false;
   payments = false;
 
+  drawer = false;
+
   role: any;
 
   orders: Orders[] = [];
@@ -29,6 +31,15 @@ export class BuyerDashboardComponent {
       console.log('what');
       this.router.navigate(['/login']);
     }
+  }
+
+  showDrawer() {
+    console.log('enetered');
+    this.drawer = true;
+  }
+
+  hideDialog() {
+    this.drawer = false;
   }
 
   showPayment() {
