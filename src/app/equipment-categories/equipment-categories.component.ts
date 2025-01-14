@@ -68,6 +68,7 @@ export class EquipmentCategoriesComponent {
       });
       this.subCategories = res.data;
       console.log('subCategories:', this.subCategories);
+      this.productList = this.drillingSubCategories;
     });
   }
 
