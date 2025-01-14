@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Status } from '../../enums/status';
 import { Orders } from '../../models/orders';
-import { ProductCategory } from '../../models/product-category';
 import { Products } from '../../models/products';
+import { SubCategory } from '../../models/sub-category';
 import { CartService } from '../../services/cart.service';
 import { OrdersService } from '../../services/orders.service';
-import { ProductCategoryService } from '../../services/product-category.service';
 import { ProductsService } from '../../services/products.service';
+import { SubCategoriesService } from '../../services/sub-categories.service';
 
 @Component({
   selector: 'app-cart',
@@ -29,14 +29,14 @@ export class CartComponent {
 
   unfilteredProducts: Products[] = [];
 
-  categories: ProductCategory[] = [];
+  categories: SubCategory[] = [];
 
   user: any;
 
   constructor(
     public cartService: CartService,
     private productService: ProductsService,
-    private categoryService: ProductCategoryService,
+    private categoryService: SubCategoriesService,
     public actRoute: ActivatedRoute,
     private router: Router,
     private orderService: OrdersService
