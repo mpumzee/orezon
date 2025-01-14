@@ -6,6 +6,7 @@ import { AdminComponent } from './admin/admin.component';
 import { BrokerComponent } from './broker/broker.component';
 import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
 import { BuyerComponent } from './buyer/buyer.component';
+import { CartComponent } from './cart/cart.component';
 import { CategoryShopComponent } from './category-shop/category-shop.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent },
+  { path: 'cart', component: CartComponent },
   { path: 'buyer-dashboard', component: BuyerDashboardComponent },
   {
     path: 'seller-terms-and-conditions',

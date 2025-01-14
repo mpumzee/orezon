@@ -177,9 +177,7 @@ export class ProfileComponent {
           if (res.status == 'success') {
             console.log(res.message);
             this.editProfileModal = false;
-            this.success = true;
-            this.title = res.status;
-            this.successMsg = res.message;
+            alert(res.message);
             this.ngOnInit();
           } else {
             console.error(Error);
@@ -187,9 +185,7 @@ export class ProfileComponent {
         },
         (error) => {
           console.error(error.error.message);
-          this.error = true;
-          this.title = error.error.status;
-          this.errorMsg = error.error.message;
+          alert(error.error.message);
         }
       );
 

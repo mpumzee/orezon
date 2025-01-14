@@ -24,8 +24,8 @@ export class CategoriesComponent {
       this.unfilteredSubCategories.forEach((product: SubCategory) => {
         product.img_url = 'assets/img/industrial.png';
       });
-      this.subCategories = res.data;
-      console.log('subCategories:', this.subCategories);
+      this.subCategories = this.unfilteredSubCategories;
+      console.log('subCategories:', this.unfilteredSubCategories);
     });
   }
 

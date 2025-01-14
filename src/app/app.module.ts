@@ -41,6 +41,10 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { SubCategoriesComponent } from './sub-categories/sub-categories.component';
+import { BuyerOrdersComponent } from './buyer-orders/buyer-orders.component';
+import { CartComponent } from './cart/cart.component';
+import { SellerOrdersComponent } from './seller-orders/seller-orders.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +78,10 @@ import { SubCategoriesComponent } from './sub-categories/sub-categories.componen
     BuyerDashboardComponent,
     BuyerProfileComponent,
     SubCategoriesComponent,
+    BuyerOrdersComponent,
+    CartComponent,
+    SellerOrdersComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

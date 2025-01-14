@@ -14,11 +14,23 @@ const headers: HttpHeaders = new HttpHeaders().set(
 export class OrdersService {
   constructor(private http: HttpClient) {}
 
-  getSellerOrders(id: number) {
-    return this.http.get<ResponseHandler>(`${url}/orders/${id}`);
+  getSellerOrders() {
+    return this.http.get<ResponseHandler>(`${url}/orders/seller/`);
+  }
+
+  getBuyerOrders() {
+    return this.http.get<ResponseHandler>(`${url}/orders`);
   }
 
   getAllList() {
     return this.http.get<ResponseHandler>(`${url}/orders`);
+  }
+
+  order(itemDto: any) {
+    var body = JSON.stringify(itemDto);
+    console.log(body);
+    return this.http.post<ResponseHandler>(`${url}/orders`, body, {
+      headers,
+    });
   }
 }

@@ -4,8 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductCategory } from '../../models/product-category';
 import { Products } from '../../models/products';
-import { ProductCategoryService } from '../../services/product-category.service';
 import { ProductsService } from '../../services/products.service';
+import { SubCategoriesService } from '../../services/sub-categories.service';
 import { SearchService } from '../search.service';
 
 @Component({
@@ -67,14 +67,14 @@ export class ProductsComponent implements OnInit {
     private router: Router,
     private searchService: SearchService,
     private productService: ProductsService,
-    private categoryService: ProductCategoryService
+    private categoryService: SubCategoriesService
   ) {
     this.productForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
       quantity: new FormControl('', [Validators.required]),
-      category_id: new FormControl('', [Validators.required]),
+      sub_category_id: new FormControl('', [Validators.required]),
       image_url: new FormControl(''),
     });
   }
@@ -94,11 +94,13 @@ export class ProductsComponent implements OnInit {
 
     this.productService.getSellerProducts(this.user).subscribe((res) => {
       res.data.forEach((product: any) => {
+        product.image_url =
+          'http://127.0.0.1:8000/storage/' + product.image_url;
         const category = this.categories.filter(
-          (x) => x.id == product.category_id
+          (x) => x.id == product.sub_category_id
         );
         category.forEach((cat) => {
-          product.category_name = cat.name;
+          product.sub_category_name = cat.name;
         });
       });
       this.products = res.data;
@@ -114,14 +116,31 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  onChange(event: any) {
-    const file: File = event.target.files[0];
+  onFileSelected(event: any) {
+    const target = event.target as HTMLInputElement;
+    this.selectedFile = target.files!.item(0);
 
-    if (file) {
-      this.selectedFile = file;
-      this.productForm.patchValue({ image_url: this.selectedFile });
-      console.log(this.productForm);
+    if (this.selectedFile) {
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.displayImage(e.target!.result as string);
+      };
+      reader.readAsDataURL(this.selectedFile);
     }
+  }
+
+  displayImage(imageData: string): void {
+    // Update the image preview in the template
+    this.imagePreview = imageData;
+  }
+
+  imagePreview: string = '';
+
+  getImagePreview(): string {
+    if (!this.selectedFile) {
+      return 'assets/img/upload.svg';
+    }
+    return URL.createObjectURL(this.selectedFile);
   }
 
   addProduct() {
@@ -133,7 +152,7 @@ export class ProductsComponent implements OnInit {
     formData.append('description', this.productForm.value.description);
     formData.append('price', this.productForm.value.price);
     formData.append('quantity', this.productForm.value.quantity);
-    formData.append('category_id', this.productForm.value.category_id);
+    formData.append('sub_category_id', this.productForm.value.sub_category_id);
     formData.append('image_url', this.selectedFile, this.selectedFile.name);
     formData.append('user_id', this.user);
 
@@ -144,16 +163,16 @@ export class ProductsComponent implements OnInit {
         console.log('res', res);
 
         if (res.status == 'created') {
-          this.success = true;
-          this.title = res.status;
-          this.successMsg = res.message;
+          alert(res.message);
           this.productService.getSellerProducts(this.user).subscribe((res) => {
             res.data.forEach((product: any) => {
+              product.image_url =
+                'http://127.0.0.1:8000/storage/' + product.image_url;
               const category = this.categories.filter(
-                (x) => x.id == product.category_id
+                (x) => x.id == product.sub_category_id
               );
               category.forEach((cat) => {
-                product.category_name = cat.name;
+                product.sub_category_name = cat.name;
               });
             });
             this.products = res.data;
@@ -167,9 +186,7 @@ export class ProductsComponent implements OnInit {
       },
       (error) => {
         console.error(error.error.message);
-        this.error = true;
-        this.title = error.error.status;
-        this.errorMsg = error.error.message;
+        alert(error.error.message);
         // Handle the error as needed
       }
     );
@@ -185,9 +202,7 @@ export class ProductsComponent implements OnInit {
           console.log('res', res);
 
           if (res.status == 'success') {
-            this.success = true;
-            this.title = res.status;
-            this.successMsg = res.message;
+            alert(res.message);
             var index = this.products.findIndex(
               (x) => x.id === this.selectedId
             );
@@ -200,9 +215,7 @@ export class ProductsComponent implements OnInit {
         },
         (error) => {
           console.error(error.message);
-          this.error = true;
-          this.title = error.error.status;
-          this.errorMsg = error.error.message;
+          alert(error.error.message);
         }
       );
 
@@ -237,7 +250,7 @@ export class ProductsComponent implements OnInit {
       quantity: new FormControl(this.selectedProduct.quantity, [
         Validators.required,
       ]),
-      category_id: new FormControl(this.selectedProduct.category_id, [
+      sub_category_id: new FormControl(this.selectedProduct.sub_category_id, [
         Validators.required,
       ]),
     });

@@ -9,6 +9,8 @@ import { SubCategoriesService } from '../../services/sub-categories.service';
   styleUrl: './equipment-categories.component.css',
 })
 export class EquipmentCategoriesComponent {
+  productList: any = [];
+
   subCategories: SubCategory[] = [];
 
   drillingSubCategories: SubCategory[] = [];
@@ -66,7 +68,36 @@ export class EquipmentCategoriesComponent {
       });
       this.subCategories = res.data;
       console.log('subCategories:', this.subCategories);
+      this.productList = this.drillingSubCategories;
     });
+  }
+
+  showDrilling() {
+    this.productList = this.drillingSubCategories;
+  }
+
+  showLoading() {
+    this.productList = this.haulingSubCategories;
+  }
+
+  showCrushing() {
+    this.productList = this.crushingSubCategories;
+  }
+
+  showSeparation() {
+    this.productList = this.separationSubCategories;
+  }
+
+  showUnderground() {
+    this.productList = this.undergroundSubCategories;
+  }
+
+  showSafety() {
+    this.productList = this.safetySubCategories;
+  }
+
+  showMiscellaneos() {
+    this.productList = this.miscellaneousSubCategories;
   }
 
   goToCategoryProducts(id: any) {

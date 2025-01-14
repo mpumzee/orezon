@@ -10,7 +10,6 @@ import { OrdersService } from '../../services/orders.service';
   styleUrl: './buyer-dashboard.component.css',
 })
 export class BuyerDashboardComponent {
-  dashboard = false;
   profile = false;
   orderstab = false;
   payments = false;
@@ -46,5 +45,7 @@ export class BuyerDashboardComponent {
 
   showProfile() {
     this.profile = true;
+    this.orderstab = false;
+    this.payments = false;
   }
 }

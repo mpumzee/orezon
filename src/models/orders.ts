@@ -1,14 +1,16 @@
 import { Status } from '../enums/status';
-import { OrderProducts } from './order-products';
+import { Products } from './products';
+import { SubOrder } from './sub-order';
 
 export interface Orders {
   id: number;
   user_id: number;
   user_name: string;
-  seller_id: number;
   total_price: number;
   status: Status;
-  products: OrderProducts;
+  products: Products[];
+  sub_orders: SubOrder;
   created_at: Date;
   updated_at: Date;
+  total_quantity: number;
 }

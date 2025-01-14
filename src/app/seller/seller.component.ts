@@ -123,9 +123,7 @@ export class SellerComponent {
         },
         (error) => {
           console.error(error.error.message);
-          this.error = true;
-          this.title = 'ERROR';
-          this.errorMsg = error.error.message;
+          alert(error.error.message);
         }
       );
 
