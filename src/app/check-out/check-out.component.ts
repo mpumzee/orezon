@@ -22,7 +22,7 @@ export class CheckOutComponent implements OnInit {
   showError: boolean;
 
   orderData = {
-    items: this.cartItems,
+    products: this.cartItems,
     price: this.total ,
     currency:'USD'
   };
@@ -42,7 +42,7 @@ export class CheckOutComponent implements OnInit {
   private initConfig(): void {
     this.payPalConfig = {
       clientId: 'AS-HUIcnym-ONjaikvwMor0OzN-bxRt-muXbonxmERNaeU9_DLl1MCz2LsnmKfSWGTvZ-NLvehwaJvxJ',
-      createOrderOnServer: (data) => fetch(`${environment.url}/create-order`, {
+      createOrderOnServer: (data) => fetch(`${environment.url}/orders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ export class CheckOutComponent implements OnInit {
       },
       onClick: (data, actions) => {
         console.log('onClick', data, actions);
-        this.resetStatus();
+      
       },
     };
   }
