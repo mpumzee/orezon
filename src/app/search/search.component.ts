@@ -40,9 +40,6 @@ export class SearchComponent implements OnInit {
     this.currentCart = this.currentCart.slice(0, 2);
   }
 
-  deleteItem(item: any) {
-    this.cartService.removeFromCart(item);
-  }
 
   removeItem(item){
      this.cartService.removeFromCart(item)
