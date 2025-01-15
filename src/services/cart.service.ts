@@ -54,6 +54,7 @@ export class CartService {
   removeFromCart(product) {
     const index = this.orezonCart?.findIndex((p) => p.id === product.id);
     if (index >= 0) {
+      console.log('entered');
       this.orezonCart.splice(index, 1);
     }
     this.saveToStorage();
@@ -90,7 +91,7 @@ export class CartService {
     if (savedCart) {
       return JSON.parse(savedCart);
     } else {
-      return null;
+      return [];
     }
   }
 

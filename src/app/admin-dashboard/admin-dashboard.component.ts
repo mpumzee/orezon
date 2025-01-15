@@ -18,6 +18,8 @@ export class AdminDashboardComponent {
   showPackages = false;
   users = false;
 
+  drawer = false;
+
   packages: Package[] = [];
 
   showProductCategories = false;
@@ -45,6 +47,14 @@ export class AdminDashboardComponent {
     });
 
     this.dashboard = true;
+  }
+
+  showDrawer() {
+    this.drawer = true;
+  }
+
+  hideDialog() {
+    this.drawer = false;
   }
 
   showPayment() {

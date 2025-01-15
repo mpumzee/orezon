@@ -16,6 +16,8 @@ export class DashboardComponent {
 
   show = false;
 
+  drawer = false;
+
   dashboard = false;
   profile = false;
   orders = false;
@@ -78,6 +80,14 @@ export class DashboardComponent {
       this.packages = res.data;
       console.log('packages:', res.data);
     });
+  }
+
+  showDrawer() {
+    this.drawer = true;
+  }
+
+  hideDialog() {
+    this.drawer = false;
   }
 
   showDashboard() {

@@ -30,8 +30,7 @@ export class UsersComponent {
     this.buyerService.getAllList().subscribe((res) => {
       this.buyers = res.data;
       this.buyers.forEach((buyer) => {
-        buyer.profile_pic =
-          'http://127.0.0.1:8000/storage/' + buyer.profile_pic;
+        buyer.profile_pic = 'https://orezon.co.zw/storage/' + buyer.profile_pic;
       });
       console.log('buyers:', this.buyers);
 
