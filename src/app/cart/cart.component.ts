@@ -34,11 +34,11 @@ export class CartComponent {
   user: any;
 
   constructor(
+    private router:Router,
     public cartService: CartService,
     private productService: ProductsService,
     private categoryService: SubCategoriesService,
     public actRoute: ActivatedRoute,
-    private router: Router,
     private orderService: OrdersService
   ) {}
 
@@ -140,5 +140,11 @@ export class CartComponent {
 
   getTotal() {
     return this.cartService.getTotal();
+  }
+
+
+  checkout(){
+    this.router.navigate(['/checkout'])
+
   }
 }
