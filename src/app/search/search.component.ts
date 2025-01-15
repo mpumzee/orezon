@@ -18,6 +18,7 @@ export class SearchComponent  implements OnInit{
   totalCart = 0
   cartTotalAmount = 0;
 
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -43,6 +44,11 @@ export class SearchComponent  implements OnInit{
    this.currentCart =  this.currentCart.slice(0, 2);
 
 
+  }
+
+
+  removeItem(item){
+     this.cartService.removeFromCart(item)
   }
 
 

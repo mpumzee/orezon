@@ -42,7 +42,7 @@ export class CheckOutComponent implements OnInit {
   private initConfig(): void {
     this.payPalConfig = {
       clientId: 'AS-HUIcnym-ONjaikvwMor0OzN-bxRt-muXbonxmERNaeU9_DLl1MCz2LsnmKfSWGTvZ-NLvehwaJvxJ',
-      createOrderOnServer: (data) => fetch(`${environment.url}/paypal/create-order`, {
+      createOrderOnServer: (data) => fetch(`${environment.url}/create-order`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ export class CheckOutComponent implements OnInit {
         console.log('onApprove - transaction was approved, but not authorized', data, actions);
         actions.order.get().then(details => {
           console.log('onApprove - you can get full order details inside onApprove: ', details);
-        });
+        })
 
       },
       onClientAuthorization: (data) => {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Status } from '../../enums/status';
 import { Orders } from '../../models/orders';
 import { ProductCategory } from '../../models/product-category';
@@ -32,6 +32,7 @@ export class CartComponent {
   categories: ProductCategory[] = [];
 
   constructor(
+    private router:Router,
     public cartService: CartService,
     private productService: ProductsService,
     private categoryService: ProductCategoryService,
@@ -132,5 +133,11 @@ export class CartComponent {
 
   getTotal() {
     return this.cartService.getTotal();
+  }
+
+
+  checkout(){
+    this.router.navigate(['/checkout'])
+
   }
 }
