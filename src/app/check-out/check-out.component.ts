@@ -47,7 +47,6 @@ export class CheckOutComponent implements OnInit {
     this.total = this.cartService.getTotal();
     this.initConfig();
 
-
   }
 
 
@@ -64,7 +63,10 @@ export class CheckOutComponent implements OnInit {
         body: JSON.stringify(this.orderData)
       })
         .then((res) => res.json())
-        .then((order) => order.orderID),
+        .then((order) => {
+      console.log(order)
+          return order
+        }),
       onApprove: (data, actions) => {
         console.log('onApprove - transaction was approved, but not authorized', data, actions);
         actions.order.get().then(details => {
