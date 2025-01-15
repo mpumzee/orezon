@@ -26,15 +26,28 @@ export class CheckOutComponent implements OnInit {
     price: this.total ,
     currency:'USD'
   };
+  accessToken:any = null
 
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService ,) { }
 
   ngOnInit() {
+    this.accessToken = sessionStorage.getItem('token');
+    console.log(this.accessToken,'access token')
     this.cartItems = this.cartService.getCurrentCart();
+    console.log(this.cartService.getCurrentCart())
+
     this.totalCartItems = this.cartItems.length;
+
+    this.orderData = {
+      products: this.cartItems,
+      price: this.total ,
+      currency:'USD'
+    };
     this.total = this.cartService.getTotal();
     this.initConfig();
+
+
   }
 
 
@@ -45,7 +58,8 @@ export class CheckOutComponent implements OnInit {
       createOrderOnServer: (data) => fetch(`${environment.url}/orders`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.accessToken}`,
         },
         body: JSON.stringify(this.orderData)
       })
@@ -64,16 +78,20 @@ export class CheckOutComponent implements OnInit {
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
+
+      //TODO:  make an api call to the backend  alerting that the user has cancel the order
         this.showCancel = true;
 
       },
       onError: err => {
         console.log('OnError', err);
+        //TODO: there was an error   that happenend and we couldnt complete  , maybe can send  the error
+        //TODO: show an alert to the user  that  the transcation
         this.showError = true;
       },
       onClick: (data, actions) => {
         console.log('onClick', data, actions);
-      
+
       },
     };
   }

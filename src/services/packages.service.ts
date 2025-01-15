@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseHandler } from '../models/response-handler';
+import { environment } from '../environments/environment.development';
 
-const url = 'https://orezon.co.zw/api/v1';
+const url = environment.url;
 const headers: HttpHeaders = new HttpHeaders().set(
   'Content-Type',
   'application/json, charset=utf-8'
