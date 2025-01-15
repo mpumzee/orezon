@@ -94,7 +94,8 @@ export class ProductsComponent implements OnInit {
 
     this.productService.getSellerProducts(this.user).subscribe((res) => {
       res.data.forEach((product: any) => {
-        product.image_url = 'https://orezon.co.zw/storage/' + product.image_url;
+        product.image_url =
+          'https://orezon.co.zw/storage/app/public/' + product.image_url;
         const category = this.categories.filter(
           (x) => x.id == product.sub_category_id
         );
@@ -166,7 +167,7 @@ export class ProductsComponent implements OnInit {
           this.productService.getSellerProducts(this.user).subscribe((res) => {
             res.data.forEach((product: any) => {
               product.image_url =
-                'https://orezon.co.zw/storage/' + product.image_url;
+                'https://orezon.co.zw/storage/app/public/' + product.image_url;
               const category = this.categories.filter(
                 (x) => x.id == product.sub_category_id
               );

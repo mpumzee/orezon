@@ -51,7 +51,8 @@ export class BuyerOrdersComponent {
       res.data
         .filter((x) => x.user_id == this.user.id)
         .forEach((buyer) => {
-          this.buyer_pic = 'https://orezon.co.zw/storage/' + buyer.profile_pic;
+          this.buyer_pic =
+            'https://orezon.co.zw/storage/app/public/' + buyer.profile_pic;
         });
       console.log('buyer:', res.data);
     });
@@ -66,7 +67,8 @@ export class BuyerOrdersComponent {
       this.orders.forEach((order) => {
         order.total_quantity = 0;
         order.products.forEach((prod: any) => {
-          prod.image_url = 'https://orezon.co.zw/storage/' + prod.image_url;
+          prod.image_url =
+            'https://orezon.co.zw/storage/app/public/' + prod.image_url;
           const category = this.categories.filter(
             (x) => x.id == prod.sub_category_id
           );

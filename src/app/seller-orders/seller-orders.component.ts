@@ -69,12 +69,13 @@ export class SellerOrdersComponent {
           .forEach((buyer) => {
             console.log('entered', buyer);
             order.buyer_pic =
-              'https://orezon.co.zw/storage/' + buyer.profile_pic;
+              'https://orezon.co.zw/storage/app/public/' + buyer.profile_pic;
             order.buyer_name = buyer.user.name;
             order.buyer_email = buyer.user.email;
           });
         order.products.forEach((prod: any) => {
-          prod.image_url = 'https://orezon.co.zw/storage/' + prod.image_url;
+          prod.image_url =
+            'https://orezon.co.zw/storage/app/public/' + prod.image_url;
           const category = this.categories.filter(
             (x) => x.id == prod.sub_category_id
           );
