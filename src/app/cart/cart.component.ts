@@ -39,7 +39,6 @@ export class CartComponent {
     private productService: ProductsService,
     private categoryService: SubCategoriesService,
     public actRoute: ActivatedRoute,
-    private router: Router,
     private orderService: OrdersService
   ) {}
 
