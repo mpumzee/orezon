@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment.development';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { url } from 'inspector';
 import { ResponseHandler } from '../models/response-handler';
 
 
@@ -22,7 +21,7 @@ export class PaypalService {
 
    postOrder(itemDto: any) {
      var body = JSON.stringify(itemDto);
-     return this.http.post<ResponseHandler>(`${url}/packages/register`, body, {
+     return this.http.post<ResponseHandler>(`${this.url}/packages/register`, body, {
        ...this.headers,
      });
    }
