@@ -6,6 +6,7 @@ import { environment } from '../environments/environment.development';
 const url = environment.url;
 const headers: HttpHeaders = new HttpHeaders().set(
   'Content-Type',
+
   'application/json, charset=utf-8'
 );
 
