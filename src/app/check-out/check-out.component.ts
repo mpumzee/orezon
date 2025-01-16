@@ -1,7 +1,6 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { IPayPalConfig, NgxPayPalModule } from 'ngx-paypal';
-import { environment } from '../../environments/environment.development';
+import { ICreateOrderRequest, IPayPalConfig, NgxPayPalModule } from 'ngx-paypal';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -22,51 +21,39 @@ export class CheckOutComponent implements OnInit {
   showError: boolean;
 
   orderData = {
-    products: this.cartItems,
-    price: this.total ,
-    currency:'USD'
+    items: this.cartItems,
+    price: this.total,
+    currency: 'USD'
   };
-  accessToken:any = null
 
 
-  constructor(private cartService: CartService ,) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit() {
-    this.accessToken = sessionStorage.getItem('token');
-    console.log(this.accessToken,'access token')
     this.cartItems = this.cartService.getCurrentCart();
-    console.log(this.cartService.getCurrentCart())
-
     this.totalCartItems = this.cartItems.length;
-
-    this.orderData = {
-      products: this.cartItems,
-      price: this.total ,
-      currency:'USD'
-    };
     this.total = this.cartService.getTotal();
-    this.initConfig();
 
+    this.initConfig();
   }
+
 
 
 
   private initConfig(): void {
     this.payPalConfig = {
       clientId: 'AS-HUIcnym-ONjaikvwMor0OzN-bxRt-muXbonxmERNaeU9_DLl1MCz2LsnmKfSWGTvZ-NLvehwaJvxJ',
-      createOrderOnServer: (data) => fetch(`${environment.url}/orders`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${this.accessToken}`,
-        },
-        body: JSON.stringify(this.orderData)
-      })
-        .then((res) => res.json())
-        .then((order) => {
-      console.log(order)
-          return order
-        }),
+      createOrderOnClient: (data) => < ICreateOrderRequest > {
+        intent: 'CAPTURE',
+        purchase_units: [{
+            amount: {
+                currency_code: 'USD',
+                value: this.total.toFixed(2),
+
+            },
+
+        }]
+    },
       onApprove: (data, actions) => {
         console.log('onApprove - transaction was approved, but not authorized', data, actions);
         actions.order.get().then(details => {
@@ -80,15 +67,11 @@ export class CheckOutComponent implements OnInit {
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
-
-      //TODO:  make an api call to the backend  alerting that the user has cancel the order
         this.showCancel = true;
 
       },
       onError: err => {
         console.log('OnError', err);
-        //TODO: there was an error   that happenend and we couldnt complete  , maybe can send  the error
-        //TODO: show an alert to the user  that  the transcation
         this.showError = true;
       },
       onClick: (data, actions) => {
@@ -100,4 +83,53 @@ export class CheckOutComponent implements OnInit {
   resetStatus() {
     throw new Error('Method not implemented.');
   }
+
+
+
+  toPayPalOrder =(product) => {
+    const unitAmountValue = parseFloat(product.price); // Parse price to a number
+    const quantity = parseInt(product.quantity, 10);
+    const calculatedAmount = unitAmountValue * quantity;
+
+    if (isNaN(unitAmountValue) || isNaN(quantity) || isNaN(calculatedAmount)) {
+      console.error("Invalid product data. price and quantity must be valid numbers", product);
+      return null; // or throw an error
+    }
+
+  return {
+    intent: 'CAPTURE',
+    purchase_units: [
+      {
+        reference_id: 'default',
+        items: [
+          {
+            name: product.name,
+            description: product.description,
+            unit_amount: {
+              currency_code: 'USD',
+              value: unitAmountValue.toString()
+            },
+            quantity: quantity,
+            category: 'PHYSICAL_GOODS'
+          }
+        ],
+        amount: {
+          currency_code: 'USD',
+          value: calculatedAmount.toString(),
+          breakdown: {
+            item_total: {
+              currency_code: 'USD',
+              value: calculatedAmount.toString()
+            }
+          }
+        }
+      }
+    ]
+  };
+};
+
+finday(){
+  return this.cartItems.map(this.toPayPalOrder).filter(order => order !== null);
 }
+}
+
