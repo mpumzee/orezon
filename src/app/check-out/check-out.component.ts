@@ -1,6 +1,7 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ICreateOrderRequest, IPayPalConfig, NgxPayPalModule } from 'ngx-paypal';
+import { PaypalService } from '../../services';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -27,7 +28,7 @@ export class CheckOutComponent implements OnInit {
   };
 
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private paypalService: PaypalService) { }
 
   ngOnInit() {
     this.cartItems = this.cartService.getCurrentCart();
@@ -40,20 +41,29 @@ export class CheckOutComponent implements OnInit {
 
 
 
+   saveOrder(order:any){
+     this.paypalService.postOrder(order).subscribe(resp =>{
+      alert('Order Prossed Successfulyy')
+     })
+   }
+
+
+
+
   private initConfig(): void {
     this.payPalConfig = {
       clientId: 'AS-HUIcnym-ONjaikvwMor0OzN-bxRt-muXbonxmERNaeU9_DLl1MCz2LsnmKfSWGTvZ-NLvehwaJvxJ',
-      createOrderOnClient: (data) => < ICreateOrderRequest > {
+      createOrderOnClient: (data) => <ICreateOrderRequest>{
         intent: 'CAPTURE',
         purchase_units: [{
-            amount: {
-                currency_code: 'USD',
-                value: this.total.toFixed(2),
+          amount: {
+            currency_code: 'USD',
+            value: this.total.toFixed(2),
 
-            },
+          },
 
         }]
-    },
+      },
       onApprove: (data, actions) => {
         console.log('onApprove - transaction was approved, but not authorized', data, actions);
         actions.order.get().then(details => {
@@ -63,6 +73,7 @@ export class CheckOutComponent implements OnInit {
       },
       onClientAuthorization: (data) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        this.saveOrder(data)
         this.showSuccess = true;
       },
       onCancel: (data, actions) => {
@@ -86,7 +97,7 @@ export class CheckOutComponent implements OnInit {
 
 
 
-  toPayPalOrder =(product) => {
+  toPayPalOrder = (product) => {
     const unitAmountValue = parseFloat(product.price); // Parse price to a number
     const quantity = parseInt(product.quantity, 10);
     const calculatedAmount = unitAmountValue * quantity;
@@ -96,40 +107,40 @@ export class CheckOutComponent implements OnInit {
       return null; // or throw an error
     }
 
-  return {
-    intent: 'CAPTURE',
-    purchase_units: [
-      {
-        reference_id: 'default',
-        items: [
-          {
-            name: product.name,
-            description: product.description,
-            unit_amount: {
-              currency_code: 'USD',
-              value: unitAmountValue.toString()
-            },
-            quantity: quantity,
-            category: 'PHYSICAL_GOODS'
-          }
-        ],
-        amount: {
-          currency_code: 'USD',
-          value: calculatedAmount.toString(),
-          breakdown: {
-            item_total: {
-              currency_code: 'USD',
-              value: calculatedAmount.toString()
+    return {
+      intent: 'CAPTURE',
+      purchase_units: [
+        {
+          reference_id: 'default',
+          items: [
+            {
+              name: product.name,
+              description: product.description,
+              unit_amount: {
+                currency_code: 'USD',
+                value: unitAmountValue.toString()
+              },
+              quantity: quantity,
+              category: 'PHYSICAL_GOODS'
+            }
+          ],
+          amount: {
+            currency_code: 'USD',
+            value: calculatedAmount.toString(),
+            breakdown: {
+              item_total: {
+                currency_code: 'USD',
+                value: calculatedAmount.toString()
+              }
             }
           }
         }
-      }
-    ]
+      ]
+    };
   };
-};
 
-finday(){
-  return this.cartItems.map(this.toPayPalOrder).filter(order => order !== null);
-}
+  finday() {
+    return this.cartItems.map(this.toPayPalOrder).filter(order => order !== null);
+  }
 }
 
