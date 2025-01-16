@@ -73,7 +73,13 @@ export class CheckOutComponent implements OnInit {
       },
       onClientAuthorization: (data) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-        this.saveOrder(data)
+        const packet = {
+          products:this.cartItems,
+          status:data.status,
+          order_id:data.id,
+          amount:this.total
+        }
+        this.saveOrder(packet)
         this.showSuccess = true;
       },
       onCancel: (data, actions) => {
