@@ -21,7 +21,7 @@ export class PaypalService {
 
    postOrder(itemDto: any) {
      var body = JSON.stringify(itemDto);
-     return this.http.post<ResponseHandler>(`${this.url}/orders`, body, {
+     return this.http.post<ResponseHandler>(`${this.url}/orders`, itemDto, {
        ...this.headers,
      });
    }
