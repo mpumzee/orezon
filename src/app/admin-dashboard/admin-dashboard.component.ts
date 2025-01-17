@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Buyer } from '../../models/buyer';
 import { Orders } from '../../models/orders';
 import { Package } from '../../models/package';
+import { Seller } from '../../models/seller';
+import { BuyerRegistrationService } from '../../services/buyer-registration.service';
 import { OrdersService } from '../../services/orders.service';
 import { PackagesService } from '../../services/packages.service';
+import { SellerRegistrationService } from '../../services/seller-registration.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -16,6 +20,7 @@ export class AdminDashboardComponent {
   orderstab = false;
   showPayments = false;
   showPackages = false;
+  payout = false;
   users = false;
 
   drawer = false;
@@ -26,13 +31,33 @@ export class AdminDashboardComponent {
 
   role: any;
 
+  thisMonthOrders = 0
+
+  lastMonthOrders = 0
+
+  ordersPercentageDiff: any
+
+  totalUsers = 0
+
+  thisMonthUsers = 0
+
+  lastMonthUsers = 0
+
+  usersPercentageDiff: any
+
   orders: Orders[] = [];
+
+  buyers: Buyer[] = [];
+
+  sellers: Seller[] = [];
 
   constructor(
     private packageService: PackagesService,
     private orderService: OrdersService,
+    private buyerService: BuyerRegistrationService,
+    private sellerService: SellerRegistrationService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
@@ -44,6 +69,75 @@ export class AdminDashboardComponent {
     this.packageService.getAllList().subscribe((res) => {
       this.packages = res.data;
       console.log('packages:', res.data);
+    });
+
+    this.orderService.getAllList().subscribe((res) => {
+      this.orders = res.data;
+
+      // Calculate total orders for last month and this month
+      this.lastMonthOrders = this.orders.filter(order => {
+        const orderDate = new Date(order.created_at);
+        return orderDate.getFullYear() === new Date().getFullYear() &&
+          orderDate.getMonth() === new Date().getMonth() - 1;
+      }).reduce((sum, order) => sum + order.total_price, 0);
+
+      this.thisMonthOrders = this.orders.filter(order => {
+        const orderDate = new Date(order.created_at);
+        return orderDate.getFullYear() === new Date().getFullYear() &&
+          orderDate.getMonth() === new Date().getMonth();
+      }).reduce((sum, order) => sum + order.total_price, 0);
+
+      // Calculate percentage difference
+      this.ordersPercentageDiff =
+        this.thisMonthOrders > this.lastMonthOrders ?
+          ((this.thisMonthOrders - this.lastMonthOrders) / this.lastMonthOrders * 100).toFixed(2) :
+          ((this.lastMonthOrders - this.thisMonthOrders) / this.lastMonthOrders * 100).toFixed(2);
+
+      console.log('orders:', this.orders, this.thisMonthOrders, this.lastMonthOrders, this.ordersPercentageDiff);
+    });
+
+    this.buyerService.getAllList().subscribe((res) => {
+      this.buyers = res.data;
+
+      this.lastMonthUsers += this.buyers.filter(user => {
+        const userDate = new Date(user.created_at);
+        return userDate.getFullYear() === new Date().getFullYear() &&
+          userDate.getMonth() === new Date().getMonth() - 1;
+      }).length;
+
+      this.thisMonthUsers += this.buyers.filter(user => {
+        const userDate = new Date(user.created_at);
+        return userDate.getFullYear() === new Date().getFullYear() &&
+          userDate.getMonth() === new Date().getMonth();
+      }).length;
+
+      console.log('buyers:', this.buyers);
+    });
+
+    this.sellerService.getAllList().subscribe((res) => {
+      this.sellers = res.data;
+
+      this.lastMonthUsers += this.sellers.filter(user => {
+        const userDate = new Date(user.created_at);
+        return userDate.getFullYear() === new Date().getFullYear() &&
+          userDate.getMonth() === new Date().getMonth() - 1;
+      }).length;
+
+      this.thisMonthUsers += this.sellers.filter(user => {
+        const userDate = new Date(user.created_at);
+        return userDate.getFullYear() === new Date().getFullYear() &&
+          userDate.getMonth() === new Date().getMonth();
+      }).length;
+
+      console.log('sellers:', this.sellers);
+
+      // Calculate percentage difference
+      this.usersPercentageDiff =
+        this.thisMonthUsers > this.lastMonthUsers ?
+          ((this.thisMonthUsers - this.lastMonthUsers) / this.lastMonthUsers * 100).toFixed(2) :
+          ((this.lastMonthUsers - this.thisMonthUsers) / this.lastMonthUsers * 100).toFixed(2);
+
+      console.log('all:', this.lastMonthUsers, this.thisMonthUsers, this.usersPercentageDiff);
     });
 
     this.dashboard = true;
@@ -65,6 +159,7 @@ export class AdminDashboardComponent {
     this.users = false;
     this.orderstab = false;
     this.showPackages = false;
+    this.payout = false
   }
 
   showOrders() {
@@ -75,6 +170,7 @@ export class AdminDashboardComponent {
     this.orderstab = true;
     this.showPayments = false;
     this.showPackages = false;
+    this.payout = false
   }
 
   showUsers() {
@@ -85,6 +181,7 @@ export class AdminDashboardComponent {
     this.orderstab = false;
     this.showPayments = false;
     this.showPackages = false;
+    this.payout = false
   }
 
   showProfile() {
@@ -95,6 +192,7 @@ export class AdminDashboardComponent {
     this.orderstab = false;
     this.showPayments = false;
     this.showPackages = false;
+    this.payout = false
   }
 
   showDashboard() {
@@ -105,6 +203,7 @@ export class AdminDashboardComponent {
     this.orderstab = false;
     this.showPayments = false;
     this.showPackages = false;
+    this.payout = false
   }
 
   showCategories() {
@@ -115,6 +214,7 @@ export class AdminDashboardComponent {
     this.orderstab = false;
     this.showPayments = false;
     this.showPackages = false;
+    this.payout = false
   }
 
   showPackage() {
@@ -125,5 +225,17 @@ export class AdminDashboardComponent {
     this.orderstab = false;
     this.showPayments = false;
     this.showPackages = true;
+    this.payout = false
+  }
+
+  showPayout() {
+    this.dashboard = false;
+    this.showProductCategories = false;
+    this.profile = false;
+    this.users = false;
+    this.orderstab = false;
+    this.showPayments = false;
+    this.showPackages = false;
+    this.payout = true
   }
 }

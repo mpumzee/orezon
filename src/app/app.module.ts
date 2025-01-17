@@ -45,6 +45,10 @@ import { BuyerOrdersComponent } from './buyer-orders/buyer-orders.component';
 import { CartComponent } from './cart/cart.component';
 import { SellerOrdersComponent } from './seller-orders/seller-orders.component';
 import { UsersComponent } from './users/users.component';
+import { SellerPaymentsComponent } from './seller-payments/seller-payments.component';
+import { BuyerPaymentComponent } from './buyer-payment/buyer-payment.component';
+import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
+import { SellerPayoutsComponent } from './seller-payouts/seller-payouts.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +86,10 @@ import { UsersComponent } from './users/users.component';
     CartComponent,
     SellerOrdersComponent,
     UsersComponent,
+    SellerPaymentsComponent,
+    BuyerPaymentComponent,
+    AdminPaymentComponent,
+    SellerPayoutsComponent,
   ],
   imports: [
     BrowserModule,

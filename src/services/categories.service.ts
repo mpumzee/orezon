@@ -12,7 +12,7 @@ const headers: HttpHeaders = new HttpHeaders().set(
   providedIn: 'root',
 })
 export class CategoriesService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   create(itemDto: any) {
     var body = JSON.stringify(itemDto);

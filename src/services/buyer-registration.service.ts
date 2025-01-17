@@ -12,7 +12,7 @@ headers.append('enctype', 'multipart/form-data');
   providedIn: 'root',
 })
 export class BuyerRegistrationService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   create(itemDto: any) {
     var body = JSON.stringify(itemDto);

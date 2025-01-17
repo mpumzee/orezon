@@ -20,7 +20,7 @@ export class BuyerDashboardComponent {
 
   orders: Orders[] = [];
 
-  constructor(private orderService: OrdersService, private router: Router) {}
+  constructor(private orderService: OrdersService, private router: Router) { }
 
   ngOnInit(): void {
     this.profile = true;
