@@ -5,12 +5,14 @@ import { Roles } from '../../enums/roles';
 import { Buyer } from '../../models/buyer';
 import { Package } from '../../models/package';
 import { ProductCategory } from '../../models/product-category';
+import { Products } from '../../models/products';
 import { Seller } from '../../models/seller';
 import { SubOrder } from '../../models/sub-order';
 import { User } from '../../models/user';
 import { OrdersService } from '../../services';
 import { BuyerRegistrationService } from '../../services/buyer-registration.service';
 import { PackagesService } from '../../services/packages.service';
+import { ProductsService } from '../../services/products.service';
 import { SellerRegistrationService } from '../../services/seller-registration.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
 
@@ -48,7 +50,7 @@ export class DashboardComponent {
   dashboard = false;
   profile = false;
   orders = false;
-  products = false;
+  showProducts = false;
   payment = false;
 
   role: any;
@@ -59,13 +61,30 @@ export class DashboardComponent {
 
   public bankForm: FormGroup;
 
+  thisMonthClients = 0
+
+  lastMonthClients = 0
+
+  clientsPercentageDiff: any
+
+  products: Products[] = []
+
+  thisMonthOrders = 0
+
+  lastMonthOrders = 0
+
+  ordersPercentageDiff: any
+
+  totalProducts = 0;
+
   constructor(
     private packageService: PackagesService,
     private router: Router,
     private orderService: OrdersService,
     private sellerService: SellerRegistrationService,
     private buyerService: BuyerRegistrationService,
-    private categoryService: SubCategoriesService
+    private categoryService: SubCategoriesService,
+    private productService: ProductsService
   ) {
     this.sellerForm = new FormGroup({
       business_name: new FormControl('', [Validators.required]),
@@ -99,6 +118,9 @@ export class DashboardComponent {
     this.dashboard = true;
 
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
+    this.user.id = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
+    this.user.name = sessionStorage.getItem('loggedUserName') || '{}';
+    this.user.email = sessionStorage.getItem('loggedUserEmail') || '{}';
 
     if (sessionStorage.length == 0 || this.role != Roles.SELLER) {
       this.router.navigate(['/login']);
@@ -109,10 +131,57 @@ export class DashboardComponent {
       console.log('packages:', res.data);
     });
 
+    this.productService.getSellerProducts(this.user.id).subscribe((res) => {
+      this.products = res.data;
+      this.totalProducts = this.products.length
+      console.log('products:', res.data);
+    });
 
-    this.user.id = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
-    this.user.name = sessionStorage.getItem('loggedUserName') || '{}';
-    this.user.email = sessionStorage.getItem('loggedUserEmail') || '{}';
+    this.orderService.getAllList().subscribe((res) => {
+      this.subOrders = res.data;
+
+      // Calculate total orders for last month and this month
+      this.lastMonthOrders = this.subOrders.filter(order => {
+        const orderDate = new Date(order.created_at);
+        return orderDate.getFullYear() === new Date().getFullYear() &&
+          orderDate.getMonth() === new Date().getMonth() - 1 && order.seller_id == this.user.id;
+      }).reduce((sum, order) => sum + order.total_price, 0);
+
+      this.thisMonthOrders = this.subOrders.filter(order => {
+        const orderDate = new Date(order.created_at);
+        return orderDate.getFullYear() === new Date().getFullYear() &&
+          orderDate.getMonth() === new Date().getMonth() && order.seller_id == this.user.id;
+      }).reduce((sum, order) => sum + order.total_price, 0);
+
+      // Calculate percentage difference
+      this.ordersPercentageDiff = ((this.thisMonthOrders - this.lastMonthOrders) / this.lastMonthOrders * 100).toFixed(2)
+
+      console.log('orders:', this.subOrders, this.thisMonthOrders, this.lastMonthOrders, this.ordersPercentageDiff);
+    });
+
+    this.buyerService.getAllList().subscribe((res) => {
+      this.buyers = res.data;
+
+      this.lastMonthClients = this.buyers.filter(user => {
+        const userDate = new Date(user.created_at);
+        return userDate.getFullYear() === new Date().getFullYear() &&
+          userDate.getMonth() === new Date().getMonth() - 1;
+      }).length;
+
+      this.thisMonthClients = this.buyers.filter(user => {
+        const userDate = new Date(user.created_at);
+        return userDate.getFullYear() === new Date().getFullYear() &&
+          userDate.getMonth() === new Date().getMonth();
+      }).length;
+
+
+      // Calculate percentage difference
+      this.clientsPercentageDiff = ((this.thisMonthClients - this.lastMonthClients) / this.lastMonthClients * 100).toFixed(2)
+
+      console.log('all:', this.lastMonthClients, this.thisMonthClients, this.clientsPercentageDiff);
+    });
+
+
 
     this.categoryService.getAllList().subscribe((res) => {
       this.categories = res.data;
@@ -181,15 +250,15 @@ export class DashboardComponent {
 
   showDashboard() {
     this.dashboard = true;
-    this.products = false;
+    this.showProducts = false;
     this.profile = false;
     this.orders = false;
     this.payment = false;
   }
 
-  showProducts() {
+  showProducts_() {
     this.dashboard = false;
-    this.products = true;
+    this.showProducts = true;
     this.profile = false;
     this.orders = false;
     this.payment = false;
@@ -197,7 +266,7 @@ export class DashboardComponent {
 
   showProfile() {
     this.dashboard = false;
-    this.products = false;
+    this.showProducts = false;
     this.profile = true;
     this.orders = false;
     this.payment = false;
@@ -205,7 +274,7 @@ export class DashboardComponent {
 
   showOrders() {
     this.dashboard = false;
-    this.products = false;
+    this.showProducts = false;
     this.profile = false;
     this.orders = true;
     this.payment = false;
@@ -213,7 +282,7 @@ export class DashboardComponent {
 
   showPayment() {
     this.dashboard = false;
-    this.products = false;
+    this.showProducts = false;
     this.profile = false;
     this.orders = false;
     this.payment = true;

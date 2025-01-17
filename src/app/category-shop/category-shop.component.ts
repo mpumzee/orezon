@@ -40,36 +40,38 @@ export class CategoryShopComponent implements OnInit {
     public actRoute: ActivatedRoute,
     private router: Router,
     private orderService: OrdersService
-  ) {}
+  ) { }
   ngOnInit(): void {
     console.log('cart', this.cartService.getCurrentCart());
 
     this.categoryService.getAllList().subscribe((res) => {
       this.subCategories = res.data;
       console.log('categories:', this.subCategories);
+
+      this.productService.getAllList().subscribe((res) => {
+        this.unfilteredProducts = res.data.filter(
+          (x) => x.sub_category_id == this.id
+        );
+        this.unfilteredProducts.forEach((product: any) => {
+          product.image_url =
+            'https://orezon.co.zw/storage/app/public/' + product.image_url;
+          const category = this.subCategories.filter(
+            (x) => x.id == product.sub_category_id
+          );
+          console.log('category', category);
+          category.forEach((cat) => {
+            product.sub_category_name = cat.name;
+            console.log('category', product.sub_category_name);
+          });
+        });
+        this.products = this.unfilteredProducts;
+        console.log('products:', this.products);
+      });
     });
 
     this.id = this.actRoute.snapshot.params['id'];
 
-    this.productService.getAllList().subscribe((res) => {
-      this.unfilteredProducts = res.data.filter(
-        (x) => x.sub_category_id == this.id
-      );
-      this.unfilteredProducts.forEach((product: any) => {
-        product.image_url =
-          'https://orezon.co.zw/storage/app/public/' + product.image_url;
-        const category = this.subCategories.filter(
-          (x) => x.id == product.sub_category_id
-        );
-        console.log('category', category);
-        category.forEach((cat) => {
-          product.sub_category_name = cat.name;
-          console.log('category', product.sub_category_name);
-        });
-      });
-      this.products = this.unfilteredProducts;
-      console.log('products:', this.products);
-    });
+
 
     this.cartService.updateTotal.subscribe((resp) => {
       if (resp) {

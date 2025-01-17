@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductCategory } from '../../models/product-category';
 import { Products } from '../../models/products';
+import { SubCategory } from '../../models/sub-category';
+import { CategoriesService } from '../../services/categories.service';
 import { ProductsService } from '../../services/products.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
 import { SearchService } from '../search.service';
@@ -19,6 +21,10 @@ export class ProductsComponent implements OnInit {
   sellerId = 6;
 
   categories: ProductCategory[] = [];
+
+  subCategories: SubCategory[] = [];
+
+  filteredSubCategories: SubCategory[] = [];
 
   newProduct: Products = {} as Products;
 
@@ -62,12 +68,15 @@ export class ProductsComponent implements OnInit {
 
   selectedId = 0;
 
+  showSubCategories = false
+
   constructor(
     private http: HttpClient,
     private router: Router,
     private searchService: SearchService,
     private productService: ProductsService,
-    private categoryService: SubCategoriesService
+    private subCategoryService: SubCategoriesService,
+    private categoryService: CategoriesService,
   ) {
     this.productForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
@@ -92,20 +101,26 @@ export class ProductsComponent implements OnInit {
       console.log('categories:', this.categories);
     });
 
-    this.productService.getSellerProducts(this.user).subscribe((res) => {
-      res.data.forEach((product: any) => {
-        product.image_url =
-          'https://orezon.co.zw/storage/app/public/' + product.image_url;
-        const category = this.categories.filter(
-          (x) => x.id == product.sub_category_id
-        );
-        category.forEach((cat) => {
-          product.sub_category_name = cat.name;
+    this.subCategoryService.getAllList().subscribe((res) => {
+      this.subCategories = res.data;
+      console.log('sub categories:', this.subCategories);
+
+      this.productService.getSellerProducts(this.user).subscribe((res) => {
+        res.data.forEach((product: any) => {
+          product.image_url =
+            'https://orezon.co.zw/storage/app/public/' + product.image_url;
+          const category = this.subCategories.filter(
+            (x) => x.id == product.sub_category_id
+          );
+          category.forEach((cat) => {
+            product.sub_category_name = cat.name;
+          });
         });
+        this.products = res.data;
+        console.log('products:', this.products);
       });
-      this.products = res.data;
-      console.log('products:', this.products);
     });
+
 
     this.searchService.currentSearchTerm.subscribe((term) => {
       if (term) {
@@ -294,6 +309,18 @@ export class ProductsComponent implements OnInit {
     );
 
     this.deleteModal = false;
+  }
+
+  onSelection(item: any) {
+    const selectedCategory = (item.target as HTMLSelectElement).value;
+
+    this.filteredSubCategories = this.subCategories.filter(x => x.category_id == selectedCategory)
+
+    if (this.filteredSubCategories.length > 0) {
+      this.showSubCategories = true
+    } else {
+      this.showSubCategories = false
+    }
   }
 
   getAllEquipment() {

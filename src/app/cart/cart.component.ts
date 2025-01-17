@@ -34,13 +34,13 @@ export class CartComponent {
   user: any;
 
   constructor(
-    private router:Router,
+    private router: Router,
     public cartService: CartService,
     private productService: ProductsService,
     private categoryService: SubCategoriesService,
     public actRoute: ActivatedRoute,
     private orderService: OrdersService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
@@ -56,27 +56,29 @@ export class CartComponent {
     this.categoryService.getAllList().subscribe((res) => {
       this.categories = res.data;
       console.log('categories:', this.categories);
+
+      this.productService.getAllList().subscribe((res) => {
+        this.unfilteredProducts = res.data.filter(
+          (x) => x.sub_category_id == this.id
+        );
+        this.unfilteredProducts.forEach((product: any) => {
+          product.image_url =
+            'https://orezon.co.zw/storage/app/public/' + product.image_url;
+          const category = this.categories.filter(
+            (x) => x.id == product.sub_category_id
+          );
+          category.forEach((cat) => {
+            product.sub_category_name = cat.name;
+          });
+        });
+        this.products = this.unfilteredProducts;
+        console.log('products:', this.products);
+      });
     });
 
     this.id = this.actRoute.snapshot.params['id'];
 
-    this.productService.getAllList().subscribe((res) => {
-      this.unfilteredProducts = res.data.filter(
-        (x) => x.sub_category_id == this.id
-      );
-      this.unfilteredProducts.forEach((product: any) => {
-        product.image_url =
-          'https://orezon.co.zw/storage/app/public/' + product.image_url;
-        const category = this.categories.filter(
-          (x) => x.id == product.sub_category_id
-        );
-        category.forEach((cat) => {
-          product.sub_category_name = cat.name;
-        });
-      });
-      this.products = this.unfilteredProducts;
-      console.log('products:', this.products);
-    });
+
 
     this.cartService.updateTotal.subscribe((resp) => {
       if (resp) {
@@ -92,6 +94,21 @@ export class CartComponent {
     this.checkIfExist(item);
     this.checkIfExistPrice(item);
     this.getTotal();
+    console.log('cart', this.cartService.getCurrentCart());
+  }
+
+  incrementCart(item: any) {
+    alert('Item removed from cart');
+    console.log(this.checkIfExist(item));
+    if ((this.checkIfExist(item)) == 1) {
+      this.cartService.removeFromCart(item)
+    } else {
+      this.cartService.subtractFromCart(item, item.price, 1);
+      this.checkIfExist(item);
+      this.checkIfExistPrice(item);
+      this.getTotal();
+    }
+
     console.log('cart', this.cartService.getCurrentCart());
   }
 
@@ -144,7 +161,7 @@ export class CartComponent {
   }
 
 
-  checkout(){
+  checkout() {
     this.router.navigate(['/checkout'])
 
   }

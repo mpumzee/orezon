@@ -3,10 +3,12 @@ import { Router } from '@angular/router';
 import { Buyer } from '../../models/buyer';
 import { Orders } from '../../models/orders';
 import { Package } from '../../models/package';
+import { Payments } from '../../models/payments';
 import { Seller } from '../../models/seller';
 import { BuyerRegistrationService } from '../../services/buyer-registration.service';
 import { OrdersService } from '../../services/orders.service';
 import { PackagesService } from '../../services/packages.service';
+import { PaymentService } from '../../services/payment.service';
 import { SellerRegistrationService } from '../../services/seller-registration.service';
 
 @Component({
@@ -45,7 +47,21 @@ export class AdminDashboardComponent {
 
   usersPercentageDiff: any
 
+  thisMonthClients = 0
+
+  lastMonthClients = 0
+
+  clientsPercentageDiff: any
+
+  thisMonthPayments = 0
+
+  lastMonthPayments = 0
+
+  paymentsPercentageDiff: any
+
   orders: Orders[] = [];
+
+  payments: Payments[] = []
 
   buyers: Buyer[] = [];
 
@@ -56,6 +72,7 @@ export class AdminDashboardComponent {
     private orderService: OrdersService,
     private buyerService: BuyerRegistrationService,
     private sellerService: SellerRegistrationService,
+    private paymentService: PaymentService,
     private router: Router
   ) { }
 
@@ -88,10 +105,7 @@ export class AdminDashboardComponent {
       }).reduce((sum, order) => sum + order.total_price, 0);
 
       // Calculate percentage difference
-      this.ordersPercentageDiff =
-        this.thisMonthOrders > this.lastMonthOrders ?
-          ((this.thisMonthOrders - this.lastMonthOrders) / this.lastMonthOrders * 100).toFixed(2) :
-          ((this.lastMonthOrders - this.thisMonthOrders) / this.lastMonthOrders * 100).toFixed(2);
+      this.ordersPercentageDiff = ((this.thisMonthOrders - this.lastMonthOrders) / this.lastMonthOrders * 100).toFixed(2)
 
       console.log('orders:', this.orders, this.thisMonthOrders, this.lastMonthOrders, this.ordersPercentageDiff);
     });
@@ -132,12 +146,53 @@ export class AdminDashboardComponent {
       console.log('sellers:', this.sellers);
 
       // Calculate percentage difference
-      this.usersPercentageDiff =
-        this.thisMonthUsers > this.lastMonthUsers ?
-          ((this.thisMonthUsers - this.lastMonthUsers) / this.lastMonthUsers * 100).toFixed(2) :
-          ((this.lastMonthUsers - this.thisMonthUsers) / this.lastMonthUsers * 100).toFixed(2);
+      this.usersPercentageDiff = ((this.thisMonthUsers - this.lastMonthUsers) / this.lastMonthUsers * 100).toFixed(2)
 
       console.log('all:', this.lastMonthUsers, this.thisMonthUsers, this.usersPercentageDiff);
+    });
+
+    this.sellerService.getAllList().subscribe((res) => {
+      this.sellers = res.data;
+
+      this.lastMonthClients = this.sellers.filter(user => {
+        const userDate = new Date(user.created_at);
+        return userDate.getFullYear() === new Date().getFullYear() &&
+          userDate.getMonth() === new Date().getMonth() - 1;
+      }).length;
+
+      this.thisMonthClients = this.sellers.filter(user => {
+        const userDate = new Date(user.created_at);
+        return userDate.getFullYear() === new Date().getFullYear() &&
+          userDate.getMonth() === new Date().getMonth();
+      }).length;
+
+
+      // Calculate percentage difference
+      this.clientsPercentageDiff = ((this.thisMonthClients - this.lastMonthClients) / this.lastMonthClients * 100).toFixed(2)
+
+      console.log('all:', this.lastMonthClients, this.thisMonthClients, this.clientsPercentageDiff);
+    });
+
+    this.paymentService.getAllList().subscribe((res) => {
+      this.payments = res.data;
+
+      this.lastMonthPayments = this.payments.filter(payment => {
+        const paymentDate = new Date(payment.created_at);
+        return paymentDate.getFullYear() === new Date().getFullYear() &&
+          paymentDate.getMonth() === new Date().getMonth() - 1;
+      }).length;
+
+      this.thisMonthPayments = this.payments.filter(payment => {
+        const paymentDate = new Date(payment.created_at);
+        return paymentDate.getFullYear() === new Date().getFullYear() &&
+          paymentDate.getMonth() === new Date().getMonth();
+      }).length;
+
+
+      // Calculate percentage difference
+      this.paymentsPercentageDiff = ((this.thisMonthPayments - this.lastMonthPayments) / this.lastMonthPayments * 100).toFixed(2)
+
+      console.log('payment:', this.lastMonthPayments, this.thisMonthPayments, this.paymentsPercentageDiff);
     });
 
     this.dashboard = true;
