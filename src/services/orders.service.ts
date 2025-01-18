@@ -23,7 +23,7 @@ export class OrdersService {
   }
 
   getAllList() {
-    return this.http.get<ResponseHandler>(`${url}/orders`);
+    return this.http.get<ResponseHandler>(`${url}/admin/orders`);
   }
 
   order(itemDto: any) {

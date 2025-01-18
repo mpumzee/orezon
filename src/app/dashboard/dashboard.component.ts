@@ -256,10 +256,6 @@ export class DashboardComponent {
       console.log('categories:', this.categories);
     });
 
-    this.buyerService.getAllList().subscribe((res) => {
-      this.buyers = res.data;
-      console.log('buyer:', res.data);
-    });
 
     this.sellerService.getAllList().subscribe((res) => {
       this.sellers = res.data;

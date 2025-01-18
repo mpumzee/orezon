@@ -5,6 +5,7 @@ import { Orders } from '../../models/orders';
 import { Package } from '../../models/package';
 import { Payments } from '../../models/payments';
 import { Seller } from '../../models/seller';
+import { SubOrder } from '../../models/sub-order';
 import { BuyerRegistrationService } from '../../services/buyer-registration.service';
 import { OrdersService } from '../../services/orders.service';
 import { PackagesService } from '../../services/packages.service';
@@ -55,6 +56,10 @@ export class AdminDashboardComponent {
 
   thisMonthPayments = 0
 
+  totalOrders = 0;
+
+  subOrders: SubOrder[] = [];
+
   lastMonthPayments = 0
 
   paymentsPercentageDiff: any
@@ -89,16 +94,18 @@ export class AdminDashboardComponent {
     });
 
     this.orderService.getAllList().subscribe((res) => {
-      this.orders = res.data;
+      this.subOrders = res.data;
+
+      console.log('orders:', this.subOrders)
 
       // Calculate total orders for last month and this month
-      this.lastMonthOrders = this.orders.filter(order => {
+      this.lastMonthOrders = this.subOrders.filter(order => {
         const orderDate = new Date(order.created_at);
         return orderDate.getFullYear() === new Date().getFullYear() &&
           orderDate.getMonth() === new Date().getMonth() - 1;
       }).reduce((sum, order) => sum + order.total_price, 0);
 
-      this.thisMonthOrders = this.orders.filter(order => {
+      this.thisMonthOrders = this.subOrders.filter(order => {
         const orderDate = new Date(order.created_at);
         return orderDate.getFullYear() === new Date().getFullYear() &&
           orderDate.getMonth() === new Date().getMonth();
