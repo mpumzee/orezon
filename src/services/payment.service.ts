@@ -16,14 +16,14 @@ export class PaymentService {
   constructor(private http: HttpClient) { }
 
   getSellerPayments() {
-    return this.http.get<ResponseHandler>(`${url}/payments/seller/`);
+    return this.http.get<ResponseHandler>(`${url}/seller/payments`);
   }
 
   getBuyerPayments() {
-    return this.http.get<ResponseHandler>(`${url}/payments`);
+    return this.http.get<ResponseHandler>(`${url}/buyer/payments`);
   }
 
   getAllList() {
-    return this.http.get<ResponseHandler>(`${url}/payments`);
+    return this.http.get<ResponseHandler>(`${url}/admin/payments`);
   }
 }

@@ -12,10 +12,10 @@ const headers: HttpHeaders = new HttpHeaders().set(
   providedIn: 'root',
 })
 export class OrdersService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getSellerOrders() {
-    return this.http.get<ResponseHandler>(`${url}/orders/seller/`);
+    return this.http.get<ResponseHandler>(`${url}/orders/seller`);
   }
 
   getBuyerOrders() {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Roles } from '../../enums/roles';
 import { Buyer } from '../../models/buyer';
 import { Package } from '../../models/package';
+import { Payments } from '../../models/payments';
 import { ProductCategory } from '../../models/product-category';
 import { Products } from '../../models/products';
 import { Seller } from '../../models/seller';
@@ -12,6 +13,7 @@ import { User } from '../../models/user';
 import { OrdersService } from '../../services';
 import { BuyerRegistrationService } from '../../services/buyer-registration.service';
 import { PackagesService } from '../../services/packages.service';
+import { PaymentService } from '../../services/payment.service';
 import { ProductsService } from '../../services/products.service';
 import { SellerRegistrationService } from '../../services/seller-registration.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
@@ -53,6 +55,12 @@ export class DashboardComponent {
   showProducts = false;
   payment = false;
 
+  thisMonthPayments = 0
+
+  lastMonthPayments = 0
+
+  paymentsPercentageDiff: any
+
   role: any;
 
   countries: any[] = [];
@@ -67,6 +75,8 @@ export class DashboardComponent {
 
   clientsPercentageDiff: any
 
+  payments: Payments[] = []
+
   products: Products[] = []
 
   thisMonthOrders = 0
@@ -77,9 +87,12 @@ export class DashboardComponent {
 
   totalProducts = 0;
 
+  totalOrders = 0;
+
   constructor(
     private packageService: PackagesService,
     private router: Router,
+    private paymentService: PaymentService,
     private orderService: OrdersService,
     private sellerService: SellerRegistrationService,
     private buyerService: BuyerRegistrationService,
@@ -137,30 +150,62 @@ export class DashboardComponent {
       console.log('products:', res.data);
     });
 
-    this.orderService.getAllList().subscribe((res) => {
-      this.subOrders = res.data;
-
-      // Calculate total orders for last month and this month
-      this.lastMonthOrders = this.subOrders.filter(order => {
-        const orderDate = new Date(order.created_at);
-        return orderDate.getFullYear() === new Date().getFullYear() &&
-          orderDate.getMonth() === new Date().getMonth() - 1 && order.seller_id == this.user.id;
-      }).reduce((sum, order) => sum + order.total_price, 0);
-
-      this.thisMonthOrders = this.subOrders.filter(order => {
-        const orderDate = new Date(order.created_at);
-        return orderDate.getFullYear() === new Date().getFullYear() &&
-          orderDate.getMonth() === new Date().getMonth() && order.seller_id == this.user.id;
-      }).reduce((sum, order) => sum + order.total_price, 0);
-
-      // Calculate percentage difference
-      this.ordersPercentageDiff = ((this.thisMonthOrders - this.lastMonthOrders) / this.lastMonthOrders * 100).toFixed(2)
-
-      console.log('orders:', this.subOrders, this.thisMonthOrders, this.lastMonthOrders, this.ordersPercentageDiff);
-    });
 
     this.buyerService.getAllList().subscribe((res) => {
       this.buyers = res.data;
+
+      this.orderService.getSellerOrders().subscribe((res) => {
+        this.subOrders = res.data;
+
+        console.log('orders:', this.subOrders)
+        this.subOrders.forEach((order) => {
+          order.total_quantity = 0;
+          this.buyers
+            .filter((x) => x.user_id == order.buyer_id)
+            .forEach((buyer) => {
+              console.log('entered', buyer);
+              order.buyer_pic =
+                'https://orezon.co.zw/storage/app/public/' + buyer.profile_pic;
+              order.buyer_name = buyer.user.name;
+              order.buyer_email = buyer.user.email;
+            });
+          order.products.forEach((prod: any) => {
+            prod.image_url =
+              'https://orezon.co.zw/storage/app/public/' + prod.image_url;
+            const category = this.categories.filter(
+              (x) => x.id == prod.sub_category_id
+            );
+            category.forEach((cat) => {
+              prod.sub_category_name = cat.name;
+            });
+            this.sellers
+              .filter((x) => x.user_id == order.seller_id)
+              .forEach((seller) => {
+                prod.business_name = seller.business_name;
+              });
+            order.total_quantity += prod.pivot.quantity;
+          });
+        });
+        this.totalOrders = this.subOrders.length
+
+        // Calculate total orders for last month and this month
+        this.lastMonthOrders = this.subOrders.filter(order => {
+          const orderDate = new Date(order.created_at);
+          return orderDate.getFullYear() === new Date().getFullYear() &&
+            orderDate.getMonth() === new Date().getMonth() - 1;
+        }).reduce((sum, order) => sum + order.total_price, 0);
+
+        this.thisMonthOrders = this.subOrders.filter(order => {
+          const orderDate = new Date(order.created_at);
+          return orderDate.getFullYear() === new Date().getFullYear() &&
+            orderDate.getMonth() === new Date().getMonth();
+        }).reduce((sum, order) => sum + Number(order.total_price), 0);
+
+        // Calculate percentage difference
+        this.ordersPercentageDiff = ((this.thisMonthOrders - this.lastMonthOrders) / this.lastMonthOrders * 100).toFixed(2)
+
+        console.log('orders:', this.subOrders, this.thisMonthOrders, this.lastMonthOrders, this.ordersPercentageDiff);
+      });
 
       this.lastMonthClients = this.buyers.filter(user => {
         const userDate = new Date(user.created_at);
@@ -182,6 +227,29 @@ export class DashboardComponent {
     });
 
 
+    this.paymentService.getSellerPayments().subscribe((res) => {
+      this.payments = res.data;
+
+      this.lastMonthPayments = this.payments.filter(payment => {
+        const paymentDate = new Date(payment.created_at);
+        return paymentDate.getFullYear() === new Date().getFullYear() &&
+          paymentDate.getMonth() === new Date().getMonth() - 1;
+      }).length;
+
+      this.thisMonthPayments = this.payments.filter(payment => {
+        const paymentDate = new Date(payment.created_at);
+        return paymentDate.getFullYear() === new Date().getFullYear() &&
+          paymentDate.getMonth() === new Date().getMonth();
+      }).length;
+
+
+      // Calculate percentage difference
+      this.paymentsPercentageDiff = ((this.thisMonthPayments - this.lastMonthPayments) / this.lastMonthPayments * 100).toFixed(2)
+
+      console.log('payment:', this.lastMonthPayments, this.thisMonthPayments, this.paymentsPercentageDiff);
+    });
+
+
 
     this.categoryService.getAllList().subscribe((res) => {
       this.categories = res.data;
@@ -196,39 +264,6 @@ export class DashboardComponent {
     this.sellerService.getAllList().subscribe((res) => {
       this.sellers = res.data;
       console.log('sellers:', res.data);
-    });
-
-    this.orderService.getSellerOrders().subscribe((res) => {
-      this.subOrders = res.data;
-      this.subOrders.forEach((order) => {
-        order.total_quantity = 0;
-        this.buyers
-          .filter((x) => x.user_id == order.buyer_id)
-          .forEach((buyer) => {
-            console.log('entered', buyer);
-            order.buyer_pic =
-              'https://orezon.co.zw/storage/app/public/' + buyer.profile_pic;
-            order.buyer_name = buyer.user.name;
-            order.buyer_email = buyer.user.email;
-          });
-        order.products.forEach((prod: any) => {
-          prod.image_url =
-            'https://orezon.co.zw/storage/app/public/' + prod.image_url;
-          const category = this.categories.filter(
-            (x) => x.id == prod.sub_category_id
-          );
-          category.forEach((cat) => {
-            prod.sub_category_name = cat.name;
-          });
-          this.sellers
-            .filter((x) => x.user_id == order.seller_id)
-            .forEach((seller) => {
-              prod.business_name = seller.business_name;
-            });
-          order.total_quantity += prod.pivot.quantity;
-        });
-      });
-      console.log('orders:', this.orders);
     });
   }
 
