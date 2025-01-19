@@ -66,20 +66,22 @@ export class SubCategoriesComponent {
     this.categoryService.getAllList().subscribe((res) => {
       this.categories = res.data;
       console.log('categories:', this.categories);
+
+      this.subCatgeorySevice.getAllList().subscribe((res) => {
+        res.data.forEach((product: any) => {
+          const category = this.categories.filter(
+            (x) => x.id == product.category_id
+          );
+          category.forEach((cat) => {
+            product.category_name = cat.name;
+          });
+        });
+        this.subCategories = res.data;
+        console.log('subCategories:', this.subCategories);
+      });
     });
 
-    this.subCatgeorySevice.getAllList().subscribe((res) => {
-      res.data.forEach((product: any) => {
-        const category = this.categories.filter(
-          (x) => x.id == product.category_id
-        );
-        category.forEach((cat) => {
-          product.category_name = cat.name;
-        });
-      });
-      this.subCategories = res.data;
-      console.log('subCategories:', this.subCategories);
-    });
+
   }
 
   createSubCategory() {
@@ -226,5 +228,5 @@ export class SubCategoriesComponent {
     this.deleteModal = true;
   }
 
-  confirmDelete() {}
+  confirmDelete() { }
 }
