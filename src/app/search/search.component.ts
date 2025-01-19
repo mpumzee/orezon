@@ -2,7 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment.development';
+import { ProductCategory } from '../../models/product-category';
+import { SubCategory } from '../../models/sub-category';
 import { CartService } from '../../services/cart.service';
+import { CategoriesService } from '../../services/categories.service';
+import { SubCategoriesService } from '../../services/sub-categories.service';
 import { SearchService } from '../search.service';
 
 @Component({
@@ -18,13 +22,21 @@ export class SearchComponent implements OnInit {
   totalCart = 0;
   cartTotalAmount = 0;
 
+  categories: ProductCategory[] = [];
+
+  subCategories: SubCategory[] = [];
+
+  filteredSubCategories: SubCategory[] = [];
+
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private searchService: SearchService,
+    private subCategoryService: SubCategoriesService,
+    private categoryService: CategoriesService,
     private cartService: CartService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.cartService.updateTotal.subscribe((resp) => {
@@ -38,11 +50,36 @@ export class SearchComponent implements OnInit {
     this.totalCart = this.cartService.getTotaltems();
     this.cartTotalAmount = this.cartService.getTotal();
     this.currentCart = this.currentCart.slice(0, 2);
+
+    this.categoryService.getAllList().subscribe((res) => {
+      this.categories = res.data;
+      console.log('categories:', this.categories);
+    });
+
+    this.subCategoryService.getAllList().subscribe((res) => {
+      this.subCategories = res.data;
+      this.filteredSubCategories = this.subCategories
+      console.log('sub categories:', this.subCategories);
+    })
   }
 
 
-  removeItem(item){
-     this.cartService.removeFromCart(item)
+  removeItem(item) {
+    this.cartService.removeFromCart(item)
+  }
+
+  onSelection(item: any) {
+    const selectedCategory = (item.target as HTMLSelectElement).value;
+
+    this.filteredSubCategories = this.subCategories.filter(x => x.category_id == selectedCategory)
+
+  }
+
+  goToCategoryProducts(item: any) {
+    const selectedCategory = (item.target as HTMLSelectElement).value;
+
+    this.router.navigate(['/category-shop', selectedCategory]);
+
   }
 
 

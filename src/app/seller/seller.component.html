@@ -13,104 +13,105 @@
                 <form [formGroup]="sellerForm" (submit)="createSeller()">
                     <div class="grid grid-cols-12 gap-6 mb-8">
                         <div class="col-span-12 sm:col-span-4">
-                            <div class="col-span-4 sm:col-span-2 mb-5">
-                                <label for="product-name" class="text-xl font-medium text-gray-900 block mb-2">Full
+                            <div class="col-span-4 sm:col-span-2 mb-8">
+                                <label for="product-name" class="text-2xl font-medium text-gray-900 block mb-2">Full
                                     Name</label>
                                 <input type="text" name="name" id="name"
-                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                     id="name" formControlName="name" placeholder="enter your full name" required="">
                             </div>
-                            <div class="col-span-4 sm:col-span-2  mb-5">
-                                <label for="category" class="text-xl font-medium text-gray-900 block mb-2">Email</label>
+                            <div class="col-span-4 sm:col-span-2  mb-8">
+                                <label for="category"
+                                    class="text-2xl font-medium text-gray-900 block mb-2">Email</label>
                                 <input type="email" name="email" id="email" formControlName="email"
-                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                     placeholder="enter your email" required="">
                             </div>
-                            <div class="col-span-4 sm:col-span-2  mb-5">
-                                <label for="brand" class="text-xl font-medium text-gray-900 block mb-2">Password<i
+                            <div class="col-span-4 sm:col-span-2  mb-8">
+                                <label for="brand" class="text-2xl font-medium text-gray-900 block mb-2">Password<i
                                         style="color: grey;">(*atleast 8
                                         characters)</i></label>
                                 <input type="password" name="password" id="password"
-                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                     formControlName="password" minlength="8" placeholder="password" required="">
                             </div>
-                            <div class="col-span-4 sm:col-span-2  mb-5">
-                                <label for="price" class="text-xl font-medium text-gray-900 block mb-2">Password
+                            <div class="col-span-4 sm:col-span-2  mb-8">
+                                <label for="price" class="text-2xl font-medium text-gray-900 block mb-2">Password
                                     Confirmation<i style="color: grey;"></i></label>
                                 <input type="password" (ngModelChange)="check()" name="password_confirmation"
                                     id="password_confirmation"
-                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                     formControlName="password_confirmation" placeholder="re-enter your password"
                                     required="">
-                                <p *ngIf="errorAlert" class="mt-2 text-xl text-red-600 dark:text-red-500"><span
+                                <p *ngIf="errorAlert" class="mt-2 text-2xl text-red-600 dark:text-red-500"><span
                                         class="font-medium">Error!</span> Passwords do not match.</p>
                             </div>
                         </div>
                         <div class="col-span-12 sm:col-span-4">
-                            <div class="col-span-4 sm:col-span-2 mb-5">
-                                <label for="brand" class="text-xl font-medium text-gray-900 block mb-2">Business
+                            <div class="col-span-4 sm:col-span-2 mb-8">
+                                <label for="brand" class="text-2xl font-medium text-gray-900 block mb-2">Business
                                     Name</label>
                                 <input type="text"
-                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                     id="business_name" formControlName="business_name" placeholder="enter business name"
                                     required>
                             </div>
-                            <div class="col-span-4 sm:col-span-2 mb-5">
+                            <div class="col-span-4 sm:col-span-2 mb-8">
                                 <label for="category"
-                                    class="text-xl font-medium text-gray-900 block mb-2">Country</label>
+                                    class="text-2xl font-medium text-gray-900 block mb-2">Country</label>
                                 <select id="country"
-                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                     formControlName="country" required>
                                     <option value="">Select Country</option>
                                     <option *ngFor="let country of countries" [value]="country">{{country}}</option>
                                 </select>
                             </div>
-                            <div class="col-span-4 sm:col-span-2 mb-5">
-                                <label for="product-name" class="text-xl font-medium text-gray-900 block mb-2">National
+                            <div class="col-span-4 sm:col-span-2 mb-8">
+                                <label for="product-name" class="text-2xl font-medium text-gray-900 block mb-2">National
                                     ID/
                                     Passport No<i style="color: grey;"> (*6 - 12
                                         characters)</i></label>
                                 <input type="text" name="id_number" id="id_number"
-                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                     formControlName="id_number" maxlength="12"
                                     placeholder="enter national ID/ passport No" required="">
                             </div>
-                            <div class="col-span-4 sm:col-span-2 mb-5">
-                                <label for="price" class="text-xl font-medium text-gray-900 block mb-2">Phone</label>
+                            <div class="col-span-4 sm:col-span-2 mb-8">
+                                <label for="price" class="text-2xl font-medium text-gray-900 block mb-2">Phone</label>
                                 <input type="text"
-                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                     id="phone" formControlName="phone" minlength="10" placeholder="Enter phone"
                                     required>
                             </div>
                         </div>
                         <div class="col-span-12 sm:col-span-4">
-                            <div class="col-span-4 sm:col-span-2 mb-5">
-                                <label for="brand" class="text-xl font-medium text-gray-900 block mb-2">Banking
+                            <div class="col-span-4 sm:col-span-2 mb-8">
+                                <label for="brand" class="text-2xl font-medium text-gray-900 block mb-2">Banking
                                     Details</label>
                                 <input type="text"
-                                    class="form-control form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                    class="form-control form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                     id="bank" formControlName="bank" placeholder="Enter bank name" required>
                             </div>
-                            <div class="col-span-4 sm:col-span-2 mb-5">
-                                <label for="brand" class="text-xl font-medium text-gray-900 block mb-2">Account
+                            <div class="col-span-4 sm:col-span-2 mb-8">
+                                <label for="brand" class="text-2xl font-medium text-gray-900 block mb-2">Account
                                     Number</label>
                                 <input type="text"
-                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                     id="bank" formControlName="bank" id="account_number"
                                     formControlName="account_number" placeholder="Enter account number" required>
                             </div>
-                            <div class="col-span-4 sm:col-span-2 mb-5">
+                            <div class="col-span-4 sm:col-span-2 mb-8">
                                 <label for="product-name"
-                                    class="text-xl font-medium text-gray-900 block mb-2">Branch</label>
+                                    class="text-2xl font-medium text-gray-900 block mb-2">Branch</label>
                                 <input type="text"
-                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                     id="branch" formControlName="branch" placeholder="Enter branch" required>
                             </div>
-                            <div class="col-span-4 sm:col-span-2 mb-5">
-                                <label for="price" class="text-xl font-medium text-gray-900 block mb-2">Branch
+                            <div class="col-span-4 sm:col-span-2 mb-8">
+                                <label for="price" class="text-2xl font-medium text-gray-900 block mb-2">Branch
                                     Code</label>
                                 <input type="text"
-                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                    class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                     id="branch_code" formControlName="branch_code" placeholder="Enter branch code"
                                     required>
                             </div>

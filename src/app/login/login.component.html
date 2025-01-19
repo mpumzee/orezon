@@ -12,7 +12,7 @@
           </a>
         </div>
         <div class="card-body">
-          <p class="login-box-msg">Sign in to start your session</p>
+          <p class="login-box-msg text-2xl">Sign in to start your session</p>
 
           <form [formGroup]="loginForm" (submit)="login()">
             <div class="input-group" style="margin-bottom: 20px;">
@@ -40,7 +40,7 @@
               </div> -->
               <!-- /.col -->
               <div class="col-12" style="margin-top: 20px;">
-                <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-block p-3">Sign
+                <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-block p-3 text-2xl">Sign
                   In</button>
                 <!-- <label class="mt-2 checkbox">
                   <input type="checkbox" (change)="togglePasswordVisibility()" [checked]="passwordType === 'text'" />
@@ -48,8 +48,8 @@
                 </label> -->
               </div>
               <p class="mb-0 ml-4" style="margin-top: 20px;">
-                <a routerLink="/" class="text-center text-red mr-2">Register new account</a> |
-                <a routerLink="/forgot" class="text-center text-red ml-2">Forgot Password</a>
+                <a routerLink="/" class="text-center text-red mr-2 text-2xl">Register new account</a> |
+                <a routerLink="/forgot" class="text-center text-red ml-2 text-2xl">Forgot Password</a>
               </p>
               <!-- /.col -->
             </div>

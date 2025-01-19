@@ -16,14 +16,17 @@ export class CategoriesComponent {
   constructor(
     private router: Router,
     private subCatgeorySevice: SubCategoriesService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.subCatgeorySevice.getAllList().subscribe((res) => {
       this.unfilteredSubCategories = res.data.filter((x) => x.category_id == 1);
       this.unfilteredSubCategories.forEach((product: SubCategory) => {
-        product.img_url = 'assets/img/industrial.png';
+        product.img_url = 'assets/img/minerals.jpg';
       });
+      this.unfilteredSubCategories.filter(x => x.id == 1).forEach(cat => {
+        cat.img_url = 'assets/img/gold.jpg';
+      })
       this.subCategories = this.unfilteredSubCategories;
       console.log('subCategories:', this.unfilteredSubCategories);
     });
