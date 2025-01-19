@@ -22,10 +22,10 @@ export class CategoriesComponent {
     this.subCatgeorySevice.getAllList().subscribe((res) => {
       this.unfilteredSubCategories = res.data.filter((x) => x.category_id == 1);
       this.unfilteredSubCategories.forEach((product: SubCategory) => {
-        product.img_url = 'assets/img/minerals.jpg';
+        product.img_url = 'assets/img/minerals.png';
       });
       this.unfilteredSubCategories.filter(x => x.id == 1).forEach(cat => {
-        cat.img_url = 'assets/img/gold.jpg';
+        cat.img_url = 'assets/img/gold.png';
       })
       this.subCategories = this.unfilteredSubCategories;
       console.log('subCategories:', this.unfilteredSubCategories);
