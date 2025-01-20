@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SupplierCartService } from '../../services';
+import { SellerCartService, SupplierCartService } from '../../services';
 
 @Component({
   selector: 'app-nav-bar',
@@ -19,7 +19,7 @@ export class NavBarComponent {
   logOut = false
   home = false
 
-  constructor(private router: Router, private supplierCartService: SupplierCartService,) { }
+  constructor(private router: Router, private sellerCartService: SellerCartService) { }
 
   ngOnInit(): void {
     this.getCartInformation();
@@ -36,12 +36,12 @@ export class NavBarComponent {
 
   getCartInformation() {
 
-    this.supplierCartService.updateTotal.subscribe((res) => {
+    this.sellerCartService.updateTotal.subscribe((res) => {
       if(res){
 
-    this.currentSupplierCart = this.supplierCartService.getCurrentCart();
-    this.totalSupplierCart = this.supplierCartService.getTotaltems();
-    this.totalSupplierAmount = this.supplierCartService.getTotal();
+    this.currentSupplierCart = this.sellerCartService.getCurrentCart();
+    this.totalSupplierCart = this.sellerCartService.getTotaltems();
+    this.totalSupplierAmount = this.sellerCartService.getTotal();
       }
     })
 

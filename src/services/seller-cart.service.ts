@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-const cartStorageName = 'suppliercart';
+const cartStorageName = 'sellercart';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class SupplierCartService {
+export class SellerCartService {
   orezonCart: any = [];
   updateTotal = new BehaviorSubject(false);
   toggleCart = new BehaviorSubject(false);

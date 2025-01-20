@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Package } from '../../models/package';
 import { UserPackage } from '../../models/user-package';
+import { SellerCartService } from '../../services';
 import { PackagesService } from '../../services/packages.service';
 import { SignUpService } from '../../services/sign-up.service';
-import { SupplierCartService } from '../../services';
 
 @Component({
   selector: 'app-select-package',
@@ -22,8 +22,8 @@ export class SelectPackageComponent {
     private packageService: PackagesService,
     private router: Router,
     private userService: SignUpService,
-    private  supplierCartService: SupplierCartService
-  ) {}
+    private sellerCartService: SellerCartService
+  ) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
@@ -39,7 +39,7 @@ export class SelectPackageComponent {
   }
 
   selectPackage(item: any) {
-    this.supplierCartService.addToSupplierCart(item ,item.price , 1);
+    this.sellerCartService.addToSupplierCart(item, item.price, 1);
 
   }
 }
