@@ -27,4 +27,12 @@ export class PaypalService {
    }
 
 
+   subscribeOrder(itemDto: any) {
+    return this.http.post<ResponseHandler>(`${this.url}/subscriptions/subscribe`, itemDto, {
+      ...this.headers,
+    });
+  }
+
+
+
 }
