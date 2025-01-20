@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SellerCartService, SupplierCartService } from '../../services';
+import { SellerCartService } from '../../services';
 
 @Component({
   selector: 'app-nav-bar',
@@ -37,18 +37,18 @@ export class NavBarComponent {
   getCartInformation() {
 
     this.sellerCartService.updateTotal.subscribe((res) => {
-      if(res){
+      if (res) {
 
-    this.currentSupplierCart = this.sellerCartService.getCurrentCart();
-    this.totalSupplierCart = this.sellerCartService.getTotaltems();
-    this.totalSupplierAmount = this.sellerCartService.getTotal();
+        this.currentSupplierCart = this.sellerCartService.getCurrentCart();
+        this.totalSupplierCart = this.sellerCartService.getTotaltems();
+        this.totalSupplierAmount = this.sellerCartService.getTotal();
       }
     })
 
 
-    this.currentSupplierCart = this.supplierCartService.getCurrentCart();
-    this.totalSupplierCart = this.supplierCartService.getTotaltems();
-    this.totalSupplierAmount = this.supplierCartService.getTotal();
+    this.currentSupplierCart = this.sellerCartService.getCurrentCart();
+    this.totalSupplierCart = this.sellerCartService.getTotaltems();
+    this.totalSupplierAmount = this.sellerCartService.getTotal();
 
   }
 
