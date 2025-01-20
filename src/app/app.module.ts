@@ -69,6 +69,7 @@ import { UsersComponent } from './users/users.component';
     ProfileComponent,
     NavBarComponent,
     OrdersComponent,
+    FooterComponent,
     RegisterComponent,
     EquipmentCategoriesComponent,
     AboutUsComponent,
@@ -96,7 +97,6 @@ import { UsersComponent } from './users/users.component';
     FormsModule,
     ReactiveFormsModule,
     SlickCarouselModule,
-    FooterComponent
   ],
   providers: [
     provideHttpClient(),
