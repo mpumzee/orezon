@@ -4,6 +4,7 @@ import { Package } from '../../models/package';
 import { UserPackage } from '../../models/user-package';
 import { PackagesService } from '../../services/packages.service';
 import { SignUpService } from '../../services/sign-up.service';
+import { SupplierCartService } from '../../services';
 
 @Component({
   selector: 'app-select-package',
@@ -20,7 +21,8 @@ export class SelectPackageComponent {
   constructor(
     private packageService: PackagesService,
     private router: Router,
-    private userService: SignUpService
+    private userService: SignUpService,
+    private  supplierCartService: SupplierCartService
   ) {}
 
   ngOnInit(): void {
@@ -37,29 +39,7 @@ export class SelectPackageComponent {
   }
 
   selectPackage(item: any) {
-    console.log(item);
-    console.log(this.user);
-    this.userPackage.package_id = item.id;
-    this.userPackage.user_id = this.user;
-    this.packageService.selectPackage(this.userPackage).subscribe(
-      (res) => {
-        console.log(res);
+    this.supplierCartService.addToSupplierCart(item ,item.price , 1);
 
-        if (res.status == 'success') {
-          console.log(res.message);
-          this.userService.logOut();
-          this.router.navigate(['/login']);
-        } else {
-          console.error(Error);
-          console.log(res.message);
-          // Handle the error as needed
-        }
-      },
-      (error) => {
-        console.error(error);
-        alert(error.error.message);
-        // Handle the error as needed
-      }
-    );
   }
 }
