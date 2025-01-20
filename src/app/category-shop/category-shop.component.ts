@@ -10,7 +10,7 @@ import { ProductsService } from '../../services/products.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
 @Component({
   selector: 'app-category-shop',
-  standalone: true,
+  standalone: false,
   templateUrl: './category-shop.component.html',
   styleUrl: './category-shop.component.css',
 })

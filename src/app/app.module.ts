@@ -24,6 +24,7 @@ import { BuyerProfileComponent } from './buyer-profile/buyer-profile.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { CartComponent } from './cart/cart.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { CategoryShopComponent } from './category-shop/category-shop.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EquipmentCategoriesComponent } from './equipment-categories/equipment-categories.component';
@@ -57,6 +58,7 @@ import { UsersComponent } from './users/users.component';
     CategoriesComponent,
     ProductsComponent,
     LoginComponent,
+    CategoryShopComponent,
     AdminComponent,
     MetalsComponent,
     BrokerComponent,
