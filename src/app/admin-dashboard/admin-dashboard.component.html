@@ -42,13 +42,6 @@
                     </a>
                 </li>
                 <li>
-                    <a (click)="showProfile()"
-                        class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 text-xl dark:hover:bg-gray-700 group">
-                        <i class="fa fa-user text-gray-500 dark:text-gray-400"></i>
-                        <span class="ms-3 text-white text-2xl">Profile</span>
-                    </a>
-                </li>
-                <li>
                     <a (click)="showUsers()"
                         class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                         <i class="fa fa-user-friends text-gray-500 dark:text-gray-400"></i>
@@ -354,7 +347,7 @@
     </div>
     <div *ngIf="orderstab" class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="orders" role="tabpanel"
         aria-labelledby="orders-tab">
-        <app-orders></app-orders>
+        <app-admin-orders></app-admin-orders>
     </div>
     <div *ngIf="showPayments" class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="orders" role="tabpanel"
         aria-labelledby="orders-tab">
