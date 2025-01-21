@@ -30,20 +30,20 @@ export class EquipmentCategoriesComponent {
   constructor(
     private router: Router,
     private subCatgeorySevice: SubCategoriesService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.subCatgeorySevice.getAllList().subscribe((res) => {
       this.drillingSubCategories = res.data.filter((x) => x.category_id == 2);
-      this.haulingSubCategories = res.data.filter((x) => x.category_id == 3);
-      this.crushingSubCategories = res.data.filter((x) => x.category_id == 4);
-      this.separationSubCategories = res.data.filter((x) => x.category_id == 5);
+      this.haulingSubCategories = res.data.filter((x) => x.category_id == 4);
+      this.crushingSubCategories = res.data.filter((x) => x.category_id == 5);
+      this.separationSubCategories = res.data.filter((x) => x.category_id == 6);
       this.undergroundSubCategories = res.data.filter(
-        (x) => x.category_id == 6
+        (x) => x.category_id == 7
       );
-      this.safetySubCategories = res.data.filter((x) => x.category_id == 7);
+      this.safetySubCategories = res.data.filter((x) => x.category_id == 8);
       this.miscellaneousSubCategories = res.data.filter(
-        (x) => x.category_id == 8
+        (x) => x.category_id == 9
       );
       this.drillingSubCategories.forEach((product: SubCategory) => {
         product.img_url = 'assets/img/drill_rig.png';

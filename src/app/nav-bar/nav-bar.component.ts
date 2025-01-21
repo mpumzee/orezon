@@ -30,6 +30,7 @@ export class NavBarComponent {
       this.logOut = true
       this.home = true
       this.logIn = false
+      this.dashboard = true
     }
   }
 

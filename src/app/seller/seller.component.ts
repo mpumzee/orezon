@@ -106,7 +106,7 @@ export class SellerComponent {
       console.log(this.sellerForm.value);
       this.newSeller = this.sellerForm.value;
       this.newSeller.user_id = 0;
-      this.newSeller.role = Roles.SELLER;
+      this.newSeller.role = Roles.ADMIN;
       console.log('seller', this.newSeller);
 
       this.sellerService.create(this.newSeller).subscribe(

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Roles } from '../../enums/roles';
 import { environment } from '../../environments/environment.development';
 import { ProductCategory } from '../../models/product-category';
 import { SubCategory } from '../../models/sub-category';
@@ -22,6 +23,10 @@ export class SearchComponent implements OnInit {
   totalCart = 0;
   cartTotalAmount = 0;
 
+  showCart = false
+
+  role: any;
+
   categories: ProductCategory[] = [];
 
   subCategories: SubCategory[] = [];
@@ -39,6 +44,15 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.role = sessionStorage.getItem('loggedUserRole') || '{}';
+
+    if (this.role == Roles.SELLER || this.role == Roles.ADMIN) {
+      this.showCart = false
+    } else {
+      this.showCart = true
+    }
+
     this.cartService.updateTotal.subscribe((resp) => {
       if (resp) {
         this.currentCart = this.cartService.getCurrentCart();

@@ -11,51 +11,50 @@
         <!-- row -->
         <div class="row">
 
-            <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-                <ul class="flex flex-wrap -mb-px text-2xl font-medium text-center" id="default-tab"
-                    data-tabs-toggle="#default-tab-content" role="tablist">
-                    <li class="me-2" role="presentation">
-                        <button (click)="showDrilling()" class="inline-block p-4 border-b-2 rounded-t-lg"
-                            id="drilling-tab" data-tabs-target="#drilling" type="button" role="tab"
-                            aria-controls="drilling" aria-selected="false">| Drilling</button>
-                    </li>
-                    <li class="me-2" role="presentation">
-                        <button (click)="showLoading()"
-                            class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                            id="hauling-tab" data-tabs-target="#hauling" type="button" role="tab"
-                            aria-controls="hauling" aria-selected="false">| Loading and Hauling</button>
-                    </li>
-                    <li class="me-2" role="presentation">
-                        <button (click)="showCrushing()"
-                            class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                            id="grinding-tab" data-tabs-target="#grinding" type="button" role="tab"
-                            aria-controls="grinding" aria-selected="false">| Crushing and Grinding</button>
-                    </li>
-                    <li role="presentation">
-                        <button (click)="showSeparation()"
-                            class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                            id="separation-tab" data-tabs-target="#separation" type="button" role="tab"
-                            aria-controls="separation" aria-selected="false">| Separation and Concentration</button>
-                    </li>
-                    <li role="presentation">
-                        <button (click)="showUnderground()"
-                            class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                            id="underground-tab" data-tabs-target="#underground" type="button" role="tab"
-                            aria-controls="underground" aria-selected="false">| Underground Mining</button>
-                    </li>
-                    <li role="presentation">
-                        <button (click)="showSafety()"
-                            class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                            id="safety-tab" data-tabs-target="#safety" type="button" role="tab" aria-controls="safety"
-                            aria-selected="false">| Safety</button>
-                    </li>
-                    <li role="presentation">
-                        <button (click)="showMiscellaneos()"
-                            class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                            id="miscellaneous-tab" data-tabs-target="#miscellaneous" type="button" role="tab"
-                            aria-controls="miscellaneous" aria-selected="false">| Miscellaneous</button>
-                    </li>
-                </ul>
+            <div class="flex justify-center">
+                <nav
+                    class="flex overflow-x-auto items-center p-3 space-x-1 rtl:space-x-reverse text-2xl font-bold text-gray-600 bg-gray-500/5 rounded-xl dark:bg-gray-500/20">
+                    <button role="tab" type="button" (click)="showDrilling()"
+                        class="flex whitespace-nowrap items-center h-8 px-5 font-medium rounded-lg outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-inset text-yellow-600 shadow bg-white dark:text-white dark:bg-yellow-600"
+                        aria-selected="">
+                        Drilling
+                    </button>
+
+                    <button role="tab" type="button" (click)="showLoading()"
+                        class="flex whitespace-nowrap items-center h-8 px-5 font-medium rounded-lg outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-inset hover:text-gray-800 focus:text-yellow-600 dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-gray-400">
+                        Loading & Hauling
+                    </button>
+
+                    <button role="tab" type="button" (click)="showCrushing()"
+                        class="flex whitespace-nowrap items-center h-8 px-5 font-medium rounded-lg outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-inset hover:text-gray-800 focus:text-yellow-600 dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-gray-400">
+                        Crushing & Grinding
+                    </button>
+
+                    <button role="tab" type="button" (click)="showSeparation()"
+                        class="flex whitespace-nowrap items-center h-8 px-5 font-medium rounded-lg outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-inset hover:text-gray-800 focus:text-yellow-600 dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-gray-400">
+                        Separation & Concentration
+                    </button>
+
+                    <button role="tab" type="button" (click)="showUnderground()"
+                        class="flex whitespace-nowrap items-center h-8 px-5 font-medium rounded-lg outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-inset hover:text-gray-800 focus:text-yellow-600 dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-gray-400">
+                        Underground Mining
+                    </button>
+
+                    <button role="tab" type="button" (click)="showSafety()"
+                        class="flex whitespace-nowrap items-center h-8 px-5 font-medium rounded-lg outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-inset hover:text-gray-800 focus:text-yellow-600 dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-gray-400">
+                        Safety
+                    </button>
+
+                    <button role="tab" type="button" (click)="showMiscellaneos()"
+                        class="flex whitespace-nowrap items-center h-8 px-5 font-medium rounded-lg outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-inset hover:text-gray-800 focus:text-yellow-600 dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-gray-400">
+                        Miscellaneous
+                    </button>
+
+                    <button role="tab" type="button" (click)="showMiscellaneos()"
+                        class="flex whitespace-nowrap items-center h-8 px-5 font-medium rounded-lg outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-inset hover:text-gray-800 focus:text-yellow-600 dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-gray-400">
+                        Spares
+                    </button>
+                </nav>
             </div>
             <div class="mt-10 mb-4 grid gap-8 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
                 <div class="border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
