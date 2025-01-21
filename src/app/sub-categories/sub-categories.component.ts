@@ -228,5 +228,23 @@ export class SubCategoriesComponent {
     this.deleteModal = true;
   }
 
-  confirmDelete() { }
+  confirmDelete() {
+    this.subCatgeorySevice.delete(this.selectedId).subscribe(
+      (res) => {
+        console.log('res', res);
+
+        alert(res.message);
+        var index = this.subCategories.findIndex((x) => x.id === this.selectedId);
+        this.subCategories.splice(index, 1);
+
+        this.subCategories = [...this.subCategories, res.data];
+      },
+      (error) => {
+        console.error(error.message);
+        alert(error.error.message);
+      }
+    );
+
+    this.deleteModal = false;
+  }
 }

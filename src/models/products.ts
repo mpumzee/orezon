@@ -11,7 +11,7 @@ export interface Products {
   pivot: Pivot;
   image_url: File;
   sub_category_id: number;
-  sub_category: ProductCategory;
+  subcategory: ProductCategory;
   sub_category_name: string;
   user_id: number;
   business_name: string;
