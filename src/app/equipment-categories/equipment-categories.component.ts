@@ -27,6 +27,8 @@ export class EquipmentCategoriesComponent {
 
   miscellaneousSubCategories: SubCategory[] = [];
 
+  sparesSubCategories: SubCategory[] = [];
+
   constructor(
     private router: Router,
     private subCatgeorySevice: SubCategoriesService
@@ -45,6 +47,12 @@ export class EquipmentCategoriesComponent {
       this.miscellaneousSubCategories = res.data.filter(
         (x) => x.category_id == 9
       );
+      this.sparesSubCategories = res.data.filter(
+        (x) => x.category_id == 3
+      );
+      this.sparesSubCategories.forEach((product: SubCategory) => {
+        product.img_url = 'assets/img/spares.png';
+      });
       this.drillingSubCategories.forEach((product: SubCategory) => {
         product.img_url = 'assets/img/drill_rig.png';
       });

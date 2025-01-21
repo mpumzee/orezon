@@ -11,7 +11,7 @@ const headers: HttpHeaders = new HttpHeaders().set(
   providedIn: 'root',
 })
 export class SignUpService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   signUp(itemDto: any) {
     var body = JSON.stringify(itemDto);
