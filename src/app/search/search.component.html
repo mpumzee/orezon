@@ -15,7 +15,7 @@
 					<form class="max-w-[400px] mx-auto md:max-w-[500px] lg:max-w-[600px]">
 						<div class="flex">
 							<select (change)="onSelection($event)"
-								class="flex-shrink-0 z-10 inline-flex items-center text-xl font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
+								class="flex-shrink-0 z-10 inline-flex text-xl font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
 								<option value="">Select Category </option>
 								<option *ngFor="let category of categories" [value]="category.id">
 									{{category.name}}</option>
