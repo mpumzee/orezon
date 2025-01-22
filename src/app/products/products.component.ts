@@ -70,6 +70,8 @@ export class ProductsComponent implements OnInit {
 
   showSubCategories = false
 
+  role: any
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -90,6 +92,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
+    this.role = sessionStorage.getItem('loggedUserRole') || '{}';
     console.log(this.user);
 
     if (!this.user) {
