@@ -63,16 +63,13 @@
                     <td>{{ item.updated_at | date : 'MMM d, y' }}</td>
                     <td><button class="btn text-xl" (click)="displayModal(item)"><i class="fa fa-pen"
                                 style="color: blue;"></i></button></td>
-                    <td><button class="btn text-xl" (click)="displayDeleteModal(item)"><i class="fa fa-trash"
-                                style="color: red;"></i></button></td>
                 </tr>
             </tbody>
         </table>
     </fieldset>
 </div>
 
-<div *ngIf="deleteModal" class="" style="position: fixed; z-index: 1; left: 0; right: 0; top: 0;" tabindex="-1"
-    aria-modal="true">
+<div *ngIf="deleteModal" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

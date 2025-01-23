@@ -143,4 +143,24 @@ export class PackagesComponent {
     this.showModal = false;
     this.deleteModal = false;
   }
+
+  confirmDelete(item: any) {
+    this.packageService.delete(item.id).subscribe(
+      (res) => {
+        console.log('res', res);
+
+        alert('package deleted succesfully');
+        var index = this.packages.findIndex((x) => x.id === item.id);
+        this.packages.splice(index, 1);
+
+        this.packages = [...this.packages, res.data];
+      },
+      (error) => {
+        console.error(error.message);
+        alert(error.error.message);
+      }
+    );
+
+    this.deleteModal = false;
+  }
 }
