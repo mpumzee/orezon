@@ -1,17 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Roles } from '../../enums/roles';
 import { environment } from '../../environments/environment.development';
 import { ProductCategory } from '../../models/product-category';
 import { Products } from '../../models/products';
 import { SubCategory } from '../../models/sub-category';
+import { WishListService } from '../../services';
 import { CartService } from '../../services/cart.service';
 import { CategoriesService } from '../../services/categories.service';
 import { ProductsService } from '../../services/products.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
 import { SearchService } from '../search.service';
-import { WishListService } from '../../services';
 
 @Component({
   selector: 'app-search',
@@ -67,11 +66,7 @@ export class SearchComponent implements OnInit {
 
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
 
-    if (this.role == Roles.SELLER || this.role == Roles.ADMIN) {
-      this.showCart = false
-    } else {
-      this.showCart = true
-    }
+
 
     this.cartService.updateTotal.subscribe((resp) => {
       if (resp) {
@@ -91,9 +86,21 @@ export class SearchComponent implements OnInit {
     });
 
     this.productService.getAllList().subscribe((res) => {
-      this.products = res.data;
+      this.products = res.data
+      this.products.forEach((product: any) => {
+        product.image_url =
+          'https://orezon.co.zw/storage/app/public/' + product.image_url;
+        const category = this.subCategories.filter(
+          (x) => x.id == product.sub_category_id
+        );
+        console.log('category', category);
+        category.forEach((cat) => {
+          product.sub_category_name = cat.name;
+          console.log('category', product.sub_category_name);
+        });
+      });
+      this.filteredProducts = this.products;
       console.log('products:', this.products);
-      this.filteredProducts = this.products
     });
 
     this.subCategoryService.getAllList().subscribe((res) => {
@@ -108,6 +115,11 @@ export class SearchComponent implements OnInit {
     this.cartService.addToCart(item, item.price, 1);
 
     this.checkIfExist(item);
+  }
+
+  addTowishList(item) {
+    alert('Item added to wishlist');
+    return this.wishlistServie.addToCart(item, item.price, 1)
   }
 
   searchProducts(item: any) {
@@ -182,18 +194,18 @@ export class SearchComponent implements OnInit {
   }
 
 
-  getWishListItems(){
+  getWishListItems() {
     this.wishlistServie.updateTotal.subscribe((resp) => {
       if (resp) {
-        this.wishlist=  this.wishlistServie.getCurrentCart();
+        this.wishlist = this.wishlistServie.getCurrentCart();
         this.wishlistCount = this.wishlistServie.getTotaltems()
       }
     })
-     this.wishlist=  this.wishlistServie.getCurrentCart();
-     this.wishlistCount = this.wishlistServie.getTotaltems()
+    this.wishlist = this.wishlistServie.getCurrentCart();
+    this.wishlistCount = this.wishlistServie.getTotaltems()
   }
 
-  removeItemFromWishlist(item){
-     this.wishlistServie.removeFromCart(item)
+  removeItemFromWishlist(item) {
+    this.wishlistServie.removeFromCart(item)
   }
 }

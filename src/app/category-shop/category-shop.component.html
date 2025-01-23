@@ -45,10 +45,10 @@
 
 
 
-                                <button type="button" data-tooltip-target="tooltip-add-to-favorites" (click)="addTowishList(item)"
-                                    class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                                   >
-                                    <span class="sr-only"> Add to Favorites </span>
+                                <button type="button" data-tooltip-target="tooltip-add-to-favorites"
+                                    (click)="addTowishList(item)"
+                                    class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <span class="sr-only"> Add to Wishlist </span>
                                     <svg class="h-7 w-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -126,7 +126,7 @@
                             <p class="text-4xl font-extrabold leading-tight text-gray-900 dark:text-white">{{item.price
                                 | currency}}</p>
 
-                            <button *ngIf="role == 'buyer'" type="button" (click)="updateCart(item)"
+                            <button type="button" (click)="updateCart(item)"
                                 class="inline-flex items-center rounded-lg bg-green-700 px-5 py-2.5 text-2xl font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4  focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                                 <svg class="-ms-2 me-2 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     width="24" height="24" fill="none" viewBox="0 0 24 24">

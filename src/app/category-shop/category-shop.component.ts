@@ -4,10 +4,10 @@ import { Orders } from '../../models/orders';
 import { ProductCategory } from '../../models/product-category';
 import { Products } from '../../models/products';
 import { SubCategory } from '../../models/sub-category';
+import { WishListService } from '../../services';
 import { CartService } from '../../services/cart.service';
 import { ProductsService } from '../../services/products.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
-import { WishListService } from '../../services';
 @Component({
   selector: 'app-category-shop',
   standalone: false,
@@ -105,12 +105,13 @@ export class CategoryShopComponent implements OnInit {
   }
 
 
-  addTowishList(item){
-     return this.wishlistServie.addToCart(item ,item.price ,1)
+  addTowishList(item) {
+    alert('Item added to wishlist');
+    return this.wishlistServie.addToCart(item, item.price, 1)
   }
 
 
-  checkIfIteminWishList(item):boolean{
+  checkIfIteminWishList(item): boolean {
     const index = this.currentCart.findIndex((p) => p.id === item.id);
 
     if (index !== -1) {
@@ -124,4 +125,5 @@ export class CategoryShopComponent implements OnInit {
       console.log('Item not found in the cart');
       return false
     }
-}}
+  }
+}

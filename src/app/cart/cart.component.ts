@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Roles } from '../../enums/roles';
 import { Status } from '../../enums/status';
 import { Orders } from '../../models/orders';
 import { Products } from '../../models/products';
@@ -33,6 +34,8 @@ export class CartComponent {
 
   user: any;
 
+  role: any
+
   constructor(
     private router: Router,
     public cartService: CartService,
@@ -44,9 +47,10 @@ export class CartComponent {
 
   ngOnInit(): void {
     this.user = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
+    this.role = sessionStorage.getItem('loggedUserRole') || '{}';
     console.log(this.user);
 
-    if (sessionStorage.length == 0) {
+    if (sessionStorage.length == 0 || this.role == Roles.BUYER) {
       this.router.navigate(['/login']);
     }
     console.log('cart', this.cartService.getCurrentCart());
