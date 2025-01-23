@@ -1,13 +1,13 @@
 import { Component, type OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Orders } from '../../models/orders';
 import { ProductCategory } from '../../models/product-category';
 import { Products } from '../../models/products';
 import { SubCategory } from '../../models/sub-category';
 import { CartService } from '../../services/cart.service';
-import { OrdersService } from '../../services/orders.service';
 import { ProductsService } from '../../services/products.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
+import { WishListService } from '../../services';
 @Component({
   selector: 'app-category-shop',
   standalone: false,
@@ -31,17 +31,18 @@ export class CategoryShopComponent implements OnInit {
 
   subCategories: SubCategory[] = [];
 
+  wishlist = [];
+
   user: any;
 
   role: any
 
   constructor(
     public cartService: CartService,
+    private wishlistServie: WishListService,
     private productService: ProductsService,
     private categoryService: SubCategoriesService,
     public actRoute: ActivatedRoute,
-    private router: Router,
-    private orderService: OrdersService
   ) { }
   ngOnInit(): void {
     console.log('cart', this.cartService.getCurrentCart());
@@ -102,4 +103,25 @@ export class CategoryShopComponent implements OnInit {
     }
     return 0;
   }
-}
+
+
+  addTowishList(item){
+     return this.wishlistServie.addToCart(item ,item.price ,1)
+  }
+
+
+  checkIfIteminWishList(item):boolean{
+    const index = this.currentCart.findIndex((p) => p.id === item.id);
+
+    if (index !== -1) {
+
+
+      // Item found, index contains the position of the item in the array
+      console.log(`Item found at index: ${index}`);
+      return true
+    } else {
+      // Item not found
+      console.log('Item not found in the cart');
+      return false
+    }
+}}
