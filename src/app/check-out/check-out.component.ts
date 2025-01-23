@@ -1,13 +1,11 @@
-import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ICreateOrderRequest, IPayPalConfig, NgxPayPalModule } from 'ngx-paypal';
+import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { PaypalService } from '../../services';
 import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-check-out',
-  standalone: true,
-  imports: [DecimalPipe, NgxPayPalModule],
+  standalone: false,
   templateUrl: './check-out.component.html',
   styleUrl: './check-out.component.css',
 })
@@ -41,11 +39,11 @@ export class CheckOutComponent implements OnInit {
 
 
 
-   saveOrder(order:any){
-     this.paypalService.postOrder(order).subscribe(resp =>{
+  saveOrder(order: any) {
+    this.paypalService.postOrder(order).subscribe(resp => {
       alert('Order Prossed Successfulyy')
-     })
-   }
+    })
+  }
 
 
 
@@ -74,10 +72,10 @@ export class CheckOutComponent implements OnInit {
       onClientAuthorization: (data) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
         const packet = {
-          products:this.cartItems,
-          status:data.status,
-          order_id:data.id,
-          amount:this.total
+          products: this.cartItems,
+          status: data.status,
+          order_id: data.id,
+          amount: this.total
         }
         this.saveOrder(packet)
         this.showSuccess = true;

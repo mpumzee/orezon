@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Roles } from '../../enums/roles';
 import { environment } from '../../environments/environment.development';
 import { ProductCategory } from '../../models/product-category';
+import { Products } from '../../models/products';
 import { SubCategory } from '../../models/sub-category';
 import { CartService } from '../../services/cart.service';
 import { CategoriesService } from '../../services/categories.service';
+import { ProductsService } from '../../services/products.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
 import { SearchService } from '../search.service';
 
@@ -22,11 +25,25 @@ export class SearchComponent implements OnInit {
   totalCart = 0;
   cartTotalAmount = 0;
 
+  categoryModal = false
+
+  showCart = false
+
+  role: any;
+
   categories: ProductCategory[] = [];
 
   subCategories: SubCategory[] = [];
 
   filteredSubCategories: SubCategory[] = [];
+
+  products: Products[] = []
+
+  filteredProducts: Products[] = []
+
+  showProducts = false
+
+  selectedCategory: any
 
 
   constructor(
@@ -35,10 +52,20 @@ export class SearchComponent implements OnInit {
     private searchService: SearchService,
     private subCategoryService: SubCategoriesService,
     private categoryService: CategoriesService,
-    private cartService: CartService
+    private cartService: CartService,
+    private productService: ProductsService,
   ) { }
 
   ngOnInit(): void {
+
+    this.role = sessionStorage.getItem('loggedUserRole') || '{}';
+
+    if (this.role == Roles.SELLER || this.role == Roles.ADMIN) {
+      this.showCart = false
+    } else {
+      this.showCart = true
+    }
+
     this.cartService.updateTotal.subscribe((resp) => {
       if (resp) {
         this.currentCart = this.cartService.getCurrentCart();
@@ -56,11 +83,51 @@ export class SearchComponent implements OnInit {
       console.log('categories:', this.categories);
     });
 
+    this.productService.getAllList().subscribe((res) => {
+      this.products = res.data;
+      console.log('products:', this.products);
+      this.filteredProducts = this.products
+    });
+
     this.subCategoryService.getAllList().subscribe((res) => {
       this.subCategories = res.data;
       this.filteredSubCategories = this.subCategories
       console.log('sub categories:', this.subCategories);
     })
+  }
+
+  updateCart(item: any) {
+    alert('Item added to cart');
+    this.cartService.addToCart(item, item.price, 1);
+
+    this.checkIfExist(item);
+  }
+
+  searchProducts(item: any) {
+    if (!item) {
+      this.showProducts = false
+    }
+    else {
+      this.showProducts = true
+    }
+    console.log(item)
+    console.log(this.products)
+    this.filteredProducts = this.filteredProducts.filter(
+      prod => prod?.name.toLowerCase().includes(item.toLowerCase())
+    );
+    // if (this.filteredProducts = []) {
+    //   this.showProducts = false
+    // }
+    console.log(this.filteredProducts)
+    //this.filteredProducts = this.products.filter(x => x.)
+  }
+
+  checkIfExist(item) {
+    const index = this.currentCart?.findIndex((p) => p.id === item.id);
+    if (index >= 0) {
+      return this.currentCart[index].quantity;
+    }
+    return 0;
   }
 
 
@@ -69,9 +136,16 @@ export class SearchComponent implements OnInit {
   }
 
   onSelection(item: any) {
-    const selectedCategory = (item.target as HTMLSelectElement).value;
+    this.categoryModal = false
+    this.selectedCategory = (item.target as HTMLSelectElement).value;
+    console.log(this.selectedCategory)
+    console.log(this.products)
 
-    this.filteredSubCategories = this.subCategories.filter(x => x.category_id == selectedCategory)
+    this.filteredProducts = this.products.filter(x => x.subcategory.id == this.selectedCategory)
+    console.log(this.filteredProducts)
+
+    // this.filteredSubCategories = this.subCategories.filter(x => x.category_id == selectedCategory)
+    // console.log(this.filteredSubCategories)
 
   }
 
@@ -80,6 +154,11 @@ export class SearchComponent implements OnInit {
 
     this.router.navigate(['/category-shop', selectedCategory]);
 
+  }
+
+  showModal() {
+    this.categoryModal = true
+    console.log(this.categoryModal)
   }
 
 

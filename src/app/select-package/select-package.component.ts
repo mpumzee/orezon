@@ -40,6 +40,9 @@ export class SelectPackageComponent {
 
   selectPackage(item: any) {
     this.sellerCartService.addToSupplierCart(item, item.price, 1);
+    if (this.sellerCartService.getCurrentCart().length != 0) {
+      this.router.navigate(['/seller-checkout']);
+    }
 
   }
 }

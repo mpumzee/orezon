@@ -70,6 +70,8 @@ export class ProductsComponent implements OnInit {
 
   showSubCategories = false
 
+  role: any
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -90,6 +92,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
+    this.role = sessionStorage.getItem('loggedUserRole') || '{}';
     console.log(this.user);
 
     if (!this.user) {
@@ -292,9 +295,7 @@ export class ProductsComponent implements OnInit {
       (res) => {
         console.log('res', res);
 
-        this.success = true;
-        this.title = 'SUCESS';
-        this.successMsg = this.deletename + ' deleted successfully';
+        alert(res.message);
         var index = this.products.findIndex((x) => x.id === this.selectedId);
         this.products.splice(index, 1);
 
@@ -302,9 +303,7 @@ export class ProductsComponent implements OnInit {
       },
       (error) => {
         console.error(error.message);
-        this.error = true;
-        this.title = error.error.status;
-        this.errorMsg = error.error.message;
+        alert(error.error.message);
       }
     );
 

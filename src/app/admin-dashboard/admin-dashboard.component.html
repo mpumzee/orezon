@@ -12,7 +12,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
-                    <span class="ml-2">MENU</span>
+                    <span class="self-center text-2xl whitespace-nowrap dark:text-white ml-2">MENU</span>
                 </button>
             </div>
         </div>
@@ -39,13 +39,6 @@
                         class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                         <i class="fa fa-dashboard text-gray-500 dark:text-gray-400"></i>
                         <span class="flex-1 ms-3 text-2xl text-white whitespace-nowrap">Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <a (click)="showProfile()"
-                        class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 text-xl dark:hover:bg-gray-700 group">
-                        <i class="fa fa-user text-gray-500 dark:text-gray-400"></i>
-                        <span class="ms-3 text-white text-2xl">Profile</span>
                     </a>
                 </li>
                 <li>
@@ -148,9 +141,13 @@
                                 {{lastMonthOrders | currency}}</h4>
                         </div>
                         <div class="border-t border-blue-gray-50 p-4">
-                            <p
+                            <p *ngIf="ordersPercentageDiff > 0"
                                 class="block antialiased font-sans text-xl leading-relaxed font-normal text-blue-gray-600">
-                                <strong class="text-green-500">{{ordersPercentageDiff}}%</strong>&nbsp;than last month
+                                <strong class="text-green-500">+{{ordersPercentageDiff}}%</strong>&nbsp;than last month
+                            </p>
+                            <p *ngIf="ordersPercentageDiff < 0"
+                                class="block antialiased font-sans text-xl leading-relaxed font-normal text-blue-gray-600">
+                                <strong class="text-red-500">{{ordersPercentageDiff}}%</strong>&nbsp;than last month
                             </p>
                         </div>
                     </div>
@@ -173,9 +170,13 @@
                                 {{thisMonthUsers}}</h4>
                         </div>
                         <div class="border-t border-blue-gray-50 p-4">
-                            <p
+                            <p *ngIf="usersPercentageDiff > 0"
                                 class="block antialiased font-sans text-xl leading-relaxed font-normal text-blue-gray-600">
-                                <strong class="text-green-500">{{usersPercentageDiff}}%</strong>&nbsp;than last month
+                                <strong class="text-green-500">+{{usersPercentageDiff}}%</strong>&nbsp;than last month
+                            </p>
+                            <p *ngIf="usersPercentageDiff < 0"
+                                class="block antialiased font-sans text-xl leading-relaxed font-normal text-blue-gray-600">
+                                <strong class="text-red-500">{{usersPercentageDiff}}%</strong>&nbsp;than last month
                             </p>
                         </div>
                     </div>
@@ -198,7 +199,11 @@
                                 {{thisMonthClients}}</h4>
                         </div>
                         <div class="border-t border-blue-gray-50 p-4">
-                            <p
+                            <p *ngIf="clientsPercentageDiff > 0"
+                                class="block antialiased font-sans text-xl leading-relaxed font-normal text-blue-gray-600">
+                                <strong class="text-green-500">+{{clientsPercentageDiff}}%</strong>&nbsp;than last month
+                            </p>
+                            <p *ngIf="clientsPercentageDiff < 0"
                                 class="block antialiased font-sans text-xl leading-relaxed font-normal text-blue-gray-600">
                                 <strong class="text-red-500">{{clientsPercentageDiff}}%</strong>&nbsp;than last month
                             </p>
@@ -220,12 +225,17 @@
                                 Sales</p>
                             <h4
                                 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                                ${{thisMonthPayments}}</h4>
+                                {{thisMonthPayments | currency}}</h4>
                         </div>
                         <div class="border-t border-blue-gray-50 p-4">
-                            <p
+                            <p *ngIf="paymentsPercentageDiff > 0"
                                 class="block antialiased font-sans text-xl leading-relaxed font-normal text-blue-gray-600">
                                 <strong class="text-green-500">+{{paymentsPercentageDiff}}%</strong>&nbsp;than last
+                                month
+                            </p>
+                            <p *ngIf="paymentsPercentageDiff < 0"
+                                class="block antialiased font-sans text-xl leading-relaxed font-normal text-blue-gray-600">
+                                <strong class="text-green-500">{{paymentsPercentageDiff}}%</strong>&nbsp;than last
                                 month
                             </p>
                         </div>
@@ -354,7 +364,7 @@
     </div>
     <div *ngIf="orderstab" class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="orders" role="tabpanel"
         aria-labelledby="orders-tab">
-        <app-orders></app-orders>
+        <app-admin-orders></app-admin-orders>
     </div>
     <div *ngIf="showPayments" class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="orders" role="tabpanel"
         aria-labelledby="orders-tab">

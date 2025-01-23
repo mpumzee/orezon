@@ -27,47 +27,6 @@
                         Log In
                     </button>
                 </li>
-
-                <li>
-
-                <button class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span>Cart</span>
-                    </a>
-                    <div class="cart-dropdown">
-                        <div class="cart-list">
-
-                            @for (item of currentSupplierCart; track $index) {
-
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img [src]="item.image_url" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <h3 class="product-name"><a href="#">{{item.name}}</a></h3>
-                                    <h4 class="product-price"><span
-                                            class="qty">{{item.quantity}}x</span>${{item.price}}</h4>
-                                </div>
-                                <button class="delete" (click)="removeItem(item)"><i
-                                        class="fa fa-close"></i></button>
-                            </div>
-                            }
-
-
-                        </div>
-                        <div class="cart-summary">
-                            <small>{{totalSupplierCart}} Item(s) selected</small>
-                            <h5>SUBTOTAL: ${{totalSupplierAmount }}</h5>
-                        </div>
-                        <div class="cart-btns" type="button">
-                            <a href="#">Cancel</a>
-                            <a href="#/seller-checkout">View Cart <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                </button>
-
-            </li>
                 <li *ngIf="logOut">
                     <button [routerLink]="'/login'" type="button"
                         class="border border-red-700 text-white bg-black hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">

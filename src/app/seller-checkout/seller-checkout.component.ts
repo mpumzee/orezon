@@ -1,13 +1,10 @@
-import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ICreateOrderRequest, IPayPalConfig, NgxPayPalModule } from 'ngx-paypal';
+import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { PaypalService, SellerCartService } from '../../services';
-import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-seller-checkout',
-  standalone: true,
-  imports: [DecimalPipe, NgxPayPalModule],
+  standalone: false,
   templateUrl: './seller-checkout.component.html',
   styleUrl: './seller-checkout.component.css',
 })
@@ -44,6 +41,7 @@ export class SellerCheckoutComponent implements OnInit {
   saveOrder(order: any) {
     this.paypalService.subscribeOrder(order).subscribe(resp => {
       alert('Subscription successful');
+      this.cartService.clearCart();
     })
   }
 

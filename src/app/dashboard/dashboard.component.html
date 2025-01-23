@@ -12,7 +12,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
-                    <span class="ml-2">MENU</span>
+                    <span class="self-center text-2xl whitespace-nowrap dark:text-white ml-2">MENU</span>
                 </button>
             </div>
         </div>
@@ -199,12 +199,13 @@
                                 Sales</p>
                             <h4
                                 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                                $103,430</h4>
+                                ${{thisMonthPayments}}</h4>
                         </div>
                         <div class="border-t border-blue-gray-50 p-4">
                             <p
                                 class="block antialiased font-sans text-xl leading-relaxed font-normal text-blue-gray-600">
-                                <strong class="text-green-500">+5%</strong>&nbsp;than yesterday
+                                <strong class="text-green-500">+{{paymentsPercentageDiff}}%</strong>&nbsp;than last
+                                month
                             </p>
                         </div>
                     </div>

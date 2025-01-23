@@ -27,6 +27,9 @@ export class CategoriesComponent {
       this.unfilteredSubCategories.filter(x => x.id == 1).forEach(cat => {
         cat.img_url = 'assets/img/gold.png';
       })
+      this.unfilteredSubCategories.filter(x => x.id == 5).forEach(cat => {
+        cat.img_url = 'assets/img/metallic.png';
+      })
       this.subCategories = this.unfilteredSubCategories;
       console.log('subCategories:', this.unfilteredSubCategories);
     });

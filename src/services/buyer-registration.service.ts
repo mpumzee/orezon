@@ -17,7 +17,7 @@ export class BuyerRegistrationService {
   create(itemDto: any) {
     var body = JSON.stringify(itemDto);
     console.log('item dto ', body);
-    return this.http.post<ResponseHandler>(`${url}/buyer`, itemDto, {
+    return this.http.post<ResponseHandler>(`${url}/buyers/buyer`, itemDto, {
       headers,
     });
   }
@@ -25,20 +25,20 @@ export class BuyerRegistrationService {
   update(itemDto: any, id: number) {
     var body = JSON.stringify(itemDto);
     console.log(body);
-    return this.http.put<ResponseHandler>(`${url}/buyer/${id}`, body, {
+    return this.http.put<ResponseHandler>(`${url}/buyers/buyer/${id}`, body, {
       headers,
     });
   }
 
   delete(id: number) {
-    return this.http.delete<ResponseHandler>(`${url}/buyer/${id}`);
+    return this.http.delete<ResponseHandler>(`${url}/buyers/buyer/${id}`);
   }
 
   get(id: number) {
-    return this.http.get<ResponseHandler>(`${url}/buyer/${id}`);
+    return this.http.get<ResponseHandler>(`${url}/buyers/buyer/${id}`);
   }
 
   getAllList() {
-    return this.http.get<ResponseHandler>(`${url}/buyer`);
+    return this.http.get<ResponseHandler>(`${url}/buyers/buyer`);
   }
 }

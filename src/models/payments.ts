@@ -5,6 +5,7 @@ export interface Payments {
     id: number;
     order_id: number;
     order: SubOrder
+    seller_id: number
     seller_name: string
     buyer_id: number;
     buyer_name: string;

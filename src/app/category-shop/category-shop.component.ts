@@ -33,6 +33,8 @@ export class CategoryShopComponent implements OnInit {
 
   user: any;
 
+  role: any
+
   constructor(
     public cartService: CartService,
     private productService: ProductsService,
@@ -43,6 +45,7 @@ export class CategoryShopComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     console.log('cart', this.cartService.getCurrentCart());
+    this.role = sessionStorage.getItem('loggedUserRole') || '{}';
 
     this.categoryService.getAllList().subscribe((res) => {
       this.subCategories = res.data;
