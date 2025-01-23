@@ -11,6 +11,7 @@ import { CategoriesService } from '../../services/categories.service';
 import { ProductsService } from '../../services/products.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
 import { SearchService } from '../search.service';
+import { WishListService } from '../../services';
 
 @Component({
   selector: 'app-search',
@@ -41,9 +42,13 @@ export class SearchComponent implements OnInit {
 
   filteredProducts: Products[] = []
 
+  wishlist = [];
+
   showProducts = false
 
   selectedCategory: any
+
+  wishlistCount = 0
 
 
   constructor(
@@ -54,9 +59,11 @@ export class SearchComponent implements OnInit {
     private categoryService: CategoriesService,
     private cartService: CartService,
     private productService: ProductsService,
+    private wishlistServie: WishListService
   ) { }
 
   ngOnInit(): void {
+    this.getWishListItems()
 
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
 
@@ -172,5 +179,11 @@ export class SearchComponent implements OnInit {
   onSearch() {
     console.log(this.searchTerm);
     this.searchService.changeSearchTerm(this.searchTerm); // Update the search term in the service
+  }
+
+
+  getWishListItems(){
+     this.wishlist=  this.wishlistServie.getCurrentCart();
+     this.wishlistCount = this.wishlistServie.getTotaltems()
   }
 }
