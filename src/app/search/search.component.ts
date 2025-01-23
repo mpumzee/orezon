@@ -183,7 +183,17 @@ export class SearchComponent implements OnInit {
 
 
   getWishListItems(){
+    this.wishlistServie.updateTotal.subscribe((resp) => {
+      if (resp) {
+        this.wishlist=  this.wishlistServie.getCurrentCart();
+        this.wishlistCount = this.wishlistServie.getTotaltems()
+      }
+    })
      this.wishlist=  this.wishlistServie.getCurrentCart();
      this.wishlistCount = this.wishlistServie.getTotaltems()
+  }
+
+  removeItemFromWishlist(item){
+     this.wishlistServie.removeFromCart(item)
   }
 }

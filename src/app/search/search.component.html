@@ -78,7 +78,7 @@
 													<h4 class="product-price"><span
 															class="qty">{{item.quantity}}x</span>${{item.price}}</h4>
 												</div>
-												<button class="delete" (click)="removeItem(item)"><i
+												<button class="delete" (click)="removeItemFromWishlist(item)"><i
 														class="fa fa-close"></i></button>
 											</div>
 											}
@@ -86,10 +86,10 @@
 
 										</div>
 
-									
+
 									</div>
 								</div>
-					<!-- Cart -->
+
 					<div class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 							<i class="fa fa-shopping-cart"></i>
@@ -127,9 +127,7 @@
 							</div>
 						</div>
 					</div>
-					<!-- /Cart -->
 
-					<!-- /Menu Toogle -->
 				</div>
 			</div>
 			<!-- /ACCOUNT -->
