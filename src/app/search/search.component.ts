@@ -25,6 +25,10 @@ export class SearchComponent implements OnInit {
   totalCart = 0;
   cartTotalAmount = 0;
 
+  viewProduct = false
+
+  image: any
+
   categoryModal = false
 
   showCart = false
@@ -207,5 +211,14 @@ export class SearchComponent implements OnInit {
 
   removeItemFromWishlist(item) {
     this.wishlistServie.removeFromCart(item)
+  }
+
+  viewImage(item: any) {
+    this.viewProduct = true
+    this.image = item
+  }
+
+  hideDialog() {
+    this.viewProduct = false
   }
 }

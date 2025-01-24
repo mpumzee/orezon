@@ -37,6 +37,10 @@ export class CategoryShopComponent implements OnInit {
 
   role: any
 
+  viewProduct = false
+
+  image: any
+
   constructor(
     public cartService: CartService,
     private wishlistServie: WishListService,
@@ -125,5 +129,14 @@ export class CategoryShopComponent implements OnInit {
       console.log('Item not found in the cart');
       return false
     }
+  }
+
+  viewImage(item: any) {
+    this.viewProduct = true
+    this.image = item
+  }
+
+  hideDialog() {
+    this.viewProduct = false
   }
 }
