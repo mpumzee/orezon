@@ -49,8 +49,9 @@ export class CartComponent {
     this.user = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
     console.log(this.user);
+    console.log(sessionStorage);
 
-    if (sessionStorage.length == 0 || this.role == Roles.BUYER) {
+    if (sessionStorage.length == 0 || this.role != Roles.BUYER) {
       this.router.navigate(['/login']);
     }
     console.log('cart', this.cartService.getCurrentCart());

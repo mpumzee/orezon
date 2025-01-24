@@ -21,10 +21,12 @@ export class UsersComponent {
 
   showSellers = false;
 
+  showAdmins = false;
+
   constructor(
     private buyerService: BuyerRegistrationService,
     private sellerService: SellerRegistrationService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.buyerService.getAllList().subscribe((res) => {
@@ -43,7 +45,7 @@ export class UsersComponent {
     });
   }
 
-  viewProfile(item: any) {}
+  viewProfile(item: any) { }
 
   onSelection(item: any) {
     const selectedRole = (item.target as HTMLSelectElement).value;
