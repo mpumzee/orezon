@@ -28,11 +28,12 @@ export class SellerCartService {
     }, 70000);
   }
 
-  addToSupplierCart(product, amount, quantity) {
+  addToSupplierCart(product, amount, quantity, userPackageId) {
     console.log(product)
     const packet = {
       ...product,
       quantity: 1,
+      user_package_id: userPackageId,
       amount: Number(amount * quantity),
     };
     this.orezonCart = [packet]; // Ensure there is only 1 item in the cart

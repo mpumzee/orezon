@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { PaypalService, SellerCartService } from '../../services';
 
@@ -25,12 +26,14 @@ export class SellerCheckoutComponent implements OnInit {
   };
 
 
-  constructor(private cartService: SellerCartService, private paypalService: PaypalService) { }
+  constructor(private cartService: SellerCartService, private paypalService: PaypalService, private router: Router) { }
 
   ngOnInit() {
     this.cartItems = this.cartService.getCurrentCart();
     this.totalCartItems = this.cartItems.length;
     this.total = this.cartService.getTotal();
+
+    console.log('items:', this.cartItems)
 
     this.initConfig();
   }
@@ -39,8 +42,11 @@ export class SellerCheckoutComponent implements OnInit {
 
 
   saveOrder(order: any) {
+    console.log('order', order)
     this.paypalService.subscribeOrder(order).subscribe(resp => {
+      console.log('respone:', resp)
       alert('Subscription successful');
+      this.router.navigate(['/login']);
       this.cartService.clearCart();
     })
   }
@@ -72,7 +78,7 @@ export class SellerCheckoutComponent implements OnInit {
       onClientAuthorization: (data) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
         const packet = {
-          user_package_id: this.cartItems[0].id,
+          user_package_id: this.cartItems[0].user_package_id,
           status: data.status,
           order_id: data.id,
           amount: this.total

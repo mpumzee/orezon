@@ -7,4 +7,5 @@ export interface User {
     password: string,
     role: Roles,
     password_confirmation: string
+    package_id: number
 }
