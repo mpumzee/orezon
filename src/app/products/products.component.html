@@ -1,26 +1,27 @@
-<nav class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
-    <div class="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
-        <div class="capitalize">
-            <nav aria-label="breadcrumb" class="w-max">
-                <ol
-                    class="flex flex-wrap items-center w-full bg-opacity-60 rounded-md bg-transparent p-0 transition-all">
-                    <li
-                        class="flex items-center text-blue-gray-900 antialiased font-sans text-xl font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-light-blue-500">
-                        <a href="#">
-                            <p
-                                class="block antialiased font-sans text-xl leading-normal text-blue-900 font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100">
-                                Products</p>
-                        </a>
-                        <span
-                            class="text-gray-500 text-xl antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
-                    </li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-</nav>
 <!-- Start block -->
 <section class="bg-gray-50 dark:bg-gray-900 p-3 xl:p-5 antialiased">
+    <nav class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
+        <div class="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
+            <div class="capitalize">
+                <nav aria-label="breadcrumb" class="w-max">
+                    <ol
+                        class="flex flex-wrap items-center w-full bg-opacity-60 rounded-md bg-transparent p-0 transition-all">
+                        <li
+                            class="flex items-center text-blue-gray-900 antialiased font-sans text-xl font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-light-blue-500">
+                            <a href="#">
+                                <p
+                                    class="block antialiased font-sans text-xl leading-normal text-blue-900 font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100">
+                                    Products</p>
+                            </a>
+                            <span
+                                class="text-gray-500 text-xl antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
     <div *ngIf="deleteModal" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
 
@@ -162,305 +163,307 @@
             </div>
         </div>
     </div>
-</section>
 
-<!-- Edit Product Modal -->
-<div *ngIf="editProduct" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
-    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-        <div class="flex min-h-full items-end justify-center p-4 text-center xl:items-center xl:p-0">
-            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all">
-                <div class="relative p-4 bg-[#f3f7f5] rounded-lg shadow dark:bg-gray-800 xl:p-5"
-                    style="border:green, solid , 1px;padding:2vw;">
-                    <!-- Modal header -->
-                    <div
-                        class="flex justify-between items-center pb-4 mb-4 rounded-t border-b xl:mb-5 dark:border-gray-600">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Add Product</h3>
-                        <button type="button" (click)="hideDialog()"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-xl p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-toggle="createProductModal">
-                            <i class="fa fa-close mr-3"></i>
-                        </button>
-                    </div>
-                    <!-- Modal body -->
-                    <form [formGroup]="productForm" (submit)="updateProduct()">
-                        <div class="grid gap-4 mb-4 xl:grid-cols-2">
-                            <div>
-                                <label for="name"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product
-                                    Name</label>
-                                <input type="text" id="name" formControlName="name"
-                                    class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Type product name" required="">
-                            </div>
-                            <div>
-                                <label for="category"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Category</label>
-                                <select (change)="onSelection($event)"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                    <option value="">Select Category</option>
-                                    <option *ngFor="let category of categories" [value]="category.id">
-                                        {{category.name}}</option>
-                                </select>
-                            </div>
-                            <div *ngIf="showSubCategories">
-                                <label for="category"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Sub
-                                    Category</label>
-                                <select id="sub_category_id" formControlName="sub_category_id"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                    <option value="">Select Sub Category</option>
-                                    <option *ngFor="let category of filteredSubCategories" [value]="category.id">
-                                        {{category.name}}</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="brand"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Quantity</label>
-                                <input type="number" id="quantity" formControlName="quantity"
-                                    class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Quantity" required="">
-                            </div>
-                            <div>
-                                <label for="price"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Price</label>
-                                <input type="number" id="price" formControlName="price"
-                                    class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="$2999" required="">
-                            </div>
-                            <div class="xl:col-span-2">
-                                <label for="description"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Description</label>
-                                <textarea id="description" formControlName="description" rows="4"
-                                    class="block p-2.5 w-full text-xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Write product description here">
+    <!-- Edit Product Modal -->
+    <div *ngIf="editProduct" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center xl:items-center xl:p-0">
+                <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all">
+                    <div class="relative p-4 bg-[#f3f7f5] rounded-lg shadow dark:bg-gray-800 xl:p-5"
+                        style="border:green, solid , 1px;padding:2vw;">
+                        <!-- Modal header -->
+                        <div
+                            class="flex justify-between items-center pb-4 mb-4 rounded-t border-b xl:mb-5 dark:border-gray-600">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Add Product</h3>
+                            <button type="button" (click)="hideDialog()"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-xl p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                data-modal-toggle="createProductModal">
+                                <i class="fa fa-close mr-3"></i>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                        <form [formGroup]="productForm" (submit)="updateProduct()">
+                            <div class="grid gap-4 mb-4 xl:grid-cols-2">
+                                <div>
+                                    <label for="name"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product
+                                        Name</label>
+                                    <input type="text" id="name" formControlName="name"
+                                        class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        placeholder="Type product name" required="">
+                                </div>
+                                <div>
+                                    <label for="category"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Category</label>
+                                    <select (change)="onSelection($event)"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        <option value="">Select Category</option>
+                                        <option *ngFor="let category of categories" [value]="category.id">
+                                            {{category.name}}</option>
+                                    </select>
+                                </div>
+                                <div *ngIf="showSubCategories">
+                                    <label for="category"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Sub
+                                        Category</label>
+                                    <select id="sub_category_id" formControlName="sub_category_id"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        <option value="">Select Sub Category</option>
+                                        <option *ngFor="let category of filteredSubCategories" [value]="category.id">
+                                            {{category.name}}</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="brand"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Quantity</label>
+                                    <input type="number" id="quantity" formControlName="quantity"
+                                        class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        placeholder="Quantity" required="">
+                                </div>
+                                <div>
+                                    <label for="price"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Price</label>
+                                    <input type="number" id="price" formControlName="price"
+                                        class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        placeholder="$2999" required="">
+                                </div>
+                                <div class="xl:col-span-2">
+                                    <label for="description"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Description</label>
+                                    <textarea id="description" formControlName="description" rows="4"
+                                        class="block p-2.5 w-full text-xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        placeholder="Write product description here">
                                 </textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-4">
-                            <span class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product
-                                Images</span>
-                            <div class="flex justify-center items-center w-full">
-                                <label for="dropzone-file"
-                                    class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                    <div class="flex flex-col justify-center items-center pt-5 pb-6">
-                                        <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none"
-                                            stroke="currentColor" viewbox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                                        </svg>
-                                        <p class="mb-2 text-xl text-gray-500 dark:text-gray-400">
-                                            <span class="font-semibold">Click to upload</span>
-                                            or drag and drop
-                                        </p>
-                                        <p class="text-xl text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
-                                            (MAX. 800x400px)</p>
-                                    </div>
-                                    <input id="dropzone-file" type="file" class="hidden">
-                                </label>
+                            <div class="mb-4">
+                                <span class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product
+                                    Images</span>
+                                <div class="flex justify-center items-center w-full">
+                                    <label for="dropzone-file"
+                                        class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                        <div class="flex flex-col justify-center items-center pt-5 pb-6">
+                                            <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none"
+                                                stroke="currentColor" viewbox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                            </svg>
+                                            <p class="mb-2 text-xl text-gray-500 dark:text-gray-400">
+                                                <span class="font-semibold">Click to upload</span>
+                                                or drag and drop
+                                            </p>
+                                            <p class="text-xl text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
+                                                (MAX. 800x400px)</p>
+                                        </div>
+                                        <input id="dropzone-file" type="file" class="hidden">
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="items-center space-y-4 xl:flex xl:space-y-0 xl:space-x-4">
-                            <button type="submit" data-modal-target="createProductModal"
-                                data-modal-toggle="createProductModal"
-                                class="w-full xl:w-auto justify-center text-white inline-flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit
-                                product</button>
-                            <button type="button" (click)="clear()"
-                                class="w-full xl:w-auto justify-center text-white inline-flex bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Clear</button>
-                        </div>
-                    </form>
+                            <div class="items-center space-y-4 xl:flex xl:space-y-0 xl:space-x-4">
+                                <button type="submit" data-modal-target="createProductModal"
+                                    data-modal-toggle="createProductModal"
+                                    class="w-full xl:w-auto justify-center text-white inline-flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit
+                                    product</button>
+                                <button type="button" (click)="clear()"
+                                    class="w-full xl:w-auto justify-center text-white inline-flex bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Clear</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Create Product Modal -->
-<div *ngIf="createModal" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
-    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-        <div class="flex min-h-full items-end justify-center p-4 text-center xl:items-center xl:p-0">
-            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all">
-                <!-- Modal content -->
-                <div class="relative p-4 bg-[#f3f7f5] rounded-lg shadow dark:bg-gray-800 xl:p-5"
-                    style="border:green, solid , 1px;padding:2vw;">
-                    <!-- Modal header -->
-                    <div
-                        class="flex justify-between items-center pb-4 mb-4 rounded-t border-b xl:mb-5 dark:border-gray-600">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Add Product</h3>
-                        <button type="button" (click)="hideDialog()"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-xl p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-toggle="createProductModal">
-                            <i class="fa fa-close mr-3"></i>
-                        </button>
-                    </div>
-                    <!-- Modal body -->
-                    <form [formGroup]="productForm" (submit)="addProduct()">
-                        <div class="grid gap-4 mb-4 xl:grid-cols-2">
-                            <div>
-                                <label for="name"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product
-                                    Name</label>
-                                <input type="text" id="name" formControlName="name"
-                                    class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Type product name" required="">
-                            </div>
-                            <div>
-                                <label for="category"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Category</label>
-                                <select (change)="onSelection($event)"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                    <option value="">Select Category</option>
-                                    <option *ngFor="let category of categories" [value]="category.id">
-                                        {{category.name}}</option>
-                                </select>
-                            </div>
-                            <div *ngIf="showSubCategories">
-                                <label for="category"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Sub
-                                    Category</label>
-                                <select id="sub_category_id" formControlName="sub_category_id"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                    <option value="">Select Sub Category</option>
-                                    <option *ngFor="let category of filteredSubCategories" [value]="category.id">
-                                        {{category.name}}</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="brand"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Quantity</label>
-                                <input type="number" id="quantity" formControlName="quantity"
-                                    class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Quantity" required="">
-                            </div>
-                            <div>
-                                <label for="price"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Price</label>
-                                <input type="number" id="price" formControlName="price"
-                                    class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="$2999" required="">
-                            </div>
-                            <div class="xl:col-span-2">
-                                <label for="description"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Description</label>
-                                <textarea id="description" formControlName="description" rows="4"
-                                    class="block p-2.5 w-full text-xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Write product description here">
-                                    </textarea>
-                            </div>
+    <!-- Create Product Modal -->
+    <div *ngIf="createModal" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center xl:items-center xl:p-0">
+                <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all">
+                    <!-- Modal content -->
+                    <div class="relative p-4 bg-[#f3f7f5] rounded-lg shadow dark:bg-gray-800 xl:p-5"
+                        style="border:green, solid , 1px;padding:2vw;">
+                        <!-- Modal header -->
+                        <div
+                            class="flex justify-between items-center pb-4 mb-4 rounded-t border-b xl:mb-5 dark:border-gray-600">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Add Product</h3>
+                            <button type="button" (click)="hideDialog()"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-xl p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                data-modal-toggle="createProductModal">
+                                <i class="fa fa-close mr-3"></i>
+                            </button>
                         </div>
-                        <div class="mb-4">
-                            <span class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product
-                                Images</span>
-                            <div class="flex justify-center items-center w-full">
-                                <div class="col-md-6 image-upload p-2 rounded bg-info"
-                                    style="border-radius: 4px;border: solid 1px rgb(184, 181, 181);margin-top:25px;padding:15px;">
-                                    <input type="file" class="form-control" id="profile_pic"
-                                        (change)="onFileSelected($event)" accept="image/*"
-                                        style="width: 100%; height: 100%; opacity: 0; position: absolute; top: 0; left: 0; z-index: 9; cursor: pointer;">
+                        <!-- Modal body -->
+                        <form [formGroup]="productForm" (submit)="addProduct()">
+                            <div class="grid gap-4 mb-4 xl:grid-cols-2">
+                                <div>
+                                    <label for="name"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product
+                                        Name</label>
+                                    <input type="text" id="name" formControlName="name"
+                                        class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        placeholder="Type product name" required="">
+                                </div>
+                                <div>
+                                    <label for="category"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Category</label>
+                                    <select (change)="onSelection($event)"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        <option value="">Select Category</option>
+                                        <option *ngFor="let category of categories" [value]="category.id">
+                                            {{category.name}}</option>
+                                    </select>
+                                </div>
+                                <div *ngIf="showSubCategories">
+                                    <label for="category"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Sub
+                                        Category</label>
+                                    <select id="sub_category_id" formControlName="sub_category_id"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        <option value="">Select Sub Category</option>
+                                        <option *ngFor="let category of filteredSubCategories" [value]="category.id">
+                                            {{category.name}}</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="brand"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Quantity</label>
+                                    <input type="number" id="quantity" formControlName="quantity"
+                                        class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        placeholder="Quantity" required="">
+                                </div>
+                                <div>
+                                    <label for="price"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Price</label>
+                                    <input type="number" id="price" formControlName="price"
+                                        class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        placeholder="$2999" required="">
+                                </div>
+                                <div class="xl:col-span-2">
+                                    <label for="description"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Description</label>
+                                    <textarea id="description" formControlName="description" rows="4"
+                                        class="block p-2.5 w-full text-xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        placeholder="Write product description here">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <span class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product
+                                    Images</span>
+                                <div class="flex justify-center items-center w-full">
+                                    <div class="col-md-6 image-upload p-2 rounded bg-info"
+                                        style="border-radius: 4px;border: solid 1px rgb(184, 181, 181);margin-top:25px;padding:15px;">
+                                        <input type="file" class="form-control" id="profile_pic"
+                                            (change)="onFileSelected($event)" accept="image/*"
+                                            style="width: 100%; height: 100%; opacity: 0; position: absolute; top: 0; left: 0; z-index: 9; cursor: pointer;">
 
-                                    <div class="image-uploads text-center">
-                                        <img *ngIf="selectedFile" [src]="getImagePreview()" alt="Uploaded Image"
-                                            class="mx-auto d-block" style="max-height: 150px; max-width: 100%;">
-                                        <img src="assets/img/upload.svg" alt="img" class="mx-auto d-block"
-                                            *ngIf="!selectedFile">
-                                        <div class="text-center">Drag and drop your profile picture to upload or
-                                            click to select
+                                        <div class="image-uploads text-center">
+                                            <img *ngIf="selectedFile" [src]="getImagePreview()" alt="Uploaded Image"
+                                                class="mx-auto d-block" style="max-height: 150px; max-width: 100%;">
+                                            <img src="assets/img/upload.svg" alt="img" class="mx-auto d-block"
+                                                *ngIf="!selectedFile">
+                                            <div class="text-center">Drag and drop your profile picture to upload or
+                                                click to select
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="items-center space-y-4 xl:flex xl:space-y-0 xl:space-x-4">
-                            <button type="submit" data-modal-target="createProductModal"
-                                data-modal-toggle="createProductModal"
-                                class="w-full xl:w-auto justify-center text-white inline-flex bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-primary-800"
-                                [disabled]="!productForm.valid">Add
-                                product</button>
-                            <button type="button" (click)="clear()"
-                                class="w-full xl:w-auto justify-center text-white inline-flex bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Clear</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- View Product Modal -->
-<div *ngIf="viewProduct" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
-    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-        <div class="flex min-h-full items-end justify-center p-4 text-center xl:items-center xl:p-0">
-            <div
-                class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all xl:my-8">
-                <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 xl:p-5"
-                    style="border:green, solid , 1px;padding:2vw;">
-                    <!-- Modal header -->
-                    <div
-                        class="flex justify-between items-center pb-4 mb-4 rounded-t border-b xl:mb-5 dark:border-gray-600">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">View
-                            {{selectedProduct.name}}</h3>
-                        <button type="button" (click)="hideDialog()"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-xl p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-toggle="createProductModal">
-                            <i class="fa fa-close mr-3"></i>
-                        </button>
+                            <div class="items-center space-y-4 xl:flex xl:space-y-0 xl:space-x-4">
+                                <button type="submit" data-modal-target="createProductModal"
+                                    data-modal-toggle="createProductModal"
+                                    class="w-full xl:w-auto justify-center text-white inline-flex bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-primary-800"
+                                    [disabled]="!productForm.valid">Add
+                                    product</button>
+                                <button type="button" (click)="clear()"
+                                    class="w-full xl:w-auto justify-center text-white inline-flex bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Clear</button>
+                            </div>
+                        </form>
                     </div>
-                    <!-- Modal body -->
-                    <form [formGroup]="productForm" (submit)="updateProduct()">
-                        <div class="grid gap-4 mb-4 xl:grid-cols-2">
-                            <div>
-                                <label for="name"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product
-                                    Name</label>
-                                <span class="text-green-700">{{selectedProduct.name}}</span>
-                                <hr>
-                            </div>
-                            <div>
-                                <label for="category"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Category</label>
-                                <span class="text-green-700">{{selectedProduct.sub_category_name}}</span>
-                                <hr>
-                            </div>
-                            <div>
-                                <label for="brand"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Quantity</label>
-                                <span class="text-green-700">{{selectedProduct.quantity}}</span>
-                                <hr>
-                            </div>
-                            <div>
-                                <label for="price"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Price</label>
-                                <span class="text-green-700">{{selectedProduct.price | currency}}</span>
-                                <hr>
-                            </div>
-                            <div class="xl:col-span-2">
-                                <label for="description"
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Description</label>
-                                <span class="text-green-700">{{selectedProduct.description}}</span>
-                                <hr>
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <span class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product
-                                Images</span>
-                            <div class="flex justify-center items-center w-full">
-                                <label for="dropzone-file"
-                                    class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                    <div class="flex flex-col justify-center items-center pt-5 pb-6">
-                                        <img [src]="selectedProduct?.image_url" alt="Uploaded Image"
-                                            class="mx-auto d-block" style="max-height: 150px; max-width: 100%;">
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- View Product Modal -->
+    <div *ngIf="viewProduct" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center xl:items-center xl:p-0">
+                <div
+                    class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all xl:my-8">
+                    <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 xl:p-5"
+                        style="border:green, solid , 1px;padding:2vw;">
+                        <!-- Modal header -->
+                        <div
+                            class="flex justify-between items-center pb-4 mb-4 rounded-t border-b xl:mb-5 dark:border-gray-600">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">View
+                                {{selectedProduct.name}}</h3>
+                            <button type="button" (click)="hideDialog()"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-xl p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                data-modal-toggle="createProductModal">
+                                <i class="fa fa-close mr-3"></i>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                        <form [formGroup]="productForm" (submit)="updateProduct()">
+                            <div class="grid gap-4 mb-4 xl:grid-cols-2">
+                                <div>
+                                    <label for="name"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product
+                                        Name</label>
+                                    <span class="text-green-700">{{selectedProduct.name}}</span>
+                                    <hr>
+                                </div>
+                                <div>
+                                    <label for="category"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Category</label>
+                                    <span class="text-green-700">{{selectedProduct.sub_category_name}}</span>
+                                    <hr>
+                                </div>
+                                <div>
+                                    <label for="brand"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Quantity</label>
+                                    <span class="text-green-700">{{selectedProduct.quantity}}</span>
+                                    <hr>
+                                </div>
+                                <div>
+                                    <label for="price"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Price</label>
+                                    <span class="text-green-700">{{selectedProduct.price | currency}}</span>
+                                    <hr>
+                                </div>
+                                <div class="xl:col-span-2">
+                                    <label for="description"
+                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Description</label>
+                                    <span class="text-green-700">{{selectedProduct.description}}</span>
+                                    <hr>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <span class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Product
+                                    Images</span>
+                                <div class="flex justify-center items-center w-full">
+                                    <label for="dropzone-file"
+                                        class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                        <div class="flex flex-col justify-center items-center pt-5 pb-6">
+                                            <img [src]="selectedProduct?.image_url" alt="Uploaded Image"
+                                                class="mx-auto d-block" style="max-height: 150px; max-width: 100%;">
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
