@@ -18,6 +18,8 @@ import { SearchService } from '../search.service';
 export class ProductsComponent implements OnInit {
   products: Products[] = [];
 
+  filteredProducts: Products[] = []
+
   sellerId = 6;
 
   categories: ProductCategory[] = [];
@@ -72,6 +74,8 @@ export class ProductsComponent implements OnInit {
 
   role: any
 
+  showProducts = false
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -120,18 +124,19 @@ export class ProductsComponent implements OnInit {
           });
         });
         this.products = res.data;
+        this.filteredProducts = this.products
         console.log('products:', this.products);
       });
     });
 
 
-    this.searchService.currentSearchTerm.subscribe((term) => {
-      if (term) {
-        this.searchEquipment(term); // Call with the updated search term
-      } else {
-        this.getAllEquipment();
-      }
-    });
+    // this.searchService.currentSearchTerm.subscribe((term) => {
+    //   if (term) {
+    //     this.searchEquipment(term); // Call with the updated search term
+    //   } else {
+    //     this.getAllEquipment();
+    //   }
+    // });
   }
 
   onFileSelected(event: any) {
@@ -322,39 +327,18 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  getAllEquipment() {
-    const url = `http://localhost:8000/api/v1/equipment`;
-    this.http.get(url).subscribe({
-      next: (data: any) => {
-        // console.log(data);
-        this.slides = data.data;
-      },
-      error: (error: any) => {
-        console.error(error);
-        // Handle the error as needed
-      },
-    });
+  searchProducts(item: any) {
+    console.log(this.products)
+    this.filteredProducts = this.products.filter(
+      prod => prod?.name.toLowerCase().includes(item.toLowerCase())
+    );
+    // if (this.filteredProducts = []) {
+    //   this.showProducts = false
+    // }
+    console.log(this.filteredProducts)
+    //this.filteredProducts = this.products.filter(x => x.)
   }
 
-  searchEquipment(name?: string) {
-    const url = `http://localhost:8000/api/v1/equipment/search/${name}`;
-    this.http.get(url).subscribe({
-      next: (data: any) => {
-        console.log('Search result ', data);
-        this.slides = data;
-      },
-      error: (error: any) => {
-        console.error(error);
-        // Handle the error as needed
-      },
-    });
-  }
-
-  // slides = [
-  //   { img: 'http://placehold.it/350x150/000000' },
-  //   { img: 'http://placehold.it/350x150/111111' },
-  //   // more slides...
-  // ];
 
   slideConfig = {
     slidesToShow: 4, // Adjust based on how many slides you want visible
