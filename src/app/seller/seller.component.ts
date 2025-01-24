@@ -115,6 +115,7 @@ export class SellerComponent {
 
           if (res.status == 'success') {
             console.log(res.message);
+            alert(res.message);
             this.router.navigate(['/login']);
           } else {
             console.log(res.message);
