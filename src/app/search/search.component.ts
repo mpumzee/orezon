@@ -53,6 +53,7 @@ export class SearchComponent implements OnInit {
 
   wishlistCount = 0
 
+  selectedFilterCategory: any
 
   constructor(
     private http: HttpClient,
@@ -135,9 +136,18 @@ export class SearchComponent implements OnInit {
     }
     console.log(item)
     console.log(this.products)
-    this.filteredProducts = this.filteredProducts.filter(
-      prod => prod?.name.toLowerCase().includes(item.toLowerCase())
-    );
+    console.log(this.selectedCategory)
+    if (!this.selectedCategory) {
+      console.log('yes')
+      this.filteredProducts = this.products.filter(
+        prod => prod?.name.toLowerCase().includes(item.toLowerCase())
+      );
+    } else {
+      this.filteredProducts = this.filteredProducts.filter(
+        prod => prod?.name.toLowerCase().includes(item.toLowerCase())
+      );
+    }
+
     // if (this.filteredProducts = []) {
     //   this.showProducts = false
     // }

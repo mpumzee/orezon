@@ -35,6 +35,8 @@ export class CategoryShopComponent implements OnInit {
 
   user: any;
 
+  selectedProduct: Products = {} as Products;
+
   role: any
 
   viewProduct = false
@@ -132,8 +134,9 @@ export class CategoryShopComponent implements OnInit {
   }
 
   viewImage(item: any) {
+    console.log('item', item)
     this.viewProduct = true
-    this.image = item
+    this.selectedProduct = item
   }
 
   hideDialog() {
