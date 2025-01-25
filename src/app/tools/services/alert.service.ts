@@ -3,7 +3,8 @@ import * as Notiflix from 'notiflix';
 import { LoaderService } from '.';
 
 @Injectable()
-export class AlertService extends LoaderService {
+export class AlertService {
+
 
   error(text: string, callback?: any) {
     Notiflix.Notify.failure(text || 'Server Error', callback, {
