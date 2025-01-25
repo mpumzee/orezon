@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Category } from '../../models/category';
-import { SubCategory } from '../../models/sub-category';
-import { CategoriesService } from '../../services/categories.service';
-import { SubCategoriesService } from '../../services/sub-categories.service';
-
+import { Category } from '../../../models/category';
+import { SubCategory } from '../../../models/sub-category';
+import { SubCategoriesService } from '../../tools/services';
+import { CategoriesService } from '../../tools/services/categories.service';
 @Component({
   selector: 'app-sub-categories',
   templateUrl: './sub-categories.component.html',

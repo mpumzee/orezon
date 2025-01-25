@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { Buyer } from '../../models/buyer';
-import { Payments } from '../../models/payments';
-import { SubOrder } from '../../models/sub-order';
-import { User } from '../../models/user';
-import { BuyerRegistrationService } from '../../services/buyer-registration.service';
-import { OrdersService } from '../../services/orders.service';
-import { PaymentService } from '../../services/payment.service';
+import { Buyer } from '../../../models/buyer';
+import { Payments } from '../../../models/payments';
+import { SubOrder } from '../../../models/sub-order';
+import { User } from '../../../models/user';
+import { BuyerRegistrationService, OrdersService, PaymentService } from '../../tools/services';
 
 @Component({
   selector: 'app-seller-payouts',

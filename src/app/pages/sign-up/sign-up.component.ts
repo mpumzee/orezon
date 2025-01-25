@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Roles } from '../../enums/roles';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SignUpService } from '../../services/sign-up.service';
+import { Roles } from '../../tools/models';
+import { SignUpService } from '../../tools/services';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,8 +19,8 @@ export class SignUpComponent {
 
   constructor(private router: Router, private signUpService: SignUpService){
     this.signUpForm = new FormGroup({
-                    name: new FormControl('', [Validators.required]),     
-                    email: new FormControl('', [Validators.email]),     
+                    name: new FormControl('', [Validators.required]),
+                    email: new FormControl('', [Validators.email]),
                     password: new FormControl('', [Validators.required,Validators.minLength(10)]),
                     role: new FormControl('', [Validators.required]),
                     password_confirmation: new FormControl('',[Validators.required])
@@ -31,7 +31,7 @@ export class SignUpComponent {
 
         this.roles = Object.values(Roles)
       }
-  
+
       signUp(){
         if(this.signUpForm.value.password !== this.signUpForm.value.password_confirmation){
           this.errorAlert = true;
@@ -39,11 +39,11 @@ export class SignUpComponent {
         else{
           this.errorAlert = false;
           console.log(this.signUpForm.value);
-        
+
                 this.signUpService.signUp(this.signUpForm.value)
                   .subscribe((res) => {
                     console.log(res);
-            
+
                     if (res.message === 'Registration Successful') {
                       this.router.navigate(["/login"])
                     }
@@ -51,7 +51,7 @@ export class SignUpComponent {
                       console.log(res.message);
                 // Handle the error as needed
                     }
-            
+
                   },
                     (error) => {
                       console.error(error);

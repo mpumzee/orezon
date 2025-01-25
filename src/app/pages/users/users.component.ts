@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Buyer } from '../../../models/buyer';
 import { Seller } from '../../../models/seller';
-import { BuyerRegistrationService } from '../../tools/services/buyer-registration.service';
-import { SellerRegistrationService } from '../../tools/services/seller-registration.service';
-
+import { Roles } from '../../tools/models';
+import { BuyerRegistrationService, SellerRegistrationService } from '../../tools/services';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
