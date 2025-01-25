@@ -3,7 +3,7 @@ import { Buyer } from '../../../models/buyer';
 import { Payments } from '../../../models/payments';
 import { Seller } from '../../../models/seller';
 import { User } from '../../../models/user';
-import { BuyerRegistrationService, SellerRegistrationService, PaymentService } from '../../tools/services';
+import { BuyerRegistrationService, PaymentService, SellerRegistrationService } from '../../tools/services';
 
 @Component({
   selector: 'app-admin-payment',
@@ -56,6 +56,16 @@ export class AdminPaymentComponent {
             console.log('entered', buyer);
             payment.buyer_name = buyer.user.name;
           });
+
+        if (payment.subscription) {
+          payment.buyer_id = payment.subscription.user_package.user_id
+          this.sellers
+            .filter((x) => x.user_id == payment.buyer_id)
+            .forEach((buyer) => {
+              console.log('entered', buyer);
+              payment.buyer_name = buyer.user.name;
+            });
+        }
       });
       console.log('payments:', this.payments);
     });

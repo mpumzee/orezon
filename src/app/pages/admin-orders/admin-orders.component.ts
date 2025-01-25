@@ -4,7 +4,7 @@ import { ProductCategory } from '../../../models/product-category';
 import { Seller } from '../../../models/seller';
 import { SubOrder } from '../../../models/sub-order';
 import { User } from '../../../models/user';
-import { OrdersService, SellerRegistrationService, BuyerRegistrationService, SubCategoriesService } from '../../tools/services';
+import { BuyerRegistrationService, OrdersService, SellerRegistrationService, SubCategoriesService } from '../../tools/services';
 @Component({
   selector: 'app-admin-orders',
   templateUrl: './admin-orders.component.html',
@@ -65,7 +65,7 @@ export class AdminOrdersComponent {
             .forEach((buyer) => {
               console.log('entered', buyer);
               order.buyer_pic =
-                'assets/img/user.png' + buyer.profile_pic;
+                'assets/img/user.png';
               order.buyer_name = buyer.user.name;
               order.buyer_email = buyer.user.email;
             });

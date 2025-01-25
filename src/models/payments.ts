@@ -1,5 +1,6 @@
 import { PaymentStatus } from "../app/tools/models/payment";
 import { SubOrder } from "./sub-order";
+import { Subscription } from "./subscription";
 
 export interface Payments {
     id: number;
@@ -17,4 +18,5 @@ export interface Payments {
     status: PaymentStatus;
     created_at: Date;
     update_at: Date;
+    subscription: Subscription
 }

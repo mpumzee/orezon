@@ -3,7 +3,7 @@ import { Orders } from '../../../models/orders';
 import { ProductCategory } from '../../../models/product-category';
 import { Seller } from '../../../models/seller';
 import { User } from '../../../models/user';
-import { OrdersService, SellerRegistrationService, BuyerRegistrationService, SubCategoriesService } from '../../tools/services';
+import { BuyerRegistrationService, OrdersService, SellerRegistrationService, SubCategoriesService } from '../../tools/services';
 @Component({
   selector: 'app-buyer-orders',
   templateUrl: './buyer-orders.component.html',
@@ -31,7 +31,7 @@ export class BuyerOrdersComponent {
     private sellerService: SellerRegistrationService,
     private buyerService: BuyerRegistrationService,
     private categoryService: SubCategoriesService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.user.id = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
@@ -48,7 +48,7 @@ export class BuyerOrdersComponent {
         .filter((x) => x.user_id == this.user.id)
         .forEach((buyer) => {
           this.buyer_pic =
-            'https://orezon.co.zw/storage/app/public/' + buyer.profile_pic;
+            'assets/img/user.png';
         });
       console.log('buyer:', res.data);
     });

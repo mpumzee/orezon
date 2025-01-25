@@ -39,7 +39,7 @@ export class SellerPaymentsComponent {
           .forEach((buyer) => {
             console.log('entered', buyer);
             payment.buyer_pic =
-              'assets/img/user.png' + buyer.profile_pic;
+              'assets/img/user.png';
             payment.buyer_name = buyer.user.name;
             payment.buyer_email = buyer.user.email;
           });

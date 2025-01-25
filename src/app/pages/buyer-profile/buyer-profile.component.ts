@@ -68,7 +68,7 @@ export class BuyerProfileComponent {
       this.buyers.forEach((buyer) => {
         this.curentBuyerDetails = buyer;
         this.curentBuyerDetails.profile_pic =
-          'https://orezon.co.zw/storage/app/public/' + buyer.profile_pic;
+          'assets/img/user.png';
       });
       console.log('buyer:', this.curentBuyerDetails);
     });
