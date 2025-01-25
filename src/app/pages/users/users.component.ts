@@ -41,6 +41,8 @@ export class UsersComponent {
       this.sellers = res.data;
       console.log('sellers:', this.sellers);
     });
+
+    this.showBuyers = true
   }
 
   viewProfile(item: any) { }
@@ -54,6 +56,9 @@ export class UsersComponent {
     } else if (selectedRole == Roles.SELLER) {
       this.showBuyers = false;
       this.showSellers = true;
+    } else if (selectedRole == Roles.ADMIN) {
+      this.showBuyers = false;
+      this.showSellers = false;
     }
   }
 }

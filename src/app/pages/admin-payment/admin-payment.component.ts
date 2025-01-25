@@ -45,7 +45,6 @@ export class AdminPaymentComponent {
         this.buyers
           .filter((x) => x.user_id == payment.buyer_id)
           .forEach((buyer) => {
-            console.log('entered', buyer);
             payment.buyer_name = buyer.user.name;
             payment.buyer_email = buyer.user.email;
           });
@@ -53,7 +52,6 @@ export class AdminPaymentComponent {
         this.sellers
           .filter((x) => x.user_id == payment.seller_id)
           .forEach((buyer) => {
-            console.log('entered', buyer);
             payment.buyer_name = buyer.user.name;
           });
 
@@ -62,7 +60,6 @@ export class AdminPaymentComponent {
           this.sellers
             .filter((x) => x.user_id == payment.buyer_id)
             .forEach((buyer) => {
-              console.log('entered', buyer);
               payment.buyer_name = buyer.user.name;
             });
         }
