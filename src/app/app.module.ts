@@ -53,6 +53,8 @@ import { SubCategoriesComponent } from './pages/sub-categories/sub-categories.co
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { TopNavComponent } from './pages/top-nav/top-nav.component';
 import { UsersComponent } from './pages/users/users.component';
+import { ErrorInterceptor, LoaderInterceptor } from './tools/helpers';
+import { AlertService } from './tools/services';
 
 
 @NgModule({
@@ -116,7 +118,14 @@ import { UsersComponent } from './pages/users/users.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
-    },
+    },  AlertService,
+     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+   },
+
   ],
   bootstrap: [AppComponent],
 })
