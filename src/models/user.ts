@@ -1,4 +1,4 @@
-import { Roles } from "../enums/roles";
+import { Roles } from "../app/tools/models/roles";
 
 export interface User {
     id: number,

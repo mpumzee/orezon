@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseHandler } from '../models/response-handler';
+import { ResponseHandler } from '../../../models/response-handler';
 
 const url = 'https://orezon.co.zw/api/v1';
 const headers: HttpHeaders = new HttpHeaders().set(
@@ -11,13 +11,13 @@ const headers: HttpHeaders = new HttpHeaders().set(
 @Injectable({
   providedIn: 'root',
 })
-export class ProductCategoryService {
-  constructor(private http: HttpClient) {}
+export class SellerRegistrationService {
+  constructor(private http: HttpClient) { }
 
   create(itemDto: any) {
     var body = JSON.stringify(itemDto);
     console.log(body);
-    return this.http.post<ResponseHandler>(`${url}/categories`, body, {
+    return this.http.post<ResponseHandler>(`${url}/sellers/register`, body, {
       headers,
     });
   }
@@ -25,16 +25,20 @@ export class ProductCategoryService {
   update(itemDto: any, id: number) {
     var body = JSON.stringify(itemDto);
     console.log(body);
-    return this.http.put<ResponseHandler>(`${url}/categories/${id}`, body, {
+    return this.http.put<ResponseHandler>(`${url}/sellers/update/${id}`, body, {
       headers,
     });
   }
 
   delete(id: number) {
-    return this.http.delete<ResponseHandler>(`${url}/categories/delete/${id}`);
+    return this.http.delete<ResponseHandler>(`${url}/sellers/delete/${id}`);
+  }
+
+  get(id: number) {
+    return this.http.get<ResponseHandler>(`${url}/sellers/${id}`);
   }
 
   getAllList() {
-    return this.http.get<ResponseHandler>(`${url}/categories`);
+    return this.http.get<ResponseHandler>(`${url}/sellers`);
   }
 }

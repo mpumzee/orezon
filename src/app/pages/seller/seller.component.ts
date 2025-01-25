@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Country } from '../../enums/country';
-import { Roles } from '../../enums/roles';
-import { Package } from '../../models/package';
-import { Seller } from '../../models/seller';
-import { PackagesService } from '../../services/packages.service';
-import { SellerRegistrationService } from '../../services/seller-registration.service';
+import { Package } from '../../../models/package';
+import { Seller } from '../../../models/seller';
+import { Country, Roles } from '../../tools/models';
+import { SellerRegistrationService, PackagesService } from '../../tools/services';
 
 @Component({
   selector: 'app-seller',

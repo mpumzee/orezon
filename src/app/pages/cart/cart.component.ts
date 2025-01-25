@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Roles } from '../../enums/roles';
-import { Status } from '../../enums/status';
-import { Orders } from '../../models/orders';
-import { Products } from '../../models/products';
-import { SubCategory } from '../../models/sub-category';
-import { CartService } from '../../services/cart.service';
-import { OrdersService } from '../../services/orders.service';
-import { ProductsService } from '../../services/products.service';
-import { SubCategoriesService } from '../../services/sub-categories.service';
-
+import { Orders } from '../../../models/orders';
+import { Products } from '../../../models/products';
+import { SubCategory } from '../../../models/sub-category';
+import { Roles, Status } from '../../tools/models';
+import { CartService, ProductsService, SubCategoriesService, OrdersService } from '../../tools/services';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',

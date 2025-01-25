@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Package } from '../../models/package';
-import { PackagesService } from '../../services/packages.service';
+import { Package } from '../../../models/package';
+import { PackagesService } from '../../tools/services';
 
 @Component({
   selector: 'app-packages',

@@ -1,22 +1,16 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Roles } from '../../enums/roles';
-import { Buyer } from '../../models/buyer';
-import { Package } from '../../models/package';
-import { Payments } from '../../models/payments';
-import { ProductCategory } from '../../models/product-category';
-import { Products } from '../../models/products';
-import { Seller } from '../../models/seller';
-import { SubOrder } from '../../models/sub-order';
-import { User } from '../../models/user';
-import { OrdersService } from '../../services';
-import { BuyerRegistrationService } from '../../services/buyer-registration.service';
-import { PackagesService } from '../../services/packages.service';
-import { PaymentService } from '../../services/payment.service';
-import { ProductsService } from '../../services/products.service';
-import { SellerRegistrationService } from '../../services/seller-registration.service';
-import { SubCategoriesService } from '../../services/sub-categories.service';
+import { Buyer } from '../../../models/buyer';
+import { Package } from '../../../models/package';
+import { Payments } from '../../../models/payments';
+import { ProductCategory } from '../../../models/product-category';
+import { Products } from '../../../models/products';
+import { Seller } from '../../../models/seller';
+import { SubOrder } from '../../../models/sub-order';
+import { User } from '../../../models/user';
+import { Roles } from '../../tools/models';
+import { BuyerRegistrationService, OrdersService, PackagesService, PaymentService, ProductsService, SellerRegistrationService, SubCategoriesService } from '../../tools/services';
 
 @Component({
   selector: 'app-dashboard',

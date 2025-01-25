@@ -1,28 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { AdminComponent } from './admin/admin.component';
-import { BrokerComponent } from './broker/broker.component';
-import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
-import { BuyerComponent } from './buyer/buyer.component';
-import { CartComponent } from './cart/cart.component';
-import { CategoryShopComponent } from './category-shop/category-shop.component';
-import { CheckOutComponent } from './check-out/check-out.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './login/login.component';
-import { MetalsComponent } from './metals/metals.component';
-import { PackagesComponent } from './packages/packages.component';
-import { ProductsComponent } from './products/products.component';
-import { SearchComponent } from './search/search.component';
-import { SelectPackageComponent } from './select-package/select-package.component';
-import { SellerCheckoutComponent } from './seller-checkout/seller-checkout.component';
-import { SellerTermsAndConditionsComponent } from './seller-terms-and-conditions/seller-terms-and-conditions.component';
-import { SellerComponent } from './seller/seller.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
-import { TopNavComponent } from './top-nav/top-nav.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { BrokerComponent } from './pages/broker/broker.component';
+import { BuyerDashboardComponent } from './pages/buyer-dashboard/buyer-dashboard.component';
+import { BuyerComponent } from './pages/buyer/buyer.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { CategoryShopComponent } from './pages/category-shop/category-shop.component';
+import { CheckOutComponent } from './pages/check-out/check-out.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { LoginComponent } from './pages/login/login.component';
+import { MetalsComponent } from './pages/metals/metals.component';
+import { PackagesComponent } from './pages/packages/packages.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { SearchComponent } from './pages/search/search.component';
+import { SelectPackageComponent } from './pages/select-package/select-package.component';
+import { SellerCheckoutComponent } from './pages/seller-checkout/seller-checkout.component';
+import { SellerTermsAndConditionsComponent } from './pages/seller-terms-and-conditions/seller-terms-and-conditions.component';
+import { SellerComponent } from './pages/seller/seller.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
+import { TopNavComponent } from './pages/top-nav/top-nav.component';
+
 
 const routes: Routes = [
   { path: '', component: TopNavComponent },

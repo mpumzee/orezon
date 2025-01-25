@@ -2,14 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProductCategory } from '../../models/product-category';
-import { Products } from '../../models/products';
-import { SubCategory } from '../../models/sub-category';
-import { CategoriesService } from '../../services/categories.service';
-import { ProductsService } from '../../services/products.service';
-import { SubCategoriesService } from '../../services/sub-categories.service';
-import { SearchService } from '../search.service';
-
+import { ProductCategory } from '../../../models/product-category';
+import { Products } from '../../../models/products';
+import { SubCategory } from '../../../models/sub-category';
+import { SearchService, ProductsService, SubCategoriesService } from '../../tools/services';
+import { CategoriesService } from '../../tools/services/categories.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',

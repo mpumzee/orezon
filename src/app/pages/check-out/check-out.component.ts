@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
-import { PaypalService } from '../../services';
-import { CartService } from '../../services/cart.service';
+import { CartService, PaypalService } from '../../tools/services';
+
 
 @Component({
   selector: 'app-check-out',

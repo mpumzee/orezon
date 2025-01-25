@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Roles } from '../../enums/roles';
-import { SignUpService } from '../../services/sign-up.service';
+import { SignUpService } from '../../tools/services';
+import { Roles } from '../../tools/models';
 
 @Component({
   selector: 'app-login',

@@ -1,4 +1,4 @@
-import { Country } from '../enums/country';
+import { Country } from '../app/tools/models/country';
 import { BankDetails } from './bank-details';
 import { User } from './user';
 

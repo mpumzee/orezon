@@ -1,13 +1,10 @@
 import { Component, type OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Orders } from '../../models/orders';
-import { ProductCategory } from '../../models/product-category';
-import { Products } from '../../models/products';
-import { SubCategory } from '../../models/sub-category';
-import { WishListService } from '../../services';
-import { CartService } from '../../services/cart.service';
-import { ProductsService } from '../../services/products.service';
-import { SubCategoriesService } from '../../services/sub-categories.service';
+import { Orders } from '../../../models/orders';
+import { ProductCategory } from '../../../models/product-category';
+import { Products } from '../../../models/products';
+import { SubCategory } from '../../../models/sub-category';
+import { CartService, WishListService, ProductsService, SubCategoriesService } from '../../tools/services';
 @Component({
   selector: 'app-category-shop',
   standalone: false,

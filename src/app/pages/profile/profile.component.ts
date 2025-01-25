@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Country } from '../../enums/country';
-import { BankDetails } from '../../models/bank-details';
-import { Package } from '../../models/package';
-import { Seller } from '../../models/seller';
-import { User } from '../../models/user';
-import { PackagesService } from '../../services/packages.service';
-import { SellerRegistrationService } from '../../services/seller-registration.service';
+import { BankDetails } from '../../../models/bank-details';
+import { Package } from '../../../models/package';
+import { Seller } from '../../../models/seller';
+import { User } from '../../../models/user';
+import { Country } from '../../tools/models';
+import { PackagesService, SellerRegistrationService } from '../../tools/services';
 
 @Component({
   selector: 'app-profile',

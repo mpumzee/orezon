@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
-import { PaypalService, SellerCartService } from '../../services';
+import { SellerCartService, PaypalService } from '../../tools/services';
 
 @Component({
   selector: 'app-seller-checkout',

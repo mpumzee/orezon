@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SubCategory } from '../../models/sub-category';
-import { SubCategoriesService } from '../../services/sub-categories.service';
+import { SubCategory } from '../../../models/sub-category';
+import { SubCategoriesService } from '../../tools/services';
 
 @Component({
   selector: 'app-categories',

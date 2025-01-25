@@ -1,4 +1,4 @@
-import { Country } from '../enums/country';
+import { Country } from '../app/tools/models/country';
 import { User } from './user';
 
 export interface Buyer {

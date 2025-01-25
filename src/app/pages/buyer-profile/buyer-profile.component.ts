@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Country } from '../../enums/country';
-import { Buyer } from '../../models/buyer';
-import { User } from '../../models/user';
-import { BuyerRegistrationService } from '../../services/buyer-registration.service';
-
+import { Buyer } from '../../../models/buyer';
+import { User } from '../../../models/user';
+import { Country } from '../../tools/models';
+import { BuyerRegistrationService } from '../../tools/services';
 @Component({
   selector: 'app-buyer-profile',
   templateUrl: './buyer-profile.component.html',

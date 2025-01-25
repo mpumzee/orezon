@@ -1,4 +1,4 @@
-import { PaymentStatus } from "../enums/payment";
+import { PaymentStatus } from "../app/tools/models/payment";
 import { SubOrder } from "./sub-order";
 
 export interface Payments {

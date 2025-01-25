@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { Orders } from '../../models/orders';
-import { OrderProducts } from '../../models/order-products';
-import { OrdersService } from '../../services/orders.service';
-
+import { OrderProducts } from '../../../models/order-products';
+import { Orders } from '../../../models/orders';
+import { OrdersService } from '../../tools/services';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',

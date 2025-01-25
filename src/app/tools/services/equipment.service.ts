@@ -1,19 +1,19 @@
-import { Injectable, signal } from '@angular/core';
-import { Equipment } from '../models/equipment';
 import { HttpClient } from '@angular/common/http';
+import { Injectable, signal } from '@angular/core';
+import { Equipment } from '../../../models/equipment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EquipmentService {
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.getEquipment();
   }
 
   equipmentList = signal<Equipment[]>([]);
 
-  getEquipment(){
+  getEquipment() {
     const url = "http://localhost:8000/api/v1/equipment";
     this.http.get(url).subscribe({
       next: (data: any) => {
@@ -25,5 +25,5 @@ export class EquipmentService {
         // Handle the error as needed
       }
     });
-    }
+  }
 }

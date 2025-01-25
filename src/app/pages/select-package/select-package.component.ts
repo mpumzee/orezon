@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Package } from '../../models/package';
-import { User } from '../../models/user';
-import { UserPackage } from '../../models/user-package';
-import { SellerCartService } from '../../services';
-import { PackagesService } from '../../services/packages.service';
-import { SignUpService } from '../../services/sign-up.service';
+import { Package } from '../../../models/package';
+import { User } from '../../../models/user';
+import { UserPackage } from '../../../models/user-package';
+import { PackagesService, SignUpService, SellerCartService } from '../../tools/services';
+
 
 @Component({
   selector: 'app-select-package',

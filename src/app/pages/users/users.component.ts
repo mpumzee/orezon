@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { Roles } from '../../enums/roles';
-import { Buyer } from '../../models/buyer';
-import { Seller } from '../../models/seller';
-import { BuyerRegistrationService } from '../../services/buyer-registration.service';
-import { SellerRegistrationService } from '../../services/seller-registration.service';
+import { Buyer } from '../../../models/buyer';
+import { Seller } from '../../../models/seller';
+import { BuyerRegistrationService } from '../../tools/services/buyer-registration.service';
+import { SellerRegistrationService } from '../../tools/services/seller-registration.service';
 
 @Component({
   selector: 'app-users',

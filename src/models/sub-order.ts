@@ -1,4 +1,4 @@
-import { Status } from '../enums/status';
+import { Status } from '../app/tools/models/status';
 import { Products } from './products';
 
 export interface SubOrder {
