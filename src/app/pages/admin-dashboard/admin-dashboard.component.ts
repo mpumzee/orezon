@@ -1,16 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Buyer } from '../../models/buyer';
-import { Orders } from '../../models/orders';
-import { Package } from '../../models/package';
-import { Payments } from '../../models/payments';
-import { Seller } from '../../models/seller';
-import { SubOrder } from '../../models/sub-order';
-import { BuyerRegistrationService } from '../../services/buyer-registration.service';
-import { OrdersService } from '../../services/orders.service';
-import { PackagesService } from '../../services/packages.service';
-import { PaymentService } from '../../services/payment.service';
-import { SellerRegistrationService } from '../../services/seller-registration.service';
+import { Buyer } from '../../../models/buyer';
+import { Orders } from '../../../models/orders';
+import { Package } from '../../../models/package';
+import { Payments } from '../../../models/payments';
+import { Seller } from '../../../models/seller';
+import { SubOrder } from '../../../models/sub-order';
+import { PackagesService, OrdersService, BuyerRegistrationService, SellerRegistrationService, PaymentService } from '../../tools/services';
 
 @Component({
   selector: 'app-admin-dashboard',

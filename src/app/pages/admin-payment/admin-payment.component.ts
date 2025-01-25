@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { Buyer } from '../../models/buyer';
-import { Payments } from '../../models/payments';
-import { Seller } from '../../models/seller';
-import { User } from '../../models/user';
-import { BuyerRegistrationService } from '../../services/buyer-registration.service';
-import { PaymentService } from '../../services/payment.service';
-import { SellerRegistrationService } from '../../services/seller-registration.service';
+import { Buyer } from '../../../models/buyer';
+import { Payments } from '../../../models/payments';
+import { Seller } from '../../../models/seller';
+import { User } from '../../../models/user';
+import { BuyerRegistrationService, SellerRegistrationService, PaymentService } from '../../tools/services';
 
 @Component({
   selector: 'app-admin-payment',

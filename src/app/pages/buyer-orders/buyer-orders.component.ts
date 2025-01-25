@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
-import { Orders } from '../../models/orders';
-import { ProductCategory } from '../../models/product-category';
-import { Seller } from '../../models/seller';
-import { User } from '../../models/user';
-import { BuyerRegistrationService } from '../../services/buyer-registration.service';
-import { OrdersService } from '../../services/orders.service';
-import { SellerRegistrationService } from '../../services/seller-registration.service';
-import { SubCategoriesService } from '../../services/sub-categories.service';
-
+import { Orders } from '../../../models/orders';
+import { ProductCategory } from '../../../models/product-category';
+import { Seller } from '../../../models/seller';
+import { User } from '../../../models/user';
+import { OrdersService, SellerRegistrationService, BuyerRegistrationService, SubCategoriesService } from '../../tools/services';
 @Component({
   selector: 'app-buyer-orders',
   templateUrl: './buyer-orders.component.html',

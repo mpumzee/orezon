@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Roles } from '../../enums/roles';
-import { Orders } from '../../models/orders';
-import { OrdersService } from '../../services/orders.service';
+import { Orders } from '../../../models/orders';
+import { Roles } from '../../tools/models';
+import { OrdersService } from '../../tools/services';
 
 @Component({
   selector: 'app-buyer-dashboard',

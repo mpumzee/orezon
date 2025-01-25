@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Country } from '../../enums/country';
-import { Buyer } from '../../models/buyer';
-import { BuyerRegistrationService } from '../../services/buyer-registration.service';
+import { Buyer } from '../../../models/buyer';
+import { Country } from '../../tools/models';
+import { BuyerRegistrationService } from '../../tools/services';
 
 @Component({
   selector: 'app-buyer',

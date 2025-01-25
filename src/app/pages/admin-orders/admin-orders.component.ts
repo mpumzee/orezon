@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
-import { Buyer } from '../../models/buyer';
-import { ProductCategory } from '../../models/product-category';
-import { Seller } from '../../models/seller';
-import { SubOrder } from '../../models/sub-order';
-import { User } from '../../models/user';
-import { OrdersService } from '../../services';
-import { BuyerRegistrationService } from '../../services/buyer-registration.service';
-import { SellerRegistrationService } from '../../services/seller-registration.service';
-import { SubCategoriesService } from '../../services/sub-categories.service';
-
+import { Buyer } from '../../../models/buyer';
+import { ProductCategory } from '../../../models/product-category';
+import { Seller } from '../../../models/seller';
+import { SubOrder } from '../../../models/sub-order';
+import { User } from '../../../models/user';
+import { OrdersService, SellerRegistrationService, BuyerRegistrationService, SubCategoriesService } from '../../tools/services';
 @Component({
   selector: 'app-admin-orders',
   templateUrl: './admin-orders.component.html',
