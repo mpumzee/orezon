@@ -32,7 +32,7 @@ export class UsersComponent {
     this.buyerService.getAllList().subscribe((res) => {
       this.buyers = res.data;
       this.buyers.forEach((buyer) => {
-        buyer.profile_pic = 'https://orezon.co.zw/storage/' + buyer.profile_pic;
+        buyer.profile_pic = 'assets/img/user.png' + buyer.profile_pic;
       });
       console.log('buyers:', this.buyers);
 

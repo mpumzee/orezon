@@ -41,7 +41,7 @@ export class SellerPaymentsComponent {
           .forEach((buyer) => {
             console.log('entered', buyer);
             payment.buyer_pic =
-              'https://orezon.co.zw/storage/app/public/' + buyer.profile_pic;
+              'assets/img/user.png' + buyer.profile_pic;
             payment.buyer_name = buyer.user.name;
             payment.buyer_email = buyer.user.email;
           });

@@ -13,21 +13,21 @@
         <div class="p-6 space-y-6 mt-8">
             <form [formGroup]="profileForm" (submit)="createProfile()">
                 <div class="grid grid-cols-12 gap-6 mb-8">
-                    <div class="col-span-12 sm:col-span-4">
-                        <div class="col-span-4 sm:col-span-2 mb-8">
+                    <div class="col-span-12 sm:col-span-6">
+                        <div class="col-span-6 sm:col-span-2 mb-8">
                             <label for="product-name" class="text-2xl font-medium text-gray-900 block mb-2">Full
                                 Name</label>
                             <input type="text" name="name" id="name"
                                 class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                 id="name" formControlName="name" placeholder="enter your full name" required="">
                         </div>
-                        <div class="col-span-4 sm:col-span-2  mb-8">
+                        <div class="col-span-6 sm:col-span-2  mb-8">
                             <label for="category" class="text-2xl font-medium text-gray-900 block mb-2">Email</label>
                             <input type="email" name="email" id="email" formControlName="email"
                                 class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                 placeholder="enter your email" required="">
                         </div>
-                        <div class="col-span-4 sm:col-span-2  mb-8">
+                        <div class="col-span-6 sm:col-span-2  mb-8">
                             <label for="brand" class="text-2xl font-medium text-gray-900 block mb-2">Password<i
                                     style="color: grey;">(*atleast 8
                                     characters)</i></label>
@@ -35,7 +35,7 @@
                                 class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                 formControlName="password" minlength="8" placeholder="password" required="">
                         </div>
-                        <div class="col-span-4 sm:col-span-2  mb-8">
+                        <div class="col-span-6 sm:col-span-2  mb-8">
                             <label for="price" class="text-2xl font-medium text-gray-900 block mb-2">Password
                                 Confirmation<i style="color: grey;"></i></label>
                             <input type="password" (ngModelChange)="check()" name="password_confirmation"
@@ -47,8 +47,8 @@
                                     class="font-medium">Error!</span> Passwords do not match.</p>
                         </div>
                     </div>
-                    <div class="col-span-12 sm:col-span-4">
-                        <div class="col-span-4 sm:col-span-2 mb-8">
+                    <div class="col-span-12 sm:col-span-6">
+                        <div class="col-span-6 sm:col-span-2 mb-8">
                             <label for="product-name" class="text-2xl font-medium text-gray-900 block mb-2">National ID/
                                 Passport No<i style="color: grey;"> (*6 - 12
                                     characters)</i></label>
@@ -57,7 +57,7 @@
                                 formControlName="id_number" maxlength="12" placeholder="enter national ID/ passport No"
                                 required="">
                         </div>
-                        <div class="col-span-4 sm:col-span-2 mb-8">
+                        <div class="col-span-6 sm:col-span-2 mb-8">
                             <label for="category" class="text-2xl font-medium text-gray-900 block mb-2">Country</label>
                             <select id="country"
                                 class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
@@ -66,40 +66,20 @@
                                 <option *ngFor="let country of countries" [value]="country">{{country}}</option>
                             </select>
                         </div>
-                        <div class="col-span-4 sm:col-span-2 mb-8">
+                        <div class="col-span-6 sm:col-span-2 mb-8">
                             <label for="brand" class="text-2xl font-medium text-gray-900 block mb-2">Address</label>
                             <input type="text"
                                 class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                 id="address" formControlName="address" placeholder="Enter address" required>
                         </div>
-                        <div class="col-span-4 sm:col-span-2 mb-8">
+                        <div class="col-span-6 sm:col-span-2 mb-8">
                             <label for="price" class="text-2xl font-medium text-gray-900 block mb-2">Phone</label>
                             <input type="text"
                                 class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-2sxl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                 id="phone" formControlName="phone" minlength="10" placeholder="Enter phone" required>
                         </div>
                     </div>
-                    <div class="col-span-12 sm:col-span-4 flex flex-col items-center">
-                        <div class="col-md-6 image-upload p-2 rounded bg-info"
-                            style="border-radius: 4px;border: solid 1px rgb(184, 181, 181);margin-top:25px;padding:15px;">
-                            <input type="file" class="form-control" id="profile_pic" formControlName="profile_pic"
-                                (change)="onFileSelected($event)" accept="image/*"
-                                style="width: 100%; height: 100%; opacity: 0; position: absolute; top: 0; left: 0; z-index: 9; cursor: pointer;">
-
-                            <div class="image-uploads text-center">
-                                <img *ngIf="selectedFile" [src]="getImagePreview()" alt="Uploaded Image"
-                                    class="mx-auto d-block" style="max-height: 150px; max-width: 100%;">
-                                <img src="assets/img/upload.svg" alt="img" class="mx-auto d-block"
-                                    *ngIf="!selectedFile">
-                                <div class="text-center text-2xl">Drag and drop your profile picture to upload or click
-                                    to select
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
-
                 <div class="p-6 border-t border-gray-200 rounded-b">
                     <button
                         class="btn btn-primary btn-block text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-2xl px-5 py-2.5 text-center"

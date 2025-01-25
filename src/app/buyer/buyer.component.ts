@@ -53,7 +53,6 @@ export class BuyerComponent {
       country: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
-      profile_pic: new FormControl(this.selectedFile),
     });
   }
 
@@ -90,7 +89,6 @@ export class BuyerComponent {
       //this.profileForm.value.profile_pic = this.selectedFile
 
       let formData = new FormData();
-      formData.append('profile_pic', this.selectedFile, this.selectedFile.name);
       formData.append('name', this.profileForm.value.name);
       formData.append('email', this.profileForm.value.email);
       formData.append('password', this.profileForm.value.password);

@@ -69,7 +69,7 @@ export class AdminOrdersComponent {
             .forEach((buyer) => {
               console.log('entered', buyer);
               order.buyer_pic =
-                'https://orezon.co.zw/storage/app/public/' + buyer.profile_pic;
+                'assets/img/user.png' + buyer.profile_pic;
               order.buyer_name = buyer.user.name;
               order.buyer_email = buyer.user.email;
             });
