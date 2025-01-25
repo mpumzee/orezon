@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { ResponseHandler } from '../../../models/response-handler';
+import { AlertService } from './alert.service';
 
 const url = environment.url;
 const headers: HttpHeaders = new HttpHeaders().set(
@@ -13,8 +14,10 @@ const headers: HttpHeaders = new HttpHeaders().set(
 @Injectable({
   providedIn: 'root',
 })
-export class PackagesService {
-  constructor(private http: HttpClient) { }
+export class PackagesService extends AlertService {
+  constructor(private http: HttpClient) {
+    super()
+  }
 
   create(itemDto: any) {
     var body = JSON.stringify(itemDto);

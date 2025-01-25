@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AlertService } from '.';
 import { ResponseHandler } from '../../../models/response-handler';
 
 const url = 'https://orezon.co.zw/api/v1';
@@ -11,8 +12,10 @@ const headers: HttpHeaders = new HttpHeaders().set(
 @Injectable({
   providedIn: 'root',
 })
-export class SellerRegistrationService {
-  constructor(private http: HttpClient) { }
+export class SellerRegistrationService extends AlertService {
+  constructor(private http: HttpClient) {
+    super()
+  }
 
   create(itemDto: any) {
     var body = JSON.stringify(itemDto);

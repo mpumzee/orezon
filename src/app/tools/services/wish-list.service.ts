@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { AlertService } from '.';
 const cartStorageName = 'wishlist';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class WishListService {
+export class WishListService  extends AlertService {
   orezonCart: any = [];
   updateTotal = new BehaviorSubject(false);
   toggleCart = new BehaviorSubject(false);
 
-  constructor() { }
+  constructor() {
+    super()
+   }
 
   saveToStorage() {
     localStorage.setItem(cartStorageName, JSON.stringify(this.orezonCart));

@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { Equipment } from '../../../models/equipment';
+import { AlertService } from './alert.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EquipmentService {
+export class EquipmentService  extends AlertService{
 
   constructor(private http: HttpClient) {
+    super()
     this.getEquipment();
   }
 

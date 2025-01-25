@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseHandler } from '../../../models/response-handler';
+import { AlertService } from './alert.service';
 
 const url = 'https://orezon.co.zw/api/v1';
 const headers: HttpHeaders = new HttpHeaders().set(
@@ -11,8 +12,10 @@ const headers: HttpHeaders = new HttpHeaders().set(
 @Injectable({
   providedIn: 'root',
 })
-export class OrdersService {
-  constructor(private http: HttpClient) { }
+export class OrdersService extends AlertService {
+  constructor(private http: HttpClient) {
+    super()
+   }
 
   getSellerOrders() {
     return this.http.get<ResponseHandler>(`${url}/orders/seller`);

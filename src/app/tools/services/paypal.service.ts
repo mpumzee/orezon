@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { ResponseHandler } from '../../../models/response-handler';
+import { AlertService } from './alert.service';
 
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class PaypalService {
+export class PaypalService  extends AlertService{
 
   url = environment.url;
   headers: HttpHeaders = new HttpHeaders().set(
@@ -17,7 +18,10 @@ export class PaypalService {
   );
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+    super()
+   }
 
   postOrder(itemDto: any) {
     var body = JSON.stringify(itemDto);
