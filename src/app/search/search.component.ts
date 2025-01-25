@@ -145,6 +145,10 @@ export class SearchComponent implements OnInit {
     //this.filteredProducts = this.products.filter(x => x.)
   }
 
+  openCart() {
+    this.router.navigate(['/cart']);
+  }
+
   checkIfExist(item) {
     const index = this.currentCart?.findIndex((p) => p.id === item.id);
     if (index >= 0) {
