@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment.development';
 import { ProductCategory } from '../../../models/product-category';
 import { Products } from '../../../models/products';
 import { SubCategory } from '../../../models/sub-category';
-import { SearchService, SubCategoriesService, CartService, ProductsService, WishListService } from '../../tools/services';
+import { CartService, ProductsService, SearchService, SubCategoriesService, WishListService } from '../../tools/services';
 import { CategoriesService } from '../../tools/services/categories.service';
 
 
@@ -49,6 +49,8 @@ export class SearchComponent implements OnInit {
   selectedCategory: any
 
   wishlistCount = 0
+
+  cart = false
 
   selectedFilterCategory: any
 
@@ -193,6 +195,15 @@ export class SearchComponent implements OnInit {
   showModal() {
     this.categoryModal = true
     console.log(this.categoryModal)
+  }
+
+  viewCart() {
+    if (this.cart == true) {
+      this.cart = false
+    } else {
+      this.cart = true
+    }
+
   }
 
 

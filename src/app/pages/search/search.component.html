@@ -71,7 +71,7 @@
 							</div>
 							<div class="cart-btns" type="button">
 								<a href="#">Cancel</a>
-								<a href="#/cart">Get Quotation <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="#/quotation">Get Quotation <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 
 
@@ -84,7 +84,7 @@
 							<span>Your Cart</span>
 							<div class="qty">{{totalCart}}</div>
 						</a>
-						<div class="cart-dropdown">
+						<div class="absolute z-40 cart-dropdown">
 							<div class="cart-list">
 
 								@for (item of currentCart; track $index) {

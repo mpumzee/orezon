@@ -15,6 +15,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { MetalsComponent } from './pages/metals/metals.component';
 import { PackagesComponent } from './pages/packages/packages.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { QuotationComponent } from './pages/quotation/quotation.component';
 import { SearchComponent } from './pages/search/search.component';
 import { SelectPackageComponent } from './pages/select-package/select-package.component';
 import { SellerCheckoutComponent } from './pages/seller-checkout/seller-checkout.component';
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'cart', component: CartComponent },
   { path: 'buyer-dashboard', component: BuyerDashboardComponent },
+  { path: 'quotation', component: QuotationComponent },
   {
     path: 'seller-terms-and-conditions',
     component: SellerTermsAndConditionsComponent,

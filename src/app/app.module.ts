@@ -55,6 +55,7 @@ import { TopNavComponent } from './pages/top-nav/top-nav.component';
 import { UsersComponent } from './pages/users/users.component';
 import { ErrorInterceptor, LoaderInterceptor } from './tools/helpers';
 import { AlertService } from './tools/services';
+import { QuotationComponent } from './pages/quotation/quotation.component';
 
 
 @NgModule({
@@ -99,7 +100,8 @@ import { AlertService } from './tools/services';
     SellerPayoutsComponent,
     SellerCheckoutComponent,
     CheckOutComponent,
-    AdminOrdersComponent
+    AdminOrdersComponent,
+    QuotationComponent
   ],
   imports: [
     BrowserModule,
