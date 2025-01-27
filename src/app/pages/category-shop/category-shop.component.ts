@@ -89,7 +89,7 @@ export class CategoryShopComponent implements OnInit {
   }
 
   updateCart(item: any) {
-    alert('Item added to cart');
+     this.cartService.success('Item added to cart');
     this.cartService.addToCart(item, item.price, 1);
 
     this.checkIfExist(item);
