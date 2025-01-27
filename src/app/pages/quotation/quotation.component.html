@@ -1,15 +1,15 @@
 <app-nav-bar></app-nav-bar>
 <div class="bg-white rounded-lg shadow-lg px-8 py-8 max-w-7xl mx-auto mb-3">
     <div class="flex items-center justify-end">
-        <button type="button" (click)="captureReportModal(pdfSection)"
+        <button type="button" (click)="convetToPDF()"
             class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-xl px-5 py-2.5 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
             Export PDF
             <i class="ml-2 fa fa-file-export"></i>
         </button>
     </div>
 </div>
-<div class="pdfsection" id="pdfsection" #pdfSection>
-    <div class="bg-white rounded-lg shadow-lg px-8 py-10 max-w-7xl mx-auto">
+<div class="pdfsection" id="myquation" #pdfSection>
+    <div class="bg-white rounded-lg shadow-lg px-8 py-10  w-full mx-auto">
         <div class="flex items-center justify-between mb-8">
             <div class="flex items-center">
                 <a href="#" class="block logo" style="font-size: 10vh;">

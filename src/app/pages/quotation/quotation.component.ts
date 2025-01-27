@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import jsPDF from 'jspdf';
+import jspdf from 'jspdf';
 import { User } from '../../../models/user';
 import { WishListService } from '../../tools/services';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-quotation',
@@ -41,26 +42,42 @@ export class QuotationComponent {
   }
 
 
-  captureReportModal(section: any) {
-
-    const doc = new jsPDF('landscape', 'pt', 'a4', true);
-
-    doc.html(section!, {
-      callback: function (doc) {
 
 
-        // Save the PDF
-        doc.save(`Quotation.pdf`);
-      },
-      x: 0,
-      y: 0,
-      html2canvas: {
-        scale: 0.7, // Adjust this value as needed
+  public convetToPDF() {
+    setTimeout(() => {
+      var data = document.getElementById('myquation');
+      html2canvas(data, {
         useCORS: true,
-        windowWidth: doc.internal.pageSize.getWidth(),
-        windowHeight: doc.internal.pageSize.getHeight()
-      }
-    });
+      }).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        // Few necessary setting options
+        const pdf = new jspdf('p', 'mm', 'a4', true);
+        const imgWidth = 210; // A4 width in mm
+        const pageHeight = 105; // A4 height in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 0;
+
+        // Add the image to the PDF
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        // Add new pages if needed
+        while (heightLeft > 0) {
+          position = heightLeft - imgHeight; // Getting new position for the next page
+          pdf.addPage();
+          pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+        }
+
+        pdf.addPage();
+
+        const filename = 'wishlist' + '.pdf';
+        pdf.save(filename);
+
+      });
+    }, 1000);
   }
 
 }

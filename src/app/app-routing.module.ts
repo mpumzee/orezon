@@ -24,6 +24,7 @@ import { SellerComponent } from './pages/seller/seller.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { TopNavComponent } from './pages/top-nav/top-nav.component';
+import { WishListComponent } from './pages/wish-list/wish-list.component';
 
 
 const routes: Routes = [
@@ -49,6 +50,11 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'buyer-dashboard', component: BuyerDashboardComponent },
   { path: 'quotation', component: QuotationComponent },
+  {
+    path: 'wish-list',
+    component: WishListComponent
+
+  },
   {
     path: 'seller-terms-and-conditions',
     component: SellerTermsAndConditionsComponent,
