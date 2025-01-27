@@ -54,7 +54,7 @@ export class QuotationComponent {
         // Few necessary setting options
         const pdf = new jspdf('p', 'mm', 'a4', true);
         const imgWidth = 210; // A4 width in mm
-        const pageHeight = 105; // A4 height in mm
+        const pageHeight = 265; // A4 height in mm
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         let heightLeft = imgHeight;
         let position = 0;

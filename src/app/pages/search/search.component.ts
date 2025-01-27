@@ -158,6 +158,11 @@ export class SearchComponent implements OnInit {
     this.router.navigate(['/cart']);
   }
 
+  openQuation() {
+    this.router.navigate(['/quotation']);
+  }
+
+
   checkIfExist(item) {
     const index = this.currentCart?.findIndex((p) => p.id === item.id);
     if (index >= 0) {
