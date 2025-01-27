@@ -39,16 +39,18 @@
                 <div class="d-flex justify-content-between align-items-center font-bold text-3xl text-black">
                     <span>Payment
                         Infomation</span>
-                </div><span class="type d-block mt-3 mb-1 text-black text-xl">Card type</span>
+                </div>
 
                 <label class="radio"> <input type="radio" name="card" value="payment"> <span>
-                        <ngx-paypal [config]="payPalConfig"></ngx-paypal></span> </label>
+                    </span> </label>
 
                 <hr class="line">
-                <div class="d-flex justify-content-between information"><span>Total </span><span>${{total| number:
-                        '.2'}}</span></div><button
-                    class="btn btn-success rounded-pill btn-block d-flex justify-content-center mt-3" type="button">
-                    <span style="font-size: 20px;"> Pay</span></button>
+                <div class="d-flex justify-content-between information">
+                    <span>Total </span><span>${{total| number:
+                        '.2'}}</span>
+                </div>
+
+                <ngx-paypal [config]="payPalConfig"></ngx-paypal>
             </div>
         </div>
     </div>
