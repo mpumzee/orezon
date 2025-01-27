@@ -107,11 +107,6 @@ export class SubCategoriesComponent {
           console.log(res.message);
           // Handle the error as needed
         }
-      },
-      (error) => {
-        console.error(error.error.message);
-        alert(error.error.message);
-        // Handle the error as needed
       }
     );
     this.subCategoryForm.reset();

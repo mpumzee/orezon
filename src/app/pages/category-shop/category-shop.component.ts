@@ -109,7 +109,7 @@ export class CategoryShopComponent implements OnInit {
 
 
   addTowishList(item) {
-    alert('Item added to wishlist');
+    this.cartService.success('Item added to wishlist');
     return this.wishlistServie.addToCart(item, item.price, 1)
   }
 

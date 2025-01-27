@@ -126,11 +126,6 @@ export class LoginComponent {
           console.log(res.message);
           // Handle the error as needed
         }
-      },
-      (error) => {
-        console.error(error);
-        alert(error.error.message);
-        // Handle the error as needed
       }
     );
   }

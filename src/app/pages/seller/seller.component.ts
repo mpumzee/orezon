@@ -112,8 +112,8 @@ export class SellerComponent {
           console.log('res', res);
 
           if (res.status == 'success') {
-            console.log(res.message);
-            alert(res.message);
+            this.sellerService.success('Seller created successfully');
+           
             this.router.navigate(['/login']);
           } else {
             console.log(res.message);
