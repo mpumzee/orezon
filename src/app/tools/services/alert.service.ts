@@ -20,7 +20,7 @@ export class AlertService {
 
   success(text: string, callback?: any) {
     Notiflix.Notify.success(text, callback, {
-      position: 'center-center',
+      position: 'right-top',
       cssAnimation:true,
       cssAnimationStyle:  'from-bottom',
       useIcon:true,
