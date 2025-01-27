@@ -115,14 +115,14 @@ export class SearchComponent implements OnInit {
   }
 
   updateCart(item: any) {
-    alert('Item added to cart');
+    this.cartService.success('product added')
     this.cartService.addToCart(item, item.price, 1);
 
     this.checkIfExist(item);
   }
 
   addTowishList(item) {
-    alert('Item added to wishlist');
+    this.cartService.success('Item added to wishlist');
     return this.wishlistServie.addToCart(item, item.price, 1)
   }
 

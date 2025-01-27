@@ -67,7 +67,7 @@ export class PackagesComponent {
           console.log(res);
 
           if (res.status == 'created') {
-            alert(res.message);
+            this.packageService.success('Package created successfully');
             this.packageService.getAllList().subscribe((res) => {
               this.packages = res.data;
               this.packageForm.reset();
@@ -77,10 +77,6 @@ export class PackagesComponent {
             console.error(Error);
             // Handle the error as needed
           }
-        },
-        (error) => {
-          console.error(error);
-          alert(error.error.message);
         }
       );
 
@@ -149,15 +145,11 @@ export class PackagesComponent {
       (res) => {
         console.log('res', res);
 
-        alert('package deleted succesfully');
+        this.packageService.success('Package deleted successfully');
         var index = this.packages.findIndex((x) => x.id === item.id);
         this.packages.splice(index, 1);
 
         this.packages = [...this.packages, res.data];
-      },
-      (error) => {
-        console.error(error.message);
-        alert(error.error.message);
       }
     );
 

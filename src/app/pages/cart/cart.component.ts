@@ -89,7 +89,7 @@ export class CartComponent {
   }
 
   updateCart(item: any) {
-    alert('Item added to cart');
+    this.cartService.success('product added')
     this.cartService.addToCart(item, item.price, 1);
     this.checkIfExist(item);
     this.checkIfExistPrice(item);
@@ -98,7 +98,7 @@ export class CartComponent {
   }
 
   incrementCart(item: any) {
-    alert('Item removed from cart');
+    this.cartService.success('product removed')
     console.log(this.checkIfExist(item));
     if ((this.checkIfExist(item)) == 1) {
       this.cartService.removeFromCart(item)
@@ -124,19 +124,13 @@ export class CartComponent {
 
     this.orderService.order(this.order).subscribe(
       (res) => {
-        console.log(res);
         if (res.status == 'created') {
-          console.log(res);
-          alert(res.message);
+          this.cartService.success('Order placed successfully');
           this.ngOnInit();
         } else {
           console.error(Error);
         }
       },
-      (error) => {
-        console.error(error.error.message);
-        alert(error.error.message);
-      }
     );
   }
 

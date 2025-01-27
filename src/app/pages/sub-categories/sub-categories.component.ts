@@ -89,7 +89,7 @@ export class SubCategoriesComponent {
         console.log('res', res);
 
         if (res.status == 'created') {
-          alert(res.message);
+          this.subCatgeorySevice.success(res.message);
           this.subCatgeorySevice.getAllList().subscribe((res) => {
             res.data.forEach((product: any) => {
               const category = this.categories.filter(
@@ -230,17 +230,11 @@ export class SubCategoriesComponent {
   confirmDelete() {
     this.subCatgeorySevice.delete(this.selectedId).subscribe(
       (res) => {
-        console.log('res', res);
-
-        alert(res.message);
+        this.subCatgeorySevice.success(res.message);
         var index = this.subCategories.findIndex((x) => x.id === this.selectedId);
         this.subCategories.splice(index, 1);
 
         this.subCategories = [...this.subCategories, res.data];
-      },
-      (error) => {
-        console.error(error.message);
-        alert(error.error.message);
       }
     );
 

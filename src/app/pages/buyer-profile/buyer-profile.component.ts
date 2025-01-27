@@ -109,7 +109,7 @@ export class BuyerProfileComponent {
           if (res.status == 'success') {
             console.log(res.message);
             this.editProfileModal = false;
-            alert(res.message);
+            this.buyerService.success(res.message);
             this.ngOnInit();
           } else {
             console.error(Error);
@@ -117,7 +117,7 @@ export class BuyerProfileComponent {
         },
         (error) => {
           console.error(error.error.message);
-          alert(error.error.message);
+          this.buyerService.error(error.error.message);
         }
       );
 

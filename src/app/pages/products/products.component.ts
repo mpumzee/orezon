@@ -183,7 +183,7 @@ export class ProductsComponent implements OnInit {
         console.log('res', res);
 
         if (res.status == 'created') {
-          alert(res.message);
+          this.productService.success('Product added successfully');
           this.productService.getSellerProducts(this.user).subscribe((res) => {
             res.data.forEach((product: any) => {
               product.image_url =
@@ -204,11 +204,7 @@ export class ProductsComponent implements OnInit {
           // Handle the error as needed
         }
       },
-      (error) => {
-        console.error(error.error.message);
-        alert(error.error.message);
-        // Handle the error as needed
-      }
+
     );
     this.productForm.reset();
   }
@@ -222,7 +218,7 @@ export class ProductsComponent implements OnInit {
           console.log('res', res);
 
           if (res.status == 'success') {
-            alert(res.message);
+            this.productService.success('Product updated successfully');
             var index = this.products.findIndex(
               (x) => x.id === this.selectedId
             );
@@ -232,10 +228,6 @@ export class ProductsComponent implements OnInit {
           } else {
             console.error(Error);
           }
-        },
-        (error) => {
-          console.error(error.message);
-          alert(error.error.message);
         }
       );
 
@@ -297,15 +289,11 @@ export class ProductsComponent implements OnInit {
       (res) => {
         console.log('res', res);
 
-        alert(res.message);
+        this.productService.success('Product deleted successfully');
         var index = this.products.findIndex((x) => x.id === this.selectedId);
         this.products.splice(index, 1);
 
         this.products = [...this.products, res.data];
-      },
-      (error) => {
-        console.error(error.message);
-        alert(error.error.message);
       }
     );
 

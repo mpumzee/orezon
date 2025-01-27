@@ -110,11 +110,7 @@ export class BuyerComponent {
           this.buyerProfile = [...this.buyerProfile, res.data];
           this.router.navigate(['/login']);
         },
-        error: (error) => {
-          console.error(error);
-          alert(error.error.message);
-          // Handle the error as needed
-        },
+       
       });
     }
 

@@ -41,7 +41,7 @@ export class CheckOutComponent implements OnInit {
 
   saveOrder(order: any) {
     this.paypalService.postOrder(order).subscribe(resp => {
-      alert('Order Prossed Successfulyy')
+      this.cartService.success('order prossed successfully')
     })
   }
 

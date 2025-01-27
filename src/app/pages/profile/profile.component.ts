@@ -176,15 +176,11 @@ export class ProfileComponent {
           if (res.status == 'success') {
             console.log(res.message);
             this.editProfileModal = false;
-            alert(res.message);
+            this.sellerService.success(res.message);
             this.ngOnInit();
           } else {
             console.error(Error);
           }
-        },
-        (error) => {
-          console.error(error.error.message);
-          alert(error.error.message);
         }
       );
 

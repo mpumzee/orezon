@@ -45,7 +45,7 @@ export class SellerCheckoutComponent implements OnInit {
     console.log('order', order)
     this.paypalService.subscribeOrder(order).subscribe(resp => {
       console.log('respone:', resp)
-      alert('Subscription successful');
+      this.cartService.success('Subscription successful')
       this.router.navigate(['/login']);
       this.cartService.clearCart();
     })
