@@ -3,3 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    zoom: 0.99
+}
