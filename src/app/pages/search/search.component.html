@@ -1,6 +1,6 @@
 <!-- MAIN HEADER -->
 <hr>
-<div id="header" class="2xl:section 2xl:mx-auto py-4 px-18 bg-slate-950">
+<div id="header" class="2xl:section 2xl:mx-auto py-4 px-18 bg-slate-950 overflow-hidden">
 	<!-- row -->
 	<div class="row">
 
@@ -111,10 +111,13 @@
 							<small>{{totalCart}} Item(s) selected</small>
 							<h5>SUBTOTAL: ${{cartTotalAmount }}</h5>
 						</div>
-						<div>
+
+						<div class="cart-btns" type="button">
+
 							<button class="bg-green-500 text-white text-center w-full h-full py-2"
 								(click)="openCart()">View
 								Cart <i class="fa fa-arrow-circle-right"></i></button>
+
 						</div>
 						<!-- <div class="cart-btns  flex items-center justify-end" type="button">
 								<button type="button"
