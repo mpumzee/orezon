@@ -1,125 +1,129 @@
 <!-- MAIN HEADER -->
 <hr>
-<div id="header" class="2xl:section 2xl:mx-auto py-4 px-18 bg-slate-950 overflow-hidden">
-	<!-- row -->
-	<div class="row">
+<div id="header" class="bg-slate-950">
+	<div class="container">
+		<!-- row -->
+		<div class="row">
 
-		<div class="col-md-2 clearfix pull-left"></div>
+			<div class="col-md-2 clearfix pull-left"></div>
 
-		<!-- SEARCH BAR -->
-		<div class="col-md-8 clearfix pull-left">
-			<div class="header-search">
+			<!-- SEARCH BAR -->
+			<div class="col-md-8 clearfix pull-left">
+				<div class="header-search">
 
-				<form class="max-w-[400px] mx-auto md:max-w-[500px] lg:max-w-[600px]">
-					<div class="flex">
-						<select (change)="onSelection($event)"
-							class="border border-gray-300 text-gray-900 rounded-s-lg focus:ring-primary-500 focus:border-primary-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-							<option value="">Select Category</option>
-							<option *ngFor="let category of categories" [value]="category.id">
-								{{category.name}}</option>
-						</select>
-						<div class="relative w-full">
-							<input type="search" #filter (ngModelChange)="searchProducts(filter.value)"
-								class="block p-2.5 w-full z-20 text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-green-500"
-								placeholder="Search Products" required />
-							<button type="submit" (click)="searchProducts(filter.value)"
-								class="absolute top-0 end-0 p-2.5  font-medium h-full text-white bg-green-700 rounded-e-lg border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-								<svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-									viewBox="0 0 20 20">
-									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-										stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-								</svg>
-								<span class="sr-only">Search</span>
-							</button>
-						</div>
-					</div>
-				</form>
-
-			</div>
-		</div>
-		<!-- /SEARCH BAR -->
-
-		<!-- ACCOUNT -->
-		<div class="col-md-2 clearfix pull-right">
-			<div class="flex justify-between items-center py-4 px-2 header-ctn">
-				<div class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-						<i class="fa fa-heart"></i>
-						<span>Your Wishlist</span>
-						<div class="qty">{{ wishlistCount}}</div>
-					</a>
-					<div class="cart-dropdown">
-						<div class="cart-list">
-
-							@for (item of wishlist; track $index) {
-
-							<div class="product-widget">
-								<div class="product-img">
-									<img [src]="item.image_url" alt="">
-								</div>
-								<div class="product-body">
-									<h3 class="product-name"><a href="#">{{item.name}}</a></h3>
-									<h4 class="product-price"><span class="qty">{{item.quantity}}x</span>${{item.price}}
-									</h4>
-								</div>
-								<button class="delete" (click)="removeItemFromWishlist(item)"><i
-										class="fa fa-close"></i></button>
+					<form class="max-w-[400px] mx-auto md:max-w-[500px] lg:max-w-[600px]">
+						<div class="flex">
+							<select (change)="onSelection($event)"
+								class="border border-gray-300 text-gray-900 rounded-s-lg focus:ring-primary-500 focus:border-primary-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+								<option value="">Select Category</option>
+								<option *ngFor="let category of categories" [value]="category.id">
+									{{category.name}}</option>
+							</select>
+							<div class="relative w-full">
+								<input type="search" #filter (ngModelChange)="searchProducts(filter.value)"
+									class="block p-2.5 w-full z-20 text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-green-500"
+									placeholder="Search Products" required />
+								<button type="submit" (click)="searchProducts(filter.value)"
+									class="absolute top-0 end-0 p-2.5  font-medium h-full text-white bg-green-700 rounded-e-lg border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+									<svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+										fill="none" viewBox="0 0 20 20">
+										<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+											stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+									</svg>
+									<span class="sr-only">Search</span>
+								</button>
 							</div>
-							}
 						</div>
-						<div class="cart-btns" type="button">
+					</form>
 
-							<button class="bg-black text-white text-center w-full h-full py-2"
-								(click)="openQuation()">Get
-								Quotation <i class="fa fa-arrow-circle-right"></i></button>
-
-						</div>
-
-
-					</div>
 				</div>
+			</div>
+			<!-- /SEARCH BAR -->
 
-				<div class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-						<i class="fa fa-shopping-cart"></i>
-						<span>Your Cart</span>
-						<div class="qty">{{totalCart}}</div>
-					</a>
-					<div class="cart-dropdown">
-						<div class="cart-list">
+			<!-- ACCOUNT -->
+			<div class="col-md-2 clearfix pull-right">
+				<div class="flex justify-between items-center py-4 px-2 header-ctn">
+					<div class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+							<i class="fa fa-heart"></i>
+							<span>Your Wishlist</span>
+							<div class="qty">{{ wishlistCount}}</div>
+						</a>
+						<div class="cart-dropdown">
+							<div class="cart-list">
 
-							@for (item of currentCart; track $index) {
+								@for (item of wishlist; track $index) {
 
-							<div class="product-widget">
-								<div class="product-img">
-									<img [src]="item.image_url" alt="">
+								<div class="product-widget">
+									<div class="product-img">
+										<img [src]="item.image_url" alt="">
+									</div>
+									<div class="product-body">
+										<h3 class="product-name"><a href="#">{{item.name}}</a></h3>
+										<h4 class="product-price"><span
+												class="qty">{{item.quantity}}x</span>${{item.price}}
+										</h4>
+									</div>
+									<button class="delete" (click)="removeItemFromWishlist(item)"><i
+											class="fa fa-close"></i></button>
 								</div>
-								<div class="product-body">
-									<h3 class="product-name"><a href="#">{{item.name}}</a></h3>
-									<h4 class="product-price"><span class="qty">{{item.quantity}}x</span>${{item.price}}
-									</h4>
+								}
+							</div>
+							<div class="cart-btns" type="button">
+
+								<button class="bg-black text-white text-center w-full h-full py-2"
+									(click)="openQuation()">Get
+									Quotation <i class="fa fa-arrow-circle-right"></i></button>
+
+							</div>
+
+
+						</div>
+					</div>
+
+					<div class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+							<i class="fa fa-shopping-cart"></i>
+							<span>Your Cart</span>
+							<div class="qty">{{totalCart}}</div>
+						</a>
+						<div class="cart-dropdown">
+							<div class="cart-list">
+
+								@for (item of currentCart; track $index) {
+
+								<div class="product-widget">
+									<div class="product-img">
+										<img [src]="item.image_url" alt="">
+									</div>
+									<div class="product-body">
+										<h3 class="product-name"><a href="#">{{item.name}}</a></h3>
+										<h4 class="product-price"><span
+												class="qty">{{item.quantity}}x</span>${{item.price}}
+										</h4>
+									</div>
+									<button class="delete" (click)="removeItem(item)"><i
+											class="fa fa-close"></i></button>
+
+
 								</div>
-								<button class="delete" (click)="removeItem(item)"><i class="fa fa-close"></i></button>
+								}
 
 
 							</div>
-							}
+							<div class="cart-summary ">
+								<small>{{totalCart}} Item(s) selected</small>
+								<h5>SUBTOTAL: ${{cartTotalAmount }}</h5>
+							</div>
 
+							<div class="cart-btns" type="button">
 
-						</div>
-						<div class="cart-summary ">
-							<small>{{totalCart}} Item(s) selected</small>
-							<h5>SUBTOTAL: ${{cartTotalAmount }}</h5>
-						</div>
+								<button class="bg-green-500 text-white text-center w-full h-full py-2"
+									(click)="openCart()">View
+									Cart <i class="fa fa-arrow-circle-right"></i></button>
 
-						<div class="cart-btns" type="button">
-
-							<button class="bg-green-500 text-white text-center w-full h-full py-2"
-								(click)="openCart()">View
-								Cart <i class="fa fa-arrow-circle-right"></i></button>
-
-						</div>
-						<!-- <div class="cart-btns  flex items-center justify-end" type="button">
+							</div>
+							<!-- <div class="cart-btns  flex items-center justify-end" type="button">
 								<button type="button"
 									class="w-50 text-white bg-black hover:bg-black-800 focus:ring-4 focus:ring-black-300 font-medium  px-5 py-2.5 dark:bg-black-600 dark:hover:bg-black-700 focus:outline-none dark:focus:ring-black-800">Cancel</button>
 								<button type="button" (click)="openCart()"
@@ -132,14 +136,15 @@
 									</svg>
 								</button>
 							</div> -->
+						</div>
 					</div>
-				</div>
 
+				</div>
 			</div>
+			<!-- /ACCOUNT -->
 		</div>
-		<!-- /ACCOUNT -->
+		<!-- row -->
 	</div>
-	<!-- row -->
 	<!-- container -->
 </div>
 <!-- /MAIN HEADER -->
