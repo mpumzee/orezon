@@ -39,27 +39,26 @@ export class SellerPaymentsComponent {
         console.log('sellers:', res.data);
         this.paymentService.getSellerPayments().subscribe((res) => {
           this.payments = res.data;
-          this.payments.forEach((payment) => {
-            if (payment.buyer_id == null) {
-              this.sellers
-                .filter((x) => x.user_id == payment.subscription.user_package.user_id)
-                .forEach((buyer) => {
-                  payment.buyer_pic =
-                    'assets/img/user.png';
-                  payment.buyer_name = buyer.user.name;
-                  payment.buyer_email = buyer.user.email;
-                });
-            }
-            else {
-              this.buyers
-                .filter((x) => x.user_id == payment.buyer_id)
-                .forEach((buyer) => {
-                  payment.buyer_pic =
-                    'assets/img/user.png';
-                  payment.buyer_name = buyer.user.name;
-                  payment.buyer_email = buyer.user.email;
-                });
-            }
+          this.payments.filter(x => x.buyer_id != null).forEach((payment) => {
+            // if (payment.buyer_id == null) {
+            //   this.sellers
+            //     .filter((x) => x.user_id == payment.subscription.user_package.user_id)
+            //     .forEach((buyer) => {
+            //       payment.buyer_pic =
+            //         'assets/img/user.png';
+            //       payment.buyer_name = buyer.user.name;
+            //       payment.buyer_email = buyer.user.email;
+            //     });
+            // }
+            // else {
+            this.buyers
+              .filter((x) => x.user_id == payment.buyer_id)
+              .forEach((buyer) => {
+                payment.buyer_pic =
+                  'assets/img/user.png';
+                payment.buyer_name = buyer.user.name;
+                payment.buyer_email = buyer.user.email;
+              });
 
           });
           this.filteredPayments = this.payments
