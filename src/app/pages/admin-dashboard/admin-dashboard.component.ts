@@ -6,7 +6,7 @@ import { Package } from '../../../models/package';
 import { Payments } from '../../../models/payments';
 import { Seller } from '../../../models/seller';
 import { SubOrder } from '../../../models/sub-order';
-import { PackagesService, OrdersService, BuyerRegistrationService, SellerRegistrationService, PaymentService } from '../../tools/services';
+import { BuyerRegistrationService, OrdersService, PackagesService, PaymentService, SellerRegistrationService } from '../../tools/services';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -32,6 +32,8 @@ export class AdminDashboardComponent {
 
   thisMonthOrders = 0
 
+  amountOfThisMonthOrders = 0
+
   lastMonthOrders = 0
 
   ordersPercentageDiff: any
@@ -55,6 +57,8 @@ export class AdminDashboardComponent {
   totalOrders = 0;
 
   subOrders: SubOrder[] = [];
+
+  filteredsubOrders: SubOrder[] = [];
 
   lastMonthPayments = 0
 
@@ -89,34 +93,54 @@ export class AdminDashboardComponent {
       console.log('packages:', res.data);
     });
 
-    this.orderService.getAllList().subscribe((res) => {
-      this.subOrders = res.data;
-
-      console.log('orders:', this.subOrders)
-
-      // Calculate total orders for last month and this month
-      this.lastMonthOrders = this.subOrders.filter(order => {
-        const orderDate = new Date(order.created_at);
-        return orderDate.getFullYear() === new Date().getFullYear() &&
-          orderDate.getMonth() === new Date().getMonth() - 1;
-      }).reduce((sum, order) => sum + order.total_price, 0);
-
-      this.thisMonthOrders = this.subOrders.filter(order => {
-        const orderDate = new Date(order.created_at);
-        return orderDate.getFullYear() === new Date().getFullYear() &&
-          orderDate.getMonth() === new Date().getMonth();
-      }).reduce((sum, order) => sum + order.total_price, 0);
-
-      // Calculate percentage difference
-      this.ordersPercentageDiff = ((this.thisMonthOrders - this.lastMonthOrders) / this.lastMonthOrders * 100).toFixed(2)
-      if (this.ordersPercentageDiff == Infinity) {
-        this.ordersPercentageDiff = 100
-      }
-      console.log('orders:', this.orders, this.thisMonthOrders, this.lastMonthOrders, this.ordersPercentageDiff);
-    });
 
     this.buyerService.getAllList().subscribe((res) => {
       this.buyers = res.data;
+
+      this.orderService.getAllList().subscribe((res) => {
+        this.subOrders = res.data;
+
+        this.subOrders.forEach(order => {
+          order.buyer_pic = 'assets/img/user.png';
+          this.buyers.filter(x => x.user_id == order.buyer_id).forEach(buyer => {
+            order.buyer_email = buyer.user.email
+            order.buyer_name = buyer.user.name
+          })
+          order.total_quantity = order.products.reduce((sum, order) => sum + order.quantity, 0);
+        })
+
+        console.log('orders:', this.subOrders)
+
+        // Calculate total orders for last month and this month
+        this.lastMonthOrders = this.subOrders.filter(order => {
+          const orderDate = new Date(order.created_at);
+          return orderDate.getFullYear() === new Date().getFullYear() &&
+            orderDate.getMonth() === new Date().getMonth() - 1;
+        }).reduce((sum, order) => sum + Number(order.total_price), 0);
+
+        this.thisMonthOrders = this.subOrders.filter(order => {
+          const orderDate = new Date(order.created_at);
+          return orderDate.getFullYear() === new Date().getFullYear() &&
+            orderDate.getMonth() === new Date().getMonth();
+        }).reduce((sum, order) => sum + Number(order.total_price), 0);
+
+        this.filteredsubOrders = this.subOrders.filter(order => {
+          const orderDate = new Date(order.created_at);
+          return orderDate.getFullYear() === new Date().getFullYear() &&
+            orderDate.getMonth() === new Date().getMonth();
+        })
+
+        const uniqueOrderIds = new Set(this.filteredsubOrders.map(order => order.order_id));
+        this.totalOrders = uniqueOrderIds.size;
+
+
+        // Calculate percentage difference
+        this.ordersPercentageDiff = ((this.thisMonthOrders - this.lastMonthOrders) / this.lastMonthOrders * 100).toFixed(2)
+        if (this.ordersPercentageDiff == Infinity) {
+          this.ordersPercentageDiff = 100
+        }
+        console.log('orders:', this.orders, ':', this.thisMonthOrders, ':', this.lastMonthOrders, ':', this.ordersPercentageDiff);
+      });
 
       this.lastMonthUsers += this.buyers.filter(user => {
         const userDate = new Date(user.created_at);

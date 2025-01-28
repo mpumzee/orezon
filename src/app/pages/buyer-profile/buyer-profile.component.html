@@ -2,7 +2,7 @@
 
 
     <div class="mx-auto max-w-screen-lg px-4 2xl:px-0">
-        <h2 class="mb-2 text-2xl font-semibold text-gray-900 dark:text-white xl:text-4xl md:mb-6">General overview</h2>
+        <h2 class="mb-2 text-3xl font-semibold text-gray-900 dark:text-white xl:text-3xl md:mb-6">General overview</h2>
 
         <figure
             class="relative flex flex-col-reverse bg-slate-100 rounded-lg p-6 dark:bg-slate-800 dark:highlight-white/5">
@@ -18,20 +18,20 @@
                                 alt="Rounded avatar"> -->
                             <div>
                                 <span
-                                    class="mb-2 mt-7 inline-block rounded bg-green-200 px-2.5 py-0.5 text-2xl font-medium text-primary-800 dark:bg-green-900 dark:text-primary-300 uppercase">
+                                    class="mb-2 mt-7 inline-block rounded bg-green-200 px-2.5 py-0.5 font-medium text-primary-800 dark:bg-green-900 dark:text-primary-300 uppercase">
                                     {{role}} Account </span>
                                 <h2
-                                    class="flex items-center text-2xl font-bold leading-none text-gray-900 dark:text-white xl:text-2xl">
+                                    class="flex items-center text-lg font-bold leading-none text-gray-900 dark:text-white xl:text-lg">
                                     {{user.name}}</h2>
                             </div>
                         </div>
                         <dl class="mt-8">
-                            <dt class="font-semibold mt-8 text-2xl text-gray-900 dark:text-white">Email Address</dt>
-                            <dd class="text-gray-500 text-2xl dark:text-gray-400">{{user.email}}</dd>
+                            <dt class="font-semibold mt-8 text-lg text-gray-900 dark:text-white">Email Address</dt>
+                            <dd class="text-gray-500 text-lg dark:text-gray-400">{{user.email}}</dd>
                         </dl>
                         <dl>
-                            <dt class="font-semibold mt-8 text-2xl text-gray-900 dark:text-white">Country</dt>
-                            <dd class="flex text-2xl items-center gap-1 text-gray-500 dark:text-gray-400">
+                            <dt class="font-semibold mt-8 text-lg text-gray-900 dark:text-white">Country</dt>
+                            <dd class="flex text-lg items-center gap-1 text-gray-500 dark:text-gray-400">
                                 <svg class="hidden h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500 lg:inline"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="none" viewBox="0 0 24 24">
@@ -43,8 +43,8 @@
                             </dd>
                         </dl>
                         <dl>
-                            <dt class="font-semibold mt-8 text-2xl text-gray-900 dark:text-white">Phone</dt>
-                            <dd class="flex text-2xl items-center gap-1 text-gray-500 dark:text-gray-400">
+                            <dt class="font-semibold mt-8 text-lg text-gray-900 dark:text-white">Phone</dt>
+                            <dd class="flex text-lg items-center gap-1 text-gray-500 dark:text-gray-400">
                                 <svg class="hidden h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500 lg:inline"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="none" viewBox="0 0 24 24">
@@ -58,9 +58,9 @@
                     </div>
                     <div class="space-y-4">
                         <dl>
-                            <dt class="font-semibold mt-8 text-2xl text-gray-900 dark:text-white">Address</dt>
+                            <dt class="font-semibold mt-8 text-lg text-gray-900 dark:text-white">Address</dt>
                             <dd class="flex items-center gap-1 text-gray-500 dark:text-gray-400">
-                                <svg class="hidden text-2xl h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500 lg:inline"
+                                <svg class="hidden text-lg h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500 lg:inline"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -71,25 +71,25 @@
                             </dd>
                         </dl>
                         <dl>
-                            <dt class="font-semibold mt-8 text-2xl text-gray-900 dark:text-white">ID Number</dt>
-                            <dd class="text-gray-500 text-2xl dark:text-gray-400">{{curentBuyerDetails.id_number}}</dd>
+                            <dt class="font-semibold mt-8 text-lg text-gray-900 dark:text-white">ID Number</dt>
+                            <dd class="text-gray-500 text-lg dark:text-gray-400">{{curentBuyerDetails.id_number}}</dd>
                         </dl>
                         <dl>
-                            <dt class="font-semibold mt-8 text-2xl text-gray-900 dark:text-white">Joined On</dt>
-                            <dd class="text-gray-500 text-2xl dark:text-gray-400">{{curentBuyerDetails.created_at | date
+                            <dt class="font-semibold mt-8 text-lg text-gray-900 dark:text-white">Joined On</dt>
+                            <dd class="text-gray-500 text-lg dark:text-gray-400">{{curentBuyerDetails.created_at | date
                                 : 'MMM
                                 d,y'}}</dd>
                         </dl>
                         <dl>
-                            <dt class="font-semibold mt-8 text-2xl text-gray-900 dark:text-white">Last Updated</dt>
-                            <dd class="text-gray-500 text-2xl dark:text-gray-400">{{curentBuyerDetails.updated_at | date
+                            <dt class="font-semibold mt-8 text-lg text-gray-900 dark:text-white">Last Updated</dt>
+                            <dd class="text-gray-500 text-lg dark:text-gray-400">{{curentBuyerDetails.updated_at | date
                                 : 'MMM
                                 d,y'}}</dd>
                         </dl>
                     </div>
                 </div>
                 <button type="button" (click)="edit()"
-                    class="inline-flex w-full items-center justify-center mt-8 rounded-lg bg-green-700 px-5 py-2.5 text-2xl font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-primary-800 xl:w-auto">
+                    class="inline-flex w-full items-center justify-center mt-8 rounded-lg bg-green-700 px-5 py-2.5 font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-primary-800 xl:w-auto">
                     <svg class="-ms-0.5 me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                         height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -113,10 +113,10 @@
                         style="border:green, solid , 1px;padding:2vw;">
 
                         <div
-                            class="flex justify-between items-center pb-4 mb-4 rounded-t border-b xl:mb-5 dark:border-gray-600">
+                            class="flex justify-between items-center pb-4 mb-2 rounded-t border-b xl:mb-5 dark:border-gray-600">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Edit Profile</h3>
                             <button type="button" (click)="hideDialog()"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-xl p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                 data-modal-toggle="createProductModal">
                                 <i class="fa fa-close mr-3"></i>
                             </button>
@@ -124,13 +124,13 @@
 
                         <!-- Modal content -->
                         <form [formGroup]="buyerForm" (submit)="update()" style="padding:2vw; background-color:#f3f7f5">
-                            <div class="grid grid-cols-12 gap-6 mb-8">
+                            <div class="grid grid-cols-12 gap-6 mb-5">
                                 <div class="col-span-12 sm:col-span-12">
                                     <div class="col-span-4 sm:col-span-2 mb-5">
                                         <label for="category"
-                                            class="text-xl font-medium text-gray-900 block mb-2">Country</label>
+                                            class=" font-medium text-gray-900 block mb-2">Country</label>
                                         <select id="country"
-                                            class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                            class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm: rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                             formControlName="country" required>
                                             <option value="">Select Country</option>
                                             <option *ngFor="let country of countries" [value]="country">{{country}}
@@ -138,29 +138,26 @@
                                         </select>
                                     </div>
                                     <div class="col-span-4 sm:col-span-2 mb-5">
-                                        <label for="brand"
-                                            class="text-xl font-medium text-gray-900 block mb-2">Address</label>
+                                        <label for="brand" class=" font-medium text-gray-900 block mb-2">Address</label>
                                         <input type="text"
-                                            class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                            class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm: rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                             id="business_name" formControlName="address"
                                             placeholder="enter business name" required>
                                     </div>
                                     <div class="col-span-4 sm:col-span-2 mb-5">
-                                        <label for="product-name"
-                                            class="text-xl font-medium text-gray-900 block mb-2">National
+                                        <label for="product-name" class=" font-medium text-gray-900 block mb-2">National
                                             ID/
                                             Passport No<i style="color: grey;"> (*6 - 12
                                                 characters)</i></label>
                                         <input type="text" name="id_number" id="id_number"
-                                            class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                            class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm: rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                             formControlName="id_number" maxlength="12"
                                             placeholder="enter national ID/ passport No" required="">
                                     </div>
                                     <div class="col-span-4 sm:col-span-2 mb-5">
-                                        <label for="price"
-                                            class="text-xl font-medium text-gray-900 block mb-2">Phone</label>
+                                        <label for="price" class=" font-medium text-gray-900 block mb-2">Phone</label>
                                         <input type="text"
-                                            class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-xl rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                            class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm: rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                             id="phone" formControlName="phone" minlength="10" placeholder="Enter phone"
                                             required>
                                     </div>
@@ -168,7 +165,7 @@
                             </div>
                             <button type="submit" data-modal-target="accountInformationModal2"
                                 data-modal-toggle="accountInformationModal2" class="btn btn-primary btn-block"
-                                [disabled]="!buyerForm.valid" style="margin-top: 20px;">Submit</button>
+                                [disabled]="!buyerForm.valid">Submit</button>
                         </form>
                     </div>
                 </div>

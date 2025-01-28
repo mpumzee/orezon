@@ -1,5 +1,6 @@
 <nav class="bg-slate-950 border-gray-200 dark:bg-black">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <div
+        class=" flex flex-wrap items-center justify-between 2xl:section 2xl:mx-auto lg:py-2 lg:px-18 md:py-10 md:px-10 py-7 px-2">
         <a href="#" class="block logo" style="font-size: 15vh;">
             <img src="assets/img/top_nav-1.png" alt="" style="width: 200px;">
         </a>
@@ -7,29 +8,29 @@
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <ul class="header-links pull-right">
                 <li *ngIf="dashboard">
-                    <button [routerLink]="'/dashboard'" type="button"
-                        class="border border-blue-700 text-white bg-black hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-black dark:hover:bg-blue-700 dark:focus:ring-blue">
+                    <button (click)="openDashboard()" type="button"
+                        class="border border-blue-700 text-md text-white bg-black hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-black dark:hover:bg-blue-700 dark:focus:ring-blue">
                         <i class="fa fa-dashboard text-blue-700"></i>
                         Dashboard
                     </button>
                 </li>
                 <li *ngIf="home">
                     <button [routerLink]="'/'" type="button"
-                        class="border border-green-700 text-white bg-black hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-black dark:hover:bg-green-700 dark:focus:ring-green">
+                        class="border border-green-700 text-white bg-black hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg  px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-black dark:hover:bg-green-700 dark:focus:ring-green">
                         <i class="fa fa-home"></i>
                         Home
                     </button>
                 </li>
                 <li *ngIf="logIn">
                     <button [routerLink]="'/login'" type="button"
-                        class="border border-yellow-700 text-white bg-black hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-black dark:hover:bg-yellow-700 dark:focus:ring-yellow">
+                        class="border border-yellow-700 text-md text-white bg-black hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg  px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-black dark:hover:bg-yellow-700 dark:focus:ring-yellow">
                         <i class="fa fa-unlock text-yellow-700"></i>
                         Log In
                     </button>
                 </li>
                 <li *ngIf="logOut">
                     <button [routerLink]="'/login'" type="button"
-                        class="border border-red-700 text-white bg-black hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                        class="border border-red-700 text-white bg-black hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg  px-5 py-2.5 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
                         Log Out
                         <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

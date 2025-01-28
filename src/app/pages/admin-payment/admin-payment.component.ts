@@ -41,27 +41,19 @@ export class AdminPaymentComponent {
 
     this.paymentService.getAllList().subscribe((res) => {
       this.payments = res.data;
+      console.log('payments:', this.payments);
       this.payments.forEach((payment) => {
-        this.buyers
-          .filter((x) => x.user_id == payment.buyer_id)
-          .forEach((buyer) => {
-            payment.buyer_name = buyer.user.name;
-            payment.buyer_email = buyer.user.email;
-          });
 
-        this.sellers
-          .filter((x) => x.user_id == payment.seller_id)
-          .forEach((buyer) => {
-            payment.buyer_name = buyer.user.name;
-          });
-
-        if (payment.subscription) {
-          payment.buyer_id = payment.subscription.user_package.user_id
+        if (payment.buyer_id == null) {
           this.sellers
-            .filter((x) => x.user_id == payment.buyer_id)
-            .forEach((buyer) => {
-              payment.buyer_name = buyer.user.name;
+            .filter((x) => x.user_id == payment.subscription.user_package.user_id)
+            .forEach((seller) => {
+              payment.buyer_name = seller.user.name;
+              payment.buyer_email = seller.user.name
             });
+        } else {
+          payment.buyer_name = payment.buyer.name
+          payment.buyer_email = payment.buyer.email
         }
       });
       console.log('payments:', this.payments);

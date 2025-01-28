@@ -1,7 +1,7 @@
 <section class="bg-gray-50 dark:bg-gray-900">
 
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-    <div class="login-box">
+    <div class="login-box w-96">
       <!-- /.login-logo -->
       <div class="card card-outline card-success">
         <div class="card-header text-center">
@@ -12,11 +12,11 @@
           </a>
         </div>
         <div class="card-body">
-          <p class="login-box-msg text-2xl">Sign in to start your session</p>
+          <p class="login-box-msg text-lg">Sign in to start your session</p>
 
           <form [formGroup]="loginForm" (submit)="login()">
             <div class="input-group" style="margin-bottom: 20px;">
-              <input type="text" class="form-control text-lg" placeholder="Email address" formControlName="email"
+              <input type="text" class="form-control" placeholder="Email address" formControlName="email"
                 style="padding: 15px;">
               <div class="input-group-append">
                 <div class="input-group-text">
@@ -25,7 +25,7 @@
               </div>
             </div>
             <div class="input-group mb-3" style="margin-bottom: 20px;">
-              <input type="password" class="form-control text-lg" placeholder="Password" formControlName="password"
+              <input type="password" class="form-control" placeholder="Password" formControlName="password"
                 style="padding: 15px;">
               <div class="input-group-append">
                 <div class="input-group-text">
@@ -40,16 +40,16 @@
               </div> -->
               <!-- /.col -->
               <div class="col-12" style="margin-top: 20px;">
-                <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-block p-3 text-2xl">Sign
+                <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-block p-1 text-lg">Sign
                   In</button>
                 <!-- <label class="mt-2 checkbox">
                   <input type="checkbox" (change)="togglePasswordVisibility()" [checked]="passwordType === 'text'" />
                   Show password
                 </label> -->
               </div>
-              <p class="mb-0 ml-4" style="margin-top: 20px;">
-                <a routerLink="/" class="text-center text-red mr-2 text-2xl">Register new account</a> |
-                <a routerLink="/forgot" class="text-center text-red ml-2 text-2xl">Forgot Password</a>
+              <p class="" style="margin-top: 20px;">
+                <a routerLink="/" class="text-center text-red mr-2">Register new account</a> |
+                <a routerLink="/forgot" class="text-center text-red ml-2">Forgot Password</a>
               </p>
               <!-- /.col -->
             </div>

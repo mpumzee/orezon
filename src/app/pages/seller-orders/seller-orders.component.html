@@ -5,14 +5,14 @@
                 <ol
                     class="flex flex-wrap items-center w-full bg-opacity-60 rounded-md bg-transparent p-0 transition-all">
                     <li
-                        class="flex items-center text-blue-gray-900 antialiased font-sans text-xl font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-light-blue-500">
+                        class="flex items-center text-blue-gray-900 antialiased font-sans  font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-light-blue-500">
                         <a href="#">
                             <p
-                                class="block antialiased font-sans text-xl leading-normal text-blue-900 font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100">
+                                class="block antialiased font-sans  leading-normal text-blue-900 font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100">
                                 Order</p>
                         </a>
                         <span
-                            class="text-gray-500 text-xl antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
+                            class="text-gray-500  antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
                     </li>
                 </ol>
             </nav>
@@ -28,7 +28,7 @@
                 class="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                 <div class="flex-1 flex items-center space-x-2">
                     <h5>
-                        <span class="text-gray-500 text-4xl">All Orders:</span>
+                        <span class="text-gray-500 text-2xl">All Orders:</span>
                     </h5>
                 </div>
             </div>
@@ -42,15 +42,15 @@
                                 <i class="fa fa-search mr-3"></i>
                             </div>
                             <input type="text" id="simple-search" placeholder="Search for orders" required=""
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                class="bg-gray-50 border border-gray-300 text-gray-900  rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                     </form>
                 </div>
                 <hr>
             </div>
             <div class="overflow-x-auto">
-                <table class="w-full text-xl text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xl text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full  text-left text-gray-500 dark:text-gray-400">
+                    <thead class=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="p-4">Order No</th>
                             <th scope="col" class="p-4">Customer</th>
@@ -92,17 +92,17 @@
                                 {{item.created_at | date : 'MMM d, y'}}</td>
                             <td class="px-4 py-3">
                                 <span *ngIf="item.status === 'cancelled'"
-                                    class="inline-flex items-center bg-red-100 text-red-800 text-xl px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                                    class="inline-flex items-center bg-red-100 text-red-800  px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
                                     <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
                                     Cancelled
                                 </span>
                                 <span *ngIf="item.status === 'delivered'"
-                                    class="inline-flex items-center bg-green-100 text-green-800 text-xl px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                                    class="inline-flex items-center bg-green-100 text-green-800  px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
                                     <span class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
                                     Delivered
                                 </span>
                                 <span *ngIf="item.status === 'pending'"
-                                    class="inline-flex items-center bg-blue-100 text-blue-800 text-xl px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                                    class="inline-flex items-center bg-blue-100 text-blue-800  px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">
                                     <span class="w-2 h-2 me-1 bg-blue-500 rounded-full"></span>
                                     Pending
                                 </span>
@@ -113,7 +113,7 @@
                                         data-drawer-target="drawer-read-product-advanced"
                                         data-drawer-show="drawer-read-product-advanced"
                                         aria-controls="drawer-read-product-advanced"
-                                        class="py-2 px-3 flex items-center text-xl font-medium text-center text-white focus:outline-none bg-blue-700 rounded-lg border border-gray-200 hover:bg-blue-100 hover:text-green-700 focus:z-10 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-700 dark:bg-blue-800 dark:text-blue-400 dark:border-blue-600 dark:hover:text-white dark:hover:bg-blue-700">
+                                        class="py-2 px-3 flex items-center  font-medium text-center text-white focus:outline-none bg-blue-700 rounded-lg border border-gray-200 hover:bg-blue-100 hover:text-green-700 focus:z-10 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-700 dark:bg-blue-800 dark:text-blue-400 dark:border-blue-600 dark:hover:text-white dark:hover:bg-blue-700">
                                         <i class="fa fa-eye mr-3"></i>
                                         Preview
                                     </button>
@@ -141,7 +141,7 @@
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">View
                                 {{selectedOrder.id}}</h3>
                             <button type="button" (click)="hideDialog()"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-xl p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg  p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                 data-modal-toggle="createProductModal">
                                 <i class="fa fa-close mr-3"></i>
                             </button>
@@ -151,55 +151,54 @@
                             <div class="grid gap-4 mb-4 xl:grid-cols-2">
                                 <div>
                                     <label for="name"
-                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Order
+                                        class="block mb-2  font-medium text-gray-900 dark:text-white">Order
                                         #</label>
-                                    <span class="text-green-700 text-xl">{{selectedOrder.id}}</span>
+                                    <span class="text-green-700 ">{{selectedOrder.id}}</span>
                                     <hr>
                                 </div>
                                 <div>
                                     <label for="name"
-                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Customer
+                                        class="block mb-2  font-medium text-gray-900 dark:text-white">Customer
                                         Name</label>
-                                    <span class="text-green-700 text-xl">{{selectedOrder.buyer_name}}</span>
+                                    <span class="text-green-700 ">{{selectedOrder.buyer_name}}</span>
                                     <hr>
                                 </div>
                                 <div>
                                     <label for="category"
-                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Order
+                                        class="block mb-2  font-medium text-gray-900 dark:text-white">Order
                                         Status</label>
-                                    <span class="text-green-700 text-xl">{{selectedOrder.status}}</span>
+                                    <span class="text-green-700 ">{{selectedOrder.status}}</span>
                                     <hr>
                                 </div>
                                 <div>
                                     <label for="brand"
-                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Total
+                                        class="block mb-2  font-medium text-gray-900 dark:text-white">Total
                                         Quantity</label>
-                                    <span class="text-green-700 text-xl">{{selectedOrder.total_quantity}}</span>
+                                    <span class="text-green-700 ">{{selectedOrder.total_quantity}}</span>
                                     <hr>
                                 </div>
                                 <div>
                                     <label for="price"
-                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Price</label>
-                                    <span class="text-green-700 text-xl">{{selectedOrder.total_price | currency}}</span>
+                                        class="block mb-2  font-medium text-gray-900 dark:text-white">Price</label>
+                                    <span class="text-green-700 ">{{selectedOrder.total_price | currency}}</span>
                                     <hr>
                                 </div>
                                 <div>
                                     <label for="description"
-                                        class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Order
+                                        class="block mb-2  font-medium text-gray-900 dark:text-white">Order
                                         Date</label>
-                                    <span class="text-green-700 text-xl">{{selectedOrder.created_at | date : 'MMM d,
+                                    <span class="text-green-700 ">{{selectedOrder.created_at | date : 'MMM d,
                                         y'}}</span>
                                     <hr>
                                     <hr>
                                 </div>
                             </div>
                             <div class="mb-4 mt-8">
-                                <span
-                                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Products</span>
+                                <span class="block mb-2  font-medium text-gray-900 dark:text-white">Products</span>
 
-                                <table class="w-full text-xl text-left text-gray-500 dark:text-gray-400">
+                                <table class="w-full  text-left text-gray-500 dark:text-gray-400">
                                     <thead
-                                        class="text-xl text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                        class=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                             <th scope="col" class="p-4">Product</th>
                                             <th scope="col" class="p-4">Category</th>
@@ -221,7 +220,7 @@
                                             </th>
                                             <td class="px-4 py-3">
                                                 <span
-                                                    class="bg-green-100 text-primary-800 text-xl font-medium px-2 py-0.5 rounded dark:bg-green-900 dark:text-primary-300">{{item.sub_category_name}}</span>
+                                                    class="bg-green-100 text-primary-800  font-medium px-2 py-0.5 rounded dark:bg-green-900 dark:text-primary-300">{{item.sub_category_name}}</span>
                                             </td>
                                             <td
                                                 class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
