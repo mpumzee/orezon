@@ -38,8 +38,7 @@ export class SellerPaymentsComponent {
         this.sellers = res.data;
         console.log('sellers:', res.data);
         this.paymentService.getSellerPayments().subscribe((res) => {
-          this.payments = res.data;
-          this.payments.filter(x => x.buyer_id != null).forEach((payment) => {
+          this.payments = res.data.filter(x => x.buyer_id != null).forEach((payment) => {
             // if (payment.buyer_id == null) {
             //   this.sellers
             //     .filter((x) => x.user_id == payment.subscription.user_package.user_id)

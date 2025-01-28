@@ -92,7 +92,7 @@
                                         dashboard</p>
                                 </a>
                                 <span
-                                    class="text-gray-500 antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
+                                    class="text-gray-500 text-base antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
                             </li>
                             <li
                                 class="flex items-center text-blue-900 antialiased font-sans font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-blue-500">
@@ -128,12 +128,12 @@
                                     This Month's Orders</p>
                                 <h4
                                     class="block antialiased tracking-normal font-sans text-lg font-semibold leading-snug text-blue-gray-900">
-                                    ${{thisMonthOrders}}</h4>
+                                    {{thisMonthOrders | currency}}</h4>
                             </div>
                             <div class="border-t border-blue-gray-50 p-4">
                                 <p class="block antialiased font-sans leading-relaxed font-normal text-blue-gray-600">
                                     <strong class="text-green-500">{{ordersPercentageDiff}}%</strong>&nbsp;than last
-                                    week
+                                    month
                                 </p>
                             </div>
                         </div>
@@ -149,7 +149,7 @@
                             </div>
                             <div class="p-4 text-right">
                                 <p class="block antialiased font-sans leading-normal font-normal text-blue-gray-600">
-                                    Today's Buyers</p>
+                                    Registered Buyers</p>
                                 <h4
                                     class="block antialiased tracking-normal font-sans text-lg font-semibold leading-snug text-blue-gray-900">
                                     {{thisMonthClients}}</h4>
@@ -196,7 +196,7 @@
                                     Sales</p>
                                 <h4
                                     class="block antialiased tracking-normal font-sans text-lg font-semibold leading-snug text-blue-gray-900">
-                                    ${{thisMonthPayments}}</h4>
+                                    {{thisMonthPayments | currency}}</h4>
                             </div>
                             <div class="border-t border-blue-gray-50 p-4">
                                 <p class="block antialiased font-sans leading-relaxed font-normal text-blue-gray-600">

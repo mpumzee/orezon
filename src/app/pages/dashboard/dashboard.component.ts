@@ -187,7 +187,7 @@ export class DashboardComponent {
           const orderDate = new Date(order.created_at);
           return orderDate.getFullYear() === new Date().getFullYear() &&
             orderDate.getMonth() === new Date().getMonth() - 1;
-        }).reduce((sum, order) => sum + order.total_price, 0);
+        }).reduce((sum, order) => sum + Number(order.total_price), 0);
 
         this.thisMonthOrders = this.subOrders.filter(order => {
           const orderDate = new Date(order.created_at);
@@ -227,18 +227,19 @@ export class DashboardComponent {
 
     this.paymentService.getSellerPayments().subscribe((res) => {
       this.payments = res.data;
+      this.payments = this.payments.filter(x => x.buyer_id != null)
 
       this.lastMonthPayments = this.payments.filter(payment => {
         const paymentDate = new Date(payment.created_at);
         return paymentDate.getFullYear() === new Date().getFullYear() &&
           paymentDate.getMonth() === new Date().getMonth() - 1;
-      }).length;
+      }).reduce((sum, order) => sum + Number(order.amount), 0);
 
       this.thisMonthPayments = this.payments.filter(payment => {
         const paymentDate = new Date(payment.created_at);
         return paymentDate.getFullYear() === new Date().getFullYear() &&
           paymentDate.getMonth() === new Date().getMonth();
-      }).length;
+      }).reduce((sum, order) => sum + Number(order.amount), 0);
 
 
       // Calculate percentage difference
