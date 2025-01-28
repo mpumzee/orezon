@@ -13,6 +13,8 @@ export class SellerPaymentsComponent {
 
   payments: Payments[] = []
 
+  filteredPayments: Payments[] = []
+
   user: User = {} as User;
 
   buyers: Buyer[] = [];
@@ -60,10 +62,23 @@ export class SellerPaymentsComponent {
             }
 
           });
+          this.filteredPayments = this.payments
           console.log('payments:', this.payments);
         });
       });
     });
+  }
+
+  searchPayments(item: any) {
+    console.log(this.payments)
+    this.filteredPayments = this.payments.filter(
+      prod => prod?.buyer_name.toLowerCase().includes(item.toLowerCase())
+    );
+    // if (this.filteredProducts = []) {
+    //   this.showProducts = false
+    // }
+    console.log(this.filteredPayments)
+    //this.filteredProducts = this.products.filter(x => x.)
   }
 
 }

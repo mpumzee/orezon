@@ -14,6 +14,8 @@ export class SubCategoriesComponent {
 
   subCategories: SubCategory[] = [];
 
+  filteredsubCategories: SubCategory[] = [];
+
   public subCategoryForm: FormGroup;
 
   public categoryForm: FormGroup;
@@ -76,6 +78,7 @@ export class SubCategoriesComponent {
           });
         });
         this.subCategories = res.data;
+        this.filteredsubCategories = this.subCategories
         console.log('subCategories:', this.subCategories);
       });
     });
@@ -100,6 +103,7 @@ export class SubCategoriesComponent {
               });
             });
             this.subCategories = res.data;
+            this.filteredsubCategories = this.subCategories
             console.log('products:', this.subCategories);
           });
           console.log(res.message);
@@ -157,6 +161,7 @@ export class SubCategoriesComponent {
             this.subCategories.splice(index, 1);
 
             this.subCategories = [...this.subCategories, res.data];
+            this.filteredsubCategories = this.subCategories
           } else {
             console.error(Error);
           }
@@ -230,9 +235,22 @@ export class SubCategoriesComponent {
         this.subCategories.splice(index, 1);
 
         this.subCategories = [...this.subCategories, res.data];
+        this.filteredsubCategories = this.subCategories
       }
     );
 
     this.deleteModal = false;
+  }
+
+  searchProducts(item: any) {
+    console.log(this.subCategories)
+    this.filteredsubCategories = this.subCategories.filter(
+      prod => prod?.name.toLowerCase().includes(item.toLowerCase())
+    );
+    // if (this.filteredProducts = []) {
+    //   this.showProducts = false
+    // }
+    console.log(this.filteredsubCategories)
+    //this.filteredProducts = this.products.filter(x => x.)
   }
 }

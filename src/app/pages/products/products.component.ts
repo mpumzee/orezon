@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ProductCategory } from '../../../models/product-category';
 import { Products } from '../../../models/products';
 import { SubCategory } from '../../../models/sub-category';
-import { SearchService, ProductsService, SubCategoriesService } from '../../tools/services';
+import { ProductsService, SearchService, SubCategoriesService } from '../../tools/services';
 import { CategoriesService } from '../../tools/services/categories.service';
 @Component({
   selector: 'app-products',
@@ -196,6 +196,7 @@ export class ProductsComponent implements OnInit {
               });
             });
             this.products = res.data;
+            this.filteredProducts = this.products;
             console.log('products:', this.products);
           });
           console.log(res.message);
@@ -225,6 +226,7 @@ export class ProductsComponent implements OnInit {
             this.products.splice(index, 1);
 
             this.products = [...this.products, res.data];
+            this.filteredProducts = this.products;
           } else {
             console.error(Error);
           }
@@ -294,6 +296,7 @@ export class ProductsComponent implements OnInit {
         this.products.splice(index, 1);
 
         this.products = [...this.products, res.data];
+        this.filteredProducts = this.products
       }
     );
 
