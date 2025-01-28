@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Package } from '../../../models/package';
 import { Seller } from '../../../models/seller';
 import { Country, Roles } from '../../tools/models';
-import { SellerRegistrationService, PackagesService } from '../../tools/services';
+import { PackagesService, SellerRegistrationService } from '../../tools/services';
 
 @Component({
   selector: 'app-seller',
@@ -65,6 +65,7 @@ export class SellerComponent {
       account_number: new FormControl('', [Validators.required]),
       branch: new FormControl('', [Validators.required]),
       branch_code: new FormControl('', [Validators.required]),
+      paypal_email: new FormControl('', [Validators.required]),
     });
   }
 
@@ -104,7 +105,6 @@ export class SellerComponent {
       console.log(this.sellerForm.value);
       this.newSeller = this.sellerForm.value;
       this.newSeller.user_id = 0;
-      this.newSeller.role = Roles.ADMIN;
       console.log('seller', this.newSeller);
 
       this.sellerService.create(this.newSeller).subscribe(
@@ -113,7 +113,7 @@ export class SellerComponent {
 
           if (res.status == 'success') {
             this.sellerService.success('Seller created successfully');
-           
+
             this.router.navigate(['/login']);
           } else {
             console.log(res.message);
