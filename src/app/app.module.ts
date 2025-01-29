@@ -57,6 +57,7 @@ import { ErrorInterceptor, LoaderInterceptor } from './tools/helpers';
 import { AlertService } from './tools/services';
 import { QuotationComponent } from './pages/quotation/quotation.component';
 import { EmailVerifiedComponent } from './pages/email-verified/email-verified.component';
+import { VerificationErrorComponent } from './pages/verification-error/verification-error.component';
 
 
 @NgModule({
@@ -103,7 +104,8 @@ import { EmailVerifiedComponent } from './pages/email-verified/email-verified.co
     CheckOutComponent,
     AdminOrdersComponent,
     QuotationComponent,
-    EmailVerifiedComponent
+    EmailVerifiedComponent,
+    VerificationErrorComponent
   ],
   imports: [
     BrowserModule,

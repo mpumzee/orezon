@@ -37,18 +37,18 @@ export class EquipmentCategoriesComponent {
   ngOnInit() {
     this.subCatgeorySevice.getAllList().subscribe((res) => {
       this.drillingSubCategories = res.data.filter((x) => x.category_id == 2);
-      this.haulingSubCategories = res.data.filter((x) => x.category_id == 4);
-      this.crushingSubCategories = res.data.filter((x) => x.category_id == 5);
-      this.separationSubCategories = res.data.filter((x) => x.category_id == 6);
+      this.haulingSubCategories = res.data.filter((x) => x.category_id == 3);
+      this.crushingSubCategories = res.data.filter((x) => x.category_id == 4);
+      this.separationSubCategories = res.data.filter((x) => x.category_id == 5);
       this.undergroundSubCategories = res.data.filter(
-        (x) => x.category_id == 7
+        (x) => x.category_id == 6
       );
-      this.safetySubCategories = res.data.filter((x) => x.category_id == 8);
+      this.safetySubCategories = res.data.filter((x) => x.category_id == 7);
       this.miscellaneousSubCategories = res.data.filter(
         (x) => x.category_id == 9
       );
       this.sparesSubCategories = res.data.filter(
-        (x) => x.category_id == 3
+        (x) => x.category_id == 8
       );
       this.sparesSubCategories.forEach((product: SubCategory) => {
         product.img_url = 'assets/img/spares.png';
