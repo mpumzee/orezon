@@ -56,6 +56,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { ErrorInterceptor, LoaderInterceptor } from './tools/helpers';
 import { AlertService } from './tools/services';
 import { QuotationComponent } from './pages/quotation/quotation.component';
+import { EmailVerifiedComponent } from './pages/email-verified/email-verified.component';
 
 
 @NgModule({
@@ -101,7 +102,8 @@ import { QuotationComponent } from './pages/quotation/quotation.component';
     SellerCheckoutComponent,
     CheckOutComponent,
     AdminOrdersComponent,
-    QuotationComponent
+    QuotationComponent,
+    EmailVerifiedComponent
   ],
   imports: [
     BrowserModule,
