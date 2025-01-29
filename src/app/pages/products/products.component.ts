@@ -212,8 +212,15 @@ export class ProductsComponent implements OnInit {
 
   updateProduct() {
     console.log(this.productForm.value, this.selectedId);
+    var formData = new FormData();
+    formData.append('name', this.productForm.value.name);
+    formData.append('description', this.productForm.value.description);
+    formData.append('price', this.productForm.value.price);
+    formData.append('quantity', this.productForm.value.quantity);
+    formData.append('sub_category_id', this.productForm.value.sub_category_id);
+    formData.append('image_url', this.selectedFile, this.selectedFile.name);
     this.productService
-      .update(this.productForm.value, this.selectedId)
+      .update(formData, this.selectedId)
       .subscribe(
         (res) => {
           console.log('res', res);
