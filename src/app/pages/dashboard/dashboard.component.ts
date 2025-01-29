@@ -199,6 +199,8 @@ export class DashboardComponent {
         this.ordersPercentageDiff = ((this.thisMonthOrders - this.lastMonthOrders) / this.lastMonthOrders * 100).toFixed(2)
         if (this.ordersPercentageDiff == Infinity) {
           this.ordersPercentageDiff = 100
+        } else if (!(this.ordersPercentageDiff >= 0)) {
+          this.ordersPercentageDiff = 0
         }
         console.log('orders:', this.subOrders, this.thisMonthOrders, this.lastMonthOrders, this.ordersPercentageDiff);
       });
@@ -220,6 +222,8 @@ export class DashboardComponent {
       this.clientsPercentageDiff = ((this.thisMonthClients - this.lastMonthClients) / this.lastMonthClients * 100).toFixed(2)
       if (this.clientsPercentageDiff == Infinity) {
         this.clientsPercentageDiff = 100
+      } else if (!(this.clientsPercentageDiff >= 0)) {
+        this.ordersPercentageDiff = 0
       }
       console.log('all:', this.lastMonthClients, this.thisMonthClients, this.clientsPercentageDiff);
     });
@@ -246,6 +250,8 @@ export class DashboardComponent {
       this.paymentsPercentageDiff = ((this.thisMonthPayments - this.lastMonthPayments) / this.lastMonthPayments * 100).toFixed(2)
       if (this.paymentsPercentageDiff == Infinity) {
         this.paymentsPercentageDiff = 100
+      } else if (!(this.clientsPercentageDiff >= 0)) {
+        this.paymentsPercentageDiff = 0
       }
       console.log('payment:', this.lastMonthPayments, this.thisMonthPayments, this.paymentsPercentageDiff);
     });

@@ -135,9 +135,11 @@ export class AdminDashboardComponent {
 
 
         // Calculate percentage difference
-        this.ordersPercentageDiff = ((this.thisMonthOrders - this.lastMonthOrders) / this.lastMonthOrders * 100).toFixed(2)
+        this.ordersPercentageDiff = ((this.thisMonthOrders - this.lastMonthOrders) / this.lastMonthOrders * 100)
         if (this.ordersPercentageDiff == Infinity) {
           this.ordersPercentageDiff = 100
+        } else if (!(this.ordersPercentageDiff >= 0)) {
+          this.paymentsPercentageDiff = 0
         }
         console.log('orders:', this.orders, ':', this.thisMonthOrders, ':', this.lastMonthOrders, ':', this.ordersPercentageDiff);
       });
@@ -227,6 +229,8 @@ export class AdminDashboardComponent {
       this.paymentsPercentageDiff = ((this.thisMonthPayments - this.lastMonthPayments) / this.lastMonthPayments * 100).toFixed(2)
       if (this.paymentsPercentageDiff == Infinity) {
         this.paymentsPercentageDiff = 100
+      } else if (!(this.paymentsPercentageDiff >= 0)) {
+        this.paymentsPercentageDiff = 0
       }
       console.log('payment:', this.lastMonthPayments, this.thisMonthPayments, this.paymentsPercentageDiff);
     });
