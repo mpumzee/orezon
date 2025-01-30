@@ -9,11 +9,11 @@ import { SubOrder } from '../../../models/sub-order';
 import { BuyerRegistrationService, OrdersService, PackagesService, PaymentService, SellerRegistrationService } from '../../tools/services';
 
 @Component({
-  selector: 'app-admin-dashboard',
-  templateUrl: './admin-dashboard.component.html',
-  styleUrl: './admin-dashboard.component.css',
+  selector: 'app-admin-stats',
+  templateUrl: './admin-stats.component.html',
+  styleUrl: './admin-stats.component.css'
 })
-export class AdminDashboardComponent {
+export class AdminStatsComponent {
   dashboard = false;
   profile = false;
   orderstab = false;
@@ -99,7 +99,6 @@ export class AdminDashboardComponent {
 
       this.orderService.getAllList().subscribe((res) => {
         this.subOrders = res.data;
-        console.log('orders:', res.data)
 
         this.subOrders.forEach(order => {
           order.buyer_pic = 'assets/img/user.png';
@@ -107,10 +106,10 @@ export class AdminDashboardComponent {
             order.buyer_email = buyer.user.email
             order.buyer_name = buyer.user.name
           })
-          order.total_quantity = order.products.reduce((sum, order) => sum + order.pivot.quantity, 0);
+          order.total_quantity = order.products.reduce((sum, order) => sum + order.quantity, 0);
         })
 
-        console.log('orders:', res.data)
+        console.log('orders:', this.subOrders)
 
         // Calculate total orders for last month and this month
         this.lastMonthOrders = this.subOrders.filter(order => {
