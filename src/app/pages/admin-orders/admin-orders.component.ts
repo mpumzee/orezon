@@ -110,7 +110,7 @@ export class AdminOrdersComponent {
   searchOrders(item: any) {
     console.log(this.orders)
     this.filteredOrders = this.orders.filter(
-      prod => prod?.id.toString().includes(item)
+      prod => prod?.order_id.toString().includes(item)
     );
     // if (this.filteredProducts = []) {
     //   this.showProducts = false
