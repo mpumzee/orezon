@@ -114,7 +114,7 @@ export class SellerComponent {
           if (res.status == 'success') {
             this.sellerService.success('Seller created successfully');
 
-            this.router.navigate(['/login']);
+            this.router.navigate(['/verify-email']);
           } else {
             console.log(res.message);
             // Handle the error as needed
