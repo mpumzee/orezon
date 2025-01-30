@@ -5,6 +5,7 @@ import { OrdersComponent } from '../orders/orders.component';
 import { CategoriesComponent } from '../categories/categories.component';
 import { PackagesService, PaymentService } from '../../tools/services';
 import { SellerPayoutsComponent } from '../seller-payouts/seller-payouts.component';
+import { AdminStatsComponent } from '../admin-stats/admin-stats.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,11 @@ const routes: Routes = [
         path: '',
         component: AdminDashboardComponent,
         children:[
+            {
+                path:'',
+                component:AdminStatsComponent
+
+            },
             {
                 path:'users',
                 component:UsersComponent
