@@ -20,15 +20,13 @@ export class PayoutsService extends AlertService {
     super()
   }
 
-  create(itemDto: any) {
-    var body = JSON.stringify(itemDto);
-    console.log('item dto ', body);
-    return this.http.post<ResponseHandler>(`${url}/buyers/buyer`, itemDto, {
+  create() {
+    return this.http.post<ResponseHandler>(`${url}/admin/sellers/make-payouts`, {},{
       headers,
     });
   }
 
- 
+
 
   getAllSellerBalance() {
     return this.http.get<ResponseHandler>(`${url}/admin/sellers-balances`);
