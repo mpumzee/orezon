@@ -112,7 +112,7 @@ export class BuyerComponent {
           if (res.status == 'success') {
             this.buyerRegistrationService.success("Buyer Profile Created Successfully")
 
-            this.router.navigate(['/login']);
+            this.router.navigate(['/verify-email']);
           } else {
             console.log(res.message);
             // Handle the error as needed

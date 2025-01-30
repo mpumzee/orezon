@@ -2,7 +2,7 @@
 <app-nav-bar></app-nav-bar>
 <!-- /TOP HEADER -->
 
-<aside *ngIf="drawer" class="fixed top-0 left-0 z-40 mt-16 w-48 h-screen bg-gray-800" aria-label="Sidebar">
+<aside *ngIf="drawer" class="fixed top-0 left-0 z-40 mt-16 w-56 h-screen bg-gray-800" aria-label="Sidebar">
     <div class="mt-8 py-4 overflow-y-auto">
         <ul class="space-y-2 font-medium">
             <li>
@@ -40,7 +40,7 @@
     </div>
 </aside>
 <aside
-    class="fixed top-0 left-0 z-40 mt-16 w-48 h-screen bg-gray-800 transition-transform -translate-x-full sm:translate-x-0"
+    class="fixed top-0 left-0 z-40 mt-16 w-56 h-screen bg-gray-800 transition-transform -translate-x-full sm:translate-x-0"
     aria-label="Sidebar">
     <div class="mt-8 py-4 overflow-y-auto">
         <ul class="space-y-2 font-medium">
@@ -79,7 +79,7 @@
     </div>
 </aside>
 <!-- Content Body -->
-<div class="p-4 sm:ml-48">
+<div class="p-4 sm:ml-56">
     <div *ngIf="profile" class="p-4 rounded-lg bg-gray-50 mt-16 dark:bg-gray-800 overflow-x-auto">
         <div class="flex items-center justify-between">
             <button type="button" (click)="showDrawer()"
