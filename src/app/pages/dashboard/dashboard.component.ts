@@ -160,7 +160,7 @@ export class DashboardComponent {
             .forEach((buyer) => {
               console.log('entered', buyer);
               order.buyer_pic =
-                'https://orezon.co.zw/storage/app/public/' + buyer.profile_pic;
+                'assets/img/user.png';
               order.buyer_name = buyer.user.name;
               order.buyer_email = buyer.user.email;
             });

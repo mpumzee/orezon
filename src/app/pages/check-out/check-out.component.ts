@@ -36,12 +36,25 @@ export class CheckOutComponent implements OnInit {
     this.initConfig();
   }
 
+  getTotal() {
+    return this.cartService.getTotal();
+  }
+
+  getTax() {
+    return ((0.15) * this.cartService.getTotal());
+  }
+
+  getFinalTotal() {
+    return this.getTotal() + this.getTax()
+  }
+
 
 
 
   saveOrder(order: any) {
     this.paypalService.postOrder(order).subscribe(resp => {
       this.cartService.success('order prossed successfully')
+      this.cartService.clearCart()
     })
   }
 
@@ -56,7 +69,7 @@ export class CheckOutComponent implements OnInit {
         purchase_units: [{
           amount: {
             currency_code: 'USD',
-            value: this.total.toFixed(2),
+            value: this.getFinalTotal().toFixed(2),
 
           },
 
@@ -75,7 +88,7 @@ export class CheckOutComponent implements OnInit {
           products: this.cartItems,
           status: data.status,
           order_id: data.id,
-          amount: this.total
+          amount: this.getFinalTotal()
         }
         this.saveOrder(packet)
         this.showSuccess = true;

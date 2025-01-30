@@ -49,8 +49,8 @@
                 <thead class=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="p-4">Payment ID</th>
-                        <th scope="col" class="p-4">Buyer</th>
-                        <th scope="col" class="p-4">Order No</th>
+                        <th scope="col" class="p-4">Seller</th>
+                        <th scope="col" class="p-4">Package</th>
                         <th scope="col" class="p-4">Amount</th>
                         <th scope="col" class="p-4">Payment Method</th>
                         <th scope="col" class="p-4">Transaction ID</th>
@@ -79,7 +79,7 @@
                         <td class="px-4 py-3">
                             <div class="flex items-center">
                                 <div class="h-4 w-4 rounded-full inline-block mr-2 bg-red-700"></div>
-                                {{item.order_id}}
+                                {{item.subscription.user_package.package.name}}
                             </div>
                         </td>
                         <td class="px-4 py-3">

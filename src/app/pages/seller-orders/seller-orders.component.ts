@@ -29,6 +29,8 @@ export class SellerOrdersComponent {
 
   seller: Seller = {} as Seller;
 
+  mainSection = true
+
   categories: ProductCategory[] = [];
 
   constructor(
@@ -98,6 +100,7 @@ export class SellerOrdersComponent {
   viewOrder(item: SubOrder) {
     console.log('item', item);
     this.viewOrderModal = true;
+    this.mainSection = false
     this.selectedOrder = item;
   }
 
@@ -115,5 +118,6 @@ export class SellerOrdersComponent {
 
   hideDialog() {
     this.viewOrderModal = false;
+    this.mainSection = true
   }
 }

@@ -60,6 +60,7 @@ export class AdminOrdersComponent {
 
           this.orderService.getAllList().subscribe((res) => {
             this.orders = res.data;
+            console.log('orders:', this.orders);
 
             this.orders.forEach((order) => {
               order.total_quantity = 0;

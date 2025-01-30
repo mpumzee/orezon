@@ -4,7 +4,7 @@ import { Orders } from '../../../models/orders';
 import { Products } from '../../../models/products';
 import { SubCategory } from '../../../models/sub-category';
 import { Roles, Status } from '../../tools/models';
-import { CartService, ProductsService, SubCategoriesService, OrdersService } from '../../tools/services';
+import { CartService, OrdersService, ProductsService, SubCategoriesService } from '../../tools/services';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -152,6 +152,14 @@ export class CartComponent {
 
   getTotal() {
     return this.cartService.getTotal();
+  }
+
+  getTax() {
+    return ((0.15) * this.cartService.getTotal());
+  }
+
+  getFinalTotal() {
+    return this.getTotal() + this.getTax()
   }
 
 

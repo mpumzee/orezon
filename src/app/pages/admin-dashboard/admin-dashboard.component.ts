@@ -99,6 +99,7 @@ export class AdminDashboardComponent {
 
       this.orderService.getAllList().subscribe((res) => {
         this.subOrders = res.data;
+        console.log('orders:', res.data)
 
         this.subOrders.forEach(order => {
           order.buyer_pic = 'assets/img/user.png';
@@ -106,10 +107,10 @@ export class AdminDashboardComponent {
             order.buyer_email = buyer.user.email
             order.buyer_name = buyer.user.name
           })
-          order.total_quantity = order.products.reduce((sum, order) => sum + order.quantity, 0);
+          order.total_quantity = order.products.reduce((sum, order) => sum + order.pivot.quantity, 0);
         })
 
-        console.log('orders:', this.subOrders)
+        console.log('orders:', res.data)
 
         // Calculate total orders for last month and this month
         this.lastMonthOrders = this.subOrders.filter(order => {
