@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { UsersComponent } from '../users/users.component';
 import { AdminRoutes } from './admin.routing';
 import { AdminStatsComponent } from '../admin-stats/admin-stats.component';
+import { TransactionComponent } from '../transaction/transaction.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AdminStatsComponent } from '../admin-stats/admin-stats.component';
     ],
     declarations: [
         UsersComponent,
-        AdminStatsComponent
+        AdminStatsComponent,
+        TransactionComponent
 
     ]
 })
