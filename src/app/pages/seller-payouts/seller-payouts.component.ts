@@ -35,11 +35,8 @@ export class SellerPayoutsComponent {
   viewPaymentModal = false;
 
   constructor(
-    private sellerService: SellerRegistrationService,
     private payoutService: PayoutsService,
-    private buyerService: BuyerRegistrationService,
-    private orderService: OrdersService,
-    private paymentService: PaymentService
+
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +45,6 @@ export class SellerPayoutsComponent {
     this.user.email = sessionStorage.getItem('loggedUserEmail') || '{}';
     this.getPayOuts();
 
-    // this.buyerService.getAllList().subscribe((res) => {
     //   this.buyers = res.data;
     //   console.log('buyer:', res.data);
 
@@ -119,7 +115,6 @@ export class SellerPayoutsComponent {
   getPayOuts() {
     this.payoutService.getAllSellerBalance().subscribe((res) => {
       this.payments = res.data;
-      console.log('seller balance:', res.data);
     });
   }
 
