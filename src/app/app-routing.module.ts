@@ -33,6 +33,10 @@ const routes: Routes = [
   { path: '', component: TopNavComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent },
+  {
+    path: 'admin-dashboard',
+    loadChildren: () => import('./pages/admin-dashboard/admin.module').then(m => m.AdminModule)
+  },
   { path: 'metals', component: MetalsComponent },
   { path: 'broker', component: BrokerComponent },
   { path: 'buyer', component: BuyerComponent },
@@ -48,7 +52,6 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
   { path: 'contact-us', component: ContactUsComponent },
-  { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'cart', component: CartComponent },
   { path: 'verified', component: EmailVerifiedComponent },
   { path: 'verification-error', component: VerificationErrorComponent },
