@@ -123,6 +123,7 @@ export class DashboardComponent {
 
   ngOnInit(): void {
     this.dashboard = true;
+    this.drawer = true
 
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
     this.user.id = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
@@ -271,6 +272,7 @@ export class DashboardComponent {
   }
 
   showDrawer() {
+    console.log('entered')
     this.drawer = true;
   }
 
