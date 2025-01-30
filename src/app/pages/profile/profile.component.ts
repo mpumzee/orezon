@@ -50,6 +50,8 @@ export class ProfileComponent {
 
   packageId = 0;
 
+  profileSection = false
+
   constructor(
     private packageService: PackagesService,
     private router: Router,
@@ -79,6 +81,8 @@ export class ProfileComponent {
   }
 
   ngOnInit(): void {
+    this.profileSection = true;
+
     this.user.id = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
     this.user.name = sessionStorage.getItem('loggedUserName') || '{}';
@@ -129,6 +133,7 @@ export class ProfileComponent {
   }
 
   edit() {
+    this.profileSection = false
     this.sellerForm = new FormGroup({
       business_name: new FormControl(this.curentSellerDetails.business_name, [
         Validators.required,
@@ -144,23 +149,7 @@ export class ProfileComponent {
       phone: new FormControl(this.curentSellerDetails.phone, [
         Validators.required,
         Validators.minLength(10),
-      ]),
-      bank: new FormControl(this.bankDetails.bank, [
-        Validators.required,
-        Validators.minLength(10),
-      ]),
-      account_number: new FormControl(this.bankDetails.account_number, [
-        Validators.required,
-        Validators.minLength(10),
-      ]),
-      branch: new FormControl(this.bankDetails.branch, [
-        Validators.required,
-        Validators.minLength(10),
-      ]),
-      branch_code: new FormControl(this.bankDetails.branch_code, [
-        Validators.required,
-        Validators.minLength(10),
-      ]),
+      ])
     });
 
     console.log('yes');
@@ -176,6 +165,8 @@ export class ProfileComponent {
           if (res.status == 'success') {
             console.log(res.message);
             this.editProfileModal = false;
+            this.profileSection = true
+            this.sellerForm.reset();
             this.sellerService.success(res.message);
             this.ngOnInit();
           } else {
@@ -184,11 +175,17 @@ export class ProfileComponent {
         }
       );
 
-    this.sellerForm.reset();
+
   }
 
   changePackage() {
     this.router.navigate(['/select-package']);
+  }
+
+  clear() {
+    this.sellerForm.reset();
+    this.profileSection = true
+    this.editProfileModal = false
   }
 
   hideDialog() {

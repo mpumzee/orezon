@@ -105,13 +105,24 @@ export class BuyerComponent {
         console.log(key + ' ' + value);
       });
 
-      this.buyerRegistrationService.create(formData).subscribe({
-        next: (res) => {
-          this.buyerProfile = [...this.buyerProfile, res.data];
-          this.router.navigate(['/login']);
+      this.buyerRegistrationService.create(formData).subscribe(
+        (res) => {
+          console.log('res', res);
+
+          if (res.status == 'success') {
+            this.buyerRegistrationService.success("Buyer Profile Created Successfully")
+
+            this.router.navigate(['/verify-email']);
+          } else {
+            console.log(res.message);
+            // Handle the error as needed
+          }
         },
-       
-      });
+        (error) => {
+          console.error(error.error.message);
+          alert(error.error.message);
+        }
+      );
     }
 
     this.newBuyerProfile = {} as Buyer;

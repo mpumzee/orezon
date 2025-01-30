@@ -90,6 +90,7 @@ export class PackagesComponent {
       .subscribe(
         (res) => {
           if (res.status == 'success') {
+            this.packageService.success('Package updated successfully');
             console.log(res.message, this.selectedId, this.packages);
             var index = this.packages.findIndex(
               (x) => x.id === this.selectedId

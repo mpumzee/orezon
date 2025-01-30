@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Buyer } from '../../../models/buyer';
 import { Payments } from '../../../models/payments';
+import { Seller } from '../../../models/seller';
 import { SubOrder } from '../../../models/sub-order';
 import { User } from '../../../models/user';
-import { BuyerRegistrationService, OrdersService, PaymentService } from '../../tools/services';
+import { BuyerRegistrationService, OrdersService, PaymentService, SellerRegistrationService } from '../../tools/services';
 
 @Component({
   selector: 'app-seller-payouts',
@@ -13,9 +14,11 @@ import { BuyerRegistrationService, OrdersService, PaymentService } from '../../t
 export class SellerPayoutsComponent {
   orders: SubOrder[] = [];
 
-  users: User[] = []
+  sellers: Seller[] = []
 
   payments: Payments[] = []
+
+  filteredPayments: Payments[] = []
 
   user: User = {} as User;
 
@@ -25,7 +28,7 @@ export class SellerPayoutsComponent {
 
   viewPaymentModal = false;
 
-  constructor(private buyerService: BuyerRegistrationService, private orderService: OrdersService, private paymentService: PaymentService) { }
+  constructor(private sellerService: SellerRegistrationService, private buyerService: BuyerRegistrationService, private orderService: OrdersService, private paymentService: PaymentService) { }
 
 
   ngOnInit(): void {
@@ -36,6 +39,39 @@ export class SellerPayoutsComponent {
     this.buyerService.getAllList().subscribe((res) => {
       this.buyers = res.data;
       console.log('buyer:', res.data);
+
+      this.sellerService.getAllList().subscribe((res) => {
+        this.sellers = res.data;
+        console.log('sellers:', res.data);
+
+        this.orderService.getAllList().subscribe((res) => {
+          this.orders = res.data;
+          console.log('orders:', res.data);
+
+          this.paymentService.getAllList().subscribe((res) => {
+            this.payments = res.data;
+            this.payments = this.payments.filter(x => x.buyer_id != null)
+            this.payments.forEach((payment) => {
+              this.buyers
+                .filter((x) => x.user_id == payment.buyer_id)
+                .forEach((buyer) => {
+                  console.log('entered', buyer);
+                  payment.buyer_pic =
+                    'assets/img/user.png';
+                  payment.buyer_name = buyer.user.name;
+                  payment.buyer_email = buyer.user.email;
+                });
+              this.orders.filter(x => x.order_id == payment.order_id).forEach(order => {
+                this.sellers.filter(x => x.user_id == order.seller_id).forEach(user => {
+                  payment.seller_name = user.user.name
+                })
+              })
+            });
+            this.filteredPayments = this.payments
+            console.log('payments:', this.payments);
+          });
+        });
+      });
     });
 
     this.orderService.getAllList().subscribe((res) => {
@@ -43,30 +79,27 @@ export class SellerPayoutsComponent {
       console.log('orders:', res.data);
     });
 
-    this.paymentService.getSellerPayments().subscribe((res) => {
-      this.payments = res.data;
-      this.payments.forEach((payment) => {
-        this.buyers
-          .filter((x) => x.user_id == payment.buyer_id)
-          .forEach((buyer) => {
-            console.log('entered', buyer);
-            payment.buyer_pic =
-              'https://orezon.co.zw/storage/app/public/' + buyer.profile_pic;
-            payment.buyer_name = buyer.user.name;
-            payment.buyer_email = buyer.user.email;
-          });
-        this.orders.filter(x => x.order_id == payment.order_id).forEach(order => {
-          this.users.filter(x => x.id == order.seller_id).forEach(user => {
-            payment.seller_name = user.name
-          })
-        })
-      });
-      console.log('orders:', this.payments);
-    });
+
   }
 
   viewPayment(item: any) {
     this.viewPaymentModal = true
+  }
+
+  searchPayments(item: any) {
+    console.log(this.payments)
+    this.filteredPayments = this.payments.filter(
+      prod => prod?.buyer_name.toLowerCase().includes(item.toLowerCase())
+    );
+    // if (this.filteredProducts = []) {
+    //   this.showProducts = false
+    // }
+    console.log(this.filteredPayments)
+    //this.filteredProducts = this.products.filter(x => x.)
+  }
+
+  hideDialog() {
+    this.viewPaymentModal = false
   }
 
 }

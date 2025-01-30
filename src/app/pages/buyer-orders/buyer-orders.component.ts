@@ -12,6 +12,8 @@ import { BuyerRegistrationService, OrdersService, SellerRegistrationService, Sub
 export class BuyerOrdersComponent {
   orders: Orders[] = [];
 
+  filteredOrders: Orders[] = [];
+
   user: User = {} as User;
 
   sellers: Seller[] = [];
@@ -41,6 +43,36 @@ export class BuyerOrdersComponent {
     this.categoryService.getAllList().subscribe((res) => {
       this.categories = res.data;
       console.log('categories:', this.categories);
+
+      this.sellerService.getAllList().subscribe((res) => {
+        this.sellers = res.data;
+        console.log('sellers:', res.data);
+
+        this.orderService.getBuyerOrders().subscribe((res) => {
+          this.orders = res.data;
+          this.orders.forEach((order) => {
+            order.total_quantity = 0;
+            order.products.forEach((prod: any) => {
+              prod.image_url =
+                'https://orezon.co.zw/storage/app/public/' + prod.image_url;
+              const category = this.categories.filter(
+                (x) => x.id == prod.sub_category_id
+              );
+              category.forEach((cat) => {
+                prod.sub_category_name = cat.name;
+              });
+              this.sellers
+                .filter((x) => x.user.id == prod.user_id)
+                .forEach((seller) => {
+                  prod.business_name = seller.business_name;
+                });
+              order.total_quantity += prod.pivot.quantity;
+            });
+          });
+          this.filteredOrders = this.orders
+          console.log('orders:', this.orders);
+        });
+      });
     });
 
     this.buyerService.getAllList().subscribe((res) => {
@@ -53,40 +85,26 @@ export class BuyerOrdersComponent {
       console.log('buyer:', res.data);
     });
 
-    this.sellerService.getAllList().subscribe((res) => {
-      this.sellers = res.data;
-      console.log('sellers:', res.data);
-    });
 
-    this.orderService.getBuyerOrders().subscribe((res) => {
-      this.orders = res.data;
-      this.orders.forEach((order) => {
-        order.total_quantity = 0;
-        order.products.forEach((prod: any) => {
-          prod.image_url =
-            'https://orezon.co.zw/storage/app/public/' + prod.image_url;
-          const category = this.categories.filter(
-            (x) => x.id == prod.sub_category_id
-          );
-          category.forEach((cat) => {
-            prod.sub_category_name = cat.name;
-          });
-          this.sellers
-            .filter((x) => x.user.id == prod.user_id)
-            .forEach((seller) => {
-              prod.business_name = seller.business_name;
-            });
-          order.total_quantity += prod.pivot.quantity;
-        });
-      });
-      console.log('orders:', res.data);
-    });
+
   }
 
   viewOrder(item: Orders) {
     console.log('item', item);
     this.viewOrderModal = true;
     this.selectedOrder = item;
+  }
+
+  searchOrders(item: any) {
+    console.log(this.orders)
+    this.filteredOrders = this.orders.filter(
+      prod => prod?.id.toString().includes(item)
+    );
+    // if (this.filteredProducts = []) {
+    //   this.showProducts = false
+    // }
+    console.log(this.filteredOrders)
+    //this.filteredProducts = this.products.filter(x => x.)
   }
 
   hideDialog() {

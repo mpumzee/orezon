@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseHandler } from '../../../models/response-handler';
 import { AlertService } from '.';
+import { ResponseHandler } from '../../../models/response-handler';
 
 const url = 'https://orezon.co.zw/api/v1';
 let headers: HttpHeaders = new HttpHeaders();
@@ -11,27 +11,21 @@ headers.append('enctype', 'multipart/form-data');
 @Injectable({
   providedIn: 'root',
 })
-export class ProductsService  extends AlertService {
+export class ProductsService extends AlertService {
   constructor(private http: HttpClient) {
     super()
   }
 
   create(itemDto: any) {
-    var body = JSON.stringify(itemDto);
-    console.log(itemDto);
     return this.http.post<ResponseHandler>(`${url}/products/create`, itemDto, {
       headers,
     });
   }
 
   update(itemDto: any, id: number) {
-    var body = JSON.stringify(itemDto);
-    console.log(body);
-    return this.http.put<ResponseHandler>(
-      `${url}/products/update/${id}`,
-      body,
-      { headers }
-    );
+    return this.http.put<ResponseHandler>(`${url}/products/update/${id}`, itemDto, {
+      headers,
+    });
   }
 
   delete(id: number) {

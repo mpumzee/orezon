@@ -13,6 +13,8 @@ import { BuyerRegistrationService, OrdersService, SellerRegistrationService, Sub
 export class SellerOrdersComponent {
   orders: SubOrder[] = [];
 
+  filteredOrders: SubOrder[] = [];
+
   user: User = {} as User;
 
   sellers: Seller[] = [];
@@ -75,6 +77,7 @@ export class SellerOrdersComponent {
             order.total_quantity += prod.pivot.quantity;
           });
         });
+        this.filteredOrders = this.orders
         console.log('orders:', this.orders);
       });
     });
@@ -96,6 +99,18 @@ export class SellerOrdersComponent {
     console.log('item', item);
     this.viewOrderModal = true;
     this.selectedOrder = item;
+  }
+
+  searchOrders(item: any) {
+    console.log(this.orders)
+    this.filteredOrders = this.orders.filter(
+      prod => prod?.id.toString().includes(item)
+    );
+    // if (this.filteredProducts = []) {
+    //   this.showProducts = false
+    // }
+    console.log(this.filteredOrders)
+    //this.filteredProducts = this.products.filter(x => x.)
   }
 
   hideDialog() {

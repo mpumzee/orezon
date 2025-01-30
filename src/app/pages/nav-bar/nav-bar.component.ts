@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Roles } from '../../tools/models';
 import { SellerCartService } from '../../tools/services';
 
 @Component({
@@ -19,9 +20,13 @@ export class NavBarComponent {
   logOut = false
   home = false
 
+  role: any
+
   constructor(private router: Router, private sellerCartService: SellerCartService) { }
 
   ngOnInit(): void {
+    this.role = sessionStorage.getItem('loggedUserRole') || '{}';
+
     this.getCartInformation();
     if (sessionStorage.length === 0) {
       this.logIn = true;
@@ -55,6 +60,16 @@ export class NavBarComponent {
 
   removeItem(item) {
     //
+  }
+
+  openDashboard() {
+    if (this.role == Roles.ADMIN) {
+      this.router.navigate(['/admin-dashboard']);
+    } else if (this.role == Roles.BUYER) {
+      this.router.navigate(['/buyer-dashboard']);
+    } else if (this.role == Roles.SELLER) {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
 }

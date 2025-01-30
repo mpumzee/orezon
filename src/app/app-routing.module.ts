@@ -11,6 +11,7 @@ import { CategoryShopComponent } from './pages/category-shop/category-shop.compo
 import { CheckOutComponent } from './pages/check-out/check-out.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { EmailVerifiedComponent } from './pages/email-verified/email-verified.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MetalsComponent } from './pages/metals/metals.component';
 import { PackagesComponent } from './pages/packages/packages.component';
@@ -24,6 +25,8 @@ import { SellerComponent } from './pages/seller/seller.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { TopNavComponent } from './pages/top-nav/top-nav.component';
+import { VerificationErrorComponent } from './pages/verification-error/verification-error.component';
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 
 
 const routes: Routes = [
@@ -47,6 +50,9 @@ const routes: Routes = [
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'verified', component: EmailVerifiedComponent },
+  { path: 'verification-error', component: VerificationErrorComponent },
+  { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'buyer-dashboard', component: BuyerDashboardComponent },
   { path: 'quotation', component: QuotationComponent },
 

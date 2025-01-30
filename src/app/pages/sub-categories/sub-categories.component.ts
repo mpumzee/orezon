@@ -14,6 +14,8 @@ export class SubCategoriesComponent {
 
   subCategories: SubCategory[] = [];
 
+  filteredsubCategories: SubCategory[] = [];
+
   public subCategoryForm: FormGroup;
 
   public categoryForm: FormGroup;
@@ -39,6 +41,8 @@ export class SubCategoriesComponent {
   title: any;
 
   msg: any;
+
+  mainSection = true
 
   deleteModal = false;
 
@@ -76,6 +80,7 @@ export class SubCategoriesComponent {
           });
         });
         this.subCategories = res.data;
+        this.filteredsubCategories = this.subCategories
         console.log('subCategories:', this.subCategories);
       });
     });
@@ -90,6 +95,9 @@ export class SubCategoriesComponent {
 
         if (res.status == 'created') {
           this.subCatgeorySevice.success(res.message);
+          this.createModal = false
+          this.mainSection = true
+          this.subCategoryForm.reset();
           this.subCatgeorySevice.getAllList().subscribe((res) => {
             res.data.forEach((product: any) => {
               const category = this.categories.filter(
@@ -100,6 +108,7 @@ export class SubCategoriesComponent {
               });
             });
             this.subCategories = res.data;
+            this.filteredsubCategories = this.subCategories
             console.log('products:', this.subCategories);
           });
           console.log(res.message);
@@ -109,8 +118,6 @@ export class SubCategoriesComponent {
         }
       }
     );
-    this.subCategoryForm.reset();
-    this.createModal = false;
   }
 
   createCategory() {
@@ -150,13 +157,17 @@ export class SubCategoriesComponent {
           console.log('res', res);
 
           if (res.status == 'success') {
-            alert(res.message);
+            this.subCatgeorySevice.success(res.message);
+            this.editProduct = false;
+            this.mainSection = true;
+            this.subCategoryForm.reset()
             var index = this.subCategories.findIndex(
               (x) => x.id === this.selectedId
             );
             this.subCategories.splice(index, 1);
 
             this.subCategories = [...this.subCategories, res.data];
+            this.filteredsubCategories = this.subCategories
           } else {
             console.error(Error);
           }
@@ -166,9 +177,6 @@ export class SubCategoriesComponent {
           alert(error.error.message);
         }
       );
-
-    this.subCategoryForm.reset();
-    this.editProduct = false;
   }
 
   hideDialog() {
@@ -178,10 +186,12 @@ export class SubCategoriesComponent {
     this.editProduct = false;
     this.viewProduct = false;
     this.createModal = false;
+    this.mainSection = true;
   }
 
   showModal() {
     this.createModal = true;
+    this.mainSection = false
   }
 
   showCategoryModal() {
@@ -190,6 +200,7 @@ export class SubCategoriesComponent {
 
   edit(item: any) {
     this.editProduct = true;
+    this.mainSection = false
     this.selectedSubCategory = item;
     this.selectedId = item.id;
     console.log(this.selectedSubCategory);
@@ -210,10 +221,13 @@ export class SubCategoriesComponent {
   view(item: any) {
     this.selectedSubCategory = item;
     this.viewProduct = true;
+    this.mainSection = false
   }
 
   clear() {
     this.subCategoryForm.reset();
+    this.createModal = false
+    this.mainSection = true
   }
 
   delete(item: any) {
@@ -230,9 +244,22 @@ export class SubCategoriesComponent {
         this.subCategories.splice(index, 1);
 
         this.subCategories = [...this.subCategories, res.data];
+        this.filteredsubCategories = this.subCategories
       }
     );
 
     this.deleteModal = false;
+  }
+
+  searchProducts(item: any) {
+    console.log(this.subCategories)
+    this.filteredsubCategories = this.subCategories.filter(
+      prod => prod?.name.toLowerCase().includes(item.toLowerCase())
+    );
+    // if (this.filteredProducts = []) {
+    //   this.showProducts = false
+    // }
+    console.log(this.filteredsubCategories)
+    //this.filteredProducts = this.products.filter(x => x.)
   }
 }

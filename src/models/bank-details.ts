@@ -4,4 +4,5 @@ export interface BankDetails {
     account_number: string,
     branch: string,
     branch_code: string
+    paypal_email: string
 }

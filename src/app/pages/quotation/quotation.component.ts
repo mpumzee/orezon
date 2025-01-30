@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import html2canvas from 'html2canvas';
 import jspdf from 'jspdf';
 import { User } from '../../../models/user';
 import { WishListService } from '../../tools/services';
-import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-quotation',

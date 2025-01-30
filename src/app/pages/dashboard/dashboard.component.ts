@@ -123,6 +123,7 @@ export class DashboardComponent {
 
   ngOnInit(): void {
     this.dashboard = true;
+    this.drawer = true
 
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
     this.user.id = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
@@ -187,7 +188,7 @@ export class DashboardComponent {
           const orderDate = new Date(order.created_at);
           return orderDate.getFullYear() === new Date().getFullYear() &&
             orderDate.getMonth() === new Date().getMonth() - 1;
-        }).reduce((sum, order) => sum + order.total_price, 0);
+        }).reduce((sum, order) => sum + Number(order.total_price), 0);
 
         this.thisMonthOrders = this.subOrders.filter(order => {
           const orderDate = new Date(order.created_at);
@@ -199,6 +200,8 @@ export class DashboardComponent {
         this.ordersPercentageDiff = ((this.thisMonthOrders - this.lastMonthOrders) / this.lastMonthOrders * 100).toFixed(2)
         if (this.ordersPercentageDiff == Infinity) {
           this.ordersPercentageDiff = 100
+        } else if (!(this.ordersPercentageDiff >= 0)) {
+          this.ordersPercentageDiff = 0
         }
         console.log('orders:', this.subOrders, this.thisMonthOrders, this.lastMonthOrders, this.ordersPercentageDiff);
       });
@@ -220,6 +223,8 @@ export class DashboardComponent {
       this.clientsPercentageDiff = ((this.thisMonthClients - this.lastMonthClients) / this.lastMonthClients * 100).toFixed(2)
       if (this.clientsPercentageDiff == Infinity) {
         this.clientsPercentageDiff = 100
+      } else if (!(this.clientsPercentageDiff >= 0)) {
+        this.ordersPercentageDiff = 0
       }
       console.log('all:', this.lastMonthClients, this.thisMonthClients, this.clientsPercentageDiff);
     });
@@ -227,24 +232,27 @@ export class DashboardComponent {
 
     this.paymentService.getSellerPayments().subscribe((res) => {
       this.payments = res.data;
+      this.payments = this.payments.filter(x => x.buyer_id != null)
 
       this.lastMonthPayments = this.payments.filter(payment => {
         const paymentDate = new Date(payment.created_at);
         return paymentDate.getFullYear() === new Date().getFullYear() &&
           paymentDate.getMonth() === new Date().getMonth() - 1;
-      }).length;
+      }).reduce((sum, order) => sum + Number(order.amount), 0);
 
       this.thisMonthPayments = this.payments.filter(payment => {
         const paymentDate = new Date(payment.created_at);
         return paymentDate.getFullYear() === new Date().getFullYear() &&
           paymentDate.getMonth() === new Date().getMonth();
-      }).length;
+      }).reduce((sum, order) => sum + Number(order.amount), 0);
 
 
       // Calculate percentage difference
       this.paymentsPercentageDiff = ((this.thisMonthPayments - this.lastMonthPayments) / this.lastMonthPayments * 100).toFixed(2)
       if (this.paymentsPercentageDiff == Infinity) {
         this.paymentsPercentageDiff = 100
+      } else if (!(this.clientsPercentageDiff >= 0)) {
+        this.paymentsPercentageDiff = 0
       }
       console.log('payment:', this.lastMonthPayments, this.thisMonthPayments, this.paymentsPercentageDiff);
     });
@@ -264,6 +272,7 @@ export class DashboardComponent {
   }
 
   showDrawer() {
+    console.log('entered')
     this.drawer = true;
   }
 

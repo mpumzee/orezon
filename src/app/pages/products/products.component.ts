@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ProductCategory } from '../../../models/product-category';
 import { Products } from '../../../models/products';
 import { SubCategory } from '../../../models/sub-category';
-import { SearchService, ProductsService, SubCategoriesService } from '../../tools/services';
+import { ProductsService, SearchService, SubCategoriesService } from '../../tools/services';
 import { CategoriesService } from '../../tools/services/categories.service';
 @Component({
   selector: 'app-products',
@@ -73,6 +73,8 @@ export class ProductsComponent implements OnInit {
 
   showProducts = false
 
+  productsTab = false
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -92,6 +94,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.productsTab = true
     this.user = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
     console.log(this.user);
@@ -176,27 +179,35 @@ export class ProductsComponent implements OnInit {
     formData.append('image_url', this.selectedFile, this.selectedFile.name);
     formData.append('user_id', this.user);
 
-    this.createModal = false;
-
     this.productService.create(formData).subscribe(
       (res) => {
         console.log('res', res);
 
         if (res.status == 'created') {
           this.productService.success('Product added successfully');
-          this.productService.getSellerProducts(this.user).subscribe((res) => {
-            res.data.forEach((product: any) => {
-              product.image_url =
-                'https://orezon.co.zw/storage/app/public/' + product.image_url;
-              const category = this.categories.filter(
-                (x) => x.id == product.sub_category_id
-              );
-              category.forEach((cat) => {
-                product.sub_category_name = cat.name;
+          this.productsTab = true;
+          this.createModal = false;
+          this.productForm.reset();
+          this.selectedFile = null;
+          this.subCategoryService.getAllList().subscribe((res) => {
+            this.subCategories = res.data;
+            console.log('sub categories:', this.subCategories);
+
+            this.productService.getSellerProducts(this.user).subscribe((res) => {
+              res.data.forEach((product: any) => {
+                product.image_url =
+                  'https://orezon.co.zw/storage/app/public/' + product.image_url;
+                const category = this.subCategories.filter(
+                  (x) => x.id == product.sub_category_id
+                );
+                category.forEach((cat) => {
+                  product.sub_category_name = cat.name;
+                });
               });
+              this.products = res.data;
+              this.filteredProducts = this.products
+              console.log('products:', this.products);
             });
-            this.products = res.data;
-            console.log('products:', this.products);
           });
           console.log(res.message);
         } else {
@@ -206,18 +217,30 @@ export class ProductsComponent implements OnInit {
       },
 
     );
-    this.productForm.reset();
   }
 
   updateProduct() {
-    console.log(this.productForm.value, this.selectedId);
+    console.log(this.productForm.value, this.selectedId, this.productForm.value.sub_category_id);
+    var newformData = new FormData();
+    newformData.append('name', this.productForm.value.name);
+    newformData.append('description', this.productForm.value.description);
+    newformData.append('price', this.productForm.value.price);
+    newformData.append('quantity', this.productForm.value.quantity);
+    newformData.append('sub_category_id', this.productForm.value.sub_category_id);
+    if (this.selectedFile) {
+      newformData.append('image_url', this.selectedFile, this.selectedFile.name);
+    }
+
     this.productService
-      .update(this.productForm.value, this.selectedId)
+      .update(newformData, this.selectedId)
       .subscribe(
         (res) => {
           console.log('res', res);
 
           if (res.status == 'success') {
+            this.editProduct = false;
+            this.productsTab = true;
+            this.productForm.reset();
             this.productService.success('Product updated successfully');
             var index = this.products.findIndex(
               (x) => x.id === this.selectedId
@@ -225,18 +248,19 @@ export class ProductsComponent implements OnInit {
             this.products.splice(index, 1);
 
             this.products = [...this.products, res.data];
+            this.filteredProducts = this.products;
           } else {
             console.error(Error);
           }
         }
       );
-
-    this.productForm.reset();
-    this.editProduct = false;
   }
 
   clear() {
     this.productForm.reset();
+    this.selectedFile = null
+    this.productsTab = true
+    this.createModal = false
   }
 
   hideDialog() {
@@ -248,10 +272,14 @@ export class ProductsComponent implements OnInit {
     this.createModal = false;
   }
 
+
   edit(item: any) {
     this.editProduct = true;
+    this.productsTab = false;
     this.selectedProduct = item;
+    this.filteredSubCategories = this.subCategories
     this.selectedId = item.id;
+
     console.log(this.selectedProduct);
     this.productForm = new FormGroup({
       name: new FormControl(this.selectedProduct.name, [Validators.required]),
@@ -265,8 +293,11 @@ export class ProductsComponent implements OnInit {
       sub_category_id: new FormControl(this.selectedProduct.sub_category_id, [
         Validators.required,
       ]),
+      category_id: new FormControl(this.selectedProduct.subcategory.category_id, [
+        Validators.required,
+      ]),
     });
-    console.log(this.productForm.value);
+    console.log('here', this.productForm.value);
   }
 
   view(item: any) {
@@ -281,7 +312,9 @@ export class ProductsComponent implements OnInit {
   }
 
   showModal() {
+    this.selectedFile = null
     this.createModal = true;
+    this.productsTab = false
   }
 
   confirmDelete() {
@@ -294,6 +327,7 @@ export class ProductsComponent implements OnInit {
         this.products.splice(index, 1);
 
         this.products = [...this.products, res.data];
+        this.filteredProducts = this.products
       }
     );
 
@@ -303,7 +337,7 @@ export class ProductsComponent implements OnInit {
   onSelection(item: any) {
     const selectedCategory = (item.target as HTMLSelectElement).value;
 
-    this.filteredSubCategories = this.subCategories.filter(x => x.category_id == selectedCategory)
+    this.filteredSubCategories = this.subCategories.filter(x => x.category_id == Number(selectedCategory))
 
     if (this.filteredSubCategories.length > 0) {
       this.showSubCategories = true
