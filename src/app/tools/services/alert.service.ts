@@ -8,7 +8,7 @@ export class AlertService {
 
   error(text: string, callback?: any) {
     Notiflix.Notify.failure(text || 'Server Error', callback, {
-      position: 'center-center',
+      position: 'right-top',
       cssAnimation:true,
       cssAnimationStyle:  'from-bottom',
       useIcon:true,
