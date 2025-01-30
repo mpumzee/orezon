@@ -7,6 +7,8 @@ import { PackagesService, PaymentService } from '../../tools/services';
 import { SellerPayoutsComponent } from '../seller-payouts/seller-payouts.component';
 import { AdminStatsComponent } from '../admin-stats/admin-stats.component';
 import { TransactionComponent } from '../transaction/transaction.component';
+import { PackagesComponent } from '../packages/packages.component';
+import { AdminPaymentComponent } from '../admin-payment/admin-payment.component';
 
 
 const routes: Routes = [
@@ -33,11 +35,11 @@ const routes: Routes = [
             },
             {
                 path:'payments',
-                component:PaymentService
+                component:AdminPaymentComponent
             },
             {
                 path:'packages',
-                component:PackagesService
+                component:PackagesComponent
             },
             {
                 path:'payouts',
