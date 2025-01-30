@@ -59,6 +59,7 @@ import { QuotationComponent } from './pages/quotation/quotation.component';
 import { EmailVerifiedComponent } from './pages/email-verified/email-verified.component';
 import { VerificationErrorComponent } from './pages/verification-error/verification-error.component';
 import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
+import { DashboardNavBarComponent } from './pages/dashboard-nav-bar/dashboard-nav-bar.component';
 
 
 @NgModule({
@@ -107,7 +108,8 @@ import { VerifyEmailComponent } from './pages/verify-email/verify-email.componen
     QuotationComponent,
     EmailVerifiedComponent,
     VerificationErrorComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    DashboardNavBarComponent
   ],
   imports: [
     BrowserModule,
