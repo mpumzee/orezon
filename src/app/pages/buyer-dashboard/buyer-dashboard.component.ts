@@ -42,21 +42,4 @@ export class BuyerDashboardComponent {
     this.drawer = false;
   }
 
-  showPayment() {
-    this.payments = true;
-    this.orderstab = false;
-    this.profile = false;
-  }
-
-  showOrders() {
-    this.orderstab = true;
-    this.payments = false;
-    this.profile = false;
-  }
-
-  showProfile() {
-    this.profile = true;
-    this.orderstab = false;
-    this.payments = false;
-  }
 }

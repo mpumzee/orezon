@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { BrokerComponent } from './pages/broker/broker.component';
-import { BuyerDashboardComponent } from './pages/buyer-dashboard/buyer-dashboard.component';
 import { BuyerComponent } from './pages/buyer/buyer.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CategoryShopComponent } from './pages/category-shop/category-shop.component';
 import { CheckOutComponent } from './pages/check-out/check-out.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EmailVerifiedComponent } from './pages/email-verified/email-verified.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MetalsComponent } from './pages/metals/metals.component';
@@ -37,13 +34,20 @@ const routes: Routes = [
     path: 'admin-dashboard',
     loadChildren: () => import('./pages/admin-dashboard/admin.module').then(m => m.AdminModule)
   },
+  {
+    path: 'buyer-dashboard',
+    loadChildren: () => import('./pages/buyer-dashboard/buyer.module').then(m => m.BuyerModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dasboard.module').then(m => m.DashboardModule)
+  },
   { path: 'metals', component: MetalsComponent },
   { path: 'broker', component: BrokerComponent },
   { path: 'buyer', component: BuyerComponent },
   { path: 'packages', component: PackagesComponent },
   { path: 'seller', component: SellerComponent },
   { path: 'select-package', component: SelectPackageComponent },
-  { path: 'dashboard', component: DashboardComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'category-shop/:id', component: CategoryShopComponent },
@@ -56,7 +60,6 @@ const routes: Routes = [
   { path: 'verified', component: EmailVerifiedComponent },
   { path: 'verification-error', component: VerificationErrorComponent },
   { path: 'verify-email', component: VerifyEmailComponent },
-  { path: 'buyer-dashboard', component: BuyerDashboardComponent },
   { path: 'quotation', component: QuotationComponent },
 
   {

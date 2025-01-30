@@ -6,6 +6,7 @@ import { Package } from '../../../models/package';
 import { Payments } from '../../../models/payments';
 import { Seller } from '../../../models/seller';
 import { SubOrder } from '../../../models/sub-order';
+import { Roles } from '../../tools/models/roles';
 import { BuyerRegistrationService, OrdersService, PackagesService, PaymentService, SellerRegistrationService } from '../../tools/services';
 
 @Component({
@@ -84,9 +85,9 @@ export class AdminDashboardComponent {
   ngOnInit(): void {
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
 
-    // if (sessionStorage.length == 0 || this.role != Roles.ADMIN) {
-    //   this.router.navigate(['/login']);
-    // }
+    if (sessionStorage.length == 0 || this.role != Roles.ADMIN) {
+      this.router.navigate(['/login']);
+    }
 
     this.packageService.getAllList().subscribe((res) => {
       this.packages = res.data;
