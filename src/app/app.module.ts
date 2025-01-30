@@ -97,7 +97,6 @@ import { DashboardNavBarComponent } from './pages/dashboard-nav-bar/dashboard-na
     BuyerOrdersComponent,
     CartComponent,
     SellerOrdersComponent,
-    UsersComponent,
     SellerPaymentsComponent,
     BuyerPaymentComponent,
     AdminPaymentComponent,

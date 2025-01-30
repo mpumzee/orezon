@@ -2,53 +2,53 @@
 <app-dashboard-nav-bar></app-dashboard-nav-bar>
 <!-- /TOP HEADER -->
 
-<aside *ngIf="drawer" class="fixed top-0 left-0 z-40 mt-16 w-56 h-screen bg-gray-800" aria-label="Sidebar">
+<aside  class="fixed top-0 left-0 z-40 mt-16 w-56 h-screen bg-gray-800" aria-label="Sidebar">
     <div class="mt-8 py-4 overflow-y-auto">
         <ul class="space-y-2 font-medium">
             <li>
-                <a (click)="showDashboard()"
+                <a  routerLink="/admin-dashboard"
                     class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-dashboard text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-lg text-white whitespace-nowrap">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a (click)="showUsers()"
+                <a routerLink="/users"
                     class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-user-friends text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-lg text-white whitespace-nowrap">Users</span>
                 </a>
             </li>
             <li>
-                <a (click)="showOrders()"
+                <a
                     class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-list text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Orders</span>
                 </a>
             </li>
             <li>
-                <a (click)="showCategories()"
+                <a
                     class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-list text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Product Categories</span>
                 </a>
             </li>
             <li>
-                <a (click)="showPayment()"
+                <a
                     class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-cash-register text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Payments</span>
                 </a>
             </li>
             <li>
-                <a (click)="showPackage()"
+                <a
                     class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-boxes-packing text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Packages</span>
                 </a>
             </li>
             <li>
-                <a (click)="showPayout()"
+                <a
                     class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-money-bills text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Seller PayOuts</span>
@@ -63,49 +63,49 @@
     <div class="mt-8 py-4 overflow-y-auto">
         <ul class="space-y-2 font-medium">
             <li>
-                <a (click)="showDashboard()"
+                <a
                     class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-dashboard text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-lg text-white whitespace-nowrap">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a (click)="showUsers()"
+                <a routerLink="/admin-dashboard/users"
                     class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-user-friends text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-lg text-white whitespace-nowrap">Users</span>
                 </a>
             </li>
             <li>
-                <a (click)="showOrders()"
+                <a
                     class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-list text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Orders</span>
                 </a>
             </li>
             <li>
-                <a (click)="showCategories()"
+                <a 
                     class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-list text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Product Categories</span>
                 </a>
             </li>
             <li>
-                <a (click)="showPayment()"
+                <a
                     class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-cash-register text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Payments</span>
                 </a>
             </li>
             <li>
-                <a (click)="showPackage()"
+                <a
                     class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-boxes-packing text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Packages</span>
                 </a>
             </li>
             <li>
-                <a (click)="showPayout()"
+                <a
                     class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-money-bills text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Seller PayOuts</span>
@@ -118,7 +118,7 @@
 
 <!-- Content Body -->
 <div class="p-4 sm:ml-56">
-    <div *ngIf="dashboard" class="p-4 rounded-lg bg-gray-50 mt-16 dark:bg-gray-800 overflow-x-auto">
+    <div  class="p-4 rounded-lg bg-gray-50 mt-16 dark:bg-gray-800 overflow-x-auto">
         <div class="flex items-center justify-between">
             <button type="button" (click)="showDrawer()"
                 class="inline-flex items-center mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
@@ -392,179 +392,7 @@
             </div>
         </div>
     </div>
-    <div *ngIf="users" class="p-4 rounded-lg bg-white mt-16 dark:bg-gray-800 overflow-x-auto">
-        <div class="flex items-center justify-between">
-            <button type="button" (click)="showDrawer()"
-                class="inline-flex items-center mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Open sidebar</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path clip-rule="evenodd" fill-rule="evenodd"
-                        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                    </path>
-                </svg>
-            </button>
-            <button type="button" (click)="hideDialog()"
-                class="inline-flex items-center ltr:justify-end mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Close sidebar</span>
-                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </button>
-        </div>
-        <app-users></app-users>
-    </div>
-    <div *ngIf="profile" class="p-4 rounded-lg bg-white mt-16 dark:bg-gray-800 overflow-x-auto">
-        <div class="flex items-center justify-between">
-            <button type="button" (click)="showDrawer()"
-                class="inline-flex items-center mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Open sidebar</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path clip-rule="evenodd" fill-rule="evenodd"
-                        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                    </path>
-                </svg>
-            </button>
-            <button type="button" (click)="hideDialog()"
-                class="inline-flex items-center ltr:justify-end mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Close sidebar</span>
-                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </button>
-        </div>
-        <app-profile></app-profile>
-    </div>
-    <div *ngIf="showProductCategories" class="p-4 rounded-lg bg-white mt-16 dark:bg-gray-800 overflow-x-auto">
-        <div class="flex items-center justify-between">
-            <button type="button" (click)="showDrawer()"
-                class="inline-flex items-center mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Open sidebar</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path clip-rule="evenodd" fill-rule="evenodd"
-                        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                    </path>
-                </svg>
-            </button>
-            <button type="button" (click)="hideDialog()"
-                class="inline-flex items-center ltr:justify-end mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Close sidebar</span>
-                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </button>
-        </div>
-        <app-sub-categories></app-sub-categories>
-    </div>
-    <div *ngIf="orderstab" class="p-4 rounded-lg bg-white mt-16 dark:bg-gray-800 overflow-x-auto">
-        <div class="flex items-center justify-between">
-            <button type="button" (click)="showDrawer()"
-                class="inline-flex items-center mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Open sidebar</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path clip-rule="evenodd" fill-rule="evenodd"
-                        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                    </path>
-                </svg>
-            </button>
-            <button type="button" (click)="hideDialog()"
-                class="inline-flex items-center ltr:justify-end mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Close sidebar</span>
-                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </button>
-        </div>
-        <app-admin-orders></app-admin-orders>
-    </div>
-    <div *ngIf="showPayments" class="p-4 rounded-lg bg-white mt-16 dark:bg-gray-800 overflow-x-auto">
-        <div class="flex items-center justify-between">
-            <button type="button" (click)="showDrawer()"
-                class="inline-flex items-center mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Open sidebar</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path clip-rule="evenodd" fill-rule="evenodd"
-                        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                    </path>
-                </svg>
-            </button>
-            <button type="button" (click)="hideDialog()"
-                class="inline-flex items-center ltr:justify-end mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Close sidebar</span>
-                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </button>
-        </div>
-        <app-admin-payment></app-admin-payment>
-    </div>
-    <div *ngIf="showPackages" class="p-4 rounded-lg bg-white mt-16 dark:bg-gray-800 overflow-x-auto">
-        <div class="flex items-center justify-between">
-            <button type="button" (click)="showDrawer()"
-                class="inline-flex items-center mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Open sidebar</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path clip-rule="evenodd" fill-rule="evenodd"
-                        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                    </path>
-                </svg>
-            </button>
-            <button type="button" (click)="hideDialog()"
-                class="inline-flex items-center ltr:justify-end mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Close sidebar</span>
-                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </button>
-        </div>
-        <app-packages></app-packages>
-    </div>
-    <div *ngIf="payout" class="p-4 rounded-lg bg-white mt-16 dark:bg-gray-800 overflow-x-auto">
-        <div class="flex items-center justify-between">
-            <button type="button" (click)="showDrawer()"
-                class="inline-flex items-center mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Open sidebar</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path clip-rule="evenodd" fill-rule="evenodd"
-                        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                    </path>
-                </svg>
-            </button>
-            <button type="button" (click)="hideDialog()"
-                class="inline-flex items-center ltr:justify-end mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Close sidebar</span>
-                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </button>
-        </div>
-        <app-seller-payouts></app-seller-payouts>
-    </div>
+
+
+    <router-outlet></router-outlet>
 </div>
