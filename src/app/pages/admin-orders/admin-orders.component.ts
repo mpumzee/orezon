@@ -32,6 +32,8 @@ export class AdminOrdersComponent {
 
   categories: ProductCategory[] = [];
 
+  orderSection = true
+
   constructor(
     private orderService: OrdersService,
     private sellerService: SellerRegistrationService,
@@ -100,6 +102,7 @@ export class AdminOrdersComponent {
   viewOrder(item: SubOrder) {
     console.log('item', item);
     this.viewOrderModal = true;
+    this.orderSection = false
     this.selectedOrder = item;
   }
 
@@ -117,6 +120,7 @@ export class AdminOrdersComponent {
 
   hideDialog() {
     this.viewOrderModal = false;
+    this.orderSection = true
   }
 
 }

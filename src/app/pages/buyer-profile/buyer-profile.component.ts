@@ -37,6 +37,9 @@ export class BuyerProfileComponent {
 
   role: any;
 
+
+  profileSection = false
+
   constructor(
     private router: Router,
     private buyerService: BuyerRegistrationService
@@ -58,6 +61,8 @@ export class BuyerProfileComponent {
   }
 
   ngOnInit(): void {
+    this.profileSection = true
+
     this.user.id = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
     this.user.name = sessionStorage.getItem('loggedUserName') || '{}';
@@ -99,6 +104,7 @@ export class BuyerProfileComponent {
     console.log('yes', this.buyerForm);
 
     this.editProfileModal = true;
+    this.profileSection = false
   }
 
   update() {
@@ -106,9 +112,11 @@ export class BuyerProfileComponent {
       .update(this.buyerForm.value, this.curentBuyerDetails.id)
       .subscribe(
         (res) => {
+          console.log(res)
           if (res.status == 'success') {
             console.log(res.message);
             this.editProfileModal = false;
+            this.profileSection = true
             this.buyerService.success(res.message);
             this.ngOnInit();
           } else {
@@ -120,8 +128,12 @@ export class BuyerProfileComponent {
           this.buyerService.error(error.error.message);
         }
       );
+  }
 
+  clear() {
     this.buyerForm.reset();
+    this.profileSection = true
+    this.editProfileModal = false
   }
 
   hideDialog() {

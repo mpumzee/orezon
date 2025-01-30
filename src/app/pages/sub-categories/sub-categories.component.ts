@@ -42,6 +42,8 @@ export class SubCategoriesComponent {
 
   msg: any;
 
+  mainSection = true
+
   deleteModal = false;
 
   createModal = false;
@@ -93,6 +95,9 @@ export class SubCategoriesComponent {
 
         if (res.status == 'created') {
           this.subCatgeorySevice.success(res.message);
+          this.createModal = false
+          this.mainSection = true
+          this.subCategoryForm.reset();
           this.subCatgeorySevice.getAllList().subscribe((res) => {
             res.data.forEach((product: any) => {
               const category = this.categories.filter(
@@ -113,8 +118,6 @@ export class SubCategoriesComponent {
         }
       }
     );
-    this.subCategoryForm.reset();
-    this.createModal = false;
   }
 
   createCategory() {
@@ -154,7 +157,10 @@ export class SubCategoriesComponent {
           console.log('res', res);
 
           if (res.status == 'success') {
-            alert(res.message);
+            this.subCatgeorySevice.success(res.message);
+            this.editProduct = false;
+            this.mainSection = true;
+            this.subCategoryForm.reset()
             var index = this.subCategories.findIndex(
               (x) => x.id === this.selectedId
             );
@@ -171,9 +177,6 @@ export class SubCategoriesComponent {
           alert(error.error.message);
         }
       );
-
-    this.subCategoryForm.reset();
-    this.editProduct = false;
   }
 
   hideDialog() {
@@ -183,10 +186,12 @@ export class SubCategoriesComponent {
     this.editProduct = false;
     this.viewProduct = false;
     this.createModal = false;
+    this.mainSection = true;
   }
 
   showModal() {
     this.createModal = true;
+    this.mainSection = false
   }
 
   showCategoryModal() {
@@ -195,6 +200,7 @@ export class SubCategoriesComponent {
 
   edit(item: any) {
     this.editProduct = true;
+    this.mainSection = false
     this.selectedSubCategory = item;
     this.selectedId = item.id;
     console.log(this.selectedSubCategory);
@@ -215,10 +221,13 @@ export class SubCategoriesComponent {
   view(item: any) {
     this.selectedSubCategory = item;
     this.viewProduct = true;
+    this.mainSection = false
   }
 
   clear() {
     this.subCategoryForm.reset();
+    this.createModal = false
+    this.mainSection = true
   }
 
   delete(item: any) {

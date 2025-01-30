@@ -1,5 +1,5 @@
 import { Pivot } from './pivot';
-import { ProductCategory } from './product-category';
+import { SubCategory } from './sub-category';
 
 export interface Products {
   id: number;
@@ -11,7 +11,7 @@ export interface Products {
   pivot: Pivot;
   image_url: File;
   sub_category_id: number;
-  subcategory: ProductCategory;
+  subcategory: SubCategory;
   sub_category_name: string;
   user_id: number;
   business_name: string;

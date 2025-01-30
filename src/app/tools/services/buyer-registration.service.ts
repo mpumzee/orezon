@@ -5,17 +5,18 @@ import { AlertService } from './alert.service';
 
 // const url = 'http://localhost:8000/api/v1';
 const url = 'https://orezon.co.zw/api/v1';
-let headers: HttpHeaders = new HttpHeaders();
-headers.append('Content-Type', 'multipart/form-data');
-headers.append('enctype', 'multipart/form-data');
+const headers: HttpHeaders = new HttpHeaders().set(
+  'Content-Type',
+  'application/json, charset=utf-8'
+);
 
 @Injectable({
   providedIn: 'root',
 })
-export class BuyerRegistrationService  extends AlertService{
+export class BuyerRegistrationService extends AlertService {
   constructor(private http: HttpClient) {
     super()
-   }
+  }
 
   create(itemDto: any) {
     var body = JSON.stringify(itemDto);
@@ -27,7 +28,7 @@ export class BuyerRegistrationService  extends AlertService{
 
   update(itemDto: any, id: number) {
     var body = JSON.stringify(itemDto);
-    console.log(body);
+    console.log('body', body);
     return this.http.put<ResponseHandler>(`${url}/buyers/buyer/${id}`, body, {
       headers,
     });
