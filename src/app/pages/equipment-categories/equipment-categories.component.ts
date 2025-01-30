@@ -45,10 +45,10 @@ export class EquipmentCategoriesComponent {
       );
       this.safetySubCategories = res.data.filter((x) => x.category_id == 7);
       this.miscellaneousSubCategories = res.data.filter(
-        (x) => x.category_id == 9
+        (x) => x.category_id == 8
       );
       this.sparesSubCategories = res.data.filter(
-        (x) => x.category_id == 8
+        (x) => x.category_id == 9
       );
       this.sparesSubCategories.forEach((product: SubCategory) => {
         product.img_url = 'assets/img/spares.png';

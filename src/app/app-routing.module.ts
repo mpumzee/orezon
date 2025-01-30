@@ -26,6 +26,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { TopNavComponent } from './pages/top-nav/top-nav.component';
 import { VerificationErrorComponent } from './pages/verification-error/verification-error.component';
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 
 
 const routes: Routes = [
@@ -51,6 +52,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'verified', component: EmailVerifiedComponent },
   { path: 'verification-error', component: VerificationErrorComponent },
+  { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'buyer-dashboard', component: BuyerDashboardComponent },
   { path: 'quotation', component: QuotationComponent },
 

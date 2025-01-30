@@ -58,6 +58,7 @@ import { AlertService } from './tools/services';
 import { QuotationComponent } from './pages/quotation/quotation.component';
 import { EmailVerifiedComponent } from './pages/email-verified/email-verified.component';
 import { VerificationErrorComponent } from './pages/verification-error/verification-error.component';
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 
 
 @NgModule({
@@ -105,7 +106,8 @@ import { VerificationErrorComponent } from './pages/verification-error/verificat
     AdminOrdersComponent,
     QuotationComponent,
     EmailVerifiedComponent,
-    VerificationErrorComponent
+    VerificationErrorComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
