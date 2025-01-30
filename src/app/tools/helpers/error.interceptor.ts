@@ -18,13 +18,15 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       retryWhen((error) =>{
         return error.pipe(
-          mergeMap((error, index) => {
-            if (index < maxRetries && error.status == 500) {
-              this.alertService.error(error.error.message);
-              return of(error).pipe(delay(delayMs));
-            } else {
-              throw error;
+       mergeMap((error ,index) =>{
+            if(index < maxRetries && error.status  == 500){
+              this.alertService.error(error.error.message)
+              return of(error).pipe(delay(delayMs))
+            }{
+              this.alertService.error(error.error.message)
+              return '';
             }
+
           })
         )
 
