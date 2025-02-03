@@ -5,11 +5,7 @@ import { Seller } from '../../../models/seller';
 import { SubOrder } from '../../../models/sub-order';
 import { User } from '../../../models/user';
 import {
-  BuyerRegistrationService,
-  OrdersService,
-  PaymentService,
-  PayoutsService,
-  SellerRegistrationService,
+  PayoutsService
 } from '../../tools/services';
 
 @Component({
@@ -120,7 +116,7 @@ export class SellerPayoutsComponent {
 
 
   makePayout() {
-    this.payoutService.create().subscribe((res) => {})
+    this.payoutService.create().subscribe((res) => { })
 
   }
 }

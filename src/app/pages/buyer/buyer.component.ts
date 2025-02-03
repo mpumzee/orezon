@@ -88,40 +88,16 @@ export class BuyerComponent {
     } else {
       //this.profileForm.value.profile_pic = this.selectedFile
 
-      let formData = new FormData();
-      formData.append('name', this.profileForm.value.name);
-      formData.append('email', this.profileForm.value.email);
-      formData.append('password', this.profileForm.value.password);
-      formData.append(
-        'password_confirmation',
-        this.profileForm.value.password_confirmation
-      );
-      formData.append('id_number', this.profileForm.value.id_number);
-      formData.append('country', this.profileForm.value.country);
-      formData.append('address', this.profileForm.value.address);
-      formData.append('phone', this.profileForm.value.phone);
 
-      formData.forEach((value, key) => {
-        console.log(key + ' ' + value);
-      });
-
-      this.buyerRegistrationService.create(formData).subscribe(
+      this.buyerRegistrationService.create(this.profileForm.value).subscribe(
         (res) => {
           console.log('res', res);
 
-          if (res.status == 'success') {
-            this.buyerRegistrationService.success("Buyer Profile Created Successfully")
+          this.buyerRegistrationService.success("Buyer Profile Created Successfully")
 
-            this.router.navigate(['/verify-email']);
-          } else {
-            console.log(res.message);
-            // Handle the error as needed
-          }
+          this.router.navigate(['/verify-email']);
         },
-        (error) => {
-          console.error(error.error.message);
-          alert(error.error.message);
-        }
+
       );
     }
 

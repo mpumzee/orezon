@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
-import { SellerCartService, PaypalService } from '../../tools/services';
+import { PaypalService, SellerCartService } from '../../tools/services';
 
 @Component({
   selector: 'app-seller-checkout',
@@ -57,6 +57,7 @@ export class SellerCheckoutComponent implements OnInit {
   private initConfig(): void {
     this.payPalConfig = {
       clientId: 'AS-HUIcnym-ONjaikvwMor0OzN-bxRt-muXbonxmERNaeU9_DLl1MCz2LsnmKfSWGTvZ-NLvehwaJvxJ',
+
       createOrderOnClient: (data) => <ICreateOrderRequest>{
         intent: 'CAPTURE',
         purchase_units: [{
