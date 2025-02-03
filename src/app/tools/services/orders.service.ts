@@ -15,7 +15,7 @@ const headers: HttpHeaders = new HttpHeaders().set(
 export class OrdersService extends AlertService {
   constructor(private http: HttpClient) {
     super()
-   }
+  }
 
   getSellerOrders() {
     return this.http.get<ResponseHandler>(`${url}/orders/seller`);

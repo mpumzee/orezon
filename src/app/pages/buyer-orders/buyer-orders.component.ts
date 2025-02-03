@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Orders } from '../../../models/orders';
-import { ProductCategory } from '../../../models/product-category';
 import { Seller } from '../../../models/seller';
+import { SubCategory } from '../../../models/sub-category';
 import { User } from '../../../models/user';
 import { BuyerRegistrationService, OrdersService, SellerRegistrationService, SubCategoriesService } from '../../tools/services';
 @Component({
@@ -20,19 +20,21 @@ export class BuyerOrdersComponent {
 
   buyer_pic: any;
 
+  mainSection = true
+
   selectedOrder: Orders = {} as Orders;
 
   viewOrderModal = false;
 
   seller: Seller = {} as Seller;
 
-  categories: ProductCategory[] = [];
+  categories: SubCategory[] = [];
 
   constructor(
     private orderService: OrdersService,
     private sellerService: SellerRegistrationService,
     private buyerService: BuyerRegistrationService,
-    private categoryService: SubCategoriesService
+    private categoryService: SubCategoriesService,
   ) { }
 
   ngOnInit(): void {
@@ -50,27 +52,29 @@ export class BuyerOrdersComponent {
 
         this.orderService.getBuyerOrders().subscribe((res) => {
           this.orders = res.data;
+          console.log(res.data)
           this.orders.forEach((order) => {
             order.total_quantity = 0;
-            order.products.forEach((prod: any) => {
-              prod.image_url =
-                'https://orezon.co.zw/storage/app/public/' + prod.image_url;
-              const category = this.categories.filter(
-                (x) => x.id == prod.sub_category_id
-              );
-              category.forEach((cat) => {
-                prod.sub_category_name = cat.name;
-              });
-              this.sellers
-                .filter((x) => x.user.id == prod.user_id)
-                .forEach((seller) => {
-                  prod.business_name = seller.business_name;
-                });
-              order.total_quantity += prod.pivot.quantity;
-            });
+            order.products = []
+
+            order.sub_orders.forEach(sub => {
+              sub.order_products.forEach(ord => {
+                order.total_quantity += ord.quantity
+                ord.product.seller_id = sub.seller.id
+                ord.product.seller_name = sub.seller.name
+                this.categories.filter(x => x.id == ord.product.sub_category_id).forEach(cat => {
+                  ord.product.sub_category_name = cat.name
+                })
+                ord.product.quantity = ord.quantity
+                ord.product.total_amount = sub.total_price
+                ord.product.image_url = 'https://orezon.co.zw/storage/app/public/' + ord.product.image_url;
+
+                order.products = [...order.products, ord.product];
+              })
+            })
           });
           this.filteredOrders = this.orders
-          console.log('orders:', this.orders);
+          console.log('finalorders:', this.orders);
         });
       });
     });
@@ -92,6 +96,7 @@ export class BuyerOrdersComponent {
   viewOrder(item: Orders) {
     console.log('item', item);
     this.viewOrderModal = true;
+    this.mainSection = false
     this.selectedOrder = item;
   }
 
@@ -109,5 +114,6 @@ export class BuyerOrdersComponent {
 
   hideDialog() {
     this.viewOrderModal = false;
+    this.mainSection = true
   }
 }

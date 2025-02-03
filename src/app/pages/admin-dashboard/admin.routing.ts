@@ -1,10 +1,10 @@
 import { RouterModule, Routes } from '@angular/router';
+import { AdminOrdersComponent } from '../admin-orders/admin-orders.component';
 import { AdminPaymentComponent } from '../admin-payment/admin-payment.component';
 import { AdminStatsComponent } from '../admin-stats/admin-stats.component';
-import { CategoriesComponent } from '../categories/categories.component';
-import { OrdersComponent } from '../orders/orders.component';
 import { PackagesComponent } from '../packages/packages.component';
 import { SellerPayoutsComponent } from '../seller-payouts/seller-payouts.component';
+import { SubCategoriesComponent } from '../sub-categories/sub-categories.component';
 import { TransactionComponent } from '../transaction/transaction.component';
 import { UsersComponent } from '../users/users.component';
 import { AdminDashboardComponent } from './admin-dashboard.component';
@@ -26,11 +26,11 @@ const routes: Routes = [
             },
             {
                 path: 'orders',
-                component: OrdersComponent
+                component: AdminOrdersComponent
             },
             {
                 path: 'categories',
-                component: CategoriesComponent
+                component: SubCategoriesComponent
             },
             {
                 path: 'payments',

@@ -29,6 +29,8 @@ export class SellerOrdersComponent {
 
   seller: Seller = {} as Seller;
 
+  mainSection = true
+
   categories: ProductCategory[] = [];
 
   constructor(
@@ -98,13 +100,14 @@ export class SellerOrdersComponent {
   viewOrder(item: SubOrder) {
     console.log('item', item);
     this.viewOrderModal = true;
+    this.mainSection = false
     this.selectedOrder = item;
   }
 
   searchOrders(item: any) {
     console.log(this.orders)
     this.filteredOrders = this.orders.filter(
-      prod => prod?.id.toString().includes(item)
+      prod => prod?.order_id.toString().includes(item)
     );
     // if (this.filteredProducts = []) {
     //   this.showProducts = false
@@ -115,5 +118,6 @@ export class SellerOrdersComponent {
 
   hideDialog() {
     this.viewOrderModal = false;
+    this.mainSection = true
   }
 }

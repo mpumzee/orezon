@@ -29,7 +29,9 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { CategoryShopComponent } from './pages/category-shop/category-shop.component';
 import { CheckOutComponent } from './pages/check-out/check-out.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { DashboardNavBarComponent } from './pages/dashboard-nav-bar/dashboard-nav-bar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { EmailVerifiedComponent } from './pages/email-verified/email-verified.component';
 import { EquipmentCategoriesComponent } from './pages/equipment-categories/equipment-categories.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -39,6 +41,7 @@ import { OrdersComponent } from './pages/orders/orders.component';
 import { PackagesComponent } from './pages/packages/packages.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { QuotationComponent } from './pages/quotation/quotation.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { SearchComponent } from './pages/search/search.component';
 import { SelectPackageComponent } from './pages/select-package/select-package.component';
@@ -46,20 +49,17 @@ import { SellerCheckoutComponent } from './pages/seller-checkout/seller-checkout
 import { SellerOrdersComponent } from './pages/seller-orders/seller-orders.component';
 import { SellerPaymentsComponent } from './pages/seller-payments/seller-payments.component';
 import { SellerPayoutsComponent } from './pages/seller-payouts/seller-payouts.component';
+import { SellerStatsComponent } from './pages/seller-stats/seller-stats.component';
 import { SellerTermsAndConditionsComponent } from './pages/seller-terms-and-conditions/seller-terms-and-conditions.component';
 import { SellerComponent } from './pages/seller/seller.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SubCategoriesComponent } from './pages/sub-categories/sub-categories.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { TopNavComponent } from './pages/top-nav/top-nav.component';
-import { UsersComponent } from './pages/users/users.component';
-import { ErrorInterceptor, LoaderInterceptor } from './tools/helpers';
-import { AlertService } from './tools/services';
-import { QuotationComponent } from './pages/quotation/quotation.component';
-import { EmailVerifiedComponent } from './pages/email-verified/email-verified.component';
 import { VerificationErrorComponent } from './pages/verification-error/verification-error.component';
 import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
-import { DashboardNavBarComponent } from './pages/dashboard-nav-bar/dashboard-nav-bar.component';
+import { ErrorInterceptor, LoaderInterceptor } from './tools/helpers';
+import { AlertService } from './tools/services';
 
 
 @NgModule({
@@ -92,10 +92,10 @@ import { DashboardNavBarComponent } from './pages/dashboard-nav-bar/dashboard-na
     ContactUsComponent,
     AdminDashboardComponent,
     BuyerDashboardComponent,
-    BuyerProfileComponent,
     SubCategoriesComponent,
     BuyerOrdersComponent,
     CartComponent,
+    BuyerProfileComponent,
     SellerOrdersComponent,
     SellerPaymentsComponent,
     BuyerPaymentComponent,
@@ -108,7 +108,8 @@ import { DashboardNavBarComponent } from './pages/dashboard-nav-bar/dashboard-na
     EmailVerifiedComponent,
     VerificationErrorComponent,
     VerifyEmailComponent,
-    DashboardNavBarComponent
+    DashboardNavBarComponent,
+    SellerStatsComponent
   ],
   imports: [
     BrowserModule,
@@ -127,13 +128,13 @@ import { DashboardNavBarComponent } from './pages/dashboard-nav-bar/dashboard-na
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
-    },  AlertService,
-     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    }, AlertService,
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
       multi: true,
-   },
+    },
 
   ],
   bootstrap: [AppComponent],

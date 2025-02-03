@@ -2,56 +2,64 @@
 <app-dashboard-nav-bar></app-dashboard-nav-bar>
 <!-- /TOP HEADER -->
 
-<aside  class="fixed top-0 left-0 z-40 mt-16 w-56 h-screen bg-gray-800" aria-label="Sidebar">
+<aside *ngIf="drawer" class="fixed top-0 left-0 z-40 mt-16 w-56 h-screen bg-gray-800" aria-label="Sidebar">
     <div class="mt-8 py-4 overflow-y-auto">
         <ul class="space-y-2 font-medium">
             <li>
-                <a  routerLink="/admin-dashboard"
-                    class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
+                <a routerLink="/admin-dashboard"
+                    class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-dashboard text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-lg text-white whitespace-nowrap">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a routerLink="/users"
-                    class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
+                <a routerLink="/admin-dashboard/users"
+                    class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-user-friends text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-lg text-white whitespace-nowrap">Users</span>
                 </a>
             </li>
             <li>
-                <a
-                    class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
+                <a routerLink="/admin-dashboard/orders"
+                    class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-list text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Orders</span>
                 </a>
             </li>
             <li>
-                <a
-                    class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
+                <a routerLink="/admin-dashboard/categories"
+                    class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-list text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Product Categories</span>
                 </a>
             </li>
             <li>
-                <a
-                    class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
+                <a routerLink="/admin-dashboard/payments"
+                    class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-cash-register text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Payments</span>
                 </a>
             </li>
             <li>
-                <a
-                    class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
+                <a routerLink="/admin-dashboard/packages"
+                    class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-boxes-packing text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Packages</span>
                 </a>
             </li>
             <li>
-                <a
-                    class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
+                <a routerLink="/admin-dashboard/payouts"
+                    class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-money-bills text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Seller PayOuts</span>
+                </a>
+            </li>
+
+            <li>
+                <a routerLink="/admin-dashboard/transactions"
+                    class="pl-4 cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
+                    <i class="fa fa-money-bills text-gray-500 dark:text-gray-400"></i>
+                    <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Transactions</span>
                 </a>
             </li>
         </ul>
@@ -126,7 +134,7 @@
 
 <!-- Content Body -->
 <div class="p-4 sm:ml-56">
-    <div  class="p-4 rounded-lg bg-gray-50 mt-16 dark:bg-gray-800 overflow-x-auto">
+    <div class="p-4 rounded-lg bg-gray-50 mt-16 dark:bg-gray-800 overflow-x-auto">
         <div class="flex items-center justify-between">
             <button type="button" (click)="showDrawer()"
                 class="inline-flex items-center mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">

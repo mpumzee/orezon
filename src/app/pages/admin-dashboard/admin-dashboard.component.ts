@@ -6,6 +6,7 @@ import { Package } from '../../../models/package';
 import { Payments } from '../../../models/payments';
 import { Seller } from '../../../models/seller';
 import { SubOrder } from '../../../models/sub-order';
+import { Roles } from '../../tools/models/roles';
 import { BuyerRegistrationService, OrdersService, PackagesService, PaymentService, SellerRegistrationService } from '../../tools/services';
 
 @Component({
@@ -84,9 +85,9 @@ export class AdminDashboardComponent {
   ngOnInit(): void {
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
 
-    // if (sessionStorage.length == 0 || this.role != Roles.ADMIN) {
-    //   this.router.navigate(['/login']);
-    // }
+    if (sessionStorage.length == 0 || this.role != Roles.ADMIN) {
+      this.router.navigate(['/login']);
+    }
 
     this.packageService.getAllList().subscribe((res) => {
       this.packages = res.data;
@@ -99,6 +100,7 @@ export class AdminDashboardComponent {
 
       this.orderService.getAllList().subscribe((res) => {
         this.subOrders = res.data;
+        console.log('orders:', res.data)
 
         this.subOrders.forEach(order => {
           order.buyer_pic = 'assets/img/user.png';
@@ -106,10 +108,10 @@ export class AdminDashboardComponent {
             order.buyer_email = buyer.user.email
             order.buyer_name = buyer.user.name
           })
-          order.total_quantity = order.products.reduce((sum, order) => sum + order.quantity, 0);
+          order.total_quantity = order.products.reduce((sum, order) => sum + order.pivot.quantity, 0);
         })
 
-        console.log('orders:', this.subOrders)
+        console.log('orders:', res.data)
 
         // Calculate total orders for last month and this month
         this.lastMonthOrders = this.subOrders.filter(order => {

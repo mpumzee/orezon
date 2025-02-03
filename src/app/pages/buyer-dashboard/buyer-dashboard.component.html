@@ -6,7 +6,7 @@
     <div class="mt-8 py-4 overflow-y-auto">
         <ul class="space-y-2 font-medium">
             <li>
-                <a (click)="showProfile()"
+                <a routerLink="/buyer-dashboard"
                     class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 text-xl dark:hover:bg-gray-700 group">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li>
-                <a (click)="showOrders()"
+                <a routerLink="/buyer-dashboard/orders"
                     class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a (click)="showPayment()"
+                <a routerLink="/buyer-dashboard/payments"
                     class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-cash-register text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Payments History</span>
@@ -45,7 +45,7 @@
     <div class="mt-8 py-4 overflow-y-auto">
         <ul class="space-y-2 font-medium">
             <li>
-                <a (click)="showProfile()"
+                <a routerLink="/buyer-dashboard"
                     class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 text-xl dark:hover:bg-gray-700 group">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
@@ -58,7 +58,7 @@
                 </a>
             </li>
             <li>
-                <a (click)="showOrders()"
+                <a routerLink="/buyer-dashboard/orders"
                     class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
@@ -69,7 +69,7 @@
                 </a>
             </li>
             <li>
-                <a (click)="showPayment()"
+                <a routerLink="/buyer-dashboard/payments"
                     class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-700 dark:hover:bg-gray-700 group">
                     <i class="fa fa-cash-register text-gray-500 dark:text-gray-400"></i>
                     <span class="flex-1 ms-3 text-white text-lg whitespace-nowrap">Payments History</span>
@@ -103,56 +103,6 @@
                 </svg>
             </button>
         </div>
-        <app-buyer-profile></app-buyer-profile>
-    </div>
-    <div *ngIf="orderstab" class="p-4 rounded-lg bg-gray-50 mt-16 dark:bg-gray-800 overflow-x-auto">
-        <div class="flex items-center justify-between">
-            <button type="button" (click)="showDrawer()"
-                class="inline-flex items-center mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Open sidebar</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path clip-rule="evenodd" fill-rule="evenodd"
-                        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                    </path>
-                </svg>
-            </button>
-            <button type="button" (click)="hideDialog()"
-                class="inline-flex items-center ltr:justify-end mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Close sidebar</span>
-                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </button>
-        </div>
-        <app-buyer-orders></app-buyer-orders>
-    </div>
-    <div *ngIf="payments" class="p-4 rounded-lg bg-gray-50 mt-16 dark:bg-gray-800 overflow-x-auto">
-        <div class="flex items-center justify-between">
-            <button type="button" (click)="showDrawer()"
-                class="inline-flex items-center mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Open sidebar</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path clip-rule="evenodd" fill-rule="evenodd"
-                        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                    </path>
-                </svg>
-            </button>
-            <button type="button" (click)="hideDialog()"
-                class="inline-flex items-center ltr:justify-end mt-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Close sidebar</span>
-                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </button>
-        </div>
-        <app-buyer-payment></app-buyer-payment>
+        <router-outlet></router-outlet>
     </div>
 </div>
