@@ -105,7 +105,7 @@ export class BuyerComponent {
         console.log(key + ' ' + value);
       });
 
-      this.buyerRegistrationService.create(formData).subscribe(
+      this.buyerRegistrationService.create(this.profileForm.value).subscribe(
         (res) => {
           console.log('res', res);
 
