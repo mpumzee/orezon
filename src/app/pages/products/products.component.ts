@@ -232,7 +232,7 @@ export class ProductsComponent implements OnInit {
     // }
 
     this.productService
-      .update(newformData, this.selectedId)
+      .update(this.productForm.value, this.selectedId)
       .subscribe(
         (res) => {
           console.log('res', res);
@@ -249,6 +249,7 @@ export class ProductsComponent implements OnInit {
 
             this.products = [...this.products, res.data];
             this.filteredProducts = this.products;
+            this.ngOnInit();
           } else {
             console.error(Error);
           }
