@@ -50,7 +50,6 @@ export class CheckOutComponent implements OnInit {
 
 
 
-
   saveOrder(order: any) {
     this.paypalService.postOrder(order).subscribe(resp => {
       this.cartService.success('order prossed successfully')
@@ -63,7 +62,7 @@ export class CheckOutComponent implements OnInit {
 
   private initConfig(): void {
     this.payPalConfig = {
-      clientId: 'AS-HUIcnym-ONjaikvwMor0OzN-bxRt-muXbonxmERNaeU9_DLl1MCz2LsnmKfSWGTvZ-NLvehwaJvxJ',
+      clientId: 'ASZF_7MP5x_OUmsi56uq8B6M09dUfXq7LsrmLMy7_HVKDr12tvaQLwJrq4TctCE_QjthbN3QynBAeRw8',
       createOrderOnClient: (data) => <ICreateOrderRequest>{
         intent: 'CAPTURE',
         purchase_units: [{
