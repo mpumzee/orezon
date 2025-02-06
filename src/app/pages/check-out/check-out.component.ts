@@ -50,7 +50,6 @@ export class CheckOutComponent implements OnInit {
 
 
 
-
   saveOrder(order: any) {
     this.paypalService.postOrder(order).subscribe(resp => {
       this.cartService.success('order prossed successfully')
