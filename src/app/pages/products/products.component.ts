@@ -120,6 +120,10 @@ export class ProductsComponent implements OnInit {
         res.data.forEach((product: any) => {
           product.image_url =
             'https://orezon.co.zw/storage/app/public/' + product.image_url;
+          product.image_url2 =
+            'https://orezon.co.zw/storage/app/public/' + product.image_url2;
+          product.image_url3 =
+            'https://orezon.co.zw/storage/app/public/' + product.image_url3;
           const category = this.subCategories.filter(
             (x) => x.id == product.sub_category_id
           );
@@ -220,6 +224,21 @@ export class ProductsComponent implements OnInit {
       return 'assets/img/upload.svg';
     }
     return URL.createObjectURL(this.selectedFile3);
+  }
+
+  splitDescription(description: string, wordsPerLine: number): string[] {
+    if (!description) return [];
+
+    const words = description.split(' '); // Split into words
+    const lines = [];
+    console.log(words)
+
+    for (let i = 0; i < words.length; i += wordsPerLine) {
+      lines.push(words.slice(i, i + wordsPerLine).join(' '));
+    }
+    console.log(lines)
+
+    return lines;
   }
 
   addProduct() {
