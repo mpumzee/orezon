@@ -101,9 +101,11 @@ export class CheckOutComponent implements OnInit {
       onError: err => {
         console.log('OnError', err);
         this.showError = true;
+        this.cartService.error(err.message)
       },
       onClick: (data, actions) => {
         console.log('onClick', data, actions);
+        this.cartService.success('order initiated')
 
       },
     };
