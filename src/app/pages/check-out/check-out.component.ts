@@ -62,13 +62,13 @@ export class CheckOutComponent implements OnInit {
 
   private initConfig(): void {
     this.payPalConfig = {
-      clientId: 'AbkjD0Lkeg1Ws3LnWcc4Lp1nxF_Qdro4ZUgD0rWcfZ5lwX2M6Otxx-RIolEIAjREVQUX5JArKX8iRw2i',
+      clientId: 'AawZojv8Oa0HkVk1-7GbSZCWJpszrPKw8XJbY56ZXSit6pwhmvN25BgZLUAi-AZc6yxx5HdsomIvdD-F',
       createOrderOnClient: (data) => <ICreateOrderRequest>{
         intent: 'CAPTURE',
         purchase_units: [{
           amount: {
             currency_code: 'USD',
-            value: this.getFinalTotal().toFixed(2),
+            value: '0.2' //this.getFinalTotal().toFixed(2),
 
           },
 
@@ -95,6 +95,7 @@ export class CheckOutComponent implements OnInit {
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
         this.showCancel = true;
+        this.cartService.error('order canceled')
 
       },
       onError: err => {
