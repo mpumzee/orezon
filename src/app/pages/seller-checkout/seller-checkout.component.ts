@@ -56,7 +56,7 @@ export class SellerCheckoutComponent implements OnInit {
 
   private initConfig(): void {
     this.payPalConfig = {
-      clientId: 'AbkjD0Lkeg1Ws3LnWcc4Lp1nxF_Qdro4ZUgD0rWcfZ5lwX2M6Otxx-RIolEIAjREVQUX5JArKX8iRw2i',
+      clientId: 'AawZojv8Oa0HkVk1-7GbSZCWJpszrPKw8XJbY56ZXSit6pwhmvN25BgZLUAi-AZc6yxx5HdsomIvdD-F',
 
       createOrderOnClient: (data) => <ICreateOrderRequest>{
         intent: 'CAPTURE',
