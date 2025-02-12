@@ -122,6 +122,7 @@ import { TruncatePipe } from './truncate.pipe';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     SlickCarouselModule,
   ],
   providers: [

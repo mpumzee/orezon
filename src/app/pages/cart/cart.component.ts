@@ -63,7 +63,7 @@ export class CartComponent {
         );
         this.unfilteredProducts.forEach((product: any) => {
           product.image_url =
-            'https://orezon.co.zw/storage/app/public/' + product.image_url;
+            'https://ore-zone.com/storage/app/public/' + product.image_url;
           const category = this.categories.filter(
             (x) => x.id == product.sub_category_id
           );

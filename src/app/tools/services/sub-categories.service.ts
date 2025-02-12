@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseHandler } from '../../../models/response-handler';
 import { AlertService } from '.';
+import { ResponseHandler } from '../../../models/response-handler';
 
-const url = 'https://orezon.co.zw/api/v1';
+const url = 'https://ore-zone.com/api/v1';
 const headers: HttpHeaders = new HttpHeaders().set(
   'Content-Type',
   'application/json, charset=utf-8'
@@ -12,10 +12,10 @@ const headers: HttpHeaders = new HttpHeaders().set(
 @Injectable({
   providedIn: 'root',
 })
-export class SubCategoriesService  extends AlertService {
+export class SubCategoriesService extends AlertService {
   constructor(private http: HttpClient) {
     super()
-   }
+  }
 
   create(itemDto: any) {
     var body = JSON.stringify(itemDto);

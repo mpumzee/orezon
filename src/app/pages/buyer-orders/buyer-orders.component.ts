@@ -67,7 +67,7 @@ export class BuyerOrdersComponent {
                 })
                 ord.product.quantity = ord.quantity
                 ord.product.total_amount = sub.total_price
-                ord.product.image_url = 'https://orezon.co.zw/storage/app/public/' + ord.product.image_url;
+                ord.product.image_url = 'https://ore-zone.com/storage/app/public/' + ord.product.image_url;
 
                 order.products = [...order.products, ord.product];
               })

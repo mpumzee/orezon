@@ -119,11 +119,11 @@ export class ProductsComponent implements OnInit {
       this.productService.getSellerProducts(this.user).subscribe((res) => {
         res.data.forEach((product: any) => {
           product.image_url =
-            'https://orezon.co.zw/storage/app/public/' + product.image_url;
+            'https://ore-zone.com/storage/app/public/' + product.image_url;
           product.image_url2 =
-            'https://orezon.co.zw/storage/app/public/' + product.image_url2;
+            'https://ore-zone.com/storage/app/public/' + product.image_url2;
           product.image_url3 =
-            'https://orezon.co.zw/storage/app/public/' + product.image_url3;
+            'https://ore-zone.com/storage/app/public/' + product.image_url3;
           const category = this.subCategories.filter(
             (x) => x.id == product.sub_category_id
           );
@@ -273,7 +273,7 @@ export class ProductsComponent implements OnInit {
             this.productService.getSellerProducts(this.user).subscribe((res) => {
               res.data.forEach((product: any) => {
                 product.image_url =
-                  'https://orezon.co.zw/storage/app/public/' + product.image_url;
+                  'https://ore-zone.com/storage/app/public/' + product.image_url;
                 const category = this.subCategories.filter(
                   (x) => x.id == product.sub_category_id
                 );

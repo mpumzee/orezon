@@ -166,7 +166,7 @@ export class SellerStatsComponent {
             });
           order.products.forEach((prod: any) => {
             prod.image_url =
-              'https://orezon.co.zw/storage/app/public/' + prod.image_url;
+              'https://ore-zone.com/storage/app/public/' + prod.image_url;
             const category = this.categories.filter(
               (x) => x.id == prod.sub_category_id
             );
