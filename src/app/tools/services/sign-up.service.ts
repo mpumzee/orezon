@@ -31,4 +31,8 @@ export class SignUpService extends AlertService {
   logOut() {
     return this.http.post<any>(`${url}/logout`, { headers });
   }
+
+   forgotPassword(itemDto: any) {
+    return this.http.post<any>(`${url}/forgot-password`, itemDto, { headers });
+}
 }

@@ -61,6 +61,7 @@ import { VerifyEmailComponent } from './pages/verify-email/verify-email.componen
 import { ErrorInterceptor, LoaderInterceptor } from './tools/helpers';
 import { AlertService } from './tools/services';
 import { TruncatePipe } from './truncate.pipe';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -111,6 +112,7 @@ import { TruncatePipe } from './truncate.pipe';
     VerifyEmailComponent,
     DashboardNavBarComponent,
     SellerStatsComponent,
+    ForgotPasswordComponent,
     TruncatePipe
   ],
   imports: [

@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: '', component: TopNavComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'forgot', component: ForgotPasswordComponent },
   {
     path: 'admin-dashboard',
     loadChildren: () => import('./pages/admin-dashboard/admin.module').then(m => m.AdminModule)
