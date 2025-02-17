@@ -9,6 +9,7 @@ import { CategoryShopComponent } from './pages/category-shop/category-shop.compo
 import { CheckOutComponent } from './pages/check-out/check-out.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { EmailVerifiedComponent } from './pages/email-verified/email-verified.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MetalsComponent } from './pages/metals/metals.component';
 import { PackagesComponent } from './pages/packages/packages.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: '', component: TopNavComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   {
     path: 'admin-dashboard',
     loadChildren: () => import('./pages/admin-dashboard/admin.module').then(m => m.AdminModule)
