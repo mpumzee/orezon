@@ -32,7 +32,7 @@ export class AppComponent {
     });
     this.meta.addTags([
       { name: 'description', content: 'Join our community today and experience the future of minerals and mining equipment trading   Ore-zone is a pioneering online marketplace that facilitates the buying and selling of minerals and mining equipment. Registered with the Government of South Africa, our platform provides a secure,transparent, and efficient way for businesses and individuals to connect and trade.' },
-      { name: 'keywords', content: 'orezon ,mining ,minerals , equpipement ,' }
+      { name: 'keywords', content: 'orezon ,mining ,minerals , equipment ,dril  ,jack ' }
   ]);
   }
 }
