@@ -8,6 +8,10 @@ import {
   provideHttpClient,
 } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { AuthInterceptor } from '../auth/AuthInterceptor';
@@ -34,6 +38,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EmailVerifiedComponent } from './pages/email-verified/email-verified.component';
 import { EquipmentCategoriesComponent } from './pages/equipment-categories/equipment-categories.component';
 import { FooterComponent } from './pages/footer/footer.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { InboxComponent } from './pages/inbox/inbox.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MetalsComponent } from './pages/metals/metals.component';
 import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
@@ -61,12 +67,6 @@ import { VerifyEmailComponent } from './pages/verify-email/verify-email.componen
 import { ErrorInterceptor, LoaderInterceptor } from './tools/helpers';
 import { AlertService } from './tools/services';
 import { TruncatePipe } from './truncate.pipe';
-import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -118,7 +118,8 @@ import { MatInputModule } from '@angular/material/input';
     DashboardNavBarComponent,
     SellerStatsComponent,
     ForgotPasswordComponent,
-    TruncatePipe
+    TruncatePipe,
+    InboxComponent
   ],
   imports: [
     BrowserModule,

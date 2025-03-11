@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminOrdersComponent } from '../admin-orders/admin-orders.component';
 import { AdminPaymentComponent } from '../admin-payment/admin-payment.component';
 import { AdminStatsComponent } from '../admin-stats/admin-stats.component';
+import { InboxComponent } from '../inbox/inbox.component';
 import { PackagesComponent } from '../packages/packages.component';
 import { SellerPayoutsComponent } from '../seller-payouts/seller-payouts.component';
 import { SubCategoriesComponent } from '../sub-categories/sub-categories.component';
@@ -47,6 +48,10 @@ const routes: Routes = [
             {
                 path: 'transactions',
                 component: TransactionComponent
+            },
+            {
+                path: 'inbox',
+                component: InboxComponent
             },
         ]
     },
