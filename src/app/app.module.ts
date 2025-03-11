@@ -62,6 +62,7 @@ import { ErrorInterceptor, LoaderInterceptor } from './tools/helpers';
 import { AlertService } from './tools/services';
 import { TruncatePipe } from './truncate.pipe';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 @NgModule({
@@ -140,6 +141,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
       useClass: LoaderInterceptor,
       multi: true,
     },
+    provideAnimationsAsync(),
 
   ],
   bootstrap: [AppComponent],
