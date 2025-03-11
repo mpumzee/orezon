@@ -1,4 +1,5 @@
-import { Component, type OnInit } from '@angular/core';
+import { Component, TemplateRef, ViewChild, type OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Orders } from '../../../models/orders';
 import { ProductCategory } from '../../../models/product-category';
@@ -6,6 +7,7 @@ import { Products } from '../../../models/products';
 import { Seller } from '../../../models/seller';
 import { SubCategory } from '../../../models/sub-category';
 import { CartService, ProductsService, SellerRegistrationService, SubCategoriesService, WishListService } from '../../tools/services';
+
 @Component({
   selector: 'app-category-shop',
   standalone: false,
@@ -13,35 +15,28 @@ import { CartService, ProductsService, SellerRegistrationService, SubCategoriesS
   styleUrl: './category-shop.component.css',
 })
 export class CategoryShopComponent implements OnInit {
+  @ViewChild('enquiryDialog') enquiryDialogTemplate!: TemplateRef<any>;
+
   currentCart: any = [];
-
   currentItem: any;
-
   order: Orders = {} as Orders;
-
   id = 0;
-
   products: Products[] = [];
-
   unfilteredProducts: Products[] = [];
-
   categories: ProductCategory[] = [];
-
   subCategories: SubCategory[] = [];
-
   wishlist = [];
-
   user: any;
-
   selectedProduct: Products = {} as Products;
-
   role: any
-
   sellers: Seller[] = []
-
   viewProduct = false
-
   image: any
+
+  // Enquiry related properties
+  enquiryProduct: Products = {} as Products;
+  enquiryEmail: string = '';
+  enquiryMessage: string = '';
 
   constructor(
     public cartService: CartService,
@@ -49,8 +44,10 @@ export class CategoryShopComponent implements OnInit {
     private productService: ProductsService,
     private categoryService: SubCategoriesService,
     public actRoute: ActivatedRoute,
-    private sellerService: SellerRegistrationService
+    private sellerService: SellerRegistrationService,
+    private dialog: MatDialog
   ) { }
+
   ngOnInit(): void {
     console.log('cart', this.cartService.getCurrentCart());
     this.role = sessionStorage.getItem('loggedUserRole') || '{}';
@@ -155,5 +152,44 @@ export class CategoryShopComponent implements OnInit {
 
   hideDialog() {
     this.viewProduct = false
+  }
+
+  openEnquiryDialog(product: Products) {
+    this.enquiryProduct = product;
+    this.enquiryEmail = '';
+    this.enquiryMessage = '';
+
+    this.dialog.open(this.enquiryDialogTemplate, {
+      width: '600px',
+      disableClose: false
+    });
+  }
+
+  closeEnquiryDialog() {
+    this.dialog.closeAll();
+  }
+
+  submitEnquiry() {
+    if (!this.enquiryEmail || !this.enquiryMessage) {
+      return;
+    }
+
+    const enquiryData = {
+      productId: this.enquiryProduct.id,
+      productName: this.enquiryProduct.name,
+      email: this.enquiryEmail,
+      message: this.enquiryMessage,
+      sellerId: this.enquiryProduct.user_id,
+      date: new Date()
+    };
+
+    // Here you would send the data to your backend
+    console.log('Submitting enquiry:', enquiryData);
+
+    // Display success message
+    this.cartService.success('Your enquiry has been submitted');
+
+    // Close the dialog
+    this.closeEnquiryDialog();
   }
 }

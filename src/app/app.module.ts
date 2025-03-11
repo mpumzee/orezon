@@ -63,6 +63,10 @@ import { AlertService } from './tools/services';
 import { TruncatePipe } from './truncate.pipe';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -127,6 +131,11 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     ReactiveFormsModule,
     FormsModule,
     SlickCarouselModule,
+    FormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [
     provideHttpClient(),
