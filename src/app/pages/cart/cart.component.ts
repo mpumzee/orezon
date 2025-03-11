@@ -155,7 +155,7 @@ export class CartComponent {
   }
 
   getTax() {
-    return ((0.15) * this.cartService.getTotal());
+    return ((0) * this.cartService.getTotal());
   }
 
   getFinalTotal() {

@@ -71,7 +71,7 @@ export class EquipmentCategoriesComponent {
           product.img_url = 'assets/img/loaders.jpeg'
         }
         if (product.id == 11) {
-          product.img_url = 'assets/img/load_haul.jpeg'
+          product.img_url = 'assets/img/haul.jpg'
         }
         if (product.id == 12) {
           product.img_url = 'assets/img/conveyor_ belt.jpeg'

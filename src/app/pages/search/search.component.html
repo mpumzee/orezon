@@ -160,7 +160,7 @@
 				<div class="h-54 w-40">
 					<a href="#"
 						class="group relative flex h-full items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg">
-						<img [src]="item.image_url" alt="Photo by Minh Pham"
+						<img [src]="item.image_url" alt="Photo by Minh Pham" (click)="viewImage(item)"
 							class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
 
 						<div
