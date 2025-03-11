@@ -6,7 +6,7 @@ import { ProductCategory } from '../../../models/product-category';
 import { Products } from '../../../models/products';
 import { Seller } from '../../../models/seller';
 import { SubCategory } from '../../../models/sub-category';
-import { CartService, ProductsService, SellerRegistrationService, SubCategoriesService, WishListService } from '../../tools/services';
+import { CartService, ContactUsService, ProductsService, SellerRegistrationService, SubCategoriesService, WishListService } from '../../tools/services';
 
 @Component({
   selector: 'app-category-shop',
@@ -42,6 +42,7 @@ export class CategoryShopComponent implements OnInit {
     public cartService: CartService,
     private wishlistServie: WishListService,
     private productService: ProductsService,
+    private contacgUService: ContactUsService,
     private categoryService: SubCategoriesService,
     public actRoute: ActivatedRoute,
     private sellerService: SellerRegistrationService,
@@ -186,10 +187,16 @@ export class CategoryShopComponent implements OnInit {
     // Here you would send the data to your backend
     console.log('Submitting enquiry:', enquiryData);
 
+    this.contacgUService.sendEquiry(enquiryData).subscribe((res) => {
+      console.log('Enquiry submitted:', res);
+
+
     // Display success message
     this.cartService.success('Your enquiry has been submitted');
 
     // Close the dialog
     this.closeEnquiryDialog();
+
+    })
   }
 }

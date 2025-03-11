@@ -16,4 +16,10 @@ export class ContactUsService extends AlertService {
   sendMessage(contact: any) {
     return this.http.post<ResponseHandler>(`${this.url}/contact`, contact);
   }
+
+
+  sendEquiry(contact: any) {
+    return this.http.post<ResponseHandler>(`${this.url}/enquiry`, contact);
+  }
+
 }
