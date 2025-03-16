@@ -177,7 +177,7 @@ export class CategoryShopComponent implements OnInit {
 
     const enquiryData = {
       productId: this.enquiryProduct.id,
-      productName: this.enquiryProduct.name,
+      ProductName: this.enquiryProduct.name,
       email: this.enquiryEmail,
       message: this.enquiryMessage,
       sellerId: this.enquiryProduct.user_id,
