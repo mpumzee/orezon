@@ -27,9 +27,13 @@ export class InboxComponent implements OnInit {
 
   messages: any;
 
+  unfilteredmessages: any;
+
   buyer_pic: any;
 
   viewPaymentModal = false;
+
+  selectedMessage: any;
 
   constructor(
     private sellerService: SellerRegistrationService,
@@ -44,73 +48,41 @@ export class InboxComponent implements OnInit {
     this.user.id = JSON.parse(sessionStorage.getItem('loggedUser') || '{}');
     this.user.name = sessionStorage.getItem('loggedUserName') || '{}';
     this.user.email = sessionStorage.getItem('loggedUserEmail') || '{}';
-    this.getPayOuts();
-
-    this.buyerService.getAllList().subscribe((res) => {
-      this.buyers = res.data;
-      console.log('buyer:', res.data);
-
-      this.sellerService.getAllList().subscribe((res) => {
-        this.sellers = res.data;
-        console.log('sellers:', res.data);
-
-        this.orderService.getAllList().subscribe((res) => {
-          this.orders = res.data;
-          console.log('orders:', res.data);
-
-          this.paymentService.getAllList().subscribe((res) => {
-            this.payments = res.data;
-            this.payments = this.payments.filter((x) => x.buyer_id != null);
-            this.payments.forEach((payment) => {
-              this.buyers
-                .filter((x) => x.user_id == payment.buyer_id)
-                .forEach((buyer) => {
-                  console.log('entered', buyer);
-                  payment.buyer_pic = 'assets/img/user.png';
-                  payment.buyer_name = buyer.user.name;
-                  payment.buyer_email = buyer.user.email;
-                });
-              this.orders
-                .filter((x) => x.order_id == payment.order_id)
-                .forEach((order) => {
-                  this.sellers
-                    .filter((x) => x.user_id == order.seller_id)
-                    .forEach((user) => {
-                      payment.seller_name = user.user.name;
-                    });
-                });
-            });
-            this.filteredPayments = this.payments;
-            console.log('payments:', this.payments);
-          });
-        });
-      });
-    });
-
-    this.orderService.getAllList().subscribe((res) => {
-      this.orders = res.data;
-      console.log('orders:', res.data);
-    });
 
     this.messageService.getMessages().subscribe((res) => {
       this.messages = res.data;
       console.log('messages:', res.data);
+
+      this.sellerService.getAllList().subscribe((res) => {
+        this.sellers = res.data;
+        console.log('sellers:', res.data);
+        this.messages.forEach((message) => {
+          this.sellers.filter(x => x.id == message.seller_id).forEach(seller => {
+            message.seller_name = seller.user.name
+            message.seller_email = seller.user.email
+            message.seller_pic = 'assets/img/user.png';
+          });
+        });
+      });
+      this.unfilteredmessages = this.messages
+      console.log('messages final:', this.messages);
     });
   }
 
   viewPayment(item: any) {
     this.viewPaymentModal = true;
+    this.selectedMessage = item;
   }
 
   searchPayments(item: any) {
-    console.log(this.payments);
-    this.filteredPayments = this.payments.filter((prod) =>
-      prod?.buyer_name.toLowerCase().includes(item.toLowerCase())
+    console.log(this.messages);
+    this.messages = this.unfilteredmessages.filter((prod) =>
+      prod?.seller_name.toLowerCase().includes(item.toLowerCase())
     );
     // if (this.filteredProducts = []) {
     //   this.showProducts = false
     // }
-    console.log(this.filteredPayments);
+    console.log(this.messages);
     //this.filteredProducts = this.products.filter(x => x.)
   }
 

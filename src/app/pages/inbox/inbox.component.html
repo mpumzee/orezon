@@ -16,7 +16,7 @@
                     <i class="fa fa-search mr-3"></i>
                 </div>
                 <input type="text" #filter id="simple-search" (input)="searchPayments(filter.value)"
-                    placeholder="Search by buyer" required=""
+                    placeholder="Search by seller" required=""
                     class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                 <button type="submit" (click)="searchPayments(filter.value)"
                     class="absolute top-0 end-0 p-2.5 font-medium h-full text-white bg-green-700 rounded-e-lg border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
@@ -36,7 +36,6 @@
     <table class="w-full  text-left text-gray-500 dark:text-gray-400">
         <thead class=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="p-4">Buyer</th>
                 <th scope="col" class="p-4">Seller</th>
                 <th scope="col" class="p-4">Product</th>
                 <th scope="col" class="p-4">Email</th>
@@ -48,22 +47,16 @@
             <tr *ngFor="let item of messages"
                 class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
                 <td scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                    <img class="w-14 h-14 rounded-full" [src]="item.buyer_pic" alt="Jese image">
+                    <img class="w-14 h-14 rounded-full" [src]="item.seller_pic" alt="Jese image">
                     <div class="ps-3">
-                        <div class="text-lg font-semibold">{{item.buyer_name}}</div>
-                        <div class="font-normal text-gray-500">{{item.buyer_email}}</div>
+                        <div class="text-lg font-semibold">{{item.seller_name}}</div>
+                        <div class="font-normal text-gray-500">{{item.seller_email}}</div>
                     </div>
                 </td>
                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    <div class="flex items-center">
-                        <div class="h-4 w-4 rounded-full inline-block mr-2 bg-red-700"></div>
-                        {{item.seller_name}}
-                    </div>
-                </td>
+                    {{item.Product_name}}</td>
                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{item.created_at}}</td>
-                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{item.created_at}}</td>
+                    {{item.email}}</td>
                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{item.created_at | date : 'MMM d, y'}}</td>
                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -92,20 +85,52 @@
                 <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 xl:p-5"
                     style="border:green, solid , 1px;padding:2vw;">
                     <!-- Modal header -->
-
                     <div
                         class="flex justify-between items-center pb-4 mb-4 rounded-t border-b xl:mb-5 dark:border-gray-600">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Payout To A seller</h3>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Enquiry</h3>
                         <button type="button" (click)="hideDialog()"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                             data-modal-toggle="createProductModal">
                             <i class="fa fa-close mr-3"></i>
                         </button>
                     </div>
-
                     <!-- Modal body -->
-                    <h2>PUT YOUR CONTENT HERE</h2>
-
+                    <form>
+                        <div class="grid gap-4 mb-4 xl:grid-cols-2">
+                            <div>
+                                <label for="category"
+                                    class="block mb-2 font-medium text-gray-900 dark:text-white">Seller
+                                    Name</label>
+                                <span class="text-green-700">{{selectedMessage.seller_name}}</span>
+                                <hr>
+                            </div>
+                            <div>
+                                <label for="category"
+                                    class="block mb-2 font-medium text-gray-900 dark:text-white">Seller
+                                    Email</label>
+                                <span class="text-green-700">{{selectedMessage.seller_email}}</span>
+                                <hr>
+                            </div>
+                            <div>
+                                <label for="category"
+                                    class="block mb-2 font-medium text-gray-900 dark:text-white">Product</label>
+                                <span class="text-green-700">{{selectedMessage.Product_name}}</span>
+                                <hr>
+                            </div>
+                            <div>
+                                <label for="category"
+                                    class="block mb-2 font-medium text-gray-900 dark:text-white">Email</label>
+                                <span class="text-green-700">{{selectedMessage.email}}</span>
+                                <hr>
+                            </div>
+                            <div>
+                                <label for="category"
+                                    class="block mb-2 font-medium text-gray-900 dark:text-white">Message</label>
+                                <span class="text-green-700">{{selectedMessage.message}}</span>
+                                <hr>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

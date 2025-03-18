@@ -23,7 +23,7 @@ export class ContactUsService extends AlertService {
   }
 
   getMessages() {
-    return this.http.get<ResponseHandler>(`${this.url}/messages`);
+    return this.http.get<ResponseHandler>(`${this.url}/admin/messages`);
   }
 
 }
