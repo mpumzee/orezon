@@ -4,7 +4,7 @@ import { Payments } from '../../../models/payments';
 import { Seller } from '../../../models/seller';
 import { SubOrder } from '../../../models/sub-order';
 import { User } from '../../../models/user';
-import { BuyerRegistrationService, OrdersService, PaymentService, PayoutsService, SellerRegistrationService } from '../../tools/services';
+import { BuyerRegistrationService, ContactUsService, OrdersService, PaymentService, PayoutsService, SellerRegistrationService } from '../../tools/services';
 
 @Component({
   selector: 'app-inbox',
@@ -25,6 +25,8 @@ export class InboxComponent implements OnInit {
 
   buyers: Buyer[] = [];
 
+  messages: any;
+
   buyer_pic: any;
 
   viewPaymentModal = false;
@@ -34,7 +36,8 @@ export class InboxComponent implements OnInit {
     private payoutService: PayoutsService,
     private buyerService: BuyerRegistrationService,
     private orderService: OrdersService,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private messageService: ContactUsService
   ) { }
 
   ngOnInit(): void {
@@ -87,6 +90,11 @@ export class InboxComponent implements OnInit {
     this.orderService.getAllList().subscribe((res) => {
       this.orders = res.data;
       console.log('orders:', res.data);
+    });
+
+    this.messageService.getMessages().subscribe((res) => {
+      this.messages = res.data;
+      console.log('messages:', res.data);
     });
   }
 

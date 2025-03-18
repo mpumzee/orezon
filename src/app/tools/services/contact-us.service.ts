@@ -22,4 +22,8 @@ export class ContactUsService extends AlertService {
     return this.http.post<ResponseHandler>(`${this.url}/messages`, contact);
   }
 
+  getMessages() {
+    return this.http.get<ResponseHandler>(`${this.url}/messages`);
+  }
+
 }
